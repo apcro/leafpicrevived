@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_title">18sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_sub_medium">14sp</dimen>
+
+    <!-- Navigation Drawer -->
+    <dimen name="nav_drawer_top_padding">50dp</dimen>
+    <dimen name="nav_drawer_width">300dp</dimen>
+    <dimen name="nav_drawer_header_small_spacing">2dp</dimen>
+    <dimen name="nav_drawer_header_spacing">8dp</dimen>
+    <item name="nav_drawer_header_text_spacing" format="float" type="dimen">0.15</item>
+    <dimen name="nav_drawer_scrollbar_size">4dip</dimen>
+
+    <!-- Navigation Entry -->
+    <dimen name="nav_entry_vertical_spacing">16dp</dimen>
+    <dimen name="nav_entry_horizontal_spacing">22dp</dimen>
+    <dimen name="nav_entry_icon_size">20dp</dimen>
+    <dimen name="nav_entry_text_padding">3dp</dimen>
+
+    <!-- About -->
+    <dimen name="developer_display_image_size">100dp</dimen>
+    <dimen name="contributor_display_image_size">70dp</dimen>
+    <dimen name="contributor_small_spacing">5dp</dimen>
+    <dimen name="contributor_spacing">10dp</dimen>
+    <dimen name="developer_image_margin">15dp</dimen>
+    <dimen name="developer_name_margin">20dp</dimen>
+    <dimen name="developer_description_padding">15dp</dimen>
+    <dimen name="developer_links_spacing">15dp</dimen>
+    <dimen name="developer_links_small_padding">5dp</dimen>
+    <dimen name="developer_small_Spacing">10dp</dimen>
+    <dimen name="developer_card_spacing">10dp</dimen>
+    <dimen name="developer_card_elevation">5dp</dimen>
+    <dimen name="about_link_icon_size">20dp</dimen>
+    <dimen name="about_link_icon_left_margin">14dp</dimen>
+    <dimen name="about_link_icon_right_margin">24dp</dimen>
+    <dimen name="about_link_padding">8dp</dimen>
+
+    <!-- Media -->
+    <dimen name="video_play_icon_size">50dp</dimen>
+
+    <!-- Delete Bottom Sheet TODO: remove -->
+    <dimen name="delete_bottom_sheet_spacing">15dp</dimen>
+    <dimen name="delete_bottom_sheet_progress_size">120dp</dimen>
+    <dimen name="delete_bottom_sheet_progress_margin">16dp</dimen>
+    <dimen name="delete_bottom_sheet_small_spacing">8dp</dimen>
+
+    <!-- Timeline Header -->
+    <dimen name="timeline_header_text_padding">10dp</dimen>
+    <dimen name="timeline_decorator_spacing">1dp</dimen>
+
+    <!-- Progress Bottom Sheet -->
+    <dimen name="progress_bottom_sheet_spacing">15dp</dimen>
+    <dimen name="progress_bottom_sheet_progress_size">120dp</dimen>
+    <dimen name="progress_bottom_sheet_progress_margin">16dp</dimen>
+    <dimen name="progress_bottom_sheet_small_spacing">8dp</dimen>
+
+</resources>

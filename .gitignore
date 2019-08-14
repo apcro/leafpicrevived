@@ -1,6 +1,7 @@
 # Built application files
 *.apk
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -34,6 +35,7 @@ captures/
 
 # IntelliJ
 *.iml
+.idea
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -44,7 +46,8 @@ captures/
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
-#*.jks
+*.jks
+keystore.properties
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
@@ -63,3 +66,12 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+.DS_Store
+/build
+/captures
+/scripts/crowdin.key
+/app/src/main/assets/secretconstants.properties
+
+# debug purpose
+inappstoragereader

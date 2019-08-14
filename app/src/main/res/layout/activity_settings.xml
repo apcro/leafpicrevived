@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/setting_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:background="@color/md_dark_appbar"
+        android:windowActionBarOverlay="true"/>
+
+    <ScrollView
+        android:id="@+id/settingAct_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="4dip">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--GENERAL-->
+            <com.alienpants.leafpic.views.themeable.ThemedCardView
+                android:id="@+id/general_setting_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_spacing"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/small_spacing">
+
+                    <com.alienpants.leafpic.views.themeable.ThemedSettingsCategory
+                        android:id="@+id/general_setting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingTop="@dimen/medium_spacing"
+                        android:text="@string/general"
+                        android:textColor="@color/md_dark_background"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold"/>
+
+                    <!-- SECURITY -->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_security"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/security_sub"
+                        app:settingIcon="faw-user-secret"
+                        app:settingTitle="@string/security"/>
+
+                    <!-- NUMBER OF COLUMNS -->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_n_columns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/multi_column_sub"
+                        app:settingIcon="gmd-view-column"
+                        app:settingTitle="@string/multi_column"/>
+
+                    <!-- EXCLUDED ALBUM-->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_white_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/manage_your_folders_sub"
+                        app:settingIcon="gmd-burst-mode"
+                        app:settingTitle="@string/manage_your_folders"/>
+
+                    <!-- FAB OPTIONS -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_fab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/fab_options_sub"
+                        app:settingIcon="gmd-add-circle"
+                        app:settingPreferenceKey="@string/preference_show_fab"
+                        app:settingTitle="@string/fab_options"/>
+
+                    <!-- TIPS -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_tips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/option_show_tips_sub"
+                        app:settingIcon="gmd-info"
+                        app:settingPreferenceKey="@string/preference_show_tips"
+                        app:settingTitle="@string/option_show_tips"/>
+
+                    <!-- CHANGE LANGUAGE -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_language"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/option_change_language_sub"
+                        app:settingIcon="gmd-translate"
+                        app:settingPreferenceKey="@string/preference_force_english"
+                        app:settingTitle="@string/option_change_language" />
+                </LinearLayout>
+            </com.alienpants.leafpic.views.themeable.ThemedCardView>
+
+            <!--THEME-->
+            <com.alienpants.leafpic.views.themeable.ThemedCardView
+                android:id="@+id/theme_setting_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_spacing"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/small_spacing">
+
+                    <com.alienpants.leafpic.views.themeable.ThemedSettingsCategory
+                        android:id="@+id/theme_setting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingTop="@dimen/medium_spacing"
+                        android:text="@string/theme"
+                        android:textColor="@color/md_dark_background"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold"/>
+
+                    <!--BASIC THEME-->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_basic_theme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/base_theme_sub"
+                        app:settingIcon="gmd-invert-colors"
+                        app:settingTitle="@string/base_theme"/>
+
+                    <!--PRIMARY COLOR-->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_primaryColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/primary_color_sub"
+                        app:settingIcon="gmd-color-lens"
+                        app:settingTitle="@string/primary_color"/>
+
+                    <!--ACCENT COLOR-->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_accentColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/accent_color_sub"
+                        app:settingIcon="gmd-format-color-fill"
+                        app:settingTitle="@string/accent_color"/>
+
+                    <!-- APPLY THEME ON 3TH ACT -->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_custom_thirdAct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/custom_3thAct_sub"
+                        app:settingIcon="gmd-colorize"
+                        app:settingTitle="@string/media_viewer"/>
+
+                    <!-- CARD VIEW STYLE -->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_card_view_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/album_card_view_sub"
+                        app:settingIcon="gmd-dashboard"
+                        app:settingTitle="@string/album_card_view"/>
+
+                    <!-- CUSTOM ICON COLOR -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/ll_custom_icon_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/custom_icon_color_sub"
+                        app:settingDefaultValue="false"
+                        app:settingIcon="gmd-border-color"
+                        app:settingMinApi="21"
+                        app:settingPreferenceKey="@string/preference_custom_icon_color"
+                        app:settingTitle="@string/custom_icon_color"/>
+
+                    <!-- TRANSLUCENT STATUS BAR-->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_statusbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/traslucent_statusbar_sub"
+                        app:settingDefaultValue="true"
+                        app:settingIcon="gmd-web-asset"
+                        app:settingMinApi="21"
+                        app:settingPreferenceKey="@string/preference_translucent_status_bar"
+                        app:settingTitle="@string/traslucent_statusbar"/>
+
+                    <!--COLORED NAV BAR-->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_colored_navbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/colored_navbar_sub"
+                        app:settingDefaultValue="false"
+                        app:settingIcon="gmd-video-label"
+                        app:settingMinApi="21"
+                        app:settingPreferenceKey="@string/preference_colored_nav_bar"
+                        app:settingTitle="@string/colored_navbar"/>
+
+                </LinearLayout>
+            </com.alienpants.leafpic.views.themeable.ThemedCardView>
+
+            <!--MEDIA VIEWER SETTING-->
+            <com.alienpants.leafpic.views.themeable.ThemedCardView
+                android:id="@+id/preview_picture_setting_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_spacing"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/small_spacing">
+
+                    <com.alienpants.leafpic.views.themeable.ThemedSettingsCategory
+                        android:id="@+id/picture_setting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingTop="@dimen/medium_spacing"
+                        android:text="@string/media_viewer"
+                        android:textColor="@color/md_dark_background"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold"/>
+
+                    <!--MAX BRIGHTNESS-->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_max_brightness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/max_brightness_sub"
+                        app:settingIcon="gmd-settings-brightness"
+                        app:settingPreferenceKey="@string/preference_max_brightness"
+                        app:settingTitle="@string/max_brightness"/>
+
+                    <!-- PICTURE ORIENTATION-->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_picture_orientation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/picture_orientation_sub"
+                        app:settingIcon="gmd-screen-rotation"
+                        app:settingPreferenceKey="@string/preference_auto_rotate"
+                        app:settingTitle="@string/picture_orientation"/>
+
+                    <!-- FULL resolution TODO: do something -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_full_resolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:settingCaption="@string/load_full_image_when_zoom_in"
+                        app:settingIcon="gmd-image"
+                        app:settingPreferenceKey="@string/preference_delay_full_image"
+                        app:settingTitle="@string/delay_load_full_size_image"/>
+
+                    <!--SWIPE ORIENTATION TODO: implement feature -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_swipe_direction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:settingCaption="@string/media_viewer_swipe_direction_sub"
+                        app:settingIcon="gmd-compare-arrows"
+                        app:settingPreferenceKey="@string/preference_swipe_direction_inverted"
+                        app:settingTitle="@string/media_viewer_swipe_direction"/>
+
+                </LinearLayout>
+            </com.alienpants.leafpic.views.themeable.ThemedCardView>
+
+            <!--VIDEO PLAYER SETTINGS-->
+            <com.alienpants.leafpic.views.themeable.ThemedCardView
+                android:id="@+id/video_setting_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_spacing"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/small_spacing">
+
+                    <com.alienpants.leafpic.views.themeable.ThemedSettingsCategory
+                        android:id="@+id/video_setting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingTop="@dimen/medium_spacing"
+                        android:text="@string/video"
+                        android:textColor="@color/md_dark_background"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold"/>
+
+                    <!-- INCLUDE VIDEO -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_include_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/include_video_sub"
+                        app:settingIcon="gmd-videocam"
+                        app:settingPreferenceKey="@string/preference_include_video"
+                        app:settingTitle="@string/include_video"/>
+
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_instant_play_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/video_instant_play_sub"
+                        app:settingIcon="gmd-play-arrow"
+                        app:settingPreferenceKey="@string/preference_video_instant_play"
+                        app:settingTitle="@string/video_instant_play"/>
+
+                </LinearLayout>
+            </com.alienpants.leafpic.views.themeable.ThemedCardView>
+
+            <!--ADVANCED SETTING-->
+            <com.alienpants.leafpic.views.themeable.ThemedCardView
+                android:id="@+id/advanced_setting_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_spacing"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/small_spacing">
+
+                    <com.alienpants.leafpic.views.themeable.ThemedSettingsCategory
+                        android:id="@+id/advanced_setting_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingTop="@dimen/medium_spacing"
+                        android:text="@string/advanced"
+                        android:textColor="@color/md_dark_background"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold"/>
+
+                    <!-- SUB SCALING-->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_sub_scaling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/sub_scaling_image_view_sub"
+                        app:settingIcon="gmd-photo-library"
+                        app:settingPreferenceKey="@string/preference_sub_scaling"
+                        app:settingTitle="@string/sub_scaling_image_view"/>
+
+                    <!-- MAPS PROVIDER-->
+                    <com.alienpants.leafpic.views.SettingBasic
+                        android:id="@+id/ll_map_provider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/map_provider_sub"
+                        app:settingIcon="faw-map-signs"
+                        app:settingTitle="@string/map_provider"/>
+
+                    <!-- AUTO UPDATE MEDIA -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_auto_update_media"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/auto_update_media_sub"
+                        app:settingIcon="gmd-update"
+                        app:settingPreferenceKey="@string/preference_auto_update_media"
+                        app:settingTitle="@string/auto_update_media"/>
+
+                    <!-- DISABLE ANIMATIONS -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_disable_animations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/disable_animations_sub"
+                        app:settingIcon="gmd-do-not-disturb"
+                        app:settingPreferenceKey="@string/preference_disable_animations"
+                        app:settingTitle="@string/disable_animations"/>
+
+                    <!-- Enable Timeline -->
+                    <com.alienpants.leafpic.views.SettingWithSwitchView
+                        android:id="@+id/option_enable_timeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:settingCaption="@string/enable_timeline_desc"
+                        app:settingIcon="@string/icon_timeline"
+                        app:settingPreferenceKey="@string/preference_enable_timeline"
+                        app:settingTitle="@string/enable_timeline_title"/>
+
+                </LinearLayout>
+            </com.alienpants.leafpic.views.themeable.ThemedCardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

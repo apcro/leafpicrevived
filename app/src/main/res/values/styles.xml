@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="AboutCardStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/developer_card_spacing</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:foreground">@drawable/ripple</item>
+    </style>
+
+    <style name="Widget.Design.BottomSheet.Modal" parent="android:Widget">
+        <item name="behavior_peekHeight">5dp</item>
+    </style>
+
+</resources>

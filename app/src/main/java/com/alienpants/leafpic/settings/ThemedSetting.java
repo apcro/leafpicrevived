@@ -1,0 +1,24 @@
+package com.alienpants.leafpic.settings;
+
+import com.alienpants.liz.ThemedActivity;
+
+/**
+ * Created by dnld on 12/9/16.
+ */
+
+class ThemedSetting {
+
+    private ThemedActivity activity;
+
+    ThemedSetting(ThemedActivity activity) {
+        this.activity = activity;
+    }
+
+    public ThemedSetting() {
+    }
+
+    public ThemedActivity getActivity() {
+        return activity;
+    }
+
+}
