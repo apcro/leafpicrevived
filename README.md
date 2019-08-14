@@ -1,7 +1,9 @@
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/leafpic/localized.svg)](https://crowdin.com/project/leafpic)
 
-**PSA**: The original LeafPic is abandonded: https://gitlab.com/HoraApps/LeafPic/issues/605#note_155379129
+**NOTE**: The original LeafPic is abandonded: https://gitlab.com/HoraApps/LeafPic/issues/605#note_155379129
 This is a copy of the GitLab source code, updated to AndroidX, with some elements removed.
+
+As the [Liz](https://github.com/HoraApps/Liz) library also appears to be abandonded, it has been included locally and also updated to AndroidX.
 
 # LeafPic
 <img src="https://raw.githubusercontent.com/apcro/leafpic/master/app/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
@@ -21,6 +23,8 @@ LeafPic is a fluid, material-designed alternative gallery, it also is ad-free an
 </div>
 -->
 </br></br>
+</br></br>
+</br></br>
 
 ## Screenshots
 <div style="display:flex;" >
@@ -34,9 +38,11 @@ LeafPic is a fluid, material-designed alternative gallery, it also is ad-free an
 
 #### Contributing
 
+<!--
 ###### Testing
 Do you want to be a tester? Join our Telegram group! Send a message to [@dnldsht](https://t.me/dnldsht) or [@CalvinNoronha](https://t.me/CalvinNoronha) we will add you.
 We will release apks to test features or to check if bugs have been fixed.
+-->
 
 ###### Code 
 If you are a developer and you wish to contribute to the app please fork the project
