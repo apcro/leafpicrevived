@@ -1,1 +1,1 @@
-include ':app', ':liz'
+include ':leafpic', ':liz'
