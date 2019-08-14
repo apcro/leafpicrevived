@@ -54,9 +54,11 @@ You can trace the status of known issues [here](https://github.com/apcro/leafpic
 ###### Translations
 **NOTE** Existing translations are included as per the last commit to the GitLab project. New translations are not currently available.
 
+<!--
 If you are able to contribute with a new translation of a missing language or if you want to improve an existing one, we greatly appreciate any suggestion!
 The project uses [Crowdin](https://crowdin.com/project/leafpic), a platform that allows anybody to contribute to translating the app
+-->
 
 #### Licensing
-LeafPic is licensed under the [GNU v3 Public License](https://github.com/apcro/leafpic/LICENSE).
+LeafPic is licensed under the [GNU v3 Public License](https://raw.githubusercontent.com/apcro/leafpic/master/LICENSE).
 In addition to the terms set by the GNU v3 Public License, we ask that if you use any code from this repository that you send us a message to let us know.
