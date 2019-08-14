@@ -4,7 +4,7 @@
 This is a copy of the GitLab source code, updated to AndroidX, with some elements removed.
 
 # LeafPic
-<img src="https://github.com/apcro/leafpic/tree/master/app/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
+<img src="https://raw.githubusercontent.com/apcro/leafpic/master/app/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
 LeafPic is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
 
 <!--
