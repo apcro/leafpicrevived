@@ -29,12 +29,13 @@ import com.alienpants.leafpic.data.sort.SortingOrder;
 import com.alienpants.leafpic.items.ActionsListener;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.Theme;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedAdapter;
-import com.alienpants.liz.ThemedViewHolder;
-import com.alienpants.liz.ui.ThemedIcon;
+
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.Theme;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedAdapter;
+import org.horaapps.liz.ThemedViewHolder;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import java.util.ArrayList;
 import java.util.Collections;

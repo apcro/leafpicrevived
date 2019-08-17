@@ -33,9 +33,5 @@ dependencies {
     implementation "com.mikepenz:iconics-core:4.0.1-b01"
     implementation "com.mikepenz:iconics-views:4.0.1-b01"
 
-
-//    implementation 'com.mikepenz:iconics-core:3.0.3@aar'
-//    implementation "com.mikepenz:iconics-views:3.0.3@aar"
-
     implementation "com.orhanobut:hawk:2.0.1"
 }

@@ -19,11 +19,12 @@ import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.data.Media;
 import com.alienpants.leafpic.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpic.views.SquareRelativeLayout;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedViewHolder;
-import com.alienpants.liz.ui.ThemedIcon;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
+
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedViewHolder;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,7 +70,8 @@ public class ViewHolder {
 
         @BindView(R.id.photo_preview) ImageView imageView;
         @BindView(R.id.photo_path) TextView path;
-        @BindView(R.id.gif_icon) ThemedIcon gifIcon;
+        @BindView(R.id.gif_icon)
+        ThemedIcon gifIcon;
         @BindView(R.id.icon) ThemedIcon icon;
         @BindView(R.id.media_card_layout) SquareRelativeLayout layout;
 

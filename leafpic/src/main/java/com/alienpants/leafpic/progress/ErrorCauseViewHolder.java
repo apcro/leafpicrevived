@@ -3,9 +3,10 @@ package com.alienpants.leafpic.progress;
 import android.view.View;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemedViewHolder;
-import com.alienpants.liz.ui.ThemedLinearLayout;
-import com.alienpants.liz.ui.ThemedTextView;
+
+import org.horaapps.liz.ThemedViewHolder;
+import org.horaapps.liz.ui.ThemedLinearLayout;
+import org.horaapps.liz.ui.ThemedTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
