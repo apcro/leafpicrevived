@@ -22,8 +22,8 @@ import androidx.annotation.Nullable;
 
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

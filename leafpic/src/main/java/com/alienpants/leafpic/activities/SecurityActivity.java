@@ -24,8 +24,8 @@ import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.activities.base.BaseActivity;
 import com.alienpants.leafpic.util.FingerprintHandler;
 import com.alienpants.leafpic.util.Security;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ui.ThemedIcon;
 
 /**
  * Created by dnld on 22/05/16.

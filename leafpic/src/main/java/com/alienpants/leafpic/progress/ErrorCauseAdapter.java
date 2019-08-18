@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemedAdapter;
+import org.horaapps.liz.ThemedAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

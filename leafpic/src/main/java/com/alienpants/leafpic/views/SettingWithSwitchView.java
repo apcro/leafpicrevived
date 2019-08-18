@@ -17,10 +17,10 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
-import com.alienpants.liz.ThemedActivity;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
+import org.horaapps.liz.ThemedActivity;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

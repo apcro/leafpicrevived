@@ -20,6 +20,7 @@ import com.alienpants.leafpic.data.Media;
 import com.alienpants.leafpic.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpic.views.SquareRelativeLayout;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedViewHolder;

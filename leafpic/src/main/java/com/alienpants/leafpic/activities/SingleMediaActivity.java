@@ -64,7 +64,7 @@ import com.alienpants.leafpic.util.Security;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.leafpic.views.HackyViewPager;
-import com.alienpants.liz.ColorPalette;
+import org.horaapps.liz.ColorPalette;
 import com.bumptech.glide.Glide;
 import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;

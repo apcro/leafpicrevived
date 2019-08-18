@@ -46,7 +46,7 @@
                     android:foreground="@drawable/ripple"
                     android:clickable="true">
 
-                    <com.alienpants.liz.ui.ThemedIcon
+                    <org.horaapps.liz.ui.ThemedIcon
                         android:id="@+id/white_basic_theme_icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
@@ -85,7 +85,7 @@
                     android:foreground="@drawable/ripple"
                     android:clickable="true">
 
-                    <com.alienpants.liz.ui.ThemedIcon
+                    <org.horaapps.liz.ui.ThemedIcon
                         android:id="@+id/dark_basic_theme_icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
@@ -124,7 +124,7 @@
                     android:foreground="@drawable/ripple"
                     android:clickable="true">
 
-                    <com.alienpants.liz.ui.ThemedIcon
+                    <org.horaapps.liz.ui.ThemedIcon
                         android:id="@+id/dark_amoled_basic_theme_icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"

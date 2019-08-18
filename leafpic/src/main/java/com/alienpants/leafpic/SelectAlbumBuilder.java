@@ -45,9 +45,9 @@ import com.alienpants.leafpic.data.filter.FoldersFileFilter;
 import com.alienpants.leafpic.util.AlertDialogsHelper;
 import com.alienpants.leafpic.util.Measure;
 import com.alienpants.leafpic.views.GridSpacingItemDecoration;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedActivity;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedActivity;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import java.io.File;
 import java.util.ArrayList;

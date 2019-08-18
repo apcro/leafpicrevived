@@ -27,8 +27,8 @@ import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome;
 import com.mikepenz.iconics.view.IconicsImageView;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.ThemeHelper;
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.ThemeHelper;
 
 import java.util.Formatter;
 import java.util.Locale;

@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpic.data.Media;
-import com.alienpants.liz.ThemeHelper;
+import org.horaapps.liz.ThemeHelper;
 
 /**
  * A Base Fragment for showing Media.

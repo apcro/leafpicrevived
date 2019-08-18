@@ -28,8 +28,8 @@ import com.alienpants.leafpic.settings.MapProviderSetting;
 import com.alienpants.leafpic.settings.SinglePhotoSetting;
 import com.alienpants.leafpic.util.Security;
 import com.alienpants.leafpic.views.SettingWithSwitchView;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.ViewUtil;
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.ViewUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

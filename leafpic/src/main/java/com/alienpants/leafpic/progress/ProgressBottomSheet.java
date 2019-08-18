@@ -21,7 +21,7 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
+import org.horaapps.liz.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;

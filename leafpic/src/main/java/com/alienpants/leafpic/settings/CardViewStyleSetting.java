@@ -21,9 +21,9 @@ import com.alienpants.leafpic.CardViewStyle;
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.Theme;
-import com.alienpants.liz.ThemedActivity;
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.Theme;
+import org.horaapps.liz.ThemedActivity;
 
 import static com.alienpants.leafpic.CardViewStyle.COMPACT;
 import static com.alienpants.leafpic.CardViewStyle.FLAT;

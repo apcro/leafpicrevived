@@ -28,7 +28,7 @@ import com.alienpants.leafpic.util.AlertDialogsHelper;
 import com.alienpants.leafpic.util.ApplicationUtils;
 import com.alienpants.leafpic.util.ChromeCustomTabs;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ui.ThemedTextView;
+import org.horaapps.liz.ui.ThemedTextView;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.util.ArrayList;

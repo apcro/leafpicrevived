@@ -28,8 +28,8 @@ import com.alienpants.leafpic.util.Security
 import com.alienpants.leafpic.util.deleteMedia
 import com.alienpants.leafpic.util.preferences.Defaults
 import com.alienpants.leafpic.util.shareMedia
-import com.alienpants.liz.ThemeHelper
-import com.alienpants.liz.ThemedActivity
+import org.horaapps.liz.ThemeHelper
+import org.horaapps.liz.ThemedActivity
 import java.util.*
 
 /**

@@ -11,16 +11,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.ThemedActivity;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.ThemedActivity;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import uz.shift.colorpicker.LineColorPicker;
 import uz.shift.colorpicker.OnColorChangedListener;
 
-import static com.alienpants.liz.Theme.AMOLED;
-import static com.alienpants.liz.Theme.DARK;
-import static com.alienpants.liz.Theme.LIGHT;
+import static org.horaapps.liz.Theme.AMOLED;
+import static org.horaapps.liz.Theme.DARK;
+import static org.horaapps.liz.Theme.LIGHT;
 
 
 /**

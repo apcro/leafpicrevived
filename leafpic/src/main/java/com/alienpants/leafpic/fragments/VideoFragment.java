@@ -20,8 +20,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.data.Media;
 import com.alienpants.leafpic.data.StorageHelper;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

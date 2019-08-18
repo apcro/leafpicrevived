@@ -13,7 +13,7 @@ import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ThemedActivity;
+import org.horaapps.liz.ThemedActivity;
 
 /**
  * Created by dnld on 12/9/16.

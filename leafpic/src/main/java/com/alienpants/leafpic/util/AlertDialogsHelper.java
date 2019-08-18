@@ -34,8 +34,8 @@ import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.data.Media;
 import com.alienpants.leafpic.data.metadata.MediaDetailsMap;
 import com.alienpants.leafpic.data.metadata.MetadataHelper;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedActivity;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

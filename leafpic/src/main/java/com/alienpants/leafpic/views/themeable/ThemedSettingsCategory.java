@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
 
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.

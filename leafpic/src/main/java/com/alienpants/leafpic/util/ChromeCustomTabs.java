@@ -11,7 +11,7 @@ import androidx.browser.customtabs.CustomTabsClient;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.browser.customtabs.CustomTabsServiceConnection;
 
-import com.alienpants.liz.ThemeHelper;
+import org.horaapps.liz.ThemeHelper;
 
 /**
  * A Chrome Custom Tabs wrapper to preload and show URLs in Chrome Custom Tabs.

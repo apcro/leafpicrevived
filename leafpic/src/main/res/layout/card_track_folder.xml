@@ -8,7 +8,7 @@
     android:foreground="@drawable/ripple"
     android:clickable="true">
 
-    <com.alienpants.liz.ui.ThemedIcon
+    <org.horaapps.liz.ui.ThemedIcon
         android:id="@+id/folder_icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
@@ -49,7 +49,7 @@
 
         </LinearLayout>
 
-        <com.alienpants.liz.ui.ThemedIcon
+        <org.horaapps.liz.ui.ThemedIcon
             android:id="@+id/remove_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"

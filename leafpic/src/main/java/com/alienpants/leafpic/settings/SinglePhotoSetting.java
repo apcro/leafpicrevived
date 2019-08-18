@@ -13,9 +13,9 @@ import androidx.cardview.widget.CardView;
 import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ColorPalette;
-import com.alienpants.liz.ThemedActivity;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ColorPalette;
+import org.horaapps.liz.ThemedActivity;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import uz.shift.colorpicker.LineColorPicker;
 

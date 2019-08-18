@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ui.ThemedTextView;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ui.ThemedTextView;
 
 /**
  * Created by dnld on 04/03/18.

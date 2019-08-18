@@ -59,7 +59,7 @@
 
             </LinearLayout>
 
-            <com.alienpants.liz.ui.ThemedIcon
+            <org.horaapps.liz.ui.ThemedIcon
                 android:id="@+id/toggle_hidden_icon"
                 android:layout_height="@dimen/icon_size"
                 android:layout_width="@dimen/icon_size"
@@ -94,7 +94,7 @@
                 android:foreground="@drawable/ripple"
                 android:clickable="true">
 
-                <com.alienpants.liz.ui.ThemedIcon
+                <org.horaapps.liz.ui.ThemedIcon
                     android:id="@+id/create_new_folder_icon"
                     android:layout_height="@dimen/icon_size"
                     android:layout_width="@dimen/icon_size"

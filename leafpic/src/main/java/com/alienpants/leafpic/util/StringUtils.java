@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.alienpants.liz.ColorPalette;
+import org.horaapps.liz.ColorPalette;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
