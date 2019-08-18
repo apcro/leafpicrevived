@@ -26,7 +26,7 @@ import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.activities.base.SharedMediaActivity;
 import com.alienpants.leafpic.util.PermissionUtils;
 import com.alienpants.leafpic.util.StringUtils;
-import com.alienpants.liz.ColorPalette;
+import org.horaapps.liz.ColorPalette;
 
 import java.io.File;
 

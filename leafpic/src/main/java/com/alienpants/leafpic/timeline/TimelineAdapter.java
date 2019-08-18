@@ -19,8 +19,8 @@ import com.alienpants.leafpic.data.sort.SortingOrder;
 import com.alienpants.leafpic.items.ActionsListener;
 import com.alienpants.leafpic.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpic.timeline.data.TimelineItem;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedAdapter;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedAdapter;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;

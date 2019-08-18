@@ -21,9 +21,9 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
-import com.alienpants.liz.ViewUtil;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
+import org.horaapps.liz.ViewUtil;
 
 import java.util.ArrayList;
 

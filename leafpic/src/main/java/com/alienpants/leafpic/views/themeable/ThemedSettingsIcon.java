@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
 
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
+import org.horaapps.liz.ui.ThemedIcon;
 
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.

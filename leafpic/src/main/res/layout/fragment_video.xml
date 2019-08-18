@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.alienpants.liz.ui.ThemedIcon
+    <org.horaapps.liz.ui.ThemedIcon
         android:id="@+id/video_play_icon"
         android:layout_width="@dimen/video_play_icon_size"
         android:layout_height="@dimen/video_play_icon_size"

@@ -2,10 +2,10 @@ package com.alienpants.leafpic.adapters;
 
 import android.content.Context;
 
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
-import com.alienpants.liz.ThemedAdapter;
-import com.alienpants.liz.ThemedViewHolder;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
+import org.horaapps.liz.ThemedAdapter;
+import org.horaapps.liz.ThemedViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

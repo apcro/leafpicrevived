@@ -10,8 +10,9 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedViewHolder;
+
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedViewHolder;
 
 import java.util.ArrayList;
 

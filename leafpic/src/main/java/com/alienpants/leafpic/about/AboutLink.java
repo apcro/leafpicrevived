@@ -19,9 +19,9 @@ import androidx.core.content.ContextCompat;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.Themed;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.Themed;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

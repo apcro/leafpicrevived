@@ -8,7 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.CallSuper;
 
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ThemedActivity;
+import org.horaapps.liz.ThemedActivity;
 
 import java.util.Locale;
 

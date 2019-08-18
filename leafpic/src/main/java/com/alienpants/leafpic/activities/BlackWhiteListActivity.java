@@ -28,7 +28,7 @@ import com.alienpants.leafpic.data.filter.ImageFileFilter;
 import com.alienpants.leafpic.util.AnimationUtils;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ui.ThemedIcon;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.io.File;

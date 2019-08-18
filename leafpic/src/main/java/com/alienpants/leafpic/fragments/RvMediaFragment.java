@@ -59,9 +59,9 @@ import com.alienpants.leafpic.util.Security;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.leafpic.views.GridSpacingItemDecoration;
-import com.alienpants.liz.ThemeHelper;
-import com.alienpants.liz.ThemedActivity;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ThemeHelper;
+import org.horaapps.liz.ThemedActivity;
+import org.horaapps.liz.ui.ThemedIcon;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.util.ArrayList;

@@ -41,7 +41,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.util.MimeTypes;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ThemeHelper;
+import org.horaapps.liz.ThemeHelper;
 
 import java.util.Arrays;
 import java.util.Collections;

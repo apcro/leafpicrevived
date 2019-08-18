@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import com.alienpants.leafpic.R;
-import com.alienpants.liz.ui.ThemedIcon;
+import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

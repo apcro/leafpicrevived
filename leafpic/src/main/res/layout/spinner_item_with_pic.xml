@@ -6,7 +6,7 @@
     android:padding="@dimen/medium_spacing"
     android:layout_height="match_parent">
 
-    <com.alienpants.liz.ui.ThemedIcon
+    <org.horaapps.liz.ui.ThemedIcon
         android:layout_height="@dimen/icon_size"
         android:layout_width="@dimen/icon_size"
         android:id="@+id/volume_image"

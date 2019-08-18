@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <com.alienpants.liz.ui.ThemedIcon
+                        <org.horaapps.liz.ui.ThemedIcon
                             android:id="@+id/donate_header_icon"
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <com.alienpants.liz.ui.ThemedIcon
+                        <org.horaapps.liz.ui.ThemedIcon
                             android:id="@+id/donate_googleplay_icon_title"
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <com.alienpants.liz.ui.ThemedIcon
+                        <org.horaapps.liz.ui.ThemedIcon
                             android:id="@+id/donate_paypal_icon_title"
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
@@ -254,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <com.alienpants.liz.ui.ThemedIcon
+                        <org.horaapps.liz.ui.ThemedIcon
                             android:id="@+id/donate_bitcoin_icon_title"
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"

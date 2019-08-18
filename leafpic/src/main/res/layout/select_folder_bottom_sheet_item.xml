@@ -13,7 +13,7 @@
     android:paddingTop="@dimen/sub_medium_spacing_2"
     android:paddingBottom="@dimen/sub_medium_spacing_2">
 
-    <com.alienpants.liz.ui.ThemedIcon
+    <org.horaapps.liz.ui.ThemedIcon
         android:id="@+id/folder_icon_bottom_sheet_item"
         android:layout_height="@dimen/icon_size"
         android:layout_width="@dimen/icon_size"

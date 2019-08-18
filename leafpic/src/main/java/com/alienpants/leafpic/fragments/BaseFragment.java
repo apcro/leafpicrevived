@@ -2,7 +2,7 @@ package com.alienpants.leafpic.fragments;
 
 import android.content.Context;
 
-import com.alienpants.liz.ThemedFragment;
+import org.horaapps.liz.ThemedFragment;
 
 /**
  * Base Fragment for abstraction logic.
