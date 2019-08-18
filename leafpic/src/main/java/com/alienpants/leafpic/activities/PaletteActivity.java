@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.activities.base.BaseActivity;
 import com.alienpants.leafpic.util.StringUtils;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.util.List;
 

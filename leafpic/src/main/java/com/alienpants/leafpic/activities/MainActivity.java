@@ -30,13 +30,14 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.alienpants.leafpic.views.navigation_drawer.NavigationDrawer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.typeface.IIcon;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpic.BuildConfig;
@@ -57,7 +58,6 @@ import com.alienpants.leafpic.util.LegacyCompatFileProvider;
 import com.alienpants.leafpic.util.Security;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
-import com.alienpants.leafpic.views.navigation_drawer.NavigationDrawer;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -98,7 +98,8 @@ public class MainActivity extends SharedMediaActivity implements
     FloatingActionButton fab;
     @BindView(R.id.drawer_layout)
     DrawerLayout navigationDrawer;
-    @BindView(R.id.home_navigation_drawer) NavigationDrawer navigationDrawerView;
+    @BindView(R.id.home_navigation_drawer)
+    NavigationDrawer navigationDrawerView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.coordinator_main_layout)
@@ -384,7 +385,7 @@ public class MainActivity extends SharedMediaActivity implements
         fab.setVisibility(Hawk.get(getString(R.string.preference_show_fab), false) ? View.VISIBLE : View.GONE);
         mainLayout.setBackgroundColor(getBackgroundColor());
 
-//        setScrollViewColor(navigationDrawerView);
+        setScrollViewColor(navigationDrawerView);
         setAllScrollbarsColor();
 
         navigationDrawerView.setTheme(getPrimaryColor(), getBackgroundColor(), getTextColor(), getIconColor());

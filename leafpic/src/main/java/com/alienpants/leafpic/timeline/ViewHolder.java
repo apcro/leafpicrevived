@@ -19,7 +19,6 @@ import com.alienpants.leafpic.R;
 import com.alienpants.leafpic.data.Media;
 import com.alienpants.leafpic.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpic.views.SquareRelativeLayout;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
 
 import org.horaapps.liz.ThemeHelper;
