@@ -3,8 +3,6 @@
 **NOTE**: The original LeafPic is abandonded: https://gitlab.com/HoraApps/LeafPic/issues/605#note_155379129
 This is a copy of the GitLab source code, updated to AndroidX, with some elements removed.
 
-As the [Liz](https://github.com/HoraApps/Liz) library also appears to be abandonded, it has been included locally and also updated to AndroidX.
-
 # LeafPic
 <img src="https://raw.githubusercontent.com/apcro/leafpic/master/app/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
 LeafPic is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
