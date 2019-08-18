@@ -44,6 +44,7 @@ import com.alienpants.leafpic.SelectAlbumBuilder;
 import com.alienpants.leafpic.activities.base.SharedMediaActivity;
 import com.alienpants.leafpic.adapters.MediaPagerAdapter;
 import com.alienpants.leafpic.animations.DepthPageTransformer;
+import com.alienpants.leafpic.animations.SlidePageTransformer;
 import com.alienpants.leafpic.data.Album;
 import com.alienpants.leafpic.data.AlbumSettings;
 import com.alienpants.leafpic.data.Media;
@@ -65,9 +66,9 @@ import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.leafpic.views.HackyViewPager;
 import com.alienpants.liz.ColorPalette;
 import com.bumptech.glide.Glide;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 import com.yalantis.ucrop.UCrop;
 
@@ -271,7 +272,8 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
         useImageMenu = isCurrentMediaImage();
 
-        mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new DepthPageTransformer()));
+//        mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new DepthPageTransformer()));
+        mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new SlidePageTransformer()));
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

@@ -62,7 +62,7 @@ import com.alienpants.leafpic.views.GridSpacingItemDecoration;
 import com.alienpants.liz.ThemeHelper;
 import com.alienpants.liz.ThemedActivity;
 import com.alienpants.liz.ui.ThemedIcon;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.util.ArrayList;
 import java.util.Locale;

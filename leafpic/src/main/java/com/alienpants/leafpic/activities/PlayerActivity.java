@@ -87,7 +87,7 @@ import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.leafpic.views.videoplayer.CustomExoPlayerView;
 import com.alienpants.leafpic.views.videoplayer.CustomPlayBackController;
 import com.alienpants.leafpic.views.videoplayer.TrackSelectionHelper;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;

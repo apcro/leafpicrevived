@@ -22,8 +22,8 @@ import com.alienpants.leafpic.views.SquareRelativeLayout;
 import com.alienpants.liz.ThemeHelper;
 import com.alienpants.liz.ThemedViewHolder;
 import com.alienpants.liz.ui.ThemedIcon;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

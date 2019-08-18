@@ -29,7 +29,7 @@ import com.alienpants.leafpic.util.AnimationUtils;
 import com.alienpants.leafpic.util.StringUtils;
 import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.liz.ui.ThemedIcon;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.io.File;
 import java.util.ArrayList;
