@@ -6,7 +6,7 @@ This is a copy of the GitLab source code, updated to AndroidX, with some element
 As the [Liz](https://github.com/HoraApps/Liz) library also appears to be abandonded, it has been included locally and also updated to AndroidX.
 
 # LeafPic
-<img src="https://raw.githubusercontent.com/apcro/leafpic/master/app/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
+<img src="https://raw.githubusercontent.com/apcro/leafpic/master/leafpic/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
 LeafPic is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
 
 <!--
@@ -54,9 +54,11 @@ You can trace the status of known issues [here](https://github.com/apcro/leafpic
 ###### Translations
 **NOTE** Existing translations are included as per the last commit to the GitLab project. New translations are not currently available.
 
+<!--
 If you are able to contribute with a new translation of a missing language or if you want to improve an existing one, we greatly appreciate any suggestion!
 The project uses [Crowdin](https://crowdin.com/project/leafpic), a platform that allows anybody to contribute to translating the app
+-->
 
 #### Licensing
-LeafPic is licensed under the [GNU v3 Public License](https://github.com/apcro/leafpic/LICENSE).
+LeafPic is licensed under the [GNU v3 Public License](https://raw.githubusercontent.com/apcro/leafpic/master/LICENSE).
 In addition to the terms set by the GNU v3 Public License, we ask that if you use any code from this repository that you send us a message to let us know.

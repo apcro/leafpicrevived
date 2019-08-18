@@ -1,3 +1,11 @@
+v0.8-alpha-1
+==================
+- The source has been updated to support androidx and API 28+
+- The original HoraApp Liz theme library has also been upgraded and included in the source tree rather than as an external library
+- All associated libraries have been upgraded to use their current versions
+- As the original LeafPic has been abandonded, this has been moved to a new organisation
+- Donate links have been removed, as has the experimental Wallpapers functions.
+
 v0.7
 ====
 
