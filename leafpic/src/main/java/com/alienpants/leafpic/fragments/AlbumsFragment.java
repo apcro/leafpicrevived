@@ -452,6 +452,19 @@ public class AlbumsFragment extends BaseMediaGridFragment {
                 alertDialog.show();
                 return true;
 
+            case R.id.details_album:
+                final AlertDialog detailsDialog = AlertDialogsHelper.getAlbumDetailsDialog((ThemedActivity) getActivity(), selectedAlbum, mAdapter);
+                detailsDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string
+                        .ok_action).toUpperCase(), (dialog, which) -> dialog.dismiss());
+
+                detailsDialog.setButton(DialogInterface.BUTTON_NEUTRAL, getString(R.string.fix_date).toUpperCase(), (dialog, which) -> {
+                    // todo
+                    //if (!getCurrentMedia().fixDate())
+                    Toast.makeText(getActivity(), R.string.unable_to_fix_date, Toast.LENGTH_SHORT).show();
+                });
+                detailsDialog.show();
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);

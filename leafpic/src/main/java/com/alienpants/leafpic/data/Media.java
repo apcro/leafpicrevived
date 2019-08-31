@@ -1,5 +1,6 @@
 package com.alienpants.leafpic.data;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -141,6 +142,10 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
 
     public String getDisplayPath() {
         return path != null ? path : getUri().getEncodedPath();
+    }
+
+    public String getStorage(Context context) {
+        return StorageHelper.getSdcardPath(context) != null ? "SD" : "Internal";
     }
 
     public String getName() {

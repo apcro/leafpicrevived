@@ -26,6 +26,8 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
+import com.alienpants.leafpic.adapters.AlbumsAdapter;
+import com.alienpants.leafpic.data.Album;
 import com.bumptech.glide.Glide;
 import com.drew.lang.GeoLocation;
 import com.orhanobut.hawk.Hawk;
@@ -164,6 +166,24 @@ public class AlertDialogsHelper {
 
         detailsDialogBuilder.setView(dialogLayout);
         loadDetails(dialogLayout,activity, mainDetails);
+        return detailsDialogBuilder.create();
+    }
+
+    public static AlertDialog getAlbumDetailsDialog(final ThemedActivity activity, final Album album, final AlbumsAdapter adapter) {
+        AlertDialog.Builder detailsDialogBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
+        MetadataHelper mdHelper = new MetadataHelper();
+        MediaDetailsMap<String, String> mainAlbumDetails;
+        if(adapter.getSelectedCount() > 1){
+            mainAlbumDetails = mdHelper.getSelectedAlbumsDetails(activity, adapter);}
+        else {
+            mainAlbumDetails = mdHelper.getFirstSelectedAlbumDetails(activity, album);
+        }
+        final View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpic.R.layout.dialog_media_detail, null);
+        dialogLayout.findViewById(com.alienpants.leafpic.R.id.details_title).setBackgroundColor(activity.getPrimaryColor());
+        ((CardView) dialogLayout.findViewById(com.alienpants.leafpic.R.id.photo_details_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+
+        detailsDialogBuilder.setView(dialogLayout);
+        loadDetails(dialogLayout, activity, mainAlbumDetails);
         return detailsDialogBuilder.create();
     }
 

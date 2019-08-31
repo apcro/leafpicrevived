@@ -163,6 +163,10 @@ public class Album implements CursorHandler, Parcelable {
 		return selected;
 	}
 
+	public String getStorage(Context context) {
+		return StorageHelper.getSdcardPath(context) != null ? "SD" : "Internal";
+	}
+
 	@Override
 	public String toString() {
 		return "Album{" +
@@ -183,6 +187,30 @@ public class Album implements CursorHandler, Parcelable {
 			f = f.getParentFile();
 		}
 		return result;
+	}
+
+	public long getFolderSize(File file) {
+		if (file.exists()) {
+			long result = 0;
+			File[] fileList = file.listFiles();
+			for (File aFileList : fileList) {
+				if (aFileList.isDirectory()) {
+					result += getFolderSize(aFileList);
+				} else {
+					result += aFileList.length();
+				}
+			}
+			return result;
+		}
+		return 0;
+	}
+
+	public File getFile() {
+		if (path != null) {
+			File file = new File(path);
+			if (file.exists()) return file;
+		}
+		return null;
 	}
 
 	//region Album Properties Setters

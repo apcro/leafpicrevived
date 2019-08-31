@@ -317,7 +317,7 @@
     <string name="about_support_github">GitHub</string>
     <string name="about_support_github_sub">Fork the repo and push changes or submit new issues.</string>
 
-    <!--PHOTO DETAILS-->
+    <!--PHOTO AND ALBUM DETAILS-->
     <string name="path">Path</string>
     <string name="type">Type</string>
     <string name="resolution">Resolution</string>
@@ -325,6 +325,9 @@
     <string name="device">Device</string>
     <string name="orientation">Orientation</string>
     <string name="location">Location</string>
+    <string name="files">Files</string>
+    <string name="storage">Storage</string>
+    <string name="free_space">Free space</string>
 
     <!--DRAWER ITEMS-->
     <string name="local_folder">Local Folders</string>
