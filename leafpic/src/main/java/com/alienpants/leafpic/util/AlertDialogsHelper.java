@@ -1,14 +1,17 @@
 package com.alienpants.leafpic.util;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.Uri;
 
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +20,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
@@ -29,6 +35,8 @@ import androidx.cardview.widget.CardView;
 import com.alienpants.leafpic.adapters.AlbumsAdapter;
 import com.alienpants.leafpic.data.Album;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.drew.lang.GeoLocation;
 import com.orhanobut.hawk.Hawk;
 
@@ -40,9 +48,14 @@ import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import in.uncod.android.bypass.Bypass;
@@ -81,6 +94,96 @@ public class AlertDialogsHelper {
 
         dialogBuilder.setView(dialogLayout);
         return dialogBuilder.create();
+    }
+
+    public static  AlertDialog getAdvancedSharingDialog(ThemedActivity activity, Uri uri, Intent advancedShare, int imgWidth, int imgHeight) {
+
+        AlertDialog.Builder advancedSharingBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
+        View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpic.R.layout.dialog_advanced_sharing, null);
+        TextView textViewTitle = dialogLayout.findViewById(R.id.advanced_sharing_title);
+        textViewTitle.setBackgroundColor(activity.getPrimaryColor());
+        ((CardView) dialogLayout.findViewById(R.id.advanced_sharing_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        advancedSharingBuilder.setView(dialogLayout);
+
+        final RadioGroup rGroup = dialogLayout.findViewById(R.id.radio_group_advanced_sharing);
+        RadioButton rOriginal = dialogLayout.findViewById(R.id.radio_original);
+        RadioButton r25lighter = dialogLayout.findViewById(R.id.radio_25lighter);
+        RadioButton r50lighter = dialogLayout.findViewById(R.id.radio_50lighter);
+        RadioButton r70lighter = dialogLayout.findViewById(R.id.radio_70lighter);
+
+        String original = " ("+imgWidth+"x"+imgHeight+")";
+        rOriginal.setText(rOriginal.getText()+original);
+        r25lighter.setText(r25lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 75))+"x"+String.valueOf(getDim(imgHeight, 75))+")");
+        r50lighter.setText(r50lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 50))+"x"+String.valueOf(getDim(imgHeight, 50))+")");
+        r70lighter.setText(r70lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 30))+"x"+String.valueOf(getDim(imgHeight, 30))+")");
+
+        activity.themeRadioButton(rOriginal);
+        activity.themeRadioButton(r25lighter);
+        activity.themeRadioButton(r50lighter);
+        activity.themeRadioButton(r70lighter);
+
+        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.radio_original:
+                        advancedShare.putExtra(Intent.EXTRA_STREAM, uri);
+                        break;
+                    case R.id.radio_25lighter:
+                        resizeImage(activity, uri, getDim(imgWidth, 75), getDim(imgHeight, 75), advancedShare);
+                        break;
+                    case R.id.radio_50lighter:
+                        resizeImage(activity, uri,getDim(imgWidth, 50), getDim(imgHeight, 50), advancedShare);
+                        break;
+                    case R.id.radio_70lighter:
+                        resizeImage(activity, uri,getDim(imgWidth, 30), getDim(imgHeight, 30), advancedShare);
+                        break;
+                }
+            }
+        });
+        rOriginal.setChecked(true);
+        return advancedSharingBuilder.create();
+    }
+
+    public static void resizeImage(Activity activity, Uri uri, int width_px, int height_px, Intent adv){
+        Glide.with(activity)
+                .asBitmap()
+                .load(uri)
+                .into(new SimpleTarget<Bitmap>(width_px, height_px) {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap bitmap, Transition<? super Bitmap> transition) {
+                        saveResizedImage(bitmap, activity, uri, adv);
+                    }
+                });
+    }
+
+    public static void saveResizedImage(Bitmap bitmap, Activity activity, Uri uri, Intent advancedShare){
+        try {
+            String fileName = uri.getLastPathSegment();
+            File tempImage;
+            OutputStream os;
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);;
+            if (fileName.toLowerCase().endsWith(".png"))
+            {
+                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".png", activity.getApplicationContext().getCacheDir());
+                os = new FileOutputStream(tempImage);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+            }else{
+                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".jpg", activity.getApplicationContext().getCacheDir());
+                os = new FileOutputStream(tempImage);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
+            }
+            Uri newU = LegacyCompatFileProvider.getUri(activity, tempImage);
+            advancedShare.putExtra(Intent.EXTRA_STREAM, newU);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            Log.e("resized image not saved", e.getMessage());
+        }
+    }
+
+    public static int getDim (int number, int percent){
+        return Math.round(number*percent/100);
     }
 
     public static AlertDialog getTextDialog(ThemedActivity activity, @StringRes int title, @StringRes int Message){
