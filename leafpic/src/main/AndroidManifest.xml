@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.vending.BILLING" />
+<!--    <uses-permission android:name="com.android.vending.BILLING" />-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
@@ -150,15 +150,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.DonateActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.DONATE" />
+<!--        <activity-->
+<!--            android:name=".activities.DonateActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.DONATE" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".activities.BlackWhiteListActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -187,12 +187,6 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-        <!--
-             <meta-data
-            android:name="com.alienpants.leafpic.CustomGlideModule"
-            android:value="GlideModule" />
-        -->
 
         <provider
             android:name=".util.LegacyCompatFileProvider"
