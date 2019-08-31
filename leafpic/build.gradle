@@ -21,7 +21,7 @@ android {
         applicationId "com.alienpants.leafpic"
         minSdkVersion 21
         targetSdkVersion 28
-        versionName "v0.8-alpha-1"
+        versionName "v0.8-alpha-2"
         versionCode 17
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true

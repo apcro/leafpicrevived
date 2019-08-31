@@ -1,3 +1,17 @@
+v0.8-alpha-2
+==================
+- The Liz library has been removed, and the library itself has been upgraded to AndroidX and added to Jitpack
+- A number of the outstanding pull requests on Gitlab have been manually merged
+  - https://gitlab.com/HoraApps/LeafPic/merge_requests/598
+  - https://gitlab.com/HoraApps/LeafPic/merge_requests/593
+- An issue on Gitlab have been fixed
+  - https://gitlab.com/HoraApps/LeafPic/issues/606
+- Pull to Refresh on the Albums page now correctly loads all albums, including Excluded albums recently removed from the exclusion list
+- The albums page landing animator has been re-enabled
+- Remove Rate and Translate links for now
+- Update Report bug link
+- Update Github link
+
 v0.8-alpha-1
 ==================
 - The source has been updated to support androidx and API 28+

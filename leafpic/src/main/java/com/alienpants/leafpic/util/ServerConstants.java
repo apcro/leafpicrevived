@@ -13,10 +13,10 @@ public class ServerConstants {
     public static final String GITHUB_TOM = "https://github.com/apcro";
 
     // LeafPic URLs
-    public static final String LEAFPIC_ISSUES = "https://github.com/HoraApps/LeafPic/issues";
+    public static final String LEAFPIC_ISSUES = "https://github.com/apcro/leafpic/issues";
     public static final String LEAFPIC_CROWDIN = "https://crowdin.com/project/leafpic";
-    public static final String LEAFPIC_LICENSE = "https://github.com/HoraApps/LeafPic/blob/master/LICENSE";
-    public static final String LEAFPIC_CHANGELOG = "https://github.com/HoraApps/LeafPic/blob/dev/CHANGELOG.md";
+    public static final String LEAFPIC_LICENSE = "https://github.com/apcro/leafpic/blob/master/LICENSE";
+    public static final String LEAFPIC_CHANGELOG = "https://github.com/apcro/leafpic/blob/dev/CHANGELOG.md";
 
 
     public static final String TWITTER_ABOUT_DONALD = "https://twitter.com/dnld_sht";
