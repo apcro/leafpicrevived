@@ -39,7 +39,6 @@ import butterknife.OnClick;
 
 import static com.alienpants.leafpic.util.ServerConstants.GITHUB_CALVIN;
 import static com.alienpants.leafpic.util.ServerConstants.GITHUB_DONALD;
-import static com.alienpants.leafpic.util.ServerConstants.GITHUB_GILBERT;
 import static com.alienpants.leafpic.util.ServerConstants.GITHUB_LEAFPIC;
 import static com.alienpants.leafpic.util.ServerConstants.GITHUB_TOM;
 import static com.alienpants.leafpic.util.ServerConstants.GOOGLE_ABOUT_CALVIN;
@@ -214,7 +213,7 @@ public class AboutActivity extends BaseActivity implements ContactListener {
         /** Jibo */
         ArrayList<Contact> jiboContacts = new ArrayList<>();
         jiboContacts.add(new Contact(TWITTER_ABOUT_GILBERT, getString(R.string.twitter_link)));
-        jiboContacts.add(new Contact(GITHUB_GILBERT, getString(R.string.github_link)));
+//        jiboContacts.add(new Contact(GITHUB_GILBERT, getString(R.string.github_link)));
         aboutGilbert.setupListeners(this, MAIL_GILBERT, jiboContacts);
 
         aboutGilbert.setOnClickListener(v -> emojiEasterEgg());
