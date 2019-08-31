@@ -154,6 +154,22 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         return selectedCount;
     }
 
+    public long getSelectedAlbumsSize() {
+        long size = 0;
+        for (Album album : getSelectedAlbums()) {
+            size += album.getFolderSize(album.getFile());
+        }
+        return size;
+    }
+
+    public int getSelectedAlbumsFilesCount() {
+        int count = 0;
+        for(Album album : getSelectedAlbums()){
+            count += album.getCount();
+        }
+        return count;
+    }
+
     public void selectAll() {
         for (int i = 0; i < albums.size(); i++)
             if (albums.get(i).setSelected(true))

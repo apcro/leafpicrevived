@@ -40,6 +40,11 @@
             android:orderInCategory="10"
             android:title="@string/print"
             app:showAsAction="never" />
+        <item
+            android:id="@+id/action_advanced_sharing"
+            android:title="@string/advanced_sharing"
+            app:showAsAction="never"
+            android:orderInCategory="11" />
     </group>
     <group android:id="@+id/on_internal_storage">
         <item
@@ -75,7 +80,7 @@
         app:showAsAction="never" />
     <item
         android:title="@string/more"
-        android:orderInCategory="11"
+        android:orderInCategory="12"
         app:showAsAction="never">
         <menu>
             <item

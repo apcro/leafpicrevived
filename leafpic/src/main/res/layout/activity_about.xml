@@ -137,6 +137,7 @@
                         android:id="@+id/about_link_translate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:linkDescription="@string/about_support_translate_sub"
                         app:linkIcon="@string/icon_translate"
                         app:linkTitle="@string/about_support_translate" />
@@ -145,6 +146,7 @@
                         android:id="@+id/about_link_rate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:linkDescription="@string/about_support_rate_sub"
                         app:linkIcon="@string/icon_rate"
                         app:linkTitle="@string/about_support_rate" />

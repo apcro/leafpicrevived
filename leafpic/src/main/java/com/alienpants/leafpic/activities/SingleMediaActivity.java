@@ -691,6 +691,32 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 }
                 break;
 
+            case R.id.action_advanced_sharing:
+                File actualImage = getCurrentMedia().getFile();
+                BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
+                bitmapFactoryOptions.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(actualImage.getPath(), bitmapFactoryOptions);
+                int imgHeight = bitmapFactoryOptions.outHeight;
+                int imgWidth = bitmapFactoryOptions.outWidth;
+
+                Intent advancedShare = new Intent(Intent.ACTION_SEND);
+                advancedShare.setType(getCurrentMedia().getMimeType());
+                Uri uri2 = LegacyCompatFileProvider.getUri(this, getCurrentMedia().getFile());
+                //advancedShare.putExtra(Intent.EXTRA_STREAM, uri2);
+                AlertDialog advancedSharingDialog = AlertDialogsHelper.getAdvancedSharingDialog(this, uri2, advancedShare, imgWidth, imgHeight);
+                advancedShare.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                advancedSharingDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), (dialog, which) -> dialog.dismiss());
+                advancedSharingDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(Intent.createChooser(advancedShare, getString(R.string.send_to)));
+                    }
+                });
+                advancedSharingDialog.show();
+                break;
+
+
             case R.id.slide_show:
                 isSlideShowOn = !isSlideShowOn;
                 if (isSlideShowOn) {

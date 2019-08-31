@@ -86,6 +86,8 @@
     <string name="show_more">Show More</string>
     <string name="edit_with">Edit with</string>
     <string name="open_with">Open with</string>
+    <string name="advanced_sharing">Advanced sharing</string>
+    <string name="resize_before">Resize before:</string>
     <string name="upload">Upload</string>
     <string name="set_preview">Set as preview</string>
     <string name="clear_preview">Clear preview</string>
@@ -120,6 +122,10 @@
     <string name="search_menu">Search</string>
     <string name="full_resolution">Full resolution</string>
     <string name="of">%1$d of %2$d</string>
+    <string name="advanced_share_op1">Original</string>
+    <string name="advanced_share_op2">25% smaller</string>
+    <string name="advanced_share_op3">50% smaller</string>
+    <string name="advanced_share_op4">70% smaller</string>
 
     <!--PALETTE-->
     <string name="palette">Palette</string>
@@ -317,7 +323,7 @@
     <string name="about_support_github">GitHub</string>
     <string name="about_support_github_sub">Fork the repo and push changes or submit new issues.</string>
 
-    <!--PHOTO DETAILS-->
+    <!--PHOTO AND ALBUM DETAILS-->
     <string name="path">Path</string>
     <string name="type">Type</string>
     <string name="resolution">Resolution</string>
@@ -325,6 +331,9 @@
     <string name="device">Device</string>
     <string name="orientation">Orientation</string>
     <string name="location">Location</string>
+    <string name="files">Files</string>
+    <string name="storage">Storage</string>
+    <string name="free_space">Free space</string>
 
     <!--DRAWER ITEMS-->
     <string name="local_folder">Local Folders</string>
