@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.alienpants.leafpic.util.AnimationUtils;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 
@@ -55,6 +57,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
 /**
  * Created by dnld on 3/13/17.
@@ -196,12 +199,12 @@ public class AlbumsFragment extends BaseMediaGridFragment {
         mAlbumsRecyclerView.setHasFixedSize(true);
         mAlbumsRecyclerView.addItemDecoration(spacingDecoration);
         mAlbumsRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
-//        if(Prefs.animationsEnabled()) {
-//            mAlbumsRecyclerView.setItemAnimator(
-//                    AnimationUtils.getItemAnimator(
-//                            new LandingAnimator(new OvershootInterpolator(1f))
-//                    ));
-//        }
+        if (Prefs.animationsEnabled()) {
+            mAlbumsRecyclerView.setItemAnimator(
+                    AnimationUtils.getItemAnimator(
+                            new LandingAnimator(new OvershootInterpolator(1f))
+                    ));
+        }
 
         mAdapter = new AlbumsAdapter(getContext(), this);
 
