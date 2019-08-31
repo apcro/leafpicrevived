@@ -171,25 +171,25 @@ public class AlertDialogsHelper {
         LinearLayout detailsTable = dialogLayout.findViewById(R.id.ll_list_details);
 
         int tenPxInDp = Measure.pxToDp (10, activity);
-        int hundredPxInDp = Measure.pxToDp (125, activity);//more or less an hundred. Did not used weight for a strange bug
 
         for (int index : metadata.getKeySet()) {
             LinearLayout row = new LinearLayout(activity.getApplicationContext());
-            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setOrientation(LinearLayout.VERTICAL);
 
             TextView label = new TextView(activity.getApplicationContext());
             TextView value = new TextView(activity.getApplicationContext());
             label.setText(metadata.getLabel(index));
-            label.setLayoutParams((new LinearLayout.LayoutParams(hundredPxInDp, LinearLayout.LayoutParams.WRAP_CONTENT)));
+            label.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)));
             value.setText(metadata.getValue(index));
             value.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)));
             label.setTextColor(activity.getTextColor());
             label.setTypeface(null, Typeface.BOLD);
-            label.setGravity(Gravity.END);
+            label.setGravity(Gravity.START);
             label.setTextSize(16);
+            label.setPaddingRelative(tenPxInDp, tenPxInDp, tenPxInDp, tenPxInDp);
             value.setTextColor(activity.getTextColor());
             value.setTextSize(16);
-            value.setPaddingRelative(tenPxInDp, 0, tenPxInDp, 0);
+            value.setPaddingRelative(tenPxInDp, tenPxInDp, tenPxInDp, tenPxInDp);
             row.addView(label);
             row.addView(value);
             detailsTable.addView(row, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
