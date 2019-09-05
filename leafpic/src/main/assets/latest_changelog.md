@@ -1,3 +1,9 @@
+v0.8-alpha-3
+==================
+- Fixed a bug with deleting images and albums
+- Removed the Billing permission request
+- App now available on Google Play at https://play.google.com/store/apps/details?id=com.alienpants.leafpic
+
 v0.8-alpha-2
 ==================
 - The Liz library has been removed, and the library itself has been upgraded to AndroidX and added to Jitpack
