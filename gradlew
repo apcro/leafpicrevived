@@ -18,9 +18,9 @@ MAX_FD="maximum"
 warn ( ) {
     echo "$*"
 }
+    echo
 
 die ( ) {
-    echo
     echo "$*"
     echo
     exit 1

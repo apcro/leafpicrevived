@@ -21,8 +21,8 @@ android {
         applicationId "com.alienpants.leafpic"
         minSdkVersion 21
         targetSdkVersion 28
-        versionName "v0.8-alpha-2"
-        versionCode 17
+        versionName "v0.8"
+        versionCode 18
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
@@ -79,10 +79,10 @@ dependencies {
     implementation "androidx.exifinterface:exifinterface:1.0.0"
 
     // google & support
-    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
-    implementation "com.google.android.material:material:1.1.0-alpha09"
+    implementation "com.google.android.material:material:1.1.0-alpha10"
     implementation "androidx.palette:palette:1.0.0"
     implementation "androidx.browser:browser:1.0.0"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
@@ -158,3 +158,4 @@ if (propFile.canRead()) {
     println 'signing.properties not found'
     android.buildTypes.release.signingConfig = null
 }
+

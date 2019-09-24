@@ -66,6 +66,7 @@ import com.alienpants.leafpic.util.preferences.Prefs;
 import com.alienpants.leafpic.views.HackyViewPager;
 import org.horaapps.liz.ColorPalette;
 import com.bumptech.glide.Glide;
+import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
@@ -135,6 +136,9 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Iconics.init(this);
+
         setContentView(R.layout.activity_single_media);
 
         ButterKnife.bind(this);

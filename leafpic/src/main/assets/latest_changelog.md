@@ -1,3 +1,8 @@
+v0.8
+==================
+- Moving out of 'alpha'
+- Update some build libraries
+
 v0.8-alpha-3
 ==================
 - Fixed a bug with deleting images and albums
