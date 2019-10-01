@@ -3,16 +3,15 @@
 LeafPic Revived is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
 
 <div style="display:flex;" >
-<!--
-<a href="https://f-droid.org/app/com.alienpants.leafpic">
-    <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="80">
-</a>
--->
 <a href="https://play.google.com/store/apps/details?id=com.alienpants.leafpic">
     <img alt="Get it on Google Play"
         height="80"
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+</a>
+
+<a href="https://f-droid.org/app/com.alienpants.leafpicrevived">
+    <img src="https://f-droid.org/badge/get-it-on.png"
+         alt="Get it on F-Droid" height="80">
 </a>
 </div>
 </br></br>
