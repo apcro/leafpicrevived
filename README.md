@@ -3,7 +3,7 @@
 LeafPic Revived is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
 
 <div style="display:flex;" >
-<a href="https://play.google.com/store/apps/details?id=com.alienpants.leafpic">
+<a href="https://play.google.com/store/apps/details?id=com.alienpants.leafpicrevived">
     <img alt="Get it on Google Play"
         height="80"
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />

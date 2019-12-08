@@ -12,12 +12,15 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alienpants.leafpicrevived.util.BitmapUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Media;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,10 +32,8 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
  */
 public class ImageFragment extends BaseMediaFragment {
 
-    DrawableCrossFadeFactory mFadeFactory;
-
-//    @BindView(R.id.subsampling_view) SubsamplingScaleImageView imageView;
-    @BindView(R.id.plain_view) ImageView plainImageView;
+    @BindView(R.id.subsampling_view)
+    SubsamplingScaleImageView imageView;
 
     @NonNull
     public static ImageFragment newInstance(@NonNull Media media) {
@@ -43,7 +44,6 @@ public class ImageFragment extends BaseMediaFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_photo, container, false);
         ButterKnife.bind(this, rootView);
-        mFadeFactory = new DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build();
         return rootView;
     }
 
@@ -52,24 +52,15 @@ public class ImageFragment extends BaseMediaFragment {
         super.onViewCreated(view, savedInstanceState);
         Uri mediaUri = media.getUri();
 
-//        imageView.setOrientation(BitmapUtils.getOrientation(mMediaUri, getContext()));
-//        imageView.setImage(ImageSource.uri(mediaUri));
-//        imageView.setImage(mImageSource);
-//        setTapListener(imageView);
-
-        Glide.with(view)
-                .load(mediaUri)
-                .transition(withCrossFade(mFadeFactory))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(plainImageView);
-        setTapListener(plainImageView);
-
+        imageView.setOrientation(BitmapUtils.getOrientation(mediaUri, getContext()));
+        imageView.setImage(ImageSource.uri(mediaUri));
+        setTapListener(imageView);
 
     }
 
     @Override
     public void onDestroyView() {
-//        imageView.recycle();
+        imageView.recycle();
         super.onDestroyView();
     }
 
@@ -79,7 +70,10 @@ public class ImageFragment extends BaseMediaFragment {
      * @param rotationInDegrees The rotation in degrees
      */
     public void rotatePicture(int rotationInDegrees) {
-//        if (rotationInDegrees == -90 && imageView.getOrientation() == 0) imageView.setOrientation(SubsamplingScaleImageView.ORIENTATION_270);
-//        else imageView.setOrientation(Math.abs(imageView.getOrientation() + rotationInDegrees) % 360);
+        if (rotationInDegrees == -90 && imageView.getOrientation() == 0) {
+            imageView.setOrientation(SubsamplingScaleImageView.ORIENTATION_270);
+        } else {
+            imageView.setOrientation(Math.abs(imageView.getOrientation() + rotationInDegrees) % 360);
+        }
     }
 }

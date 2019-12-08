@@ -1,3 +1,9 @@
+v0.8.2
+==================
+- New icon
+- Re-enable pinch-zoom image view 
+- App now available on Google Play at https://play.google.com/store/apps/details?id=com.alienpants.leafpicrevived
+
 v0.8.1
 ==================
 - Rename to "LeafPic Revived"

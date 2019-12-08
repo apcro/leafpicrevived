@@ -21,8 +21,8 @@ android {
         applicationId "com.alienpants.leafpicrevived"
         minSdkVersion 21
         targetSdkVersion 28
-        versionName "v0.8.1"
-        versionCode 19
+        versionName "v0.8.2"
+        versionCode 20
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
@@ -35,11 +35,6 @@ android {
 
     dexOptions {
         jumboMode = true
-    }
-
-    // This is handled for you by the 2.0+ Gradle Plugin
-    aaptOptions {
-        additionalParameters "--no-version-vectors"
     }
 
     compileOptions {
@@ -76,13 +71,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     //exifInterface
-    implementation "androidx.exifinterface:exifinterface:1.0.0"
+    implementation "androidx.exifinterface:exifinterface:1.1.0"
 
     // google & support
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
-    implementation "com.google.android.material:material:1.1.0-alpha10"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "com.google.android.material:material:1.2.0-alpha02"
     implementation "androidx.palette:palette:1.0.0"
     implementation "androidx.browser:browser:1.0.0"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
