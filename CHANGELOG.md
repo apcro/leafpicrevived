@@ -1,3 +1,8 @@
+v0.8.3
+==================
+- Fix for Advanced Sharing still using the pre-androidx version of CardView
+  (https://github.com/apcro/leafpicrevived/issues/6)
+  
 v0.8.2
 ==================
 - New icon
