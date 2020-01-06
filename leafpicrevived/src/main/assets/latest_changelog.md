@@ -1,3 +1,10 @@
+v0.8.4
+==================
+* Update library versions to latest
+* Use a forked version of `com.drewnoakes:metadata-extractor` until it is updated from 2.12.0
+  - resolves https://github.com/apcro/leafpicrevived/issues/8
+* Added a Librepay link
+
 v0.8.3
 ==================
 - Fix for Advanced Sharing still using the pre-androidx version of CardView
