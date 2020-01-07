@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.Uri;
 
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -58,7 +59,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import in.uncod.android.bypass.Bypass;
+import io.noties.markwon.Markwon;
 
 import static com.alienpants.leafpicrevived.util.ServerConstants.LEAFPIC_CHANGELOG;
 
@@ -339,7 +340,7 @@ public class AlertDialogsHelper {
 
         dialogTitle.setText(activity.getString(R.string.changelog));
 
-        Bypass bypass = new Bypass(activity);
+        final Markwon markwon = Markwon.create(activity);
 
         String markdownString;
         try {
@@ -348,7 +349,9 @@ public class AlertDialogsHelper {
             ChromeCustomTabs.launchUrl(activity, LEAFPIC_CHANGELOG);
             return null;
         }
-        CharSequence string = bypass.markdownToSpannable(markdownString);
+
+        final Spanned string = markwon.toMarkdown(markdownString);
+
         dialogMessage.setText(string);
         dialogMessage.setMovementMethod(LinkMovementMethod.getInstance());
         dialogMessage.setTextColor(activity.getTextColor());

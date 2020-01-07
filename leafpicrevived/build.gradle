@@ -21,8 +21,8 @@ android {
         applicationId "com.alienpants.leafpicrevived"
         minSdkVersion 21
         targetSdkVersion 28
-        versionName "v0.8.3"
-        versionCode 21
+        versionName "v0.8.4"
+        versionCode 22
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
@@ -93,7 +93,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
-    implementation 'com.github.Commit451:bypasses:1.1.0'
+    implementation "io.noties.markwon:core:4.2.0"
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 //    implementation 'com.drewnoakes:metadata-extractor:2.12.0'
