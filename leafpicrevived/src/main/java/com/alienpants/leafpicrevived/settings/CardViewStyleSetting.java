@@ -28,6 +28,7 @@ import org.horaapps.liz.ThemedActivity;
 import static com.alienpants.leafpicrevived.CardViewStyle.COMPACT;
 import static com.alienpants.leafpicrevived.CardViewStyle.FLAT;
 import static com.alienpants.leafpicrevived.CardViewStyle.MATERIAL;
+import static com.alienpants.leafpicrevived.CardViewStyle.SMALL;
 
 
 /**
@@ -54,6 +55,7 @@ public class CardViewStyleSetting extends ThemedSetting {
         RadioButton rCompact = dialogLayout.findViewById(R.id.radio_card_compact);
         RadioButton rFlat = dialogLayout.findViewById(R.id.radio_card_flat);
         RadioButton rMaterial = dialogLayout.findViewById(R.id.radio_card_material);
+        RadioButton rSmall = dialogLayout.findViewById(R.id.radio_card_small);
 
         chkShowMediaCount.setChecked(Prefs.showMediaCount());
         chkShowAlbumPath.setChecked(Prefs.showAlbumPath());
@@ -61,6 +63,7 @@ public class CardViewStyleSetting extends ThemedSetting {
         getActivity().themeRadioButton(rCompact);
         getActivity().themeRadioButton(rFlat);
         getActivity().themeRadioButton(rMaterial);
+        getActivity().themeRadioButton(rSmall);
         getActivity().themeCheckBox(chkShowMediaCount);
         getActivity().themeCheckBox(chkShowAlbumPath);
 
@@ -79,6 +82,10 @@ public class CardViewStyleSetting extends ThemedSetting {
                         break;
                     case R.id.radio_card_material: default:
                         v = LayoutInflater.from(getActivity()).inflate(MATERIAL.getLayout(), null);
+                        v.findViewById(R.id.ll_album_info).setBackgroundColor(getActivity().getCardBackgroundColor());
+                        break;
+                    case R.id.radio_card_small:
+                        v = LayoutInflater.from(getActivity()).inflate(SMALL.getLayout(), null);
                         v.findViewById(R.id.ll_album_info).setBackgroundColor(getActivity().getCardBackgroundColor());
                         break;
                 }
@@ -133,6 +140,7 @@ public class CardViewStyleSetting extends ThemedSetting {
         switch (Prefs.getCardStyle()) {
             case COMPACT: rCompact.setChecked(true); break;
             case FLAT: rFlat.setChecked(true); break;
+            case SMALL: rSmall.setChecked(true); break;
             case MATERIAL: default: rMaterial.setChecked(true); break;
         }
 
@@ -151,6 +159,9 @@ public class CardViewStyleSetting extends ThemedSetting {
                         break;
                     case R.id.radio_card_compact:
                         cardViewStyle = COMPACT;
+                        break;
+                    case R.id.radio_card_small:
+                        cardViewStyle = SMALL;
                         break;
                 }
                 Prefs.setCardStyle(cardViewStyle);

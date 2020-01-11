@@ -122,7 +122,7 @@ public class Prefs {
     }
 
     /**
-     * Get the Card Style (Material / Flat / Compact)
+     * Get the Card Style (Material / Flat / Compact / Small)
      */
     @NonNull
     public static CardViewStyle getCardStyle() {
@@ -204,7 +204,7 @@ public class Prefs {
     }
 
     /**
-     * Set the Card Style (Material / Flat / Compact)
+     * Set the Card Style (Material / Flat / Compact / Small)
      */
     public static void setCardStyle(@NonNull CardViewStyle cardStyle) {
         getPrefs().put(Keys.CARD_STYLE, cardStyle.getValue());

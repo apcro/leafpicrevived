@@ -269,6 +269,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
             case MATERIAL: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_album_material, parent, false); break;
             case FLAT: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_album_flat, parent, false); break;
             case COMPACT: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_album_compact, parent, false); break;
+            case SMALL: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_album_small, parent, false); break;
         }
         return new ViewHolder(v);
     }
@@ -412,7 +413,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
                     default: case MATERIAL:
                         footer.setBackgroundColor(theme.getCardBackgroundColor());
                         break;
-                    case FLAT: case COMPACT:
+                    case FLAT: case COMPACT: case SMALL:
                         footer.setBackgroundColor(ColorPalette.getTransparentColor(theme.getBackgroundColor(), 150));
                         break;
                 }

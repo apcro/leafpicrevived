@@ -213,6 +213,7 @@
     <string name="card_type_material">Material Card</string>
     <string name="card_type_flat">Flat Card</string>
     <string name="card_type_compact">Compact Card</string>
+    <string name="card_type_small">Small Card</string>
 
     <string name="max_brightness">High Brightness</string>
     <string name="max_brightness_sub">Use maximum brightness when viewing media</string>

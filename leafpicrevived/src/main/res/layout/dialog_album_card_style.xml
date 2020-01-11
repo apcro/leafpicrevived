@@ -85,6 +85,13 @@
                         android:id="@+id/radio_card_compact"
                         android:text="@string/card_type_compact" />
 
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_text"
+                        android:id="@+id/radio_card_small"
+                        android:text="@string/card_type_small" />
+
                 </RadioGroup>
             </LinearLayout>
         </ScrollView>
