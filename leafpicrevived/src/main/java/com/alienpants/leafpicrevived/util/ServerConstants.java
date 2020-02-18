@@ -6,7 +6,7 @@ package com.alienpants.leafpicrevived.util;
 public class ServerConstants {
 
     // GitHub URLs
-    public static final String GITHUB_LEAFPIC = "https://github.com/HoraApps/LeafPic";
+    public static final String GITHUB_LEAFPIC = "https://github.com/apcro/leafpicrevived";
     public static final String GITHUB_DONALD = "https://github.com/DNLDsht";
     public static final String GITHUB_CALVIN = "https://github.com/CalvinNor";
 //    public static final String GITHUB_GILBERT = "https://github.com/Mow3l";
