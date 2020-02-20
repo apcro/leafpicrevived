@@ -20,6 +20,11 @@
 -keep class **$$ViewBinder { *; }
 -keep class uz.shift.colorpicker.** { *; }
 
+-keep class .R
+-keep class **.R$* {
+    <fields>;
+}
+
 -keepclasseswithmembernames class * {
     @butterknife.* <fields>;
 }

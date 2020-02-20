@@ -535,7 +535,7 @@ public class AlbumsFragment extends BaseMediaGridFragment {
     @Override
     public void refreshTheme(ThemeHelper t) {
         mAlbumsRecyclerView.setBackgroundColor(t.getBackgroundColor());
-        mAdapter.refreshTheme(t);
+//        mAdapter.refreshTheme(t);
         refresh.setColorSchemeColors(t.getAccentColor());
         refresh.setProgressBackgroundColorSchemeColor(t.getBackgroundColor());
     }

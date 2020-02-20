@@ -75,7 +75,7 @@ class TimelineFragment : BaseMediaGridFragment(), ActionsListener {
         setHasOptionsMenu(true)
 
         savedInstanceState?.let {
-            contentAlbum = it.getParcelable(KEY_ALBUM)
+            contentAlbum = it.getParcelable(KEY_ALBUM)!!
             groupingMode = it.get(KEY_GROUPING_MODE) as GroupingMode
             filterMode = it.get(KEY_FILTER_MODE) as FilterMode
             return
@@ -83,7 +83,7 @@ class TimelineFragment : BaseMediaGridFragment(), ActionsListener {
 
         /* Get content from arguments */
         val arguments = arguments ?: return
-        contentAlbum = arguments.getParcelable(ARGS_ALBUM)
+        contentAlbum = arguments.getParcelable(ARGS_ALBUM)!!
 
         /* Set defaults */
         groupingMode = GroupingMode.DAY

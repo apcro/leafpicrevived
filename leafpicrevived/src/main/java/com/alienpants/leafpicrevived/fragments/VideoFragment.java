@@ -20,6 +20,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Media;
 import com.alienpants.leafpicrevived.data.StorageHelper;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ui.ThemedIcon;
 
@@ -32,7 +34,9 @@ import butterknife.ButterKnife;
 public class VideoFragment extends BaseMediaFragment {
 
     @BindView(R.id.media_view) ImageView previewView;
-    @BindView(R.id.video_play_icon) ThemedIcon playVideoIcon;
+//    @BindView(R.id.video_play_icon) ThemedIcon playVideoIcon;
+
+    private ThemedIcon mPlayVideoIcon;
 
     @NonNull
     public static VideoFragment newInstance(@NonNull Media media) {
@@ -43,6 +47,7 @@ public class VideoFragment extends BaseMediaFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         ButterKnife.bind(this, rootView);
+        mPlayVideoIcon = rootView.findViewById(R.id.video_play_icon);
         return rootView;
     }
 
@@ -50,7 +55,7 @@ public class VideoFragment extends BaseMediaFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        playVideoIcon.setOnClickListener(v -> {
+        mPlayVideoIcon.setOnClickListener(v -> {
             Uri uri = StorageHelper.getUriForFile(getContext(), media.getFile());
             Intent intent = new Intent(Intent.ACTION_VIEW).setDataAndType(uri, media.getMimeType());
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -70,6 +75,7 @@ public class VideoFragment extends BaseMediaFragment {
 
     @Override
     public void refreshTheme(ThemeHelper themeHelper) {
-        playVideoIcon.refreshTheme(themeHelper);
+//        playVideoIcon.refreshTheme(themeHelper);
     }
+
 }
