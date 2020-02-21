@@ -8,11 +8,13 @@ LeafPic Revived is a fluid, material-designed alternative gallery, it also is ad
         height="80"
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
 </a>
-
+</div>
+<div style="display:flex;" >
 <a href="https://f-droid.org/app/com.alienpants.leafpicrevived">
     <img src="https://f-droid.org/badge/get-it-on.png"
          alt="Get it on F-Droid" height="80">
 </a>
+(Not regularly updated)
 </div>
 </br></br>
 </br></br>

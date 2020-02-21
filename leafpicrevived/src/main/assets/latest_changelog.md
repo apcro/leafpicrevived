@@ -1,3 +1,17 @@
+v0.8.5
+==================
+* Update library versions to latest
+* Fix "Two identically-named options in the "open with" menu"
+- https://github.com/apcro/leafpicrevived/issues/13
+* Fix "Crash when clicking the changelog button"
+- https://github.com/apcro/leafpicrevived/issues/14
+* Fix "Cannot play video"
+- https://github.com/apcro/leafpicrevived/issues/15
+* Fix ""About" links inconsistent"
+- https://github.com/apcro/leafpicrevived/issues/18
+* Fix an issue with `content://` vs `file://` media types when selecting 'Open With'
+- https://github.com/apcro/leafpicrevived/issues/20
+
 v0.8.4
 ==================
 * Update library versions to latest
