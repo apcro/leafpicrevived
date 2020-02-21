@@ -3,11 +3,13 @@ package com.alienpants.leafpicrevived.activities;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -75,6 +77,7 @@ import com.yalantis.ucrop.UCrop;
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -560,10 +563,21 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
             case R.id.action_open_with:
                 Intent intentopenWith = new Intent(Intent.ACTION_VIEW);
-                intentopenWith.setDataAndType(LegacyCompatFileProvider.getUri(this,
-                        getCurrentMedia().getFile()), getCurrentMedia().getMimeType());
                 intentopenWith.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(Intent.createChooser(intentopenWith, getString(R.string.open_with)));
+
+                if (getCurrentMedia().getFile() != null) {
+                    intentopenWith.setDataAndType(LegacyCompatFileProvider.getUri(this,
+                            getCurrentMedia().getFile()), getCurrentMedia().getMimeType());
+
+                    startActivity(Intent.createChooser(intentopenWith, getString(R.string.open_with)));
+                } else if (getCurrentMedia().getUri() != null) {
+
+                    if (getCurrentMedia().getUri() != null && "content".equals(getCurrentMedia().getUri().getScheme())) {
+                        String mimeType = getApplicationContext().getContentResolver().getType(getCurrentMedia().getUri());
+                        intentopenWith.setDataAndType(getCurrentMedia().getUri(), mimeType);
+                        startActivity(Intent.createChooser(intentopenWith, getString(R.string.open_with)));
+                    }
+                }
                 break;
 
             case R.id.action_delete:
