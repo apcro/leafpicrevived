@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import com.alienpants.leafpicrevived.R;
@@ -25,6 +26,7 @@ import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * Links to show in the About screen.
@@ -55,6 +57,7 @@ public class AboutLink extends RelativeLayout implements Themed {
     }
 
     private void init(@NonNull Context context, @Nullable AttributeSet attributeSet) {
+        Iconics.init(context);
         setupView(context);
         LayoutInflater.from(context).inflate(R.layout.view_about_link, this, true);
         ButterKnife.bind(this);
