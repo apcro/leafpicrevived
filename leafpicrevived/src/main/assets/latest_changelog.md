@@ -1,3 +1,12 @@
+v0.8.6
+==================
+* Revert compileSdkVersion to 28, using 29 causes issues.
+
+There are more issues related to the move from API 28 to API 29 which need to be addressed before this API level can be used for compilation. Work has begun.
+
+* Re-enable the core metadata extractor library as it's been updated to 2.13.0 now.
+* Use updated Liz libary.
+
 v0.8.5
 ==================
 * Update library versions to latest

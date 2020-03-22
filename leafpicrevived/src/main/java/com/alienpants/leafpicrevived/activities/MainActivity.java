@@ -358,8 +358,7 @@ public class MainActivity extends SharedMediaActivity implements
                         .setAction(StringUtils.html(buttonHtml), view -> AlertDialogsHelper.showChangelogDialog(MainActivity.this));
                 View snackbarView = snackbar.getView();
                 snackbarView.setBackgroundColor(getBackgroundColor());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                    snackbarView.setElevation(getResources().getDimension(R.dimen.snackbar_elevation));
+                snackbarView.setElevation(getResources().getDimension(R.dimen.snackbar_elevation));
                 snackbar.show();
                 Prefs.setLastVersionCode(BuildConfig.VERSION_CODE);
             }

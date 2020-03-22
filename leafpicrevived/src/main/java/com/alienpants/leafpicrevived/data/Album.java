@@ -59,13 +59,15 @@ public class Album implements CursorHandler, Parcelable {
 	}
 
 	public static String[] getProjection() {
-		return new String[]{
+		String projectionString[] = new String[]{
 				MediaStore.Files.FileColumns.PARENT,
 				MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-				"count(*)",
+//				"count(*)",
+				"count(bucket_id)",
 				MediaStore.Images.Media.DATA,
 				"max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"
 		};
+		return projectionString;
 	}
 
 	@Override

@@ -32,7 +32,7 @@ public class CPHelper {
         return hidden ? getHiddenAlbums(context, excluded) : getAlbums(context, excluded, sortingMode, sortingOrder);
     }
 
-    private static String getHavingCluause(int excludedCount){
+    private static String getHavingClause(int excludedCount){
 
         if (excludedCount == 0)
             return "(";
@@ -48,7 +48,7 @@ public class CPHelper {
                     .append(" NOT LIKE ?");
 
         // NOTE: dont close ths parenthesis it will be closed by ContentResolver
-        //res.append(")");
+//        res.append(")");
 
         return res.toString();
 
@@ -64,22 +64,23 @@ public class CPHelper {
 
         ArrayList<Object> args = new ArrayList<>();
 
+        // @TODO 0.8.6 rewrite this, can't use group by in SQL in Android Q at this point
+        // https://android.googlesource.com/platform/packages/apps/Gallery2/+/master/src/com/android/gallery3d/data/BucketHelper.java
         if (Prefs.showVideos()) {
-            query.selection(String.format("%s=? or %s=?) group by (%s) %s ",
+            query.selection(String.format("%s=? or %s=?) GROUP BY (%s) %s ",
                     MediaStore.Files.FileColumns.MEDIA_TYPE,
                     MediaStore.Files.FileColumns.MEDIA_TYPE,
                     MediaStore.Files.FileColumns.PARENT,
-                    getHavingCluause(excludedAlbums.size())));
+                    getHavingClause(excludedAlbums.size())));
             args.add(MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE);
             args.add(MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO);
         } else {
-            query.selection(String.format("%s=?) group by (%s) %s ",
+            query.selection(String.format("%s=?) GROUP BY (%s) %s ",
                     MediaStore.Files.FileColumns.MEDIA_TYPE,
                     MediaStore.Files.FileColumns.PARENT,
-                    getHavingCluause(excludedAlbums.size())));
+                    getHavingClause(excludedAlbums.size())));
             args.add(MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE);
         }
-
 
         //NOTE: LIKE params for query
         for (String s : excludedAlbums)
@@ -87,7 +88,6 @@ public class CPHelper {
 
 
         query.args(args.toArray());
-
 
         return QueryUtils.query(query.build(), context.getContentResolver(), Album::new);
     }

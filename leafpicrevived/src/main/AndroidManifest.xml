@@ -24,6 +24,8 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/Theme.AppCompat">
+        <!-- this is needed for SDK 29+ -->
+        <!-- android:requestLegacyExternalStorage="true" -->
         <activity
             android:name="com.alienpants.leafpicrevived.activities.PlayerActivity"
             android:configChanges="orientation|screenSize"

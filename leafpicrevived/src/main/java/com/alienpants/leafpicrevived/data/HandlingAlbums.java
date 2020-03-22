@@ -153,9 +153,12 @@ public class HandlingAlbums extends SQLiteOpenHelper {
     public int getFoldersCount(int status) {
         int c = 0;
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cur = db.query(TABLE_ALBUMS, new String[]{"count(*)"}, ALBUM_STATUS + "=?", new String[]{String.valueOf(status)}, null, null, null);
-        if (cur.moveToFirst())
-            c = cur.getInt(0);
+//        Cursor cur = db.query(TABLE_ALBUMS, new String[]{"*"}, ALBUM_STATUS + "=?", new String[]{String.valueOf(status)}, null, null, null);
+//        if (cur.moveToFirst())
+//            c = cur.getInt(0);
+        String countQuery = "SELECT * FROM " + TABLE_ALBUMS;
+        Cursor cur = db.rawQuery(countQuery, null);
+        c = cur.getCount();
         cur.close();
         db.close();
         return c;

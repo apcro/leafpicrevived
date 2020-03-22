@@ -106,12 +106,7 @@ public class Query {
         }
 
         public String[] getStringArgs() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                return Arrays.stream(args).map(Object::toString).toArray(String[]::new);
-
-            String[] list = new String[args.length];
-            for (int i = 0; i < args.length; i++) list[i] = String.valueOf(args[i]);
-            return list;
+            return Arrays.stream(args).map(Object::toString).toArray(String[]::new);
         }
     }
 
