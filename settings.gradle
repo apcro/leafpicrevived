@@ -1,1 +1,1 @@
-include ':leafpicrevived'
+include ':leafpicrevived', ':shiftcolorpicker'
