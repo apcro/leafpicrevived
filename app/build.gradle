@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 repositories {
-    maven { url "https://dl.bintray.com/dasar/maven" }
     maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
     maven { url "https://jitpack.io" }
     mavenCentral()
@@ -114,7 +113,7 @@ dependencies {
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
 
     // ui
-    implementation 'uz.shift:colorpicker:0.5@aar'
+    implementation project(':shiftcolorpicker')
     implementation 'com.github.jetradarmobile:desertplaceholder:1.1.1'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.github.yalantis:ucrop:2.2.2'
