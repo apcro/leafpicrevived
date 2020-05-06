@@ -3,11 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 repositories {
-    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
-    maven { url "https://jitpack.io" }
     mavenCentral()
-    google()
-    jcenter()
+    maven { url "https://jitpack.io" }
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
 }
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -22,23 +20,9 @@ android {
         targetSdkVersion 28
         versionName "v0.8.6"
         versionCode 24
+
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-    }
-
-    lintOptions {
-        disable 'MissingTranslation'
-        disable 'ExtraTranslation'
-        abortOnError false
-    }
-
-    dexOptions {
-        jumboMode = true
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     signingConfigs {
@@ -57,62 +41,77 @@ android {
             resValue "string", "app_name", "LeafPic Revived"
             signingConfig signingConfigs.release
         }
-
         debug {
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "LeafPic Revived (debug)"
         }
     }
 
+    lintOptions {
+        disable 'MissingTranslation', 'ExtraTranslation'
+        abortOnError false
+    }
+
+    dexOptions {
+        jumboMode = true
+    }
+
+    compileOptions {
+        encoding = 'UTF-8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    //exifInterface
-    implementation "androidx.exifinterface:exifinterface:1.1.0"
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // google & support
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "com.google.android.material:material:1.2.0-alpha05"
-    implementation "androidx.palette:palette:1.0.0"
-    implementation "androidx.browser:browser:1.2.0"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    // AndroidX
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.browser:browser:1.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.exifinterface:exifinterface:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha05'
+    implementation 'com.android.support:multidex:1.0.3'
 
-    //exo-player
+    // Exoplayer
     implementation 'com.google.android.exoplayer:exoplayer-core:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.10.4'
 
-    // utils
+    // Utils
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
-    implementation "io.noties.markwon:core:4.2.0"
+    implementation 'io.noties.markwon:core:4.2.0'
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     implementation 'com.drewnoakes:metadata-extractor:2.13.0'
-//    implementation 'com.github.apcro:metadata-extractor:master'
-    implementation "com.orhanobut:hawk:2.0.1"
+    //implementation 'com.github.apcro:metadata-extractor:master'
+    implementation 'com.orhanobut:hawk:2.0.1'
     implementation 'com.commonsware.cwac:provider:0.5.3'
 
-    // rxJava
+    // RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     //it is recommended to keep the same version of rxAndroid
     implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
 
-    // icons
-    implementation "com.mikepenz:iconics-core:4.0.1-b01"
-    implementation "com.mikepenz:iconics-views:4.0.1-b01"
+    // Icons
+    implementation 'com.mikepenz:iconics-core:4.0.1-b01'
+    implementation 'com.mikepenz:iconics-views:4.0.1-b01'
     implementation 'com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar'
     implementation 'com.mikepenz:community-material-typeface:3.5.95.1-kotlin@aar'
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
 
-    // ui
+    // UI
     implementation project(':shiftcolorpicker')
     implementation 'com.github.jetradarmobile:desertplaceholder:1.1.1'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
@@ -120,16 +119,10 @@ dependencies {
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation 'com.github.apcro:Liz:0.6.1'
 
     // debug Only
     implementation 'cat.ereza:customactivityoncrash:2.2.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:multidex:1.0.3'
-
-    dependencies {
-        implementation 'com.github.apcro:Liz:0.6.1'
-    }
 }
 
 Properties props = new Properties()
