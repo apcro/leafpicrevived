@@ -46,13 +46,13 @@ public class SecurityActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
-        llroot = (LinearLayout) findViewById(R.id.root);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        swActiveSecurity = (SwitchCompat) findViewById(R.id.active_security_switch);
-        swApplySecurityDelete = (SwitchCompat) findViewById(R.id.security_body_apply_delete_switch);
-        swApplySecurityHidden = (SwitchCompat) findViewById(R.id.security_body_apply_hidden_switch);
-        swFingerPrint = (SwitchCompat) findViewById(R.id.active_security_fingerprint_switch);
-        llFingerprint = (LinearLayout) findViewById(R.id.ll_active_security_fingerprint);
+        llroot = findViewById(R.id.root);
+        toolbar = findViewById(R.id.toolbar);
+        swActiveSecurity = findViewById(R.id.active_security_switch);
+        swApplySecurityDelete = findViewById(R.id.security_body_apply_delete_switch);
+        swApplySecurityHidden = findViewById(R.id.security_body_apply_hidden_switch);
+        swFingerPrint = findViewById(R.id.active_security_fingerprint_switch);
+        llFingerprint = findViewById(R.id.ll_active_security_fingerprint);
 
         initUi();
         setTitle(R.string.security);
@@ -146,10 +146,10 @@ public class SecurityActivity extends BaseActivity {
 
         final AlertDialog.Builder passwordDialog = new AlertDialog.Builder(SecurityActivity.this, getDialogStyle());
         final View PasswordDialogLayout = getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_set_password, null);
-        final TextView passwordDialogTitle = (TextView) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_dialog_title);
-        final CardView passwordDialogCard = (CardView) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_dialog_card);
-        final EditText editTextPassword = (EditText) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_edittxt);
-        final EditText editTextConfirmPassword = (EditText) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.confirm_password_edittxt);
+        final TextView passwordDialogTitle = PasswordDialogLayout.findViewById(R.id.password_dialog_title);
+        final CardView passwordDialogCard = PasswordDialogLayout.findViewById(R.id.password_dialog_card);
+        final EditText editTextPassword = PasswordDialogLayout.findViewById(R.id.password_edittxt);
+        final EditText editTextConfirmPassword = PasswordDialogLayout.findViewById(R.id.confirm_password_edittxt);
 
         passwordDialogTitle.setBackgroundColor(getPrimaryColor());
         passwordDialogCard.setBackgroundColor(getCardBackgroundColor());

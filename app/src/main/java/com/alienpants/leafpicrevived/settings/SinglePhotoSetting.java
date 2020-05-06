@@ -33,7 +33,7 @@ public class SinglePhotoSetting extends ThemedSetting {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity(), getActivity().getDialogStyle());
 
         View dialogLayout = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_media_viewer_theme, null);
-        final SwitchCompat swApplyTheme = (SwitchCompat) dialogLayout.findViewById(R.id.sw_apply_theme);
+        final SwitchCompat swApplyTheme = dialogLayout.findViewById(R.id.sw_apply_theme);
 
         ((CardView) dialogLayout.findViewById(R.id.dialog_card_)).setCardBackgroundColor(getActivity().getCardBackgroundColor());
         dialogLayout.findViewById(R.id.dialog_title).setBackgroundColor(getActivity().getPrimaryColor());
@@ -52,7 +52,7 @@ public class SinglePhotoSetting extends ThemedSetting {
         });
         getActivity().setSwitchColor(getActivity().getAccentColor(), swApplyTheme);
 
-        final LineColorPicker transparencyColorPicker = (LineColorPicker) dialogLayout.findViewById(R.id.pickerTransparent);
+        final LineColorPicker transparencyColorPicker = dialogLayout.findViewById(R.id.pickerTransparent);
         transparencyColorPicker.setColors(ColorPalette.getTransparencyShadows(getActivity().getPrimaryColor()));
         transparencyColorPicker.setSelectedColor(ColorPalette.getTransparentColor(getActivity().getPrimaryColor(), 255 - Hawk.get(getActivity().getString(R.string.preference_transparency), 0)));
 

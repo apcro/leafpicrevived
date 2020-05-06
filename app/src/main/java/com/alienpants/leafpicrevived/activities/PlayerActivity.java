@@ -257,8 +257,8 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         }
 
         String action = intent.getAction();
-        Uri uris[];
-        String extensions[];
+        Uri[] uris;
+        String[] extensions;
         if (intent.getData() != null && intent.getType() != null) {
             uris = new Uri[]{intent.getData()};
             extensions = new String[]{intent.getType()};

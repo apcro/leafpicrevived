@@ -65,6 +65,7 @@ public class NavigationDrawer extends ScrollView implements Themed {
     private NavigationEntry selectedEntry;
     @ColorInt
     private int selectedColor;
+
     public NavigationDrawer(@NonNull Context context) {
         this(context, null);
     }

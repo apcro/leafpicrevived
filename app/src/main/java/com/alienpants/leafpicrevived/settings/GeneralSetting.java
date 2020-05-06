@@ -35,20 +35,20 @@ public class GeneralSetting extends ThemedSetting {
         ((CardView) dialogLayout.findViewById(R.id.multi_column_card)).setCardBackgroundColor(getActivity().getCardBackgroundColor());
 
         dialogLayout.findViewById(R.id.multi_column_title).setBackgroundColor(getActivity().getPrimaryColor());
-        final TextView nColFolders = (TextView) dialogLayout.findViewById(R.id.n_columns_folders);
-        final TextView nColMedia = (TextView) dialogLayout.findViewById(R.id.n_columns_media);
-        final TextView nColFoldersL = (TextView) dialogLayout.findViewById(R.id.n_columns_folders_landscape);
-        final TextView nColMediaL = (TextView) dialogLayout.findViewById(R.id.n_columns_media_landscape);
+        final TextView nColFolders = dialogLayout.findViewById(R.id.n_columns_folders);
+        final TextView nColMedia = dialogLayout.findViewById(R.id.n_columns_media);
+        final TextView nColFoldersL = dialogLayout.findViewById(R.id.n_columns_folders_landscape);
+        final TextView nColMediaL = dialogLayout.findViewById(R.id.n_columns_media_landscape);
 
         nColFolders.setTextColor(getActivity().getSubTextColor());
         nColMedia.setTextColor(getActivity().getSubTextColor());
         nColFoldersL.setTextColor(getActivity().getSubTextColor());
         nColMediaL.setTextColor(getActivity().getSubTextColor());
 
-        SeekBar barFolders = (SeekBar) dialogLayout.findViewById(R.id.seek_bar_n_columns_folders);
-        SeekBar barMedia = (SeekBar) dialogLayout.findViewById(R.id.seek_bar_n_columns_media);
-        SeekBar barFoldersL = (SeekBar) dialogLayout.findViewById(R.id.seek_bar_n_columns_folders_landscape);
-        SeekBar barMediaL = (SeekBar) dialogLayout.findViewById(R.id.seek_bar_n_columns_media_landscape);
+        SeekBar barFolders = dialogLayout.findViewById(R.id.seek_bar_n_columns_folders);
+        SeekBar barMedia = dialogLayout.findViewById(R.id.seek_bar_n_columns_media);
+        SeekBar barFoldersL = dialogLayout.findViewById(R.id.seek_bar_n_columns_folders_landscape);
+        SeekBar barMediaL = dialogLayout.findViewById(R.id.seek_bar_n_columns_media_landscape);
 
         getActivity().themeSeekBar(barFolders);
         getActivity().themeSeekBar(barMedia);

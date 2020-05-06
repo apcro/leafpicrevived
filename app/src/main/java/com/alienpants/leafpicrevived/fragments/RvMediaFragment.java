@@ -87,6 +87,15 @@ public class RvMediaFragment extends BaseMediaGridFragment {
     private GridSpacingItemDecoration spacingDecoration;
 
     private Album album;
+    private MediaClickListener listener;
+
+    public static RvMediaFragment make(Album album) {
+        RvMediaFragment fragment = new RvMediaFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(BUNDLE_ALBUM, album);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,14 +107,6 @@ public class RvMediaFragment extends BaseMediaGridFragment {
         }
 
         album = savedInstanceState.getParcelable(BUNDLE_ALBUM);
-    }
-
-    public static RvMediaFragment make(Album album) {
-        RvMediaFragment fragment = new RvMediaFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(BUNDLE_ALBUM, album);
-        fragment.setArguments(bundle);
-        return fragment;
     }
 
     @Override
@@ -151,8 +152,6 @@ public class RvMediaFragment extends BaseMediaGridFragment {
         outState.putParcelable(BUNDLE_ALBUM, album);
         super.onSaveInstanceState(outState);
     }
-
-    private MediaClickListener listener;
 
     public void setListener(MediaClickListener listener) {
         this.listener = listener;

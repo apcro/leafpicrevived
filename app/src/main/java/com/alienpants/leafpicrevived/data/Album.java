@@ -88,7 +88,7 @@ public class Album implements CursorHandler, Parcelable {
     }
 
     public static String[] getProjection() {
-        String projectionString[] = new String[]{
+        String[] projectionString = new String[]{
                 MediaStore.Files.FileColumns.PARENT,
                 MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
 //				"count(*)",

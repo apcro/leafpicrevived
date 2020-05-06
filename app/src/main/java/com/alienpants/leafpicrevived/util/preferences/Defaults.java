@@ -27,6 +27,7 @@ public final class Defaults {
     public static final boolean ANIMATIONS_DISABLED = false;
     public static final boolean TIMELINE_ENABLED = false;
     public static final boolean LOOP_VIDEO = false;
+
     // Prevent class instantiation
     private Defaults() {
     }

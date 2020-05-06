@@ -58,8 +58,8 @@ public class PaletteActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        paletteImg = (ImageView) findViewById(R.id.palette_image);
+        toolbar = findViewById(R.id.toolbar);
+        paletteImg = findViewById(R.id.palette_image);
         setTitle(R.string.palette);
         setSupportActionBar(toolbar);
         uri = getIntent().getData();
@@ -99,7 +99,7 @@ public class PaletteActivity extends BaseActivity {
         ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/") + 1));
         ((TextView) findViewById(R.id.palette_image_caption)).setText(uri.getPath());
         palette = Palette.from(myBitmap).generate();
-        rvPalette = (RecyclerView) findViewById(R.id.paletteRecycler);
+        rvPalette = findViewById(R.id.paletteRecycler);
         rvPalette.setLayoutManager(new LinearLayoutManager(this));
         rvPalette.setNestedScrollingEnabled(false);
         paletteAdapter = new PaletteAdapter(palette.getSwatches());
@@ -139,8 +139,8 @@ public class PaletteActivity extends BaseActivity {
 
             ViewHolder(View itemView) {
                 super(itemView);
-                txtColor = (TextView) itemView.findViewById(R.id.palette_item_text);
-                itemBackground = (LinearLayout) itemView.findViewById(R.id.ll_palette_item);
+                txtColor = itemView.findViewById(R.id.palette_item_text);
+                itemBackground = itemView.findViewById(R.id.ll_palette_item);
             }
         }
     }

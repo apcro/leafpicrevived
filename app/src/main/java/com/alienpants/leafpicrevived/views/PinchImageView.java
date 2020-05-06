@@ -825,11 +825,7 @@ public class PinchImageView extends ImageView {
         //触发重绘
         invalidate();
         //检查是否有变化
-        if (xDiff != 0 || yDiff != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return xDiff != 0 || yDiff != 0;
     }
 
     /**

@@ -75,8 +75,8 @@ public class NumericComparator {
         if (s1.codePointAt(0) != '.' && s2.codePointAt(0) == '.')
             return 1;
         if (s1.codePointAt(0) == '.' && s2.codePointAt(0) == '.') {
-            s1 = s1.substring(1, s1.length());
-            s2 = s2.substring(1, s2.length());
+            s1 = s1.substring(1);
+            s2 = s2.substring(1);
         }
 
         /** "cut" file suffixes */
@@ -153,7 +153,7 @@ public class NumericComparator {
         else if (c == '~')
             return -1;
         else
-            return (int) c + UNICODE_MAX + 1;
+            return c + UNICODE_MAX + 1;
     }
 
     /**
@@ -176,7 +176,7 @@ public class NumericComparator {
             } else if (!c_isalnum(str.codePointAt(0)) && '~' != str.codePointAt(0)) {
                 match = "";
             }
-            str = str.substring(1, str.length());
+            str = str.substring(1);
         }
         return match;
     }

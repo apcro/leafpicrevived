@@ -114,9 +114,9 @@ public class AlertDialogsHelper {
 
         String original = " (" + imgWidth + "x" + imgHeight + ")";
         rOriginal.setText(rOriginal.getText() + original);
-        r25lighter.setText(r25lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 75)) + "x" + String.valueOf(getDim(imgHeight, 75)) + ")");
-        r50lighter.setText(r50lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 50)) + "x" + String.valueOf(getDim(imgHeight, 50)) + ")");
-        r70lighter.setText(r70lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 30)) + "x" + String.valueOf(getDim(imgHeight, 30)) + ")");
+        r25lighter.setText(r25lighter.getText() + " (" + getDim(imgWidth, 75) + "x" + getDim(imgHeight, 75) + ")");
+        r50lighter.setText(r50lighter.getText() + " (" + getDim(imgWidth, 50) + "x" + getDim(imgHeight, 50) + ")");
+        r70lighter.setText(r70lighter.getText() + " (" + getDim(imgWidth, 30) + "x" + getDim(imgHeight, 30) + ")");
 
         activity.themeRadioButton(rOriginal);
         activity.themeRadioButton(r25lighter);
@@ -164,13 +164,12 @@ public class AlertDialogsHelper {
             File tempImage;
             OutputStream os;
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
-            ;
             if (fileName.toLowerCase().endsWith(".png")) {
-                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".png", activity.getApplicationContext().getCacheDir());
+                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()), ".png", activity.getApplicationContext().getCacheDir());
                 os = new FileOutputStream(tempImage);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
             } else {
-                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".jpg", activity.getApplicationContext().getCacheDir());
+                tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()), ".jpg", activity.getApplicationContext().getCacheDir());
                 os = new FileOutputStream(tempImage);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
             }
