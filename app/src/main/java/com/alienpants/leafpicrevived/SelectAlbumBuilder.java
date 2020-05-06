@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Environment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +29,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alienpants.leafpicrevived.data.StorageHelper;
+import com.alienpants.leafpicrevived.data.filter.FoldersFileFilter;
+import com.alienpants.leafpicrevived.util.AlertDialogsHelper;
+import com.alienpants.leafpicrevived.util.Measure;
+import com.alienpants.leafpicrevived.views.GridSpacingItemDecoration;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,11 +44,6 @@ import com.mikepenz.iconics.typeface.library.community.material.CommunityMateria
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 
-import com.alienpants.leafpicrevived.data.StorageHelper;
-import com.alienpants.leafpicrevived.data.filter.FoldersFileFilter;
-import com.alienpants.leafpicrevived.util.AlertDialogsHelper;
-import com.alienpants.leafpicrevived.util.Measure;
-import com.alienpants.leafpicrevived.views.GridSpacingItemDecoration;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -55,6 +54,8 @@ import java.util.Arrays;
 
 public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
+    final int INTERNAL_STORAGE = 0;
+    FragmentManager fragmentManager;
     private String title;
     private ArrayList<File> folders;
     private BottomSheetAlbumsAdapter adapter;
@@ -64,12 +65,31 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
     private LinearLayout exploreModePanel;
     private TextView currentFolderPath;
     private OnFolderSelected onFolderSelected;
-    FragmentManager fragmentManager;
     private FloatingActionButton fabDone;
-
-    final int INTERNAL_STORAGE = 0;
-
     private String sdCardPath = null;
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String path = view.findViewById(R.id.name_folder).getTag().toString();
+            if (exploreMode) displayContentFolder(new File(path));
+            else {
+                dismiss();
+                onFolderSelected.folderSelected(path);
+            }
+        }
+    };
+    private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
+        @Override
+        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+            if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                dismiss();
+            }
+        }
+
+        @Override
+        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+        }
+    };
 
     public static SelectAlbumBuilder with(FragmentManager manager) {
         SelectAlbumBuilder fragment = new SelectAlbumBuilder();
@@ -101,26 +121,9 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         show(fragmentManager, getTag());
     }
 
-
     private boolean canGoBack() {
         return canGoBack;
     }
-
-    public interface OnFolderSelected {
-        void folderSelected(String path);
-    }
-
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String path = view.findViewById(R.id.name_folder).getTag().toString();
-            if (exploreMode) displayContentFolder(new File(path));
-            else {
-                dismiss();
-                onFolderSelected.folderSelected(path);
-            }
-        }
-    };
 
     @Override
     public void setupDialog(Dialog dialog, int style) {
@@ -144,7 +147,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
-                switch(pos){
+                switch (pos) {
                     case INTERNAL_STORAGE:
                         displayContentFolder(Environment.getExternalStorageDirectory());
                         break;
@@ -166,7 +169,8 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         /**SET UP THEME**/
@@ -205,7 +209,8 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
                 });
                 insertTextDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {}
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
                 });
                 insertTextDialog.show();
             }
@@ -233,7 +238,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
     private void displayContentFolder(File dir) {
         canGoBack = false;
-        if(dir.canRead()) {
+        if (dir.canRead()) {
             folders = new ArrayList<>();
             File parent = dir.getParentFile();
             if (parent.canRead()) {
@@ -250,20 +255,11 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         }
     }
 
-    private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
-        @Override
-        public void onStateChanged(@NonNull View bottomSheet, int newState) {
-            if (newState == BottomSheetBehavior.STATE_HIDDEN) { dismiss(); }
-        }
-        @Override
-        public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
-    };
-
     private void toggleExplorerMode(boolean enabled) {
         folders = new ArrayList<>();
         exploreMode = enabled;
 
-        if(exploreMode) {
+        if (exploreMode) {
             displayContentFolder(Environment.getExternalStorageDirectory());
             imgExploreMode.setIcon(theme.getIcon(CommunityMaterial.Icon.cmd_folder));
             exploreModePanel.setVisibility(View.VISIBLE);
@@ -281,26 +277,35 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         adapter.notifyDataSetChanged();
     }
 
+    public interface OnFolderSelected {
+        void folderSelected(String path);
+    }
+
     private class VolumeSpinnerAdapter extends ArrayAdapter<String> {
 
         VolumeSpinnerAdapter(Context context) {
             super(context, R.layout.spinner_item_with_pic, R.id.volume_name);
             insert(getString(R.string.internal_storage), INTERNAL_STORAGE);
-            if(sdCardPath != null)
+            if (sdCardPath != null)
                 add(getString(R.string.extrnal_storage));
         }
 
         @NonNull
-        @Override public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             View view = super.getView(position, convertView, parent);
             GoogleMaterial.Icon icon;
 
-            switch (position){
-                case INTERNAL_STORAGE: icon = GoogleMaterial.Icon.gmd_storage; break;
-                default: icon = GoogleMaterial.Icon.gmd_sd_card; break;
+            switch (position) {
+                case INTERNAL_STORAGE:
+                    icon = GoogleMaterial.Icon.gmd_storage;
+                    break;
+                default:
+                    icon = GoogleMaterial.Icon.gmd_sd_card;
+                    break;
             }
 
-            ((ImageView)view.findViewById(R.id.volume_image)).setImageDrawable(new IconicsDrawable(getContext()).icon(icon).size(IconicsSize.dp(24)).color(IconicsColor.colorInt(Color.WHITE)));
+            ((ImageView) view.findViewById(R.id.volume_image)).setImageDrawable(new IconicsDrawable(getContext()).icon(icon).size(IconicsSize.dp(24)).color(IconicsColor.colorInt(Color.WHITE)));
             return view;
         }
 
@@ -309,9 +314,13 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             View view = super.getDropDownView(position, convertView, parent);
             GoogleMaterial.Icon icon;
 
-            switch (position){
-                case INTERNAL_STORAGE: icon = GoogleMaterial.Icon.gmd_storage; break;
-                default: icon = GoogleMaterial.Icon.gmd_sd_card; break;
+            switch (position) {
+                case INTERNAL_STORAGE:
+                    icon = GoogleMaterial.Icon.gmd_storage;
+                    break;
+                default:
+                    icon = GoogleMaterial.Icon.gmd_sd_card;
+                    break;
             }
             ((ThemedIcon) view.findViewById(R.id.volume_image)).setIcon(icon);
             view.setBackgroundColor(theme.getPrimaryColor());
@@ -321,7 +330,8 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
     private class BottomSheetAlbumsAdapter extends RecyclerView.Adapter<BottomSheetAlbumsAdapter.ViewHolder> {
 
-        BottomSheetAlbumsAdapter() { }
+        BottomSheetAlbumsAdapter() {
+        }
 
         public BottomSheetAlbumsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_folder_bottom_sheet_item, parent, false);
@@ -343,7 +353,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
             holder.llItemBackground.setBackgroundColor(theme.getCardBackgroundColor());
 
-            if(canGoBack() && position == 0) { // go to parent folder
+            if (canGoBack() && position == 0) { // go to parent folder
                 holder.folderName.setText("..");
                 holder.imgFolder.setIcon(theme.getIcon(CommunityMaterial.Icon.cmd_arrow_up));
             }
@@ -357,6 +367,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             TextView folderName;
             ThemedIcon imgFolder;
             LinearLayout llItemBackground;
+
             ViewHolder(View itemView) {
                 super(itemView);
                 folderName = itemView.findViewById(R.id.name_folder);

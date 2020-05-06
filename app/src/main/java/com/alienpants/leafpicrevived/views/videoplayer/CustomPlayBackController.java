@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.alienpants.leafpicrevived.R;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -26,7 +27,6 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome;
 import com.mikepenz.iconics.view.IconicsImageView;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.ThemeHelper;
 
@@ -39,19 +39,11 @@ import java.util.Locale;
 
 public class CustomPlayBackController extends FrameLayout {
 
-    public interface VisibilityListener {
-        //Called when the visibility changes.
-        //@param visibility The new visibility. Either {@link View#VISIBLE} or {@link View#GONE}.
-        void onVisibilityChange(int visibility);
-    }
-
     public static final int DEFAULT_FAST_FORWARD_MS = 15000;
     public static final int DEFAULT_REWIND_MS = 5000;
     public static final int DEFAULT_SHOW_TIMEOUT_MS = 5000;
-
     private static final int PROGRESS_BAR_MAX = 1000;
     private static final long MAX_POSITION_FOR_SEEK_TO_PREVIOUS = 3000;
-
     private final ComponentListener componentListener;
     private final View previousButton;
     private final View nextButton;
@@ -64,19 +56,15 @@ public class CustomPlayBackController extends FrameLayout {
     private final StringBuilder formatBuilder;
     private final Formatter formatter;
     private final Timeline.Window window;
-
     private ExoPlayer player;
     private VisibilityListener visibilityListener;
-
     private boolean isAttachedToWindow;
     private boolean dragging;
+    private final Runnable updateProgressAction = this::updateProgress;
     private int rewindMs;
     private int fastForwardMs;
     private int showTimeoutMs;
     private long hideAtMs;
-
-    private final Runnable updateProgressAction = this::updateProgress;
-
     private final Runnable hideAction = this::hide;
 
     public CustomPlayBackController(Context context) {
@@ -132,15 +120,17 @@ public class CustomPlayBackController extends FrameLayout {
         ThemeHelper themeHelper = ThemeHelper.getInstanceLoaded(getContext());
 
         progressBar.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(themeHelper.isPrimaryEqualAccent()
-                ? ColorPalette.getDarkerColor(themeHelper.getAccentColor()): themeHelper.getAccentColor(), PorterDuff.Mode.SRC_IN));
+                ? ColorPalette.getDarkerColor(themeHelper.getAccentColor()) : themeHelper.getAccentColor(), PorterDuff.Mode.SRC_IN));
         progressBar.getThumb().setColorFilter(new PorterDuffColorFilter(themeHelper.isPrimaryEqualAccent()
-                ? ColorPalette.getDarkerColor(themeHelper.getAccentColor()): themeHelper.getAccentColor(),PorterDuff.Mode.SRC_IN));
+                ? ColorPalette.getDarkerColor(themeHelper.getAccentColor()) : themeHelper.getAccentColor(), PorterDuff.Mode.SRC_IN));
 
         findViewById(R.id.exoplayer_controller_background)
                 .setBackgroundColor(themeHelper.getPrimaryColor());
     }
 
-    public ExoPlayer getPlayer() {return player;}
+    public ExoPlayer getPlayer() {
+        return player;
+    }
 
     public void setPlayer(ExoPlayer player) {
         if (this.player == player)
@@ -257,7 +247,7 @@ public class CustomPlayBackController extends FrameLayout {
                     || player.getPreviousWindowIndex() != C.INDEX_UNSET;
             enableNext = window.isDynamic || player.getNextWindowIndex() != C.INDEX_UNSET;
         }
-        // TODO: 12/16/17  
+        // TODO: 12/16/17
         setButtonEnabled(enablePrevious && false, previousButton, true);
         setButtonEnabled(enableNext && false, nextButton, true);
 
@@ -404,18 +394,39 @@ public class CustomPlayBackController extends FrameLayout {
         }
         switch (event.getKeyCode()) {
             case KeyEvent.KEYCODE_MEDIA_FAST_FORWARD:
-            case KeyEvent.KEYCODE_DPAD_RIGHT: fastForward();break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                fastForward();
+                break;
             case KeyEvent.KEYCODE_MEDIA_REWIND:
-            case KeyEvent.KEYCODE_DPAD_LEFT: rewind();break;
-            case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE: player.setPlayWhenReady(!player.getPlayWhenReady());break;
-            case KeyEvent.KEYCODE_MEDIA_PLAY: player.setPlayWhenReady(true);break;
-            case KeyEvent.KEYCODE_MEDIA_PAUSE :player.setPlayWhenReady(false);break;
-            case KeyEvent.KEYCODE_MEDIA_NEXT: next();break;
-            case KeyEvent.KEYCODE_MEDIA_PREVIOUS: previous();break;
-            default:return false;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                rewind();
+                break;
+            case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+                player.setPlayWhenReady(!player.getPlayWhenReady());
+                break;
+            case KeyEvent.KEYCODE_MEDIA_PLAY:
+                player.setPlayWhenReady(true);
+                break;
+            case KeyEvent.KEYCODE_MEDIA_PAUSE:
+                player.setPlayWhenReady(false);
+                break;
+            case KeyEvent.KEYCODE_MEDIA_NEXT:
+                next();
+                break;
+            case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
+                previous();
+                break;
+            default:
+                return false;
         }
         show();
         return true;
+    }
+
+    public interface VisibilityListener {
+        //Called when the visibility changes.
+        //@param visibility The new visibility. Either {@link View#VISIBLE} or {@link View#GONE}.
+        void onVisibilityChange(int visibility);
     }
 
     private final class ComponentListener implements Player.EventListener,
@@ -457,7 +468,7 @@ public class CustomPlayBackController extends FrameLayout {
 
         }
 
-//        @Override
+        //        @Override
         public void onTimelineChanged(Timeline timeline, Object manifest) {
             updateNavigation();
             updateProgress();

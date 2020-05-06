@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/progress_dialog_card"
@@ -32,14 +32,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/ll_progress_dialog_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/sub_big_spacing"
                     android:paddingLeft="@dimen/sub_big_spacing"
+                    android:paddingTop="@dimen/sub_big_spacing"
                     android:paddingRight="@dimen/sub_big_spacing"
                     android:paddingBottom="@dimen/small_spacing">
 
@@ -48,8 +47,8 @@
                         android:layout_width="@dimen/progress_circle_width_height"
                         android:layout_height="@dimen/progress_circle_width_height"
                         android:layout_gravity="center_vertical"
-                        android:paddingRight="@dimen/sub_medium_spacing"
-                        android:indeterminateTint="@color/md_white_1000" />
+                        android:indeterminateTint="@color/md_white_1000"
+                        android:paddingRight="@dimen/sub_medium_spacing" />
 
                     <TextView
                         android:id="@+id/progress_dialog_text"

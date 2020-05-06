@@ -1,8 +1,6 @@
 package com.alienpants.leafpicrevived.timeline.data;
 
 
-
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -31,10 +29,6 @@ public class TimelineHeaderModel implements TimelineItem {
         this.calendar = calendar;
     }
 
-    public void setHeaderText(@NonNull String headerText) {
-        this.headerText = headerText;
-    }
-
     @NonNull
     public Calendar getDate() {
         return calendar;
@@ -43,6 +37,10 @@ public class TimelineHeaderModel implements TimelineItem {
     @Nullable
     public String getHeaderText() {
         return headerText;
+    }
+
+    public void setHeaderText(@NonNull String headerText) {
+        this.headerText = headerText;
     }
 
     @Override

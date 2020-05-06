@@ -15,7 +15,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 
-
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
@@ -45,6 +44,7 @@ import static android.content.Context.KEYGUARD_SERVICE;
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
 
     private static final String KEY_NAME = "fingerprint_key";
+    CancellationSignal signal;
     private Cipher cipher;
     private KeyStore keyStore;
     private KeyGenerator keyGenerator;
@@ -54,13 +54,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     private Context context;
     private boolean fingerprintSupported = true;
     private CallBack onFingerprintResult;
-    CancellationSignal signal;
-
-    interface CallBack {
-        void onSuccess();
-
-        void onError(String s);
-    }
 
     public FingerprintHandler(Context context, CancellationSignal signal) {
         this.signal = signal;
@@ -175,12 +168,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         }
     }
 
-    private class FingerprintException extends Exception {
-        FingerprintException(Exception e) {
-            super(e);
-        }
-    }
-
     @Override
     public void onAuthenticationError(int errorCode, CharSequence errString) {
         super.onAuthenticationError(errorCode, errString);
@@ -210,6 +197,18 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         try {
             manager.authenticate(obj, signal, 0, this, null);
         } catch (SecurityException sce) {
+        }
+    }
+
+    interface CallBack {
+        void onSuccess();
+
+        void onError(String s);
+    }
+
+    private class FingerprintException extends Exception {
+        FingerprintException(Exception e) {
+            super(e);
         }
     }
 }

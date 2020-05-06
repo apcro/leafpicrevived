@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -19,8 +18,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:orientation="vertical"
-    android:layoutDirection="ltr">
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,76 +28,79 @@
         android:paddingTop="@dimen/v_spacing_player_bars"
         android:paddingBottom="@dimen/v_spacing_player_bars">
 
-        <TextView android:id="@+id/time_current"
+        <TextView
+            android:id="@+id/time_current"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:textSize="@dimen/sub_medium_text"
-            android:textStyle="bold"
             android:paddingStart="@dimen/sub_small_spacing"
-            android:textColor="@color/accent_white"/>
+            android:textColor="@color/accent_white"
+            android:textSize="@dimen/sub_medium_text"
+            android:textStyle="bold" />
 
-        <SeekBar android:id="@+id/mediacontroller_progress"
+        <SeekBar
+            android:id="@+id/mediacontroller_progress"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
             android:layout_height="32dp"
-            style="?android:attr/progressBarStyleHorizontal"/>
+            android:layout_gravity="center"
+            android:layout_weight="1" />
 
-        <TextView android:id="@+id/time"
+        <TextView
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
-            android:textSize="@dimen/sub_medium_text"
-            android:textStyle="bold"
             android:paddingEnd="@dimen/sub_small_spacing"
+            android:textColor="@color/accent_white"
+            android:textSize="@dimen/sub_medium_text"
 
-            android:textColor="@color/accent_white"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="@dimen/v_spacing_player_bars"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/v_spacing_player_bars">
 
         <ImageButton
             android:id="@+id/prev"
+            style="@style/ExoMediaButton.Previous"
             android:contentDescription="@string/exo_controls_previous_description"
-            android:visibility="gone"
-            style="@style/ExoMediaButton.Previous" />
+            android:visibility="gone" />
 
         <com.mikepenz.iconics.view.IconicsImageView
             android:id="@+id/rew"
-            app:iiv_icon="faw-backward"
-            app:iiv_color="@color/md_white_1000"
-            android:layout_height="@dimen/icon_player_size"
             android:layout_width="@dimen/icon_player_size"
+            android:layout_height="@dimen/icon_player_size"
+            android:layout_marginRight="@dimen/big_spacing"
             android:contentDescription="@string/exo_controls_rewind_description"
-            android:layout_marginRight="@dimen/big_spacing" />
+            app:iiv_color="@color/md_white_1000"
+            app:iiv_icon="faw-backward" />
 
         <com.mikepenz.iconics.view.IconicsImageView
-            app:iiv_icon="cmd-play"
-            app:iiv_color="@color/md_white_1000"
-            android:layout_height="@dimen/icon_play_pause_size"
+            android:id="@+id/play"
             android:layout_width="@dimen/icon_play_pause_size"
-            android:id="@+id/play" />
+            android:layout_height="@dimen/icon_play_pause_size"
+            app:iiv_color="@color/md_white_1000"
+            app:iiv_icon="cmd-play" />
 
         <com.mikepenz.iconics.view.IconicsImageView
-            app:iiv_icon="faw-forward"
-            app:iiv_color="@color/md_white_1000"
-            android:layout_height="@dimen/icon_player_size"
-            android:layout_width="@dimen/icon_player_size"
             android:id="@+id/ffwd"
+            android:layout_width="@dimen/icon_player_size"
+            android:layout_height="@dimen/icon_player_size"
+            android:layout_marginLeft="@dimen/big_spacing"
             android:contentDescription="@string/exo_controls_fastforward_description"
-            android:layout_marginLeft="@dimen/big_spacing" />
+            app:iiv_color="@color/md_white_1000"
+            app:iiv_icon="faw-forward" />
 
         <ImageButton
             android:id="@+id/next"
+            style="@style/ExoMediaButton.Next"
             android:contentDescription="@string/exo_controls_previous_description"
-            android:visibility="gone"
-            style="@style/ExoMediaButton.Next" />
+            android:visibility="gone" />
 
     </LinearLayout>
 </LinearLayout>

@@ -3,13 +3,11 @@ package com.alienpants.leafpicrevived.activities;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -65,7 +63,6 @@ import com.alienpants.leafpicrevived.util.Security;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
 import com.alienpants.leafpicrevived.views.HackyViewPager;
-import org.horaapps.liz.ColorPalette;
 import com.bumptech.glide.Glide;
 import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsColor;
@@ -74,10 +71,11 @@ import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 import com.yalantis.ucrop.UCrop;
 
+import org.horaapps.liz.ColorPalette;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -94,32 +92,40 @@ import io.reactivex.schedulers.Schedulers;
 @SuppressWarnings("ResourceAsColor")
 public class SingleMediaActivity extends SharedMediaActivity implements BaseMediaFragment.MediaTapListener {
 
-    private static final String TAG = SingleMediaActivity.class.getSimpleName();
-
-    private static final int SLIDE_SHOW_INTERVAL = 5000;
-    private static final String ISLOCKED_ARG = "isLocked";
-
     public static final String ACTION_OPEN_ALBUM = "com.alienpants.leafpicrevived.intent.VIEW_ALBUM";
     public static final String ACTION_OPEN_ALBUM_LAZY = "com.alienpants.leafpicrevived.intent.VIEW_ALBUM_LAZY";
-    private static final String ACTION_REVIEW = "com.android.camera.action.REVIEW";
-
     public static final String EXTRA_ARGS_ALBUM = "args_album";
     public static final String EXTRA_ARGS_MEDIA = "args_media";
     public static final String EXTRA_ARGS_POSITION = "args_position";
-
-    @BindView(R.id.photos_pager) HackyViewPager mViewPager;
-    @BindView(R.id.PhotoPager_Layout) RelativeLayout activityBackground;
+    private static final String TAG = SingleMediaActivity.class.getSimpleName();
+    private static final int SLIDE_SHOW_INTERVAL = 5000;
+    private static final String ISLOCKED_ARG = "isLocked";
+    private static final String ACTION_REVIEW = "com.android.camera.action.REVIEW";
+    @BindView(R.id.photos_pager)
+    HackyViewPager mViewPager;
+    @BindView(R.id.PhotoPager_Layout)
+    RelativeLayout activityBackground;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
+    Handler handler = new Handler();
     private boolean fullScreenMode, customUri = false;
     private int position;
-
     private Album album;
+    Runnable slideShowRunnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                mViewPager.setCurrentItem((mViewPager.getCurrentItem() + 1) % album.getCount());
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                handler.postDelayed(this, SLIDE_SHOW_INTERVAL);
+            }
+        }
+    };
     private ArrayList<Media> media;
     private MediaPagerAdapter adapter;
     private boolean isSlideShowOn = false;
-
     private boolean useImageMenu;
 
     public static void startActivity(@NonNull Context context,
@@ -224,6 +230,8 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         disposeLater(disposable);
     }
 
+    // TODO: Figure out how we should classify Images and GIFs
+
     private void loadUri(Uri uri) {
         album = new Album(uri.toString(), uri.getPath());
         album.settings = AlbumSettings.getDefaults();
@@ -308,25 +316,12 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         }
     }
 
-    // TODO: Figure out how we should classify Images and GIFs
-    /** This should work temporarily **/
+    /**
+     * This should work temporarily
+     **/
     private boolean isCurrentMediaImage() {
         return getCurrentMedia().isImage() && !getCurrentMedia().isGif();
     }
-
-    Handler handler = new Handler();
-    Runnable slideShowRunnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                mViewPager.setCurrentItem((mViewPager.getCurrentItem() + 1) % album.getCount());
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                handler.postDelayed(this, SLIDE_SHOW_INTERVAL);
-            }
-        }
-    };
 
     @Override
     public void onViewTapped() {
@@ -701,7 +696,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
                 try (InputStream in = getContentResolver().openInputStream(getCurrentMedia().getUri())) {
                     Bitmap bitmap = BitmapFactory.decodeStream(in);
-                    photoPrinter.printBitmap(String.format("print_%s", getCurrentMedia().getDisplayPath() ), bitmap);
+                    photoPrinter.printBitmap(String.format("print_%s", getCurrentMedia().getDisplayPath()), bitmap);
                 } catch (Exception e) {
                     Log.e("print", String.format("unable to print %s", getCurrentMedia().getUri()), e);
                     Toast.makeText(getApplicationContext(), R.string.print_error, Toast.LENGTH_SHORT).show();

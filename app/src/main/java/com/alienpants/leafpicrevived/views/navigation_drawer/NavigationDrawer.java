@@ -3,11 +3,6 @@ package com.alienpants.leafpicrevived.views.navigation_drawer;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-
-
-
-
-
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -22,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 
@@ -39,43 +35,36 @@ public class NavigationDrawer extends ScrollView implements Themed {
     public static final int NAVIGATION_ITEM_ALL_MEDIA = 1002;
     public static final int NAVIGATION_ITEM_HIDDEN_FOLDERS = 1003;
     public static final int NAVIGATION_ITEM_WALLPAPERS = 1004;
-//    public static final int NAVIGATION_ITEM_DONATE = 1005;
+    //    public static final int NAVIGATION_ITEM_DONATE = 1005;
     public static final int NAVIGATION_ITEM_SETTINGS = 1006;
     public static final int NAVIGATION_ITEM_AFFIX = 1007;
     public static final int NAVIGATION_ITEM_ABOUT = 1009;
     public static final int NAVIGATION_ITEM_TIMELINE = 1010;
-
-    @Override
-    public void refreshTheme(ThemeHelper themeHelper) {
-        selectedColor = themeHelper.getButtonBackgroundColor();
-        selectItem(selectedEntry);
-    }
-
-    @IntDef({NAVIGATION_ITEM_ALL_ALBUMS, NAVIGATION_ITEM_ALL_MEDIA, NAVIGATION_ITEM_HIDDEN_FOLDERS,
-            NAVIGATION_ITEM_WALLPAPERS, /* NAVIGATION_ITEM_DONATE, */ NAVIGATION_ITEM_SETTINGS, NAVIGATION_ITEM_AFFIX,
-            NAVIGATION_ITEM_ABOUT, NAVIGATION_ITEM_TIMELINE})
-    public @interface NavigationItem {}
-
-    @BindView(R.id.navigation_drawer_header) ViewGroup drawerHeader;
-
-    @BindView(R.id.navigation_item_albums) NavigationEntry albumsEntry;
-    @BindView(R.id.navigation_item_all_media) NavigationEntry mediaEntry;
-    @BindView(R.id.navigation_item_timeline) NavigationEntry timelineEntry;
-    @BindView(R.id.navigation_item_hidden_albums) NavigationEntry hiddenFoldersEntry;
-//    @BindView(R.id.navigation_item_wallpapers) NavigationEntry wallpapersEntry;
+    @BindView(R.id.navigation_drawer_header)
+    ViewGroup drawerHeader;
+    @BindView(R.id.navigation_item_albums)
+    NavigationEntry albumsEntry;
+    @BindView(R.id.navigation_item_all_media)
+    NavigationEntry mediaEntry;
+    @BindView(R.id.navigation_item_timeline)
+    NavigationEntry timelineEntry;
+    @BindView(R.id.navigation_item_hidden_albums)
+    NavigationEntry hiddenFoldersEntry;
+    //    @BindView(R.id.navigation_item_wallpapers) NavigationEntry wallpapersEntry;
 //    @BindView(R.id.navigation_item_donate) NavigationEntry donateEntry;
-    @BindView(R.id.navigation_item_settings) NavigationEntry settingsEntry;
-    @BindView(R.id.navigation_item_affix) NavigationEntry affixEntry;
-    @BindView(R.id.navigation_item_about) NavigationEntry aboutEntry;
-    @BindView(R.id.navigation_drawer_header_version) TextView appVersion;
-
+    @BindView(R.id.navigation_item_settings)
+    NavigationEntry settingsEntry;
+    @BindView(R.id.navigation_item_affix)
+    NavigationEntry affixEntry;
+    @BindView(R.id.navigation_item_about)
+    NavigationEntry aboutEntry;
+    @BindView(R.id.navigation_drawer_header_version)
+    TextView appVersion;
     private NavigationEntry[] navigationEntries;
     private ItemListener itemListener;
     private NavigationEntry selectedEntry;
-
     @ColorInt
     private int selectedColor;
-
     public NavigationDrawer(@NonNull Context context) {
         this(context, null);
     }
@@ -92,6 +81,12 @@ public class NavigationDrawer extends ScrollView implements Themed {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public NavigationDrawer(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    @Override
+    public void refreshTheme(ThemeHelper themeHelper) {
+        selectedColor = themeHelper.getButtonBackgroundColor();
+        selectItem(selectedEntry);
     }
 
     /**
@@ -227,6 +222,12 @@ public class NavigationDrawer extends ScrollView implements Themed {
             default:
                 return albumsEntry;
         }
+    }
+
+    @IntDef({NAVIGATION_ITEM_ALL_ALBUMS, NAVIGATION_ITEM_ALL_MEDIA, NAVIGATION_ITEM_HIDDEN_FOLDERS,
+            NAVIGATION_ITEM_WALLPAPERS, /* NAVIGATION_ITEM_DONATE, */ NAVIGATION_ITEM_SETTINGS, NAVIGATION_ITEM_AFFIX,
+            NAVIGATION_ITEM_ABOUT, NAVIGATION_ITEM_TIMELINE})
+    public @interface NavigationItem {
     }
 
     /**

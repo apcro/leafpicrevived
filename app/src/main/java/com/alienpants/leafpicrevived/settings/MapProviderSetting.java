@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
-import com.orhanobut.hawk.Hawk;
-
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.util.StaticMapProvider;
+import com.orhanobut.hawk.Hawk;
+
 import org.horaapps.liz.ThemedActivity;
 
 /**
@@ -26,7 +26,7 @@ public class MapProviderSetting extends ThemedSetting {
         super(activity);
     }
 
-    public  void choseProvider() {
+    public void choseProvider() {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity(), getActivity().getDialogStyle());
         View dialogLayout = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_map_provider, null);
         TextView dialogTitle = (TextView) dialogLayout.findViewById(R.id.title);
@@ -51,11 +51,21 @@ public class MapProviderSetting extends ThemedSetting {
         switch (StaticMapProvider.fromValue(Hawk.get(getActivity().getString(R.string.preference_map_provider),
                 StaticMapProvider.GOOGLE_MAPS.getValue()))) {
             case GOOGLE_MAPS:
-            default: radioGoogleMaps.setChecked(true); break;
-            case MAP_BOX: radioMapBoxStreets.setChecked(true); break;
-            case MAP_BOX_DARK: radioMapBoxDark.setChecked(true); break;
-            case MAP_BOX_LIGHT: radioMapBoxLight.setChecked(true); break;
-            case TYLER: radioTyler.setChecked(true); break;
+            default:
+                radioGoogleMaps.setChecked(true);
+                break;
+            case MAP_BOX:
+                radioMapBoxStreets.setChecked(true);
+                break;
+            case MAP_BOX_DARK:
+                radioMapBoxDark.setChecked(true);
+                break;
+            case MAP_BOX_LIGHT:
+                radioMapBoxLight.setChecked(true);
+                break;
+            case TYLER:
+                radioTyler.setChecked(true);
+                break;
         }
 
         dialogBuilder.setNegativeButton(getActivity().getString(R.string.cancel).toUpperCase(), null);

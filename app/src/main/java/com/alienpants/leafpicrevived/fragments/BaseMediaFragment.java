@@ -2,12 +2,12 @@ package com.alienpants.leafpicrevived.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpicrevived.data.Media;
+
 import org.horaapps.liz.ThemeHelper;
 
 /**

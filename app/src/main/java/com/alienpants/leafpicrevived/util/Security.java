@@ -12,9 +12,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
+import com.alienpants.leafpicrevived.R;
 import com.orhanobut.hawk.Hawk;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -25,14 +25,6 @@ import java.security.MessageDigest;
  * Created by Jibo on 06/05/2016.
  */
 public class Security {
-
-    public static void setPasswordOnDelete(boolean passwordOnDelete) {
-        Hawk.put("password_on_delete", passwordOnDelete);
-    }
-
-    public static void setPasswordOnHidden(boolean passwordOnHidden) {
-        Hawk.put("password_on_hidden", passwordOnHidden);
-    }
 
     public static void setFingerprintUnlock(boolean passwordOnHidden) {
         Hawk.put("fingerprint_security", passwordOnHidden);
@@ -46,12 +38,20 @@ public class Security {
         return Hawk.get("password_hash", null) != null && Hawk.get("password_on_hidden", false);
     }
 
+    public static void setPasswordOnHidden(boolean passwordOnHidden) {
+        Hawk.put("password_on_hidden", passwordOnHidden);
+    }
+
     public static boolean isFingerprintUsed() {
         return Hawk.get("fingerprint_security", false);
     }
 
     public static boolean isPasswordOnDelete() {
         return Hawk.get("password_hash", null) != null && Hawk.get("password_on_delete", false);
+    }
+
+    public static void setPasswordOnDelete(boolean passwordOnDelete) {
+        Hawk.put("password_on_delete", passwordOnDelete);
     }
 
     private static boolean checkPassword(String pass) {
@@ -164,6 +164,7 @@ public class Security {
 
     public interface AuthCallBack {
         void onAuthenticated();
+
         void onError();
     }
 }

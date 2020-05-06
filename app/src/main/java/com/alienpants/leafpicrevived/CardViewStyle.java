@@ -21,22 +21,29 @@ public enum CardViewStyle {
         this.layout = layout;
     }
 
-    public int getLayout() {
-        return layout;
-    }
-
-    public int getValue() { return value; }
-
     public static int getSize() {
         return size;
     }
 
     public static CardViewStyle fromValue(int value) {
         switch (value) {
-            case 0: default: return MATERIAL;
-            case 1: return FLAT;
-            case 2: return COMPACT;
-            case 3: return SMALL;
+            case 0:
+            default:
+                return MATERIAL;
+            case 1:
+                return FLAT;
+            case 2:
+                return COMPACT;
+            case 3:
+                return SMALL;
         }
+    }
+
+    public int getLayout() {
+        return layout;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

@@ -4,18 +4,18 @@
     android:id="@+id/linear_card_excluded"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:clickable="true"
     android:foreground="@drawable/ripple"
-    android:clickable="true">
+    android:orientation="horizontal">
 
     <org.horaapps.liz.ui.ThemedIcon
         android:id="@+id/folder_icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_gravity="center_vertical"
-        app:iiv_icon="gmd-folder"
         android:layout_marginLeft="@dimen/big_spacing"
-        android:layout_marginRight="@dimen/big_spacing" />
+        android:layout_marginRight="@dimen/big_spacing"
+        app:iiv_icon="gmd-folder" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="vertical"
-            android:layout_marginEnd="44dp">
+            android:layout_marginEnd="44dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/folder_name"
@@ -53,9 +53,9 @@
             android:id="@+id/remove_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            app:iiv_icon="gmd-remove-circle"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            app:iiv_icon="gmd-remove-circle" />
 
     </RelativeLayout>
 </LinearLayout>

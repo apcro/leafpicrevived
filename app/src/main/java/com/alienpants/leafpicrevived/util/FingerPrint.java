@@ -5,7 +5,6 @@ import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 
-
 import androidx.annotation.RequiresApi;
 
 import com.alienpants.leafpicrevived.R;
@@ -44,8 +43,7 @@ public class FingerPrint {
                 StringUtils.showToast(ctx, ctx.getString(R.string.fp_not_enabled_sls));
                 return false;
             }
-        }
-        catch(SecurityException se) {
+        } catch (SecurityException se) {
             se.printStackTrace();
         }
         return true;

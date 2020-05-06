@@ -19,7 +19,6 @@ import android.widget.ImageView;
 
 import com.alienpants.leafpicrevived.R;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -97,21 +96,22 @@ public class AffixActivity extends Activity implements OnClickListener {
             if (onePicked && twoPicked) {
                 int w = bmp1.getWidth() + bmp2.getWidth();
                 int h;
-                if(bmp1.getHeight() >= bmp2.getHeight()){
+                if (bmp1.getHeight() >= bmp2.getHeight()) {
                     h = bmp1.getHeight();
-                }else{
+                } else {
                     h = bmp2.getHeight();
                 }
                 Bitmap.Config config = bmp1.getConfig();
-                if(config == null){
+                if (config == null) {
                     config = Bitmap.Config.ARGB_8888;
                 }
 
                 Bitmap drawingBitmap = Bitmap.createBitmap(w,
                         h, config);
                 canvas = new Canvas(drawingBitmap);
-                canvas.drawBitmap(bmp1,  0, 0, null);
-                canvas.drawBitmap(bmp2, bmp1.getWidth(), 0, null);;
+                canvas.drawBitmap(bmp1, 0, 0, null);
+                canvas.drawBitmap(bmp2, bmp1.getWidth(), 0, null);
+                ;
 
                 try {
                     compositeImageView.setImageBitmap(drawingBitmap);
@@ -128,12 +128,13 @@ public class AffixActivity extends Activity implements OnClickListener {
                     bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
                     outStream.flush();
                     outStream.close();
-                }catch (IOException e) {
+                } catch (IOException e) {
                     Log.v(TAG, "FileNotFoundExceptionError " + e.toString());
                 }
             }
         }
     }
+
     private Bitmap loadBitmap(Uri imageFileUri) {
         Display currentDisplay = getWindowManager().getDefaultDisplay();
 

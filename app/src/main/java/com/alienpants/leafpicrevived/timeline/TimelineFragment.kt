@@ -7,9 +7,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.GridLayoutManager
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_timeline.*
 import com.alienpants.leafpicrevived.R
 import com.alienpants.leafpicrevived.data.Album
 import com.alienpants.leafpicrevived.data.Media
@@ -28,6 +25,9 @@ import com.alienpants.leafpicrevived.util.Security
 import com.alienpants.leafpicrevived.util.deleteMedia
 import com.alienpants.leafpicrevived.util.preferences.Defaults
 import com.alienpants.leafpicrevived.util.shareMedia
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_timeline.*
 import org.horaapps.liz.ThemeHelper
 import org.horaapps.liz.ThemedActivity
 import java.util.*
@@ -182,7 +182,7 @@ class TimelineFragment : BaseMediaGridFragment(), ActionsListener {
             }
 
             override fun onProgress(item: Media?) {
-               timelineAdapter.removeItem(item)
+                timelineAdapter.removeItem(item)
             }
 
         })

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ThemedAdapter;
 
 import java.util.ArrayList;

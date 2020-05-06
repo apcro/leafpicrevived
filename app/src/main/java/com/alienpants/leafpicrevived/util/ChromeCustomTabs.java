@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.net.Uri;
 
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsClient;
@@ -30,6 +29,17 @@ public class ChromeCustomTabs {
         this.context = context;
         toolbarColor = ThemeHelper.getInstance(context).getPrimaryColor();
         initService();
+    }
+
+    /**
+     * Launches a Chrome Custom Tab without warmup / service.
+     *
+     * @param context The context - used for launching an Activity.
+     * @param url     The URL to load.
+     */
+    public static void launchUrl(@NonNull Context context, @NonNull String url) {
+        CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+        customTabsIntent.launchUrl(context, Uri.parse(url));
     }
 
     private void initService() {
@@ -64,16 +74,5 @@ public class ChromeCustomTabs {
      */
     public void destroy() {
         context.unbindService(serviceConnection);
-    }
-
-    /**
-     * Launches a Chrome Custom Tab without warmup / service.
-     *
-     * @param context The context - used for launching an Activity.
-     * @param url     The URL to load.
-     */
-    public static void launchUrl(@NonNull Context context, @NonNull String url) {
-        CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-        customTabsIntent.launchUrl(context, Uri.parse(url));
     }
 }

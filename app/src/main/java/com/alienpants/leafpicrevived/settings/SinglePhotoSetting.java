@@ -10,9 +10,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 
+import com.alienpants.leafpicrevived.R;
 import com.orhanobut.hawk.Hawk;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;

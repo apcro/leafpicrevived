@@ -2,7 +2,6 @@ package com.alienpants.leafpicrevived.util;
 
 import android.content.Context;
 
-
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpicrevived.BuildConfig;

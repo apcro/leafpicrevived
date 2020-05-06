@@ -3,7 +3,6 @@ package com.alienpants.leafpicrevived.util;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
-
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;

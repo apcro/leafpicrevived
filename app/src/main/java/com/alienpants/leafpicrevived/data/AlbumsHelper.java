@@ -6,18 +6,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore;
-
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
-import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.activities.SplashScreen;
 import com.alienpants.leafpicrevived.data.sort.SortingMode;
 import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.orhanobut.hawk.Hawk;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -73,13 +71,13 @@ public class AlbumsHelper {
         return Prefs.getAlbumSortingMode();
     }
 
+    public static void setSortingMode(@NonNull SortingMode sortingMode) {
+        Prefs.setAlbumSortingMode(sortingMode);
+    }
+
     @NonNull
     public static SortingOrder getSortingOrder() {
         return Prefs.getAlbumSortingOrder();
-    }
-
-    public static void setSortingMode(@NonNull SortingMode sortingMode) {
-        Prefs.setAlbumSortingMode(sortingMode);
     }
 
     public static void setSortingOrder(@NonNull SortingOrder sortingOrder) {
@@ -96,7 +94,7 @@ public class AlbumsHelper {
                 FileOutputStream out = new FileOutputStream(file);
                 out.flush();
                 out.close();
-                scanFile(context, new String[]{ file.getAbsolutePath() });
+                scanFile(context, new String[]{file.getAbsolutePath()});
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,7 +107,7 @@ public class AlbumsHelper {
         File file = new File(dirName, ".nomedia");
         if (file.exists()) {
             if (file.delete())
-                scanFile(context, new String[]{ file.getAbsolutePath() });
+                scanFile(context, new String[]{file.getAbsolutePath()});
         }
     }
 

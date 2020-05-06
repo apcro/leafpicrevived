@@ -10,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
-
-
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -26,6 +24,7 @@ import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.activities.base.SharedMediaActivity;
 import com.alienpants.leafpicrevived.util.PermissionUtils;
 import com.alienpants.leafpicrevived.util.StringUtils;
+
 import org.horaapps.liz.ColorPalette;
 
 import java.io.File;
@@ -36,18 +35,15 @@ import java.io.File;
  */
 public class SplashScreen extends SharedMediaActivity {
 
-    private final String TAG = SplashScreen.class.getSimpleName();
-
-    private final int EXTERNAL_STORAGE_PERMISSIONS = 12;
-    private static final int PICK_MEDIA_REQUEST = 44;
-
+    public final static String ACTION_OPEN_ALBUM = "com.alienpants.leafpicrevived.OPEN_ALBUM";
     final static String CONTENT = "content";
-
     final static int ALBUMS_PREFETCHED = 2376;
     final static int PHOTOS_PREFETCHED = 2567;
     final static int ALBUMS_BACKUP = 1312;
+    private static final int PICK_MEDIA_REQUEST = 44;
+    private final String TAG = SplashScreen.class.getSimpleName();
+    private final int EXTERNAL_STORAGE_PERMISSIONS = 12;
     private boolean pickMode = false;
-    public final static String ACTION_OPEN_ALBUM = "com.alienpants.leafpicrevived.OPEN_ALBUM";
 
     //private Album tmpAlbum;
 
@@ -136,7 +132,8 @@ public class SplashScreen extends SharedMediaActivity {
                     finish();
                 }
                 break;
-            default: super.onActivityResult(requestCode, resultCode, data);
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

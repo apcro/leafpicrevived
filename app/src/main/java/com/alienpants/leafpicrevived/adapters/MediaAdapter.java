@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Album;
@@ -27,6 +21,10 @@ import com.alienpants.leafpicrevived.data.sort.SortingMode;
 import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 import com.alienpants.leafpicrevived.items.ActionsListener;
 import com.alienpants.leafpicrevived.views.SquareRelativeLayout;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
@@ -45,20 +43,17 @@ import butterknife.ButterKnife;
 
 /**
  * Adapter used to display Media Items.
- *
+ * <p>
  * TODO: This class needs a major cleanup. Remove code from onBindViewHolder!
  */
 public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
     private final ArrayList<Media> media;
+    private final ActionsListener actionsListener;
     private int selectedCount = 0;
-
     private SortingOrder sortingOrder;
     private SortingMode sortingMode;
-
     private Drawable placeholder;
-    private final ActionsListener actionsListener;
-
     private boolean isSelecting = false;
 
     public MediaAdapter(Context context, SortingMode sortingMode, SortingOrder sortingOrder, ActionsListener actionsListener) {
@@ -118,6 +113,12 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
     public ArrayList<Media> getMedia() {
         return media;
+    }
+
+    public void setMedia(@NonNull List<Media> mediaList) {
+        media.clear();
+        media.addAll(mediaList);
+        notifyDataSetChanged();
     }
 
     public int getSelectedCount() {
@@ -283,7 +284,6 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
         //super.refreshTheme(theme);
     }
 
-
     /**
      * On longpress, it finds the last or the first selected image before or after the targetIndex
      * and selects them all.
@@ -327,12 +327,6 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
     public void clear() {
         media.clear();
-        notifyDataSetChanged();
-    }
-
-    public void setMedia(@NonNull List<Media> mediaList) {
-        media.clear();
-        media.addAll(mediaList);
         notifyDataSetChanged();
     }
 

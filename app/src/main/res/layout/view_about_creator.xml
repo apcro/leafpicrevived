@@ -61,12 +61,12 @@
             tools:text="@string/about_author_donald_description" />
 
         <LinearLayout
+            android:id="@+id/developer_contacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/developer_contacts"
-            android:paddingEnd="@dimen/developer_description_padding"
-            android:paddingStart="@dimen/developer_description_padding" />
+            android:paddingStart="@dimen/developer_description_padding"
+            android:paddingEnd="@dimen/developer_description_padding" />
 
     </LinearLayout>
 </merge>

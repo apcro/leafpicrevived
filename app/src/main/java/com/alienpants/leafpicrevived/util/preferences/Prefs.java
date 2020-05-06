@@ -2,7 +2,6 @@ package com.alienpants.leafpicrevived.util.preferences;
 
 import android.content.Context;
 
-
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpicrevived.CardViewStyle;
@@ -41,10 +40,24 @@ public class Prefs {
     }
 
     /**
+     * Set the number of folder columns in Portrait orientation.
+     */
+    public static void setFolderColumnsPortrait(int value) {
+        getPrefs().put(Keys.FOLDER_COLUMNS_PORTRAIT, value);
+    }
+
+    /**
      * Get number of folder columns to display in Landscape orientation
      */
     public static int getFolderColumnsLandscape() {
         return getPrefs().get(Keys.FOLDER_COLUMNS_LANDSCAPE, Defaults.FOLDER_COLUMNS_LANDSCAPE);
+    }
+
+    /**
+     * Set the number of folder columns in Landscape orientation.
+     */
+    public static void setFolderColumnsLandscape(int value) {
+        getPrefs().put(Keys.FOLDER_COLUMNS_LANDSCAPE, value);
     }
 
     /**
@@ -55,10 +68,24 @@ public class Prefs {
     }
 
     /**
+     * Set the number of media columns in Portrait orientation.
+     */
+    public static void setMediaColumnsPortrait(int value) {
+        getPrefs().put(Keys.MEDIA_COLUMNS_PORTRAIT, value);
+    }
+
+    /**
      * Get number of media columns to display in Landscape orientation
      */
     public static int getMediaColumnsLandscape() {
         return getPrefs().get(Keys.MEDIA_COLUMNS_LANDSCAPE, Defaults.MEDIA_COLUMNS_LANDSCAPE);
+    }
+
+    /**
+     * Set the number of media columns in Landscape orientation.
+     */
+    public static void setMediaColumnsLandscape(int value) {
+        getPrefs().put(Keys.MEDIA_COLUMNS_LANDSCAPE, value);
     }
 
     /**
@@ -71,12 +98,26 @@ public class Prefs {
     }
 
     /**
+     * Set the Sorting Mode for albums (Name / Size / etc)
+     */
+    public static void setAlbumSortingMode(@NonNull SortingMode sortingMode) {
+        getPrefs().put(Keys.ALBUM_SORTING_MODE, sortingMode.getValue());
+    }
+
+    /**
      * Get the sorting order (Ascending / Descending) for albums.
      */
     @NonNull
     public static SortingOrder getAlbumSortingOrder() {
         return SortingOrder.fromValue(
                 getPrefs().get(Keys.ALBUM_SORTING_ORDER, Defaults.ALBUM_SORTING_ORDER));
+    }
+
+    /**
+     * Set the Sorting Order for albums (Ascending / Descending)
+     */
+    public static void setAlbumSortingOrder(@NonNull SortingOrder sortingOrder) {
+        getPrefs().put(Keys.ALBUM_SORTING_ORDER, sortingOrder.getValue());
     }
 
     /**
@@ -99,6 +140,8 @@ public class Prefs {
     public static boolean showAlbumPath() {
         return getPrefs().get(Keys.SHOW_ALBUM_PATH, Defaults.SHOW_ALBUM_PATH);
     }
+
+    /********** SETTERS **********/
 
     /**
      * Should show the Emoji Easter Egg.
@@ -130,56 +173,26 @@ public class Prefs {
                 getPrefs().get(Keys.CARD_STYLE, Defaults.CARD_STYLE));
     }
 
+    /**
+     * Set the Card Style (Material / Flat / Compact / Small)
+     */
+    public static void setCardStyle(@NonNull CardViewStyle cardStyle) {
+        getPrefs().put(Keys.CARD_STYLE, cardStyle.getValue());
+    }
+
     public static int getLastVersionCode() {
         return getPrefs().get(Keys.LAST_VERSION_CODE, Defaults.LAST_VERSION_CODE);
     }
 
+    /**
+     * Set the last version code of Application.
+     */
+    public static void setLastVersionCode(int value) {
+        getPrefs().put(Keys.LAST_VERSION_CODE, value);
+    }
+
     public static boolean forceEnglish() {
         return getPrefs().get(Keys.FORCE_ENGLISH, Defaults.FORCE_ENGLISH);
-    }
-
-    /********** SETTERS **********/
-
-    /**
-     * Set the number of folder columns in Portrait orientation.
-     */
-    public static void setFolderColumnsPortrait(int value) {
-        getPrefs().put(Keys.FOLDER_COLUMNS_PORTRAIT, value);
-    }
-
-    /**
-     * Set the number of folder columns in Landscape orientation.
-     */
-    public static void setFolderColumnsLandscape(int value) {
-        getPrefs().put(Keys.FOLDER_COLUMNS_LANDSCAPE, value);
-    }
-
-    /**
-     * Set the number of media columns in Portrait orientation.
-     */
-    public static void setMediaColumnsPortrait(int value) {
-        getPrefs().put(Keys.MEDIA_COLUMNS_PORTRAIT, value);
-    }
-
-    /**
-     * Set the number of media columns in Landscape orientation.
-     */
-    public static void setMediaColumnsLandscape(int value) {
-        getPrefs().put(Keys.MEDIA_COLUMNS_LANDSCAPE, value);
-    }
-
-    /**
-     * Set the Sorting Mode for albums (Name / Size / etc)
-     */
-    public static void setAlbumSortingMode(@NonNull SortingMode sortingMode) {
-        getPrefs().put(Keys.ALBUM_SORTING_MODE, sortingMode.getValue());
-    }
-
-    /**
-     * Set the Sorting Order for albums (Ascending / Descending)
-     */
-    public static void setAlbumSortingOrder(@NonNull SortingOrder sortingOrder) {
-        getPrefs().put(Keys.ALBUM_SORTING_ORDER, sortingOrder.getValue());
     }
 
     /**
@@ -201,20 +214,6 @@ public class Prefs {
      */
     public static void setShowAlbumPath(boolean value) {
         getPrefs().put(Keys.SHOW_ALBUM_PATH, value);
-    }
-
-    /**
-     * Set the Card Style (Material / Flat / Compact / Small)
-     */
-    public static void setCardStyle(@NonNull CardViewStyle cardStyle) {
-        getPrefs().put(Keys.CARD_STYLE, cardStyle.getValue());
-    }
-
-    /**
-     * Set the last version code of Application.
-     */
-    public static void setLastVersionCode(int value) {
-        getPrefs().put(Keys.LAST_VERSION_CODE, value);
     }
 
     /**

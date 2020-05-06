@@ -8,12 +8,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-
-
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -28,16 +24,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.mikepenz.iconics.Iconics;
-import com.mikepenz.iconics.IconicsColor;
-import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.iconics.typeface.IIcon;
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
-import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpicrevived.BuildConfig;
 import com.alienpants.leafpicrevived.R;
@@ -57,6 +43,15 @@ import com.alienpants.leafpicrevived.util.LegacyCompatFileProvider;
 import com.alienpants.leafpicrevived.util.Security;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.mikepenz.iconics.Iconics;
+import com.mikepenz.iconics.IconicsColor;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.typeface.IIcon;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -69,11 +64,12 @@ import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDr
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ABOUT;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ALL_ALBUMS;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_ALL_MEDIA;
-//import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_DONATE;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_HIDDEN_FOLDERS;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_SETTINGS;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_WALLPAPERS;
 import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NavigationItem;
+
+//import static com.alienpants.leafpicrevived.views.navigation_drawer.NavigationDrawer.NAVIGATION_ITEM_DONATE;
 
 /**
  * The Main Activity used to display Albums / Media.
@@ -85,13 +81,6 @@ public class MainActivity extends SharedMediaActivity implements
     public static final String ARGS_PICK_MODE = "pick_mode";
 
     private static final String SAVE_FRAGMENT_MODE = "fragment_mode";
-
-    public @interface FragmentMode {
-        int MODE_ALBUMS = 1001;
-        int MODE_MEDIA = 1002;
-        int MODE_TIMELINE = 1003;
-    }
-
     @BindView(R.id.fab_camera)
     FloatingActionButton fab;
     @BindView(R.id.drawer_layout)
@@ -102,15 +91,13 @@ public class MainActivity extends SharedMediaActivity implements
     Toolbar toolbar;
     @BindView(R.id.coordinator_main_layout)
     CoordinatorLayout mainLayout;
-
     private AlbumsFragment albumsFragment;
     private RvMediaFragment rvMediaFragment;
     private TimelineFragment timelineFragment;
-
     private boolean pickMode = false;
     private Unbinder unbinder;
-
-    @FragmentMode private int fragmentMode;
+    @FragmentMode
+    private int fragmentMode;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -434,7 +421,9 @@ public class MainActivity extends SharedMediaActivity implements
         navigationDrawerView.refresh();
     }
 
-    /**region MENU */
+    /**
+     * region MENU
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -642,5 +631,11 @@ public class MainActivity extends SharedMediaActivity implements
     private void setupUiForTimeline() {
         lockNavigationDrawer();
         updateToolbar(getString(R.string.timeline_toolbar_title), GoogleMaterial.Icon.gmd_arrow_back, v -> goBackToAlbums());
+    }
+
+    public @interface FragmentMode {
+        int MODE_ALBUMS = 1001;
+        int MODE_MEDIA = 1002;
+        int MODE_TIMELINE = 1003;
     }
 }

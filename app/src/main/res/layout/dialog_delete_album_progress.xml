@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
     android:id="@+id/message_card"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,12 +18,12 @@
             <TextView
                 android:id="@+id/text_dialog_title"
                 android:layout_width="match_parent"
-                android:textColor="@color/md_dark_primary_text"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/big_spacing"
+                android:text="Wait when we throw away your memories"
+                android:textColor="@color/md_dark_primary_text"
                 android:textSize="@dimen/sub_big_text"
-                android:textStyle="bold"
-                android:text="Wait when we throw away your memories" />
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/text_dialog_rl"
@@ -34,31 +34,31 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_folders"
-                    android:clipToPadding="false"
-                    android:paddingTop="@dimen/medium_spacing"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/medium_spacing" />
 
                 <ProgressBar
                     android:id="@+id/progress_bar"
-                    android:layout_below="@+id/rv_folders"
-                    android:paddingTop="@dimen/medium_spacing"
-                    android:indeterminate="true"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rv_folders"
+                    android:indeterminate="true"
+                    android:paddingTop="@dimen/medium_spacing" />
 
                 <TextView
                     android:id="@+id/file_name"
                     android:layout_width="match_parent"
-                    android:layout_below="@+id/progress_bar"
-                    android:paddingTop="@dimen/medium_spacing"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:singleLine="false"
-                    android:textStyle="italic"
+                    android:layout_below="@+id/progress_bar"
                     android:layout_alignParentEnd="true"
-                    android:textSize="@dimen/medium_text" />
+                    android:paddingTop="@dimen/medium_spacing"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textSize="@dimen/medium_text"
+                    android:textStyle="italic" />
 
             </RelativeLayout>
         </LinearLayout>

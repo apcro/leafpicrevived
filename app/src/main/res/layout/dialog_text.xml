@@ -1,10 +1,9 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/message_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="2dp"
-    android:id="@+id/message_card">
+    app:cardCornerRadius="2dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,13 +17,13 @@
             <TextView
                 android:id="@+id/text_dialog_title"
                 android:layout_width="match_parent"
-                android:textColor="@color/md_dark_primary_text"
                 android:layout_height="wrap_content"
                 android:background="@color/md_red_500"
                 android:padding="@dimen/big_spacing"
+                android:text="Dialog title..."
+                android:textColor="@color/md_dark_primary_text"
                 android:textSize="@dimen/sub_big_text"
-                android:textStyle="bold"
-                android:text="Dialog title..." />
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/text_dialog_rl"
@@ -36,11 +35,11 @@
                     android:id="@+id/text_dialog_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/sub_big_spacing"
                     android:paddingTop="@dimen/sub_big_spacing"
                     android:paddingRight="@dimen/sub_big_spacing"
-                    android:paddingLeft="@dimen/sub_big_spacing"
-                    android:text="null"
                     android:singleLine="false"
+                    android:text="null"
                     android:textSize="@dimen/medium_text" />
 
             </RelativeLayout>

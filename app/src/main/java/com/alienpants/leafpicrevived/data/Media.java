@@ -11,45 +11,54 @@ import android.provider.MediaStore;
 
 import androidx.exifinterface.media.ExifInterface;
 
-import com.bumptech.glide.signature.ObjectKey;
-import com.drew.lang.GeoLocation;
-import com.drew.lang.annotations.NotNull;
-
 import com.alienpants.leafpicrevived.timeline.data.TimelineItem;
 import com.alienpants.leafpicrevived.util.ArrayUtils;
 import com.alienpants.leafpicrevived.util.MimeTypeUtils;
 import com.alienpants.leafpicrevived.util.StringUtils;
+import com.bumptech.glide.signature.ObjectKey;
+import com.drew.lang.GeoLocation;
+import com.drew.lang.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
 
 // TODO Calvin: Separate out the logic here
-/** Ideally, we should have separate data classes for images, videos & gifs
- *  Base class can be Media, and others should extend
- *  Try to separate out Database logic and projections from this class */
+
+/**
+ * Ideally, we should have separate data classes for images, videos & gifs
+ * Base class can be Media, and others should extend
+ * Try to separate out Database logic and projections from this class
+ */
 public class Media implements TimelineItem, CursorHandler, Parcelable {
 
-    private static final String[] sProjection = new String[] {
+    public static final Parcelable.Creator<Media> CREATOR = new Parcelable.Creator<Media>() {
+        @Override
+        public Media createFromParcel(Parcel source) {
+            return new Media(source);
+        }
+
+        @Override
+        public Media[] newArray(int size) {
+            return new Media[size];
+        }
+    };
+    private static final String[] sProjection = new String[]{
             MediaStore.Images.Media.DATA,
             MediaStore.Images.Media.DATE_TAKEN,
             MediaStore.Images.Media.MIME_TYPE,
             MediaStore.Images.Media.SIZE,
             MediaStore.Images.Media.ORIENTATION
     };
-
     private static final int CURSOR_POS_DATA = ArrayUtils.getIndex(sProjection, MediaStore.Images.Media.DATA);
     private static final int CURSOR_POS_DATE_TAKEN = ArrayUtils.getIndex(sProjection, MediaStore.Images.Media.DATE_TAKEN);
     private static final int CURSOR_POS_MIME_TYPE = ArrayUtils.getIndex(sProjection, MediaStore.Images.Media.MIME_TYPE);
     private static final int CURSOR_POS_SIZE = ArrayUtils.getIndex(sProjection, MediaStore.Images.Media.SIZE);
     private static final int CURSOR_POS_ORIENTATION = ArrayUtils.getIndex(sProjection, MediaStore.Images.Media.ORIENTATION);
-
     private String path = null;
     private long dateModified = -1;
     private String mimeType = MimeTypeUtils.UNKNOWN_MIME_TYPE;
     private int orientation = 0;
-
     private String uriString = null;
-
     private long size = -1;
     private boolean selected = false;
 
@@ -86,21 +95,23 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         this.orientation = cur.getInt(CURSOR_POS_ORIENTATION);
     }
 
-    @Override
-    public Media handle(Cursor cu) {
-        return new Media(cu);
+    protected Media(Parcel in) {
+        this.path = in.readString();
+        this.dateModified = in.readLong();
+        this.mimeType = in.readString();
+        this.orientation = in.readInt();
+        this.uriString = in.readString();
+        this.size = in.readLong();
+        this.selected = in.readByte() != 0;
     }
 
     public static String[] getProjection() {
         return sProjection;
     }
 
-    public void setUri(String uriString) {
-        this.uriString = uriString;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
+    @Override
+    public Media handle(Cursor cu) {
+        return new Media(cu);
     }
 
     public String getMimeType() {
@@ -140,6 +151,10 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         return uriString != null ? Uri.parse(uriString) : Uri.fromFile(new File(path));
     }
 
+    public void setUri(String uriString) {
+        this.uriString = uriString;
+    }
+
     public String getDisplayPath() {
         return path != null ? path : getUri().getEncodedPath();
     }
@@ -158,6 +173,10 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
 
     public String getPath() {
         return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Long getDateModified() {
@@ -230,6 +249,8 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         return super.equals(obj);
     }
 
+    //</editor-fold>
+
     @Deprecated
     private long getDateTaken() {
         /*// TODO: 16/08/16 improved
@@ -251,8 +272,6 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         }
         return false;
     }
-
-    //</editor-fold>
 
     public File getFile() {
         if (path != null) {
@@ -277,28 +296,6 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         dest.writeLong(this.size);
         dest.writeByte(this.selected ? (byte) 1 : (byte) 0);
     }
-
-    protected Media(Parcel in) {
-        this.path = in.readString();
-        this.dateModified = in.readLong();
-        this.mimeType = in.readString();
-        this.orientation = in.readInt();
-        this.uriString = in.readString();
-        this.size = in.readLong();
-        this.selected = in.readByte() != 0;
-    }
-
-    public static final Parcelable.Creator<Media> CREATOR = new Parcelable.Creator<Media>() {
-        @Override
-        public Media createFromParcel(Parcel source) {
-            return new Media(source);
-        }
-
-        @Override
-        public Media[] newArray(int size) {
-            return new Media[size];
-        }
-    };
 
     @Override
     public int getTimelineType() {

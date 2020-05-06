@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2016 The Android Open Source Project
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +14,17 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
-    android:focusable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
     android:keepScreenOn="true">
 
 
     <com.alienpants.leafpicrevived.views.videoplayer.CustomExoPlayerView
         android:id="@+id/player_view"
-        android:focusable="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:focusable="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,17 +33,19 @@
         android:background="#88000000"
         android:orientation="vertical">
 
-        <LinearLayout android:id="@+id/controls_root"
+        <LinearLayout
+            android:id="@+id/controls_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <Button android:id="@+id/retry_button"
+            <Button
+                android:id="@+id/retry_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/retry"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>

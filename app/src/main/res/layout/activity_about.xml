@@ -4,8 +4,8 @@
     android:id="@+id/about_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:liz_background_style="normal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:liz_background_style="normal">
 
     <!--TOOLBAR-->
     <include
@@ -64,7 +64,6 @@
                     </RelativeLayout>
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="accent"
                         android:id="@+id/about_app_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -72,27 +71,28 @@
                         android:padding="@dimen/sub_small_spacing"
                         android:text="LeafPic Revived Gallery"
                         android:textSize="@dimen/big_text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:liz_color_style="accent" />
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="text"
                         android:id="@+id/about_app_light_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="@dimen/sub_small_spacing"
                         android:text="@string/app_light_description"
-                        android:textSize="@dimen/medium_text" />
+                        android:textSize="@dimen/medium_text"
+                        app:liz_color_style="text" />
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="sub_text"
                         android:id="@+id/about_version_item_sub"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="@dimen/sub_small_spacing"
                         android:text="v1.0"
-                        android:textSize="@dimen/medium_text" />
+                        android:textSize="@dimen/medium_text"
+                        app:liz_color_style="sub_text" />
 
                 </LinearLayout>
             </org.horaapps.liz.ui.ThemedCardView>
@@ -115,7 +115,6 @@
                     <!--ABOUT SUPPORT TITLE-->
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="accent"
                         android:id="@+id/about_support_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,7 +122,8 @@
                         android:paddingTop="@dimen/medium_spacing"
                         android:text="@string/about_support"
                         android:textSize="@dimen/medium_text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:liz_color_style="accent" />
 
                     <com.alienpants.leafpicrevived.about.AboutLink
                         android:id="@+id/about_link_report_bug"
@@ -199,7 +199,6 @@
                     android:orientation="vertical">
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="accent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/medium_spacing"
@@ -207,7 +206,8 @@
                         android:paddingBottom="@dimen/small_spacing"
                         android:text="@string/creators"
                         android:textSize="@dimen/medium_text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:liz_color_style="accent" />
 
                     <!-- Donald -->
                     <com.alienpants.leafpicrevived.about.AboutCreator
@@ -247,7 +247,6 @@
                     android:orientation="vertical">
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="accent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/medium_spacing"
@@ -255,7 +254,8 @@
                         android:paddingBottom="@dimen/small_spacing"
                         android:text="@string/major_contributors"
                         android:textSize="@dimen/medium_text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:liz_color_style="accent" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/list_contributors"
@@ -276,7 +276,6 @@
                     android:orientation="vertical">
 
                     <org.horaapps.liz.ui.ThemedTextView
-                        app:liz_color_style="accent"
                         android:id="@+id/about_special_thanks_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -285,44 +284,45 @@
                         android:text="@string/about_special_thanks"
                         android:textColor="@color/md_dark_background"
                         android:textSize="@dimen/medium_text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:liz_color_style="accent" />
 
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/ll_patryk_goworowski"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingEnd="@dimen/sub_big_spacing"
-                        android:paddingStart="@dimen/sub_big_spacing">
+                        android:paddingStart="@dimen/sub_big_spacing"
+                        android:paddingEnd="@dimen/sub_big_spacing">
                         <!--Patryk Goworowski -->
                         <org.horaapps.liz.ui.ThemedTextView
-                            app:liz_color_style="sub_text"
                             android:id="@+id/about_patryk_goworowski_item_sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/small_spacing"
                             android:text="@string/about_special_thanks_patryk_goworowski_sub"
                             android:textColor="@color/md_grey_400"
-                            android:textSize="@dimen/sub_medium_text" />
+                            android:textSize="@dimen/sub_medium_text"
+                            app:liz_color_style="sub_text" />
 
                         <org.horaapps.liz.ui.ThemedTextView
-                            app:liz_color_style="sub_text"
                             android:id="@+id/about_community_members_sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/small_spacing"
                             android:text="@string/about_special_thanks_members_sub"
-                            android:textSize="@dimen/sub_medium_text" />
+                            android:textSize="@dimen/sub_medium_text"
+                            app:liz_color_style="sub_text" />
 
                         <org.horaapps.liz.ui.ThemedTextView
-                            app:liz_color_style="sub_text"
                             android:id="@+id/about_community_you_sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/medium_spacing"
                             android:layout_marginTop="@dimen/small_spacing"
+                            android:layout_marginBottom="@dimen/medium_spacing"
                             android:text="@string/about_special_thanks_you_sub"
-                            android:textSize="@dimen/sub_medium_text" />
+                            android:textSize="@dimen/sub_medium_text"
+                            app:liz_color_style="sub_text" />
 
                     </LinearLayout>
                 </LinearLayout>

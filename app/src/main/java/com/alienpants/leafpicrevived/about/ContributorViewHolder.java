@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.about;
 
 
-
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,10 +24,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class ContributorViewHolder extends ThemedViewHolder {
 
-    @BindView(R.id.contributor_profile_image) CircleImageView profileImage;
-    @BindView(R.id.contributor_name) TextView contribName;
-    @BindView(R.id.contributor_description) TextView contribDescription;
-    @BindView(R.id.contributor_contacts) LinearLayout contribContacts;
+    @BindView(R.id.contributor_profile_image)
+    CircleImageView profileImage;
+    @BindView(R.id.contributor_name)
+    TextView contribName;
+    @BindView(R.id.contributor_description)
+    TextView contribDescription;
+    @BindView(R.id.contributor_contacts)
+    LinearLayout contribContacts;
 
     public ContributorViewHolder(View view) {
         super(view);

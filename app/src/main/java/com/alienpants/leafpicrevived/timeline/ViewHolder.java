@@ -3,22 +3,20 @@ package com.alienpants.leafpicrevived.timeline;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Media;
 import com.alienpants.leafpicrevived.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpicrevived.views.SquareRelativeLayout;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
@@ -46,7 +44,8 @@ public class ViewHolder {
      */
     protected static class TimelineHeaderViewHolder extends TimelineViewHolder {
 
-        @BindView(R.id.timeline_container_header) TextView headerText;
+        @BindView(R.id.timeline_container_header)
+        TextView headerText;
 
         TimelineHeaderViewHolder(View view) {
             super(view);
@@ -68,24 +67,28 @@ public class ViewHolder {
      */
     protected static class TimelineMediaViewHolder extends TimelineViewHolder {
 
-        @BindView(R.id.photo_preview) ImageView imageView;
-        @BindView(R.id.photo_path) TextView path;
+        @BindView(R.id.photo_preview)
+        ImageView imageView;
+        @BindView(R.id.photo_path)
+        TextView path;
         @BindView(R.id.gif_icon)
         ThemedIcon gifIcon;
-        @BindView(R.id.icon) ThemedIcon icon;
-        @BindView(R.id.media_card_layout) SquareRelativeLayout layout;
+        @BindView(R.id.icon)
+        ThemedIcon icon;
+        @BindView(R.id.media_card_layout)
+        SquareRelativeLayout layout;
 
         private Drawable placeholderImage;
-
-        @Override
-        public void refreshTheme(ThemeHelper themeHelper) {
-            icon.setColor(Color.WHITE);
-        }
 
         TimelineMediaViewHolder(View view, @NonNull Drawable placeholder) {
             super(view);
             ButterKnife.bind(this, view);
             this.placeholderImage = placeholder;
+        }
+
+        @Override
+        public void refreshTheme(ThemeHelper themeHelper) {
+            icon.setColor(Color.WHITE);
         }
 
         void bind(@NonNull Media mediaItem, boolean isSelected) {

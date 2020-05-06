@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,365 +11,364 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="2dp">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/affix_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/md_dark_appbar"
+                android:padding="24dp"
+                android:text="@string/affix"
+                android:textColor="@color/md_dark_primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/affix_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/md_dark_appbar"
-                    android:padding="24dp"
-                    android:text="@string/affix"
-                    android:textColor="@color/md_dark_primary_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/affix_scrollView"
-                    android:scrollbarSize="4dip">
+            <ScrollView
+                android:id="@+id/affix_scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarSize="4dip">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                        <!--TIPS-->
+                    <!--TIPS-->
+                    <LinearLayout
+                        android:id="@+id/affix_example"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="@dimen/medium_spacing"
+                        android:orientation="vertical"
+                        android:padding="@dimen/small_spacing">
+
+                        <!--HORIZONTAL-->
                         <LinearLayout
-                            android:id="@+id/affix_example"
+                            android:id="@+id/affix_example_horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/small_spacing"
-                            android:layout_margin="@dimen/medium_spacing"
-                            android:layout_gravity="center_horizontal">
+                            android:orientation="horizontal"
+                            android:weightSum="2">
 
-                            <!--HORIZONTAL-->
-                            <LinearLayout
-                                android:id="@+id/affix_example_horizontal"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/affix_example_horizontal_txt1"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
+                                android:layout_margin="@dimen/small_spacing"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="@dimen/big_spacing"
+                                android:text="Image1"
+                                android:textAlignment="center"
+                                android:textColor="@color/md_dark_background"
+                                android:textSize="@dimen/medium_text" />
 
-                                <TextView
-                                    android:id="@+id/affix_example_horizontal_txt1"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Image1"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_dark_background"
-                                    android:textSize="@dimen/medium_text"
-                                    android:layout_margin="@dimen/small_spacing"
-                                    android:padding="@dimen/big_spacing"
-                                    android:gravity="center"
-                                    android:layout_weight="1"/>
-
-                                <TextView
-                                    android:id="@+id/affix_example_horizontal_txt2"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Image2"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_dark_background"
-                                    android:textSize="@dimen/medium_text"
-                                    android:layout_margin="@dimen/small_spacing"
-                                    android:padding="@dimen/big_spacing"
-                                    android:gravity="center"
-                                    android:layout_weight="1"/>
-
-                            </LinearLayout>
-
-                            <!--VERTICAL-->
-                            <LinearLayout
-                                android:id="@+id/affix_example_vertical"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/affix_example_horizontal_txt2"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:visibility="gone">
+                                android:layout_margin="@dimen/small_spacing"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="@dimen/big_spacing"
+                                android:text="Image2"
+                                android:textAlignment="center"
+                                android:textColor="@color/md_dark_background"
+                                android:textSize="@dimen/medium_text" />
 
-                                <TextView
-                                    android:id="@+id/affix_example_vertical_txt1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Image1"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_dark_background"
-                                    android:textSize="@dimen/medium_text"
-                                    android:layout_margin="@dimen/small_spacing"
-                                    android:padding="@dimen/big_spacing"
-                                    android:gravity="center"/>
-
-                                <TextView
-                                    android:id="@+id/affix_example_vertical_txt2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Image2"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_dark_background"
-                                    android:textSize="@dimen/medium_text"
-                                    android:layout_margin="@dimen/small_spacing"
-                                    android:padding="@dimen/big_spacing"
-                                    android:gravity="center"/>
-
-                            </LinearLayout>
                         </LinearLayout>
 
                         <!--VERTICAL-->
-                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/ll_affix_vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:background="@drawable/ripple"
-                            android:clickable="true">
-
-                            <org.horaapps.liz.ui.ThemedIcon
-                                android:id="@+id/affix_vertical_icon"
-                                app:iiv_icon="gmd-view-agenda"
-                                android:layout_width="@dimen/icon_size"
-                                android:layout_height="@dimen/icon_size"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/big_spacing"
-                                android:layout_marginRight="@dimen/big_spacing"/>
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                android:paddingTop="@dimen/medium_spacing"
-                                android:paddingRight="@dimen/medium_spacing"
-                                android:paddingBottom="@dimen/small_spacing">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:layout_marginEnd="44dp">
-
-                                    <TextView
-                                        android:id="@+id/affix_vertical_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/affix_vertical"
-                                        android:textColor="@color/md_dark_background"
-                                        android:textSize="@dimen/medium_text"/>
-
-                                    <TextView
-                                        android:id="@+id/affix_vertical_sub"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/affix_vertical_sub"
-                                        android:textColor="@color/md_grey_400"
-                                        android:textSize="14sp" />
-
-                                </LinearLayout>
-
-                                <androidx.appcompat.widget.SwitchCompat
-                                    android:id="@+id/affix_vertical_switch"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:button="@null"
-                                    android:hapticFeedbackEnabled="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true"/>
-
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <!-- SAVE HERE -->
-                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/ll_affix_save_here"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:background="@drawable/ripple"
-                            android:clickable="true">
-
-                            <org.horaapps.liz.ui.ThemedIcon
-                                android:id="@+id/save_here_icon"
-                                app:iiv_icon="gmd-save"
-                                android:layout_width="@dimen/icon_size"
-                                android:layout_height="@dimen/icon_size"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/big_spacing"
-                                android:layout_marginRight="@dimen/big_spacing" />
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                android:paddingTop="@dimen/medium_spacing"
-                                android:paddingRight="@dimen/medium_spacing"
-                                android:paddingBottom="@dimen/small_spacing">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:orientation="vertical"
-                                    android:layout_marginEnd="44dp">
-
-                                    <TextView
-                                        android:id="@+id/save_here_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/affix_save_here"
-                                        android:textColor="@color/md_dark_background"
-                                        android:textSize="16sp" />
-
-                                    <TextView
-                                        android:id="@+id/save_here_sub"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/affix_save_here_sub"
-                                        android:textColor="@color/md_grey_400"
-                                        android:textSize="14sp" />
-
-                                </LinearLayout>
-
-                                <androidx.appcompat.widget.SwitchCompat
-                                    android:id="@+id/save_here_switch"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:button="@null"
-                                    android:hapticFeedbackEnabled="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentEnd="true" />
-
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <!--FORMAT-->
-                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/ll_affix_format"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:background="@drawable/ripple"
-                            android:clickable="true"
-                            android:paddingTop="@dimen/small_spacing"
-                            android:paddingRight="@dimen/medium_spacing"
-                            android:paddingBottom="@dimen/small_spacing">
-
-                            <org.horaapps.liz.ui.ThemedIcon
-                                android:id="@+id/affix_format_icon"
-                                app:iiv_icon="gmd-dns"
-                                android:layout_width="@dimen/icon_size"
-                                android:layout_height="@dimen/icon_size"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/big_spacing"
-                                android:layout_marginRight="@dimen/big_spacing" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/compression_settings_title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/compression_settings"
-                                    android:layout_gravity="center_vertical"
-                                    android:textColor="@color/md_dark_background"
-                                    android:textSize="16sp"/>
-
-                                <TextView
-                                    android:id="@+id/affix_format_sub"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/affix_format_sub"
-                                    android:textColor="@color/md_grey_400"
-                                    android:textSize="14sp" />
-
-                                <RadioGroup
-                                    android:id="@+id/radio_format"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingTop="4dp"
-                                    android:orientation="horizontal">
-
-                                    <androidx.recyclerview.widget.AppCompatRadioButton
-                                        android:id="@+id/radio_jpeg"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="JPEG"
-                                        android:checked="true" />
-
-                                    <androidx.recyclerview.widget.AppCompatRadioButton
-                                        android:id="@+id/radio_png"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="PNG" />
-
-                                    <androidx.recyclerview.widget.AppCompatRadioButton
-                                        android:id="@+id/radio_webp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="WebP" />
-
-                                </RadioGroup>
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <!--QUALITY-->
                         <LinearLayout
-                            xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/ll_affix_quality"
+                            android:id="@+id/affix_example_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/affix_example_vertical_txt1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/small_spacing"
+                                android:gravity="center"
+                                android:padding="@dimen/big_spacing"
+                                android:text="Image1"
+                                android:textAlignment="center"
+                                android:textColor="@color/md_dark_background"
+                                android:textSize="@dimen/medium_text" />
+
+                            <TextView
+                                android:id="@+id/affix_example_vertical_txt2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/small_spacing"
+                                android:gravity="center"
+                                android:padding="@dimen/big_spacing"
+                                android:text="Image2"
+                                android:textAlignment="center"
+                                android:textColor="@color/md_dark_background"
+                                android:textSize="@dimen/medium_text" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--VERTICAL-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/ll_affix_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:orientation="horizontal">
+
+                        <org.horaapps.liz.ui.ThemedIcon
+                            android:id="@+id/affix_vertical_icon"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/big_spacing"
+                            android:layout_marginRight="@dimen/big_spacing"
+                            app:iiv_icon="gmd-view-agenda" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:background="@drawable/ripple"
-                            android:clickable="true"
-                            android:paddingTop="@dimen/small_spacing"
+                            android:paddingTop="@dimen/medium_spacing"
                             android:paddingRight="@dimen/medium_spacing"
                             android:paddingBottom="@dimen/small_spacing">
 
-                            <org.horaapps.liz.ui.ThemedIcon
-                                android:id="@+id/affix_quality_icon"
-                                app:iiv_icon="gmd-high-quality"
-                                android:layout_width="@dimen/icon_size"
-                                android:layout_height="@dimen/icon_size"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="44dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/affix_vertical_title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/affix_vertical"
+                                    android:textColor="@color/md_dark_background"
+                                    android:textSize="@dimen/medium_text" />
+
+                                <TextView
+                                    android:id="@+id/affix_vertical_sub"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/affix_vertical_sub"
+                                    android:textColor="@color/md_grey_400"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/affix_vertical_switch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/big_spacing"
-                                android:layout_marginRight="@dimen/big_spacing"/>
+                                android:button="@null"
+                                android:hapticFeedbackEnabled="true" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!-- SAVE HERE -->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/ll_affix_save_here"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:orientation="horizontal">
+
+                        <org.horaapps.liz.ui.ThemedIcon
+                            android:id="@+id/save_here_icon"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/big_spacing"
+                            android:layout_marginRight="@dimen/big_spacing"
+                            app:iiv_icon="gmd-save" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/medium_spacing"
+                            android:paddingRight="@dimen/medium_spacing"
+                            android:paddingBottom="@dimen/small_spacing">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:layout_marginEnd="44dp"
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/affix_quality_title"
-                                    android:layout_width="match_parent"
+                                    android:id="@+id/save_here_title"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Quality 50"
+                                    android:text="@string/affix_save_here"
+                                    android:textColor="@color/md_dark_background"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/save_here_sub"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/affix_save_here_sub"
                                     android:textColor="@color/md_grey_400"
-                                    android:paddingBottom="3dp"
                                     android:textSize="14sp" />
 
-                                <SeekBar
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:progress="50"
-                                    android:max="100"
-                                    android:id="@+id/seek_bar_quality" />
-
                             </LinearLayout>
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/save_here_switch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_vertical"
+                                android:button="@null"
+                                android:hapticFeedbackEnabled="true" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!--FORMAT-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/ll_affix_format"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/small_spacing"
+                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingBottom="@dimen/small_spacing">
+
+                        <org.horaapps.liz.ui.ThemedIcon
+                            android:id="@+id/affix_format_icon"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/big_spacing"
+                            android:layout_marginRight="@dimen/big_spacing"
+                            app:iiv_icon="gmd-dns" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/compression_settings_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/compression_settings"
+                                android:textColor="@color/md_dark_background"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/affix_format_sub"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/affix_format_sub"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="14sp" />
+
+                            <RadioGroup
+                                android:id="@+id/radio_format"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="4dp">
+
+                                <androidx.recyclerview.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_jpeg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="JPEG" />
+
+                                <androidx.recyclerview.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_png"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PNG" />
+
+                                <androidx.recyclerview.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_webp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="WebP" />
+
+                            </RadioGroup>
                         </LinearLayout>
+                    </LinearLayout>
+
+                    <!--QUALITY-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/ll_affix_quality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/small_spacing"
+                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingBottom="@dimen/small_spacing">
+
+                        <org.horaapps.liz.ui.ThemedIcon
+                            android:id="@+id/affix_quality_icon"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/big_spacing"
+                            android:layout_marginRight="@dimen/big_spacing"
+                            app:iiv_icon="gmd-high-quality" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/affix_quality_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="3dp"
+                                android:text="Quality 50"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="14sp" />
+
+                            <SeekBar
+                                android:id="@+id/seek_bar_quality"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:max="100"
+                                android:progress="50" />
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-                </ScrollView>
-            </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

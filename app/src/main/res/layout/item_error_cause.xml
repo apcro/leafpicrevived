@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.horaapps.liz.ui.ThemedLinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<org.horaapps.liz.ui.ThemedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <org.horaapps.liz.ui.ThemedTextView
+        android:id="@+id/error_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/error_title"
-        app:liz_color_style="text"/>
+        app:liz_color_style="text" />
 
     <org.horaapps.liz.ui.ThemedLinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/error_causes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="@dimen/small_spacing"
-        android:layout_height="wrap_content">
+        android:paddingStart="@dimen/small_spacing">
 
     </org.horaapps.liz.ui.ThemedLinearLayout>
 

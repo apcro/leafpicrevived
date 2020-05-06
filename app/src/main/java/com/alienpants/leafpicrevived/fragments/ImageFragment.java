@@ -2,30 +2,21 @@ package com.alienpants.leafpicrevived.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.alienpants.leafpicrevived.util.BitmapUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
-
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Media;
+import com.alienpants.leafpicrevived.util.BitmapUtils;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 /**
  * A Media Fragment for showing an Image (static)

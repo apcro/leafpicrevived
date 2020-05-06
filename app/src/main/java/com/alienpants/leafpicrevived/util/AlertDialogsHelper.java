@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.Uri;
-
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -33,18 +32,18 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
+import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.adapters.AlbumsAdapter;
 import com.alienpants.leafpicrevived.data.Album;
+import com.alienpants.leafpicrevived.data.Media;
+import com.alienpants.leafpicrevived.data.metadata.MediaDetailsMap;
+import com.alienpants.leafpicrevived.data.metadata.MetadataHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.drew.lang.GeoLocation;
 import com.orhanobut.hawk.Hawk;
 
-import com.alienpants.leafpicrevived.R;
-import com.alienpants.leafpicrevived.data.Media;
-import com.alienpants.leafpicrevived.data.metadata.MediaDetailsMap;
-import com.alienpants.leafpicrevived.data.metadata.MetadataHelper;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 
@@ -89,7 +88,8 @@ public class AlertDialogsHelper {
             Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
             f.setAccessible(true);
             f.set(editText, null);
-        } catch (Exception ignored) { }
+        } catch (Exception ignored) {
+        }
 
         ((RelativeLayout) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.container_edit_text)).addView(editText);
 
@@ -97,7 +97,7 @@ public class AlertDialogsHelper {
         return dialogBuilder.create();
     }
 
-    public static  AlertDialog getAdvancedSharingDialog(ThemedActivity activity, Uri uri, Intent advancedShare, int imgWidth, int imgHeight) {
+    public static AlertDialog getAdvancedSharingDialog(ThemedActivity activity, Uri uri, Intent advancedShare, int imgWidth, int imgHeight) {
 
         AlertDialog.Builder advancedSharingBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
         View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_advanced_sharing, null);
@@ -112,11 +112,11 @@ public class AlertDialogsHelper {
         RadioButton r50lighter = dialogLayout.findViewById(R.id.radio_50lighter);
         RadioButton r70lighter = dialogLayout.findViewById(R.id.radio_70lighter);
 
-        String original = " ("+imgWidth+"x"+imgHeight+")";
-        rOriginal.setText(rOriginal.getText()+original);
-        r25lighter.setText(r25lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 75))+"x"+String.valueOf(getDim(imgHeight, 75))+")");
-        r50lighter.setText(r50lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 50))+"x"+String.valueOf(getDim(imgHeight, 50))+")");
-        r70lighter.setText(r70lighter.getText()+" ("+String.valueOf(getDim(imgWidth, 30))+"x"+String.valueOf(getDim(imgHeight, 30))+")");
+        String original = " (" + imgWidth + "x" + imgHeight + ")";
+        rOriginal.setText(rOriginal.getText() + original);
+        r25lighter.setText(r25lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 75)) + "x" + String.valueOf(getDim(imgHeight, 75)) + ")");
+        r50lighter.setText(r50lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 50)) + "x" + String.valueOf(getDim(imgHeight, 50)) + ")");
+        r70lighter.setText(r70lighter.getText() + " (" + String.valueOf(getDim(imgWidth, 30)) + "x" + String.valueOf(getDim(imgHeight, 30)) + ")");
 
         activity.themeRadioButton(rOriginal);
         activity.themeRadioButton(r25lighter);
@@ -134,10 +134,10 @@ public class AlertDialogsHelper {
                         resizeImage(activity, uri, getDim(imgWidth, 75), getDim(imgHeight, 75), advancedShare);
                         break;
                     case R.id.radio_50lighter:
-                        resizeImage(activity, uri,getDim(imgWidth, 50), getDim(imgHeight, 50), advancedShare);
+                        resizeImage(activity, uri, getDim(imgWidth, 50), getDim(imgHeight, 50), advancedShare);
                         break;
                     case R.id.radio_70lighter:
-                        resizeImage(activity, uri,getDim(imgWidth, 30), getDim(imgHeight, 30), advancedShare);
+                        resizeImage(activity, uri, getDim(imgWidth, 30), getDim(imgHeight, 30), advancedShare);
                         break;
                 }
             }
@@ -146,7 +146,7 @@ public class AlertDialogsHelper {
         return advancedSharingBuilder.create();
     }
 
-    public static void resizeImage(Activity activity, Uri uri, int width_px, int height_px, Intent adv){
+    public static void resizeImage(Activity activity, Uri uri, int width_px, int height_px, Intent adv) {
         Glide.with(activity)
                 .asBitmap()
                 .load(uri)
@@ -158,18 +158,18 @@ public class AlertDialogsHelper {
                 });
     }
 
-    public static void saveResizedImage(Bitmap bitmap, Activity activity, Uri uri, Intent advancedShare){
+    public static void saveResizedImage(Bitmap bitmap, Activity activity, Uri uri, Intent advancedShare) {
         try {
             String fileName = uri.getLastPathSegment();
             File tempImage;
             OutputStream os;
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);;
-            if (fileName.toLowerCase().endsWith(".png"))
-            {
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
+            ;
+            if (fileName.toLowerCase().endsWith(".png")) {
                 tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".png", activity.getApplicationContext().getCacheDir());
                 os = new FileOutputStream(tempImage);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
-            }else{
+            } else {
                 tempImage = File.createTempFile("img_" + dateFormatter.format(new Date()).toString(), ".jpg", activity.getApplicationContext().getCacheDir());
                 os = new FileOutputStream(tempImage);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
@@ -183,12 +183,12 @@ public class AlertDialogsHelper {
         }
     }
 
-    public static int getDim (int number, int percent){
-        return Math.round(number*percent/100);
+    public static int getDim(int number, int percent) {
+        return Math.round(number * percent / 100);
     }
 
-    public static AlertDialog getTextDialog(ThemedActivity activity, @StringRes int title, @StringRes int Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity,activity.getDialogStyle());
+    public static AlertDialog getTextDialog(ThemedActivity activity, @StringRes int title, @StringRes int Message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity, activity.getDialogStyle());
         View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_text, null);
 
         TextView dialogTitle = dialogLayout.findViewById(R.id.text_dialog_title);
@@ -203,7 +203,7 @@ public class AlertDialogsHelper {
         return builder.create();
     }
 
-    public static AlertDialog getProgressDialog(final ThemedActivity activity,  String title, String message){
+    public static AlertDialog getProgressDialog(final ThemedActivity activity, String title, String message) {
         AlertDialog.Builder progressDialog = new AlertDialog.Builder(activity, activity.getDialogStyle());
         View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_progress, null);
         TextView dialogTitle = dialogLayout.findViewById(R.id.progress_dialog_title);
@@ -269,7 +269,7 @@ public class AlertDialogsHelper {
         });
 
         detailsDialogBuilder.setView(dialogLayout);
-        loadDetails(dialogLayout,activity, mainDetails);
+        loadDetails(dialogLayout, activity, mainDetails);
         return detailsDialogBuilder.create();
     }
 
@@ -277,9 +277,9 @@ public class AlertDialogsHelper {
         AlertDialog.Builder detailsDialogBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
         MetadataHelper mdHelper = new MetadataHelper();
         MediaDetailsMap<String, String> mainAlbumDetails;
-        if(adapter.getSelectedCount() > 1){
-            mainAlbumDetails = mdHelper.getSelectedAlbumsDetails(activity, adapter);}
-        else {
+        if (adapter.getSelectedCount() > 1) {
+            mainAlbumDetails = mdHelper.getSelectedAlbumsDetails(activity, adapter);
+        } else {
             mainAlbumDetails = mdHelper.getFirstSelectedAlbumDetails(activity, album);
         }
         final View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_media_detail, null);
@@ -294,7 +294,7 @@ public class AlertDialogsHelper {
     private static void loadDetails(View dialogLayout, ThemedActivity activity, MediaDetailsMap<String, String> metadata) {
         LinearLayout detailsTable = dialogLayout.findViewById(R.id.ll_list_details);
 
-        int tenPxInDp = Measure.pxToDp (10, activity);
+        int tenPxInDp = Measure.pxToDp(10, activity);
 
         for (int index : metadata.getKeySet()) {
             LinearLayout row = new LinearLayout(activity.getApplicationContext());
@@ -322,7 +322,7 @@ public class AlertDialogsHelper {
 
     private static void showMoreDetails(View dialogLayout, ThemedActivity activity, Media media) {
         MediaDetailsMap<String, String> metadata = new MediaDetailsMap<>();//media.getAllDetails();
-        loadDetails(dialogLayout ,activity , metadata);
+        loadDetails(dialogLayout, activity, metadata);
     }
 
     public static AlertDialog showChangelogDialog(final ThemedActivity activity) {

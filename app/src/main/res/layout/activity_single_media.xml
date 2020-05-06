@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/PhotoPager_Layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,12 +12,11 @@
         android:background="@color/md_dark_appbar"
         android:windowActionBarOverlay="true" />
 
-    <com.alienpants.leafpicrevived.views.HackyViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.alienpants.leafpicrevived.views.HackyViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/photos_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-    <include layout="@layout/there_is_nothing_to_show"/>
+    <include layout="@layout/there_is_nothing_to_show" />
 
 </RelativeLayout>

@@ -26,7 +26,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -42,6 +41,14 @@ import androidx.annotation.CallSuper;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.alienpants.leafpicrevived.R;
+import com.alienpants.leafpicrevived.activities.base.BaseActivity;
+import com.alienpants.leafpicrevived.util.Measure;
+import com.alienpants.leafpicrevived.util.StringUtils;
+import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.alienpants.leafpicrevived.views.videoplayer.CustomExoPlayerView;
+import com.alienpants.leafpicrevived.views.videoplayer.CustomPlayBackController;
+import com.alienpants.leafpicrevived.views.videoplayer.TrackSelectionHelper;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -75,15 +82,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.util.Util;
-
-import com.alienpants.leafpicrevived.R;
-import com.alienpants.leafpicrevived.activities.base.BaseActivity;
-import com.alienpants.leafpicrevived.util.Measure;
-import com.alienpants.leafpicrevived.util.StringUtils;
-import com.alienpants.leafpicrevived.util.preferences.Prefs;
-import com.alienpants.leafpicrevived.views.videoplayer.CustomExoPlayerView;
-import com.alienpants.leafpicrevived.views.videoplayer.CustomPlayBackController;
-import com.alienpants.leafpicrevived.views.videoplayer.TrackSelectionHelper;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.net.CookieHandler;
@@ -100,34 +98,28 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
 
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
     private static final CookieManager DEFAULT_COOKIE_MANAGER;
+
     static {
         DEFAULT_COOKIE_MANAGER = new CookieManager();
         DEFAULT_COOKIE_MANAGER.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
     }
 
+    Context context;
+    Toolbar toolbar;
+    View rootView;
     private Handler mainHandler;
     private CustomExoPlayerView simpleExoPlayerView;
-
     private DataSource.Factory mediaDataSourceFactory;
     private SimpleExoPlayer player;
     private MappingTrackSelector trackSelector;
     private TrackSelectionHelper trackSelectionHelper;
-
     private TrackGroupArray lastSeenTrackGroupArray;
-
     private int resumeWindow;
     private long resumePosition;
     private boolean shouldAutoPlay;
     private boolean fullScreenMode;
     private boolean inErrorState;
-
-    Context context;
-
     private int video, audio, text;
-    Toolbar toolbar;
-
-    View rootView;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -216,7 +208,9 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         return simpleExoPlayerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
     }
 
-    /** Internal methods */
+    /**
+     * Internal methods
+     */
     private void initializePlayer() {
         Intent intent = getIntent();
         boolean needNewPlayer = player == null;
@@ -310,12 +304,17 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
     private MediaSource buildMediaSource(Uri uri, String overrideExtension) {
         int type = Util.inferContentType(!TextUtils.isEmpty(overrideExtension) ? "." + overrideExtension : uri.getLastPathSegment());
         switch (type) {
-            case C.TYPE_SS:return new SsMediaSource(uri, buildDataSourceFactory(false), new DefaultSsChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
-            case C.TYPE_OTHER:return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(), mainHandler, null);
-            case C.TYPE_DASH:return new DashMediaSource(uri, buildDataSourceFactory(false), new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
+            case C.TYPE_SS:
+                return new SsMediaSource(uri, buildDataSourceFactory(false), new DefaultSsChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
+            case C.TYPE_OTHER:
+                return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(), mainHandler, null);
+            case C.TYPE_DASH:
+                return new DashMediaSource(uri, buildDataSourceFactory(false), new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
 //            case C.TYPE_HLS:return new HlsMediaSource(uri, mediaDataSourceFactory, mainHandler, null);
-            case C.TYPE_HLS: throw new IllegalStateException("Unsupported type: " + type);
-            default: throw new IllegalStateException("Unsupported type: " + type);
+            case C.TYPE_HLS:
+                throw new IllegalStateException("Unsupported type: " + type);
+            default:
+                throw new IllegalStateException("Unsupported type: " + type);
         }
     }
 
@@ -351,73 +350,6 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
 
     private HttpDataSource.Factory buildHttpDataSourceFactory(boolean useBandwidthMeter) {
         return new DefaultHttpDataSourceFactory(Util.getUserAgent(this, "LeafPic"), useBandwidthMeter ? BANDWIDTH_METER : null);
-    }
-
-    private class PlayerEventListener extends Player.DefaultEventListener {
-
-        @Override
-        public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-            if (playbackState == Player.STATE_ENDED)
-                showControls();
-            supportInvalidateOptionsMenu();
-        }
-
-        @Override
-        public void onPositionDiscontinuity(@Player.DiscontinuityReason int reason) {
-            if (inErrorState) {
-                // This will only occur if the user has performed a seek whilst in the error state. Update
-                // the resume position so that if the user then retries, playback will resume from the
-                // position to which they seeked.
-                updateResumePosition();
-            }
-        }
-
-        @Override
-        public void onPlayerError(ExoPlaybackException e) {
-            String errorString = null;
-            if (e.type == ExoPlaybackException.TYPE_RENDERER) {
-                Exception cause = e.getRendererException();
-                if (cause instanceof DecoderInitializationException) {
-                    // Special case for decoder initialization failures.
-                    DecoderInitializationException decoderInitializationException =
-                            (DecoderInitializationException) cause;
-                    if (decoderInitializationException.decoderName == null)
-                        if (decoderInitializationException.getCause() instanceof DecoderQueryException)
-                            errorString = getString(R.string.error_querying_decoders);
-                        else if (decoderInitializationException.secureDecoderRequired)
-                            errorString = getString(R.string.error_no_secure_decoder, decoderInitializationException.mimeType);
-                        else
-                            errorString = getString(R.string.error_no_decoder, decoderInitializationException.mimeType);
-                    else
-                        errorString = getString(R.string.error_instantiating_decoder, decoderInitializationException.decoderName);
-                }
-            }
-            if (errorString != null)
-                showToast(errorString);
-            inErrorState = true;
-            supportInvalidateOptionsMenu();
-            showControls();
-        }
-
-        @Override
-        @SuppressWarnings("ReferenceEquality")
-        public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
-            if (trackGroups != lastSeenTrackGroupArray) {
-                MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
-                if (mappedTrackInfo != null) {
-                    if (mappedTrackInfo.getTrackTypeRendererSupport(C.TRACK_TYPE_VIDEO)
-                            == MappedTrackInfo.RENDERER_SUPPORT_UNSUPPORTED_TRACKS) {
-                        showToast(R.string.error_unsupported_video);
-                    }
-                    if (mappedTrackInfo.getTrackTypeRendererSupport(C.TRACK_TYPE_AUDIO)
-                            == MappedTrackInfo.RENDERER_SUPPORT_UNSUPPORTED_TRACKS) {
-                        showToast(R.string.error_unsupported_audio);
-                    }
-                }
-                lastSeenTrackGroupArray = trackGroups;
-            }
-        }
-
     }
 
     @Override
@@ -510,7 +442,7 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
                 }
                 return true;
             case R.id.loop_video:
-                if(item.isChecked()) {
+                if (item.isChecked()) {
                     item.setChecked(false);
                     Prefs.setLoopVideo(false);
                     player.setRepeatMode(Player.REPEAT_MODE_OFF);
@@ -573,7 +505,7 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         });
     }
 
-    private void showControls(){
+    private void showControls() {
         runOnUiThread(() -> {
             int rotation = (((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay()).getRotation();
             if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) { //Landscape
@@ -597,9 +529,9 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
 
     @Override
     public void onVisibilityChange(int visibility) {
-        if(visibility == View.GONE)
+        if (visibility == View.GONE)
             hideControls();
-        else if(visibility == View.VISIBLE)
+        else if (visibility == View.VISIBLE)
             showControls();
     }
 
@@ -617,5 +549,72 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         colorAnimation.setDuration(240);
         colorAnimation.addUpdateListener(animator -> rootView.setBackgroundColor((Integer) animator.getAnimatedValue()));
         colorAnimation.start();
+    }
+
+    private class PlayerEventListener extends Player.DefaultEventListener {
+
+        @Override
+        public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+            if (playbackState == Player.STATE_ENDED)
+                showControls();
+            supportInvalidateOptionsMenu();
+        }
+
+        @Override
+        public void onPositionDiscontinuity(@Player.DiscontinuityReason int reason) {
+            if (inErrorState) {
+                // This will only occur if the user has performed a seek whilst in the error state. Update
+                // the resume position so that if the user then retries, playback will resume from the
+                // position to which they seeked.
+                updateResumePosition();
+            }
+        }
+
+        @Override
+        public void onPlayerError(ExoPlaybackException e) {
+            String errorString = null;
+            if (e.type == ExoPlaybackException.TYPE_RENDERER) {
+                Exception cause = e.getRendererException();
+                if (cause instanceof DecoderInitializationException) {
+                    // Special case for decoder initialization failures.
+                    DecoderInitializationException decoderInitializationException =
+                            (DecoderInitializationException) cause;
+                    if (decoderInitializationException.decoderName == null)
+                        if (decoderInitializationException.getCause() instanceof DecoderQueryException)
+                            errorString = getString(R.string.error_querying_decoders);
+                        else if (decoderInitializationException.secureDecoderRequired)
+                            errorString = getString(R.string.error_no_secure_decoder, decoderInitializationException.mimeType);
+                        else
+                            errorString = getString(R.string.error_no_decoder, decoderInitializationException.mimeType);
+                    else
+                        errorString = getString(R.string.error_instantiating_decoder, decoderInitializationException.decoderName);
+                }
+            }
+            if (errorString != null)
+                showToast(errorString);
+            inErrorState = true;
+            supportInvalidateOptionsMenu();
+            showControls();
+        }
+
+        @Override
+        @SuppressWarnings("ReferenceEquality")
+        public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+            if (trackGroups != lastSeenTrackGroupArray) {
+                MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
+                if (mappedTrackInfo != null) {
+                    if (mappedTrackInfo.getTrackTypeRendererSupport(C.TRACK_TYPE_VIDEO)
+                            == MappedTrackInfo.RENDERER_SUPPORT_UNSUPPORTED_TRACKS) {
+                        showToast(R.string.error_unsupported_video);
+                    }
+                    if (mappedTrackInfo.getTrackTypeRendererSupport(C.TRACK_TYPE_AUDIO)
+                            == MappedTrackInfo.RENDERER_SUPPORT_UNSUPPORTED_TRACKS) {
+                        showToast(R.string.error_unsupported_audio);
+                    }
+                }
+                lastSeenTrackGroupArray = trackGroups;
+            }
+        }
+
     }
 }

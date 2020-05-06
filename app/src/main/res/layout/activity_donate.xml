@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/donate_background"
     android:layout_width="match_parent"
@@ -16,9 +15,9 @@
 
     <ScrollView
         android:id="@+id/donateAct_scrollView"
-        android:scrollbarSize="@dimen/scroll_bar_size"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="@dimen/scroll_bar_size">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,18 +29,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation"
+                android:clickable="true"
                 android:foreground="@drawable/ripple"
-                android:clickable="true">
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/ll_about_app_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -52,18 +50,18 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_gravity="center_vertical"
-                            app:iiv_icon="faw-gift"
-                            android:layout_margin="@dimen/big_spacing" />
+                            android:layout_margin="@dimen/big_spacing"
+                            app:iiv_icon="faw-gift" />
 
                         <TextView
                             android:id="@+id/team_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/md_dark_background"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/team_name"
+                            android:textColor="@color/md_dark_background"
                             android:textSize="@dimen/big_text"
-                            android:textStyle="bold"
-                            android:layout_gravity="center_vertical" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -71,10 +69,10 @@
                         android:id="@+id/donate_header_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/donate_header_text"
-                        android:paddingBottom="@dimen/medium_spacing"
                         android:paddingLeft="@dimen/big_spacing"
                         android:paddingRight="@dimen/big_spacing"
+                        android:paddingBottom="@dimen/medium_spacing"
+                        android:text="@string/donate_header_text"
                         android:textColor="@color/md_dark_background"
                         android:textSize="@dimen/medium_text" />
 
@@ -87,9 +85,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
-                app:cardElevation="@dimen/card_elevation"
+                android:clickable="true"
                 android:foreground="@drawable/ripple"
-                android:clickable="true">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,8 +95,7 @@
                     android:orientation="vertical">
 
                     <!--TITLE-->
-                    <LinearLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/ll_donate_googleplay_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -129,8 +126,8 @@
                         android:id="@+id/donate_googleplay_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingRight="@dimen/big_spacing"
                         android:paddingLeft="@dimen/big_spacing"
+                        android:paddingRight="@dimen/big_spacing"
                         android:text="@string/google_takes"
                         android:textColor="@color/md_dark_background"
                         android:textSize="@dimen/medium_text" />
@@ -140,24 +137,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_spacing"
-                        android:layout_marginEnd="@dimen/big_spacing"
                         android:layout_marginTop="@dimen/small_spacing"
+                        android:layout_marginEnd="@dimen/big_spacing"
                         android:layout_marginBottom="@dimen/small_spacing"
                         android:gravity="center"
                         android:max="9" />
 
                     <Button
+                        android:id="@+id/button_donate_play_store"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/small_spacing"
+                        android:layout_gravity="end"
                         android:layout_marginStart="@dimen/medium_spacing"
                         android:layout_marginEnd="@dimen/big_spacing"
                         android:layout_marginBottom="@dimen/medium_spacing"
-                        android:layout_gravity="end"
-                        android:id="@+id/button_donate_play_store"
+                        android:clickable="true"
                         android:elevation="@dimen/fab_elevation"
-                        android:text="@string/donate"
-                        android:clickable="true" />
+                        android:padding="@dimen/small_spacing"
+                        android:text="@string/donate" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -168,17 +165,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
-                app:cardElevation="@dimen/card_elevation"
+                android:clickable="true"
                 android:foreground="@drawable/ripple"
-                android:clickable="true">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/ll_donate_paypal_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,8 +185,8 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_gravity="center_vertical"
-                            app:iiv_icon="faw-paypal"
-                            android:layout_margin="@dimen/big_spacing" />
+                            android:layout_margin="@dimen/big_spacing"
+                            app:iiv_icon="faw-paypal" />
 
                         <TextView
                             android:id="@+id/donate_paypal_item_title"
@@ -209,24 +205,24 @@
                         android:id="@+id/donate_paypal_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/big_spacing"
+                        android:paddingRight="@dimen/big_spacing"
                         android:text="@string/paypal_text"
                         android:textColor="@color/md_dark_background"
-                        android:textSize="@dimen/medium_text"
-                        android:paddingRight="@dimen/big_spacing"
-                        android:paddingLeft="@dimen/big_spacing" />
+                        android:textSize="@dimen/medium_text" />
 
                     <Button
+                        android:id="@+id/button_donate_paypal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/small_spacing"
+                        android:layout_gravity="end"
                         android:layout_marginStart="@dimen/medium_spacing"
                         android:layout_marginEnd="@dimen/big_spacing"
                         android:layout_marginBottom="@dimen/medium_spacing"
-                        android:layout_gravity="end"
-                        android:id="@+id/button_donate_paypal"
+                        android:clickable="true"
                         android:elevation="@dimen/fab_elevation"
-                        android:text="@string/donate"
-                        android:clickable="true"/>
+                        android:padding="@dimen/small_spacing"
+                        android:text="@string/donate" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -237,9 +233,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
-                app:cardElevation="@dimen/card_elevation"
+                android:clickable="true"
                 android:foreground="@drawable/ripple"
-                android:clickable="true">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -247,8 +243,7 @@
                     android:orientation="vertical">
 
                     <!--TITLE-->
-                    <LinearLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/ll_donate_bitcoin_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -259,8 +254,8 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_gravity="center_vertical"
-                            app:iiv_icon="faw-btc"
-                            android:layout_margin="@dimen/big_spacing" />
+                            android:layout_margin="@dimen/big_spacing"
+                            app:iiv_icon="faw-btc" />
 
                         <TextView
                             android:id="@+id/donate_bitcoin_item_title"
@@ -278,13 +273,13 @@
                         android:id="@+id/donate_bitcoin_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/medium_spacing"
                         android:text="13psCBkxAjvvssSDHHGGagG2R8b4SraVyu"
                         android:textColor="@color/md_dark_background"
-                        android:textSize="@dimen/medium_text"
-                        android:background="@drawable/ripple"
-                        android:clickable="true" />
+                        android:textSize="@dimen/medium_text" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -42,18 +41,18 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/medium_spacing"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="@dimen/medium_spacing">
 
                         <TextView
                             android:id="@+id/text_view_portrait"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/medium_text"
+                            android:paddingBottom="@dimen/small_spacing"
                             android:text="@string/portrait"
                             android:textColor="@color/md_blue_500"
-                            android:textStyle="bold"
-                            android:paddingBottom="@dimen/small_spacing" />
+                            android:textSize="@dimen/medium_text"
+                            android:textStyle="bold" />
 
                         <!-- FOLDERS -->
                         <LinearLayout
@@ -65,31 +64,31 @@
                                 android:id="@+id/folders_title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textSize="@dimen/medium_text"
-                                android:text="Folders columns"/>
+                                android:text="Folders columns"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="@dimen/medium_text" />
 
                             <TextView
                                 android:id="@+id/n_columns_folders"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/sub_small_spacing"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textStyle="italic|bold"
+                                android:text="2"
+                                android:textColor="@color/md_grey_400"
                                 android:textSize="@dimen/medium_text"
-                                android:text="2"/>
+                                android:textStyle="italic|bold" />
 
                         </LinearLayout>
 
                         <SeekBar
+                            android:id="@+id/seek_bar_n_columns_folders"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/seek_bar_n_columns_folders"
                             android:layout_marginTop="@dimen/small_spacing"
                             android:layout_marginBottom="@dimen/small_spacing"
-                            android:max="5"/>
+                            android:max="5" />
 
                         <!-- FOLDERS -->
                         <LinearLayout
@@ -101,29 +100,29 @@
                                 android:id="@+id/media_title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textSize="@dimen/medium_text"
-                                android:text="Media columns"/>
+                                android:text="Media columns"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="@dimen/medium_text" />
 
                             <TextView
                                 android:id="@+id/n_columns_media"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:textColor="@color/md_grey_400"
-                                android:textStyle="italic|bold"
                                 android:paddingBottom="@dimen/sub_small_spacing"
+                                android:text="3"
+                                android:textColor="@color/md_grey_400"
                                 android:textSize="@dimen/medium_text"
-                                android:text="3" />
+                                android:textStyle="italic|bold" />
 
                         </LinearLayout>
 
                         <SeekBar
+                            android:id="@+id/seek_bar_n_columns_media"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/small_spacing"
-                            android:id="@+id/seek_bar_n_columns_media"
                             android:max="6" />
 
                     </LinearLayout>
@@ -132,18 +131,18 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/medium_spacing"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="@dimen/medium_spacing">
 
                         <TextView
                             android:id="@+id/text_view_landscape"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/medium_text"
-                            android:textColor="@color/md_blue_500"
-                            android:textStyle="bold"
+                            android:paddingBottom="@dimen/small_spacing"
                             android:text="@string/landscape"
-                            android:paddingBottom="@dimen/small_spacing"/>
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/medium_text"
+                            android:textStyle="bold" />
 
                         <!-- FOLDERS -->
                         <LinearLayout
@@ -155,31 +154,31 @@
                                 android:id="@+id/folders_title_landscape"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textSize="@dimen/medium_text"
-                                android:text="Folders columns"/>
+                                android:text="Folders columns"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="@dimen/medium_text" />
 
                             <TextView
                                 android:id="@+id/n_columns_folders_landscape"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/sub_small_spacing"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textStyle="italic|bold"
+                                android:text="3"
+                                android:textColor="@color/md_grey_400"
                                 android:textSize="@dimen/medium_text"
-                                android:text="3" />
+                                android:textStyle="italic|bold" />
 
                         </LinearLayout>
 
                         <SeekBar
+                            android:id="@+id/seek_bar_n_columns_folders_landscape"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/seek_bar_n_columns_folders_landscape"
                             android:layout_marginTop="@dimen/small_spacing"
                             android:layout_marginBottom="@dimen/small_spacing"
-                            android:max="8"/>
+                            android:max="8" />
 
                         <!-- FOLDERS -->
                         <LinearLayout
@@ -191,30 +190,30 @@
                                 android:id="@+id/media_title_landscape"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/md_grey_400"
                                 android:paddingBottom="@dimen/sub_small_spacing"
-                                android:textSize="@dimen/medium_text"
-                                android:text="Media columns"/>
+                                android:text="Media columns"
+                                android:textColor="@color/md_grey_400"
+                                android:textSize="@dimen/medium_text" />
 
                             <TextView
                                 android:id="@+id/n_columns_media_landscape"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/sub_small_spacing"
-                                android:textColor="@color/md_grey_400"
-                                android:textStyle="italic|bold"
                                 android:paddingBottom="@dimen/sub_small_spacing"
+                                android:text="4"
+                                android:textColor="@color/md_grey_400"
                                 android:textSize="@dimen/medium_text"
-                                android:text="4"/>
+                                android:textStyle="italic|bold" />
 
                         </LinearLayout>
 
                         <SeekBar
+                            android:id="@+id/seek_bar_n_columns_media_landscape"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/small_spacing"
-                            android:id="@+id/seek_bar_n_columns_media_landscape"
-                            android:max="9"/>
+                            android:max="9" />
 
                     </LinearLayout>
                 </LinearLayout>

@@ -6,7 +6,10 @@ package com.alienpants.leafpicrevived.data;
 
 public interface IAlbum {
     String getName();
+
     String getPath();
+
     int getCount();
+
     Media getCover();
 }

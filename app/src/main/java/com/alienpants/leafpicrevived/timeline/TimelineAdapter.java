@@ -2,8 +2,6 @@ package com.alienpants.leafpicrevived.timeline;
 
 import android.content.Context;
 import android.graphics.Rect;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,7 @@ import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 import com.alienpants.leafpicrevived.items.ActionsListener;
 import com.alienpants.leafpicrevived.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpicrevived.timeline.data.TimelineItem;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedAdapter;
 import org.jetbrains.annotations.Nullable;
@@ -39,15 +38,12 @@ import static com.alienpants.leafpicrevived.timeline.ViewHolder.TimelineViewHold
  */
 public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
 
+    private final ActionsListener actionsListener;
     private List<TimelineItem> timelineItems;
     private ArrayList<Media> mediaItems;
-
     private SortingOrder sortingOrder;
     private GroupingMode groupingMode;
     private int timelineGridSize;
-
-    private final ActionsListener actionsListener;
-
     /**
      * This set maintains the selected positions by user.
      */
@@ -66,6 +62,12 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
 
     public ArrayList<Media> getMedia() {
         return mediaItems;
+    }
+
+    public void setMedia(@NonNull ArrayList<Media> mediaList) {
+        mediaItems = mediaList;
+        selectedPositions.clear();
+        buildTimelineItems();
     }
 
     public boolean clearSelected() {
@@ -155,7 +157,6 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
                 ThemeHelper.getPlaceHolder(context));
     }
 
-
     public void setGridLayoutManager(GridLayoutManager gridLayoutManager) {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -163,7 +164,8 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
                 TimelineItem timelineItem = getItem(position);
 
                 // If we have a header item, occupy the entire width
-                if (timelineItem.getTimelineType() == TimelineItem.TYPE_HEADER) return timelineGridSize;
+                if (timelineItem.getTimelineType() == TimelineItem.TYPE_HEADER)
+                    return timelineGridSize;
 
                 // Else, a media item takes up a single space
                 return 1;
@@ -250,7 +252,7 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
             }
         }
 
-        if(indexRightBeforeOrAfter != -1) {
+        if (indexRightBeforeOrAfter != -1) {
             for (int index = Math.min(elemPos, indexRightBeforeOrAfter); index <= Math.max(elemPos, indexRightBeforeOrAfter); index++) {
                 if (timelineItems.get(index) != null && timelineItems.get(index) instanceof Media) {
                     selectedPositions.add(index);
@@ -259,12 +261,6 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
             }
             actionsListener.onSelectionCountChanged(selectedPositions.size(), mediaItems.size());
         }
-    }
-
-    public void setMedia(@NonNull ArrayList<Media> mediaList) {
-        mediaItems = mediaList;
-        selectedPositions.clear();
-        buildTimelineItems();
     }
 
     private void buildTimelineItems() {

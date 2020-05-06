@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/album_card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="0dp"
     android:foreground="@drawable/ripple"
+    app:cardCornerRadius="0dp"
     app:cardElevation="@dimen/cardview_default_elevation">
 
     <LinearLayout
@@ -16,9 +15,9 @@
         android:layout_height="wrap_content">
 
         <com.alienpants.leafpicrevived.views.SquareRelativeLayout
+            android:id="@+id/header_album_card"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/header_album_card">
+            android:layout_height="wrap_content">
 
             <org.horaapps.liz.ui.ThemedIcon
                 android:id="@+id/selected_icon"
@@ -43,13 +42,13 @@
                 android:id="@+id/ll_album_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/sub_medium_spacing"
+                android:paddingTop="@dimen/small_spacing"
                 android:paddingRight="@dimen/sub_medium_spacing"
-                android:paddingBottom="@dimen/small_spacing"
-                android:paddingTop="@dimen/small_spacing">
+                android:paddingBottom="@dimen/small_spacing">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,12 +56,12 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/ll_media_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ll_media_count"
-                        android:orientation="horizontal"
                         android:layout_marginRight="@dimen/sub_small_spacing"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/album_media_count"
@@ -76,12 +75,12 @@
                         <TextView
                             android:id="@+id/album_media_label"
                             android:layout_width="match_parent"
-                            android:text="@string/media"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
-                            android:visibility="gone"
+                            android:text="@string/media"
                             android:textColor="@android:color/white"
-                            android:textSize="@dimen/small_text" />
+                            android:textSize="@dimen/small_text"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -91,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/medium_small_text"/>
+                        android:textSize="@dimen/medium_small_text" />
 
                 </LinearLayout>
 
@@ -99,15 +98,15 @@
                     android:id="@+id/album_path"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/medium_small_text"
-                    android:textColor="@color/md_grey_400"
                     android:ellipsize="marquee"
-                    android:marqueeRepeatLimit ="marquee_forever"
-                    android:maxLines="1"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:maxLines="1"
                     android:scrollHorizontally="true"
-                    android:visibility="gone"/>
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="@dimen/medium_small_text"
+                    android:visibility="gone" />
 
             </LinearLayout>
         </com.alienpants.leafpicrevived.views.SquareRelativeLayout>

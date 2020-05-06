@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+
 import org.horaapps.liz.ThemedActivity;
 
 /**
@@ -23,7 +24,7 @@ public class GeneralSetting extends ThemedSetting {
         super(activity);
     }
 
-    public void editNumberOfColumns(){
+    public void editNumberOfColumns() {
         AlertDialog.Builder multiColumnDialogBuilder = new AlertDialog.Builder(getActivity(), getActivity().getDialogStyle());
         View dialogLayout = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_multi_column, null);
 
@@ -64,23 +65,31 @@ public class GeneralSetting extends ThemedSetting {
         barFolders.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                nColFolders.setText(String.valueOf(i+1));
+                nColFolders.setText(String.valueOf(i + 1));
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         barMedia.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                nColMedia.setText(String.valueOf(i+2));
+                nColMedia.setText(String.valueOf(i + 2));
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         /** Landscape Orientation */
@@ -93,23 +102,31 @@ public class GeneralSetting extends ThemedSetting {
         barFoldersL.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                nColFoldersL.setText(String.valueOf(i+2));
+                nColFoldersL.setText(String.valueOf(i + 2));
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         barMediaL.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                nColMediaL.setText(String.valueOf(i+3));
+                nColMediaL.setText(String.valueOf(i + 3));
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         multiColumnDialogBuilder.setPositiveButton(getActivity().getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {

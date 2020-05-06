@@ -5,9 +5,9 @@
     <group android:id="@+id/only_photos_options">
         <item
             android:id="@+id/action_edit"
+            android:orderInCategory="5"
             android:title="@string/edit"
-            app:showAsAction="never"
-            android:orderInCategory="5" />
+            app:showAsAction="never" />
         <item
             android:id="@+id/action_rotate"
             android:orderInCategory="2"
@@ -27,13 +27,13 @@
         </item>
         <item
             android:id="@+id/action_palette"
+            android:orderInCategory="3"
             android:title="@string/palette"
-            app:showAsAction="never"
-            android:orderInCategory="3" />
+            app:showAsAction="never" />
         <item
             android:id="@+id/action_use_as"
-            android:title="@string/use_as"
             android:orderInCategory="8"
+            android:title="@string/use_as"
             app:showAsAction="never" />
         <item
             android:id="@+id/action_print"
@@ -42,9 +42,9 @@
             app:showAsAction="never" />
         <item
             android:id="@+id/action_advanced_sharing"
+            android:orderInCategory="11"
             android:title="@string/advanced_sharing"
-            app:showAsAction="never"
-            android:orderInCategory="11" />
+            app:showAsAction="never" />
     </group>
     <group android:id="@+id/on_internal_storage">
         <item
@@ -57,30 +57,30 @@
             android:orderInCategory="1"
             android:title="@string/delete"
             app:showAsAction="always" />
-    <item
-        android:id="@+id/action_copy"
-        android:title="@string/copy_to"
-        android:orderInCategory="6"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_move"
-        android:title="@string/move_to"
-        android:orderInCategory="7"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_rename"
-        android:title="@string/rename"
-        app:showAsAction="never"
-        android:orderInCategory="9" />
+        <item
+            android:id="@+id/action_copy"
+            android:orderInCategory="6"
+            android:title="@string/copy_to"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_move"
+            android:orderInCategory="7"
+            android:title="@string/move_to"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_rename"
+            android:orderInCategory="9"
+            android:title="@string/rename"
+            app:showAsAction="never" />
     </group>
     <item
         android:id="@+id/action_details"
-        android:title="@string/details"
         android:orderInCategory="4"
+        android:title="@string/details"
         app:showAsAction="never" />
     <item
-        android:title="@string/more"
         android:orderInCategory="12"
+        android:title="@string/more"
         app:showAsAction="never">
         <menu>
             <item

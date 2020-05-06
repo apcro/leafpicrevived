@@ -18,6 +18,7 @@ public class Measure {
         DisplayMetrics displayMetrics = c.getResources().getDisplayMetrics();
         return Math.round(px * (displayMetrics.ydpi / DisplayMetrics.DENSITY_DEFAULT));
     }
+
     public static float dpToPx(int dp, Context context) {
         return dp * (context.getResources().getDisplayMetrics().density);
     }
@@ -30,7 +31,7 @@ public class Measure {
         return 0;
     }
 
-    public static int getNavBarHeight(Context ct){
+    public static int getNavBarHeight(Context ct) {
         return getNavigationBarSize(ct).y;
     }
 

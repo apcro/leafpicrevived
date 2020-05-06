@@ -12,14 +12,14 @@ import com.alienpants.leafpicrevived.util.preferences.Prefs;
 public class AnimationUtils {
 
     public static RecyclerView.ItemAnimator getItemAnimator(RecyclerView.ItemAnimator itemAnimator) {
-        if(Prefs.animationsEnabled()) {
+        if (Prefs.animationsEnabled()) {
             return itemAnimator;
         }
         return null;
     }
 
     public static ViewPager.PageTransformer getPageTransformer(ViewPager.PageTransformer pageTransformer) {
-        if(Prefs.animationsEnabled()) {
+        if (Prefs.animationsEnabled()) {
             return pageTransformer;
         }
         return null;

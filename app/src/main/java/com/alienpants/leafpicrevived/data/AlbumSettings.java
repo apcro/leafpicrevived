@@ -14,20 +14,47 @@ import java.io.Serializable;
  */
 public class AlbumSettings implements Serializable, Parcelable {
 
+    /**
+     * It is a non-null static field that must be in parcelable.
+     */
+    public static final Parcelable.Creator<AlbumSettings> CREATOR = new Parcelable.Creator<AlbumSettings>() {
+
+        @Override
+        public AlbumSettings createFromParcel(Parcel source) {
+            return new AlbumSettings(source);
+        }
+
+        @Override
+        public AlbumSettings[] newArray(int size) {
+            return new AlbumSettings[size];
+        }
+    };
     String coverPath;
     int sortingMode, sortingOrder;
     boolean pinned;
     FilterMode filterMode = FilterMode.ALL;
-
-    public static AlbumSettings getDefaults() {
-        return new AlbumSettings(null, SortingMode.DATE.getValue(), 1, 0);
-    }
 
     AlbumSettings(String cover, int sortingMode, int sortingOrder, int pinned) {
         this.coverPath = cover;
         this.sortingMode = sortingMode;
         this.sortingOrder = sortingOrder;
         this.pinned = pinned == 1;
+    }
+
+    /**
+     * This is the constructor used by CREATOR.
+     */
+    protected AlbumSettings(Parcel in) {
+        this.coverPath = in.readString();
+        this.sortingMode = in.readInt();
+        this.sortingOrder = in.readInt();
+        this.pinned = in.readByte() != 0;
+        int tmpFilterMode = in.readInt();
+        this.filterMode = tmpFilterMode == -1 ? null : FilterMode.values()[tmpFilterMode];
+    }
+
+    public static AlbumSettings getDefaults() {
+        return new AlbumSettings(null, SortingMode.DATE.getValue(), 1, 0);
     }
 
     public SortingMode getSortingMode() {
@@ -51,28 +78,4 @@ public class AlbumSettings implements Serializable, Parcelable {
         dest.writeByte(this.pinned ? (byte) 1 : (byte) 0);
         dest.writeInt(this.filterMode == null ? -1 : this.filterMode.ordinal());
     }
-
-    /** This is the constructor used by CREATOR. */
-    protected AlbumSettings(Parcel in) {
-        this.coverPath = in.readString();
-        this.sortingMode = in.readInt();
-        this.sortingOrder = in.readInt();
-        this.pinned = in.readByte() != 0;
-        int tmpFilterMode = in.readInt();
-        this.filterMode = tmpFilterMode == -1 ? null : FilterMode.values()[tmpFilterMode];
-    }
-
-    /** It is a non-null static field that must be in parcelable. */
-    public static final Parcelable.Creator<AlbumSettings> CREATOR = new Parcelable.Creator<AlbumSettings>() {
-
-        @Override
-        public AlbumSettings createFromParcel(Parcel source) {
-            return new AlbumSettings(source);
-        }
-
-        @Override
-        public AlbumSettings[] newArray(int size) {
-            return new AlbumSettings[size];
-        }
-    };
 }

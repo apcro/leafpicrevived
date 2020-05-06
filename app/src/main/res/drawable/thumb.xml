@@ -3,18 +3,18 @@
     android:shape="rectangle">
 
     <corners
-        android:topLeftRadius="2dp"
-        android:topRightRadius="2dp"
         android:bottomLeftRadius="2dp"
-        android:bottomRightRadius="2dp"/>
+        android:bottomRightRadius="2dp"
+        android:topLeftRadius="2dp"
+        android:topRightRadius="2dp" />
 
     <padding
         android:paddingLeft="22dp"
         android:paddingRight="22dp" />
 
     <solid android:color="@color/accent_indago" />
-    
-<!-- It doesn't work.
-    <size android:height="8dp" android:width="8dp" />
--->
+
+    <!-- It doesn't work.
+        <size android:height="8dp" android:width="8dp" />
+    -->
 </shape>

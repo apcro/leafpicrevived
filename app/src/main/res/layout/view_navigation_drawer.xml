@@ -89,18 +89,18 @@
                 app:itemText="@string/tags" />
 
             <!--<com.alienpants.leafpicrevived.views.navigation_drawer.NavigationEntry-->
-                <!--android:id="@+id/navigation_item_wallpapers"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:itemIcon="@string/icon_wallpapers"-->
-                <!--app:itemText="@string/wallpapers" />-->
+            <!--android:id="@+id/navigation_item_wallpapers"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:itemIcon="@string/icon_wallpapers"-->
+            <!--app:itemText="@string/wallpapers" />-->
 
             <!--<com.alienpants.leafpicrevived.views.navigation_drawer.NavigationEntry-->
-                <!--android:id="@+id/navigation_item_donate"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:itemIcon="@string/icon_donate"-->
-                <!--app:itemText="@string/donate" />-->
+            <!--android:id="@+id/navigation_item_donate"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:itemIcon="@string/icon_donate"-->
+            <!--app:itemText="@string/donate" />-->
 
             <com.alienpants.leafpicrevived.views.navigation_drawer.NavigationEntry
                 android:id="@+id/navigation_item_settings"

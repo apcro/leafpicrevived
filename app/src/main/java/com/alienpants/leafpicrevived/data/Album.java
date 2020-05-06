@@ -19,244 +19,269 @@ import java.util.ArrayList;
  */
 public class Album implements CursorHandler, Parcelable {
 
-	public static final long ALL_MEDIA_ALBUM_ID = 8000;
-	private String name, path;
-	private long id = -1, dateModified;
-	private int count = -1;
+    public static final long ALL_MEDIA_ALBUM_ID = 8000;
+    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
 
-	private boolean selected = false;
-	public AlbumSettings settings = null;
-	private Media lastMedia = null;
+        @Override
+        public Album createFromParcel(Parcel source) {
+            return new Album(source);
+        }
 
-	public Album(String path, String name) {
-		this.name = name;
-		this.path = path;
-	}
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
+    public AlbumSettings settings = null;
+    private String name, path;
+    private long id = -1, dateModified;
+    private int count = -1;
+    private boolean selected = false;
+    private Media lastMedia = null;
+    private boolean found_id_album = false;
 
-	public Album(String name, long id) {
-		this.name = name;
-		this.id = id;
-	}
+    public Album(String path, String name) {
+        this.name = name;
+        this.path = path;
+    }
 
-	public Album(String path, String name, long id, int count, long dateModified) {
-		this(path, name);
-		this.count = count;
-		this.id = id;
-		this.dateModified = dateModified;
-	}
+    public Album(String name, long id) {
+        this.name = name;
+        this.id = id;
+    }
 
-	public Album(String path, String name, int count, long dateModified) {
-		this(path, name, -1, count, dateModified);
-	}
+    public Album(String path, String name, long id, int count, long dateModified) {
+        this(path, name);
+        this.count = count;
+        this.id = id;
+        this.dateModified = dateModified;
+    }
 
-	public Album(Cursor cur) {
-		this(StringUtils.getBucketPathByImagePath(cur.getString(3)),
-				cur.getString(1),
-				cur.getLong(0),
-				cur.getInt(2),
-				cur.getLong(4));
-		setLastMedia(new Media(cur.getString(3)));
-	}
+    public Album(String path, String name, int count, long dateModified) {
+        this(path, name, -1, count, dateModified);
+    }
 
-	public static String[] getProjection() {
-		String projectionString[] = new String[]{
-				MediaStore.Files.FileColumns.PARENT,
-				MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+    public Album(Cursor cur) {
+        this(StringUtils.getBucketPathByImagePath(cur.getString(3)),
+                cur.getString(1),
+                cur.getLong(0),
+                cur.getInt(2),
+                cur.getLong(4));
+        setLastMedia(new Media(cur.getString(3)));
+    }
+
+    @Deprecated
+    public Album(Context context, String path, long id, String name, int count) {
+        this(path, name, id, count, 0);
+        settings = AlbumSettings.getDefaults();
+    }
+
+    protected Album(Parcel in) {
+        this.name = in.readString();
+        this.path = in.readString();
+        this.id = in.readLong();
+        this.dateModified = in.readLong();
+        this.count = in.readInt();
+        this.selected = in.readByte() != 0;
+        this.settings = (AlbumSettings) in.readSerializable();
+        this.lastMedia = in.readParcelable(Media.class.getClassLoader());
+    }
+
+    public static String[] getProjection() {
+        String projectionString[] = new String[]{
+                MediaStore.Files.FileColumns.PARENT,
+                MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
 //				"count(*)",
-				"count(bucket_id)",
-				MediaStore.Images.Media.DATA,
-				"max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"
-		};
-		return projectionString;
-	}
+                "count(bucket_id)",
+                MediaStore.Images.Media.DATA,
+                "max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"
+        };
+        return projectionString;
+    }
 
-	@Override
-	public Album handle(Cursor cur) {
-		return new Album(cur);
-	}
+    public static Album getEmptyAlbum() {
+        Album album = new Album(null, null);
+        album.settings = AlbumSettings.getDefaults();
+        return album;
+    }
 
-	@Deprecated
-	public Album(Context context, String path, long id, String name, int count) {
-		this(path, name, id, count, 0);
-		settings = AlbumSettings.getDefaults();
-	}
+    public static Album getAllMediaAlbum() {
+        Album album = new Album("All Media", ALL_MEDIA_ALBUM_ID);
+        album.settings = AlbumSettings.getDefaults();
+        return album;
+    }
 
-	public static Album getEmptyAlbum() {
-		Album album = new Album(null, null);
-		album.settings = AlbumSettings.getDefaults();
-		return album;
-	}
+    static Album withPath(String path) {
+        Album emptyAlbum = getEmptyAlbum();
+        emptyAlbum.path = path;
+        return emptyAlbum;
+    }
 
-	public static Album getAllMediaAlbum() {
-		Album album = new Album("All Media", ALL_MEDIA_ALBUM_ID);
-		album.settings = AlbumSettings.getDefaults();
-		return album;
-	}
+    @Override
+    public Album handle(Cursor cur) {
+        return new Album(cur);
+    }
 
-	static Album withPath(String path) {
-		Album emptyAlbum = getEmptyAlbum();
-		emptyAlbum.path = path;
-		return emptyAlbum;
-	}
+    public Album withSettings(AlbumSettings settings) {
+        this.settings = settings;
+        return this;
+    }
 
-	public Album withSettings(AlbumSettings settings) {
-		this.settings = settings;
-		return this;
-	}
+    //region Album Properties Getters
+    public String getName() {
+        return name;
+    }
 
-	//region Album Properties Getters
-	public String getName() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getPath() {
-		return path;
-	}
+    public String getPath() {
+        return path;
+    }
 
-	public int getCount() {
-		return count;
-	}
+    public int getCount() {
+        return count;
+    }
 
-	public Long getDateModified() {
-		return dateModified;
-	}
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-	public Media getCover() {
-		if (hasCover())
-			return new Media(settings.coverPath);
-		if (lastMedia != null)
-			return lastMedia;
-		// TODO: 11/20/16 how should i handle this?
-		return new Media();
-	}
+    public Long getDateModified() {
+        return dateModified;
+    }
 
-	public void setLastMedia(Media lastMedia) {
-		this.lastMedia = lastMedia;
-	}
+    public Media getCover() {
+        if (hasCover())
+            return new Media(settings.coverPath);
+        if (lastMedia != null)
+            return lastMedia;
+        // TODO: 11/20/16 how should i handle this?
+        return new Media();
+    }
 
-	public void setCover(String path) {
-		settings.coverPath = path;
-	}
+    public void setCover(String path) {
+        settings.coverPath = path;
+    }
 
-	public long getId() {
-		return  this.id;
-	}
+    public void setLastMedia(Media lastMedia) {
+        this.lastMedia = lastMedia;
+    }
 
-	public boolean isHidden() {
-		return new File(path, ".nomedia").exists();
-	}
+    public long getId() {
+        return this.id;
+    }
 
-	public boolean isPinned(){ return settings.pinned; }
+    public boolean isHidden() {
+        return new File(path, ".nomedia").exists();
+    }
 
-	public boolean hasCover() {
-		return settings.coverPath != null;
-	}
+    public boolean isPinned() {
+        return settings.pinned;
+    }
 
-	public FilterMode filterMode() {
-		return settings != null ? settings.filterMode : FilterMode.ALL;
-	}
+    public boolean hasCover() {
+        return settings.coverPath != null;
+    }
+    //endregion
 
-	public void setFilterMode(FilterMode newMode) {
-		settings.filterMode = newMode;
-	}
+    public FilterMode filterMode() {
+        return settings != null ? settings.filterMode : FilterMode.ALL;
+    }
 
-	public boolean isSelected() {
-		return selected;
-	}
+    public void setFilterMode(FilterMode newMode) {
+        settings.filterMode = newMode;
+    }
 
-	public String getStorage(Context context) {
-		return StorageHelper.getSdcardPath(context) != null ? "SD" : "Internal";
-	}
+    public boolean isSelected() {
+        return selected;
+    }
 
-	@Override
-	public String toString() {
-		return "Album{" +
-				"name='" + name + '\'' +
-				", path='" + path + '\'' +
-				", id=" + id +
-				", count=" + count +
-				'}';
-	}
-	//endregion
+    //region Album Properties Setters
 
-	public ArrayList<String> getParentsFolders() {
-		ArrayList<String> result = new ArrayList<>();
+    public String getStorage(Context context) {
+        return StorageHelper.getSdcardPath(context) != null ? "SD" : "Internal";
+    }
 
-		File f = new File(getPath());
-		while(f != null && f.canRead()) {
-			result.add(f.getPath());
-			f = f.getParentFile();
-		}
-		return result;
-	}
+    @Override
+    public String toString() {
+        return "Album{" +
+                "name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", id=" + id +
+                ", count=" + count +
+                '}';
+    }
 
-	public long getFolderSize(File file) {
-		if (file.exists()) {
-			long result = 0;
-			File[] fileList = file.listFiles();
-			for (File aFileList : fileList) {
-				if (aFileList.isDirectory()) {
-					result += getFolderSize(aFileList);
-				} else {
-					result += aFileList.length();
-				}
-			}
-			return result;
-		}
-		return 0;
-	}
+    public ArrayList<String> getParentsFolders() {
+        ArrayList<String> result = new ArrayList<>();
 
-	public File getFile() {
-		if (path != null) {
-			File file = new File(path);
-			if (file.exists()) return file;
-		}
-		return null;
-	}
+        File f = new File(getPath());
+        while (f != null && f.canRead()) {
+            result.add(f.getPath());
+            f = f.getParentFile();
+        }
+        return result;
+    }
 
-	//region Album Properties Setters
+    public long getFolderSize(File file) {
+        if (file.exists()) {
+            long result = 0;
+            File[] fileList = file.listFiles();
+            for (File aFileList : fileList) {
+                if (aFileList.isDirectory()) {
+                    result += getFolderSize(aFileList);
+                } else {
+                    result += aFileList.length();
+                }
+            }
+            return result;
+        }
+        return 0;
+    }
 
-	public void setCount(int count) {
-		this.count = count;
-	}
+    public File getFile() {
+        if (path != null) {
+            File file = new File(path);
+            if (file.exists()) return file;
+        }
+        return null;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public boolean setSelected(boolean selected) {
+        if (this.selected == selected)
+            return false;
+        this.selected = selected;
+        return true;
+    }
 
-	public boolean setSelected(boolean selected) {
-		if (this.selected == selected)
-			return false;
-		this.selected = selected;
-		return true;
-	}
+    public boolean toggleSelected() {
+        selected = !selected;
+        return selected;
+    }
 
-	public boolean toggleSelected() {
-		selected = !selected;
-		return selected;
-	}
+    public void removeCoverAlbum() {
+        settings.coverPath = null;
+    }
 
-	public void removeCoverAlbum() {
-		settings.coverPath = null;
-	}
+    //endregion
 
-	public void setSortingMode(SortingMode column) {
-		settings.sortingMode = column.getValue();
-	}
+    public void setSortingMode(SortingMode column) {
+        settings.sortingMode = column.getValue();
+    }
 
-	public void setSortingOrder(SortingOrder sortingOrder) {
-		settings.sortingOrder = sortingOrder.getValue();
-	}
+    public void setSortingOrder(SortingOrder sortingOrder) {
+        settings.sortingOrder = sortingOrder.getValue();
+    }
 
-	public boolean togglePinAlbum() {
-		settings.pinned = !settings.pinned;
-		return settings.pinned;
-	}
+    public boolean togglePinAlbum() {
+        settings.pinned = !settings.pinned;
+        return settings.pinned;
+    }
 
-	//endregion
-
-	@Deprecated
-	public int moveSelectedMedia(Context context, String targetDir) {
+    @Deprecated
+    public int moveSelectedMedia(Context context, String targetDir) {
 		/*int n = 0;
 		try
 		{
@@ -278,32 +303,31 @@ public class Album implements CursorHandler, Parcelable {
 		} catch (Exception e) { e.printStackTrace(); }
 		setCount(media.size());
 		return n;*/
-		return -1;
-	}
+        return -1;
+    }
 
+    public void sortPhotos() {
+        /*Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));*/
+    }
 
-	public void sortPhotos() {
-		/*Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));*/
-	}
-
-	public boolean copySelectedPhotos(Context context, String folderPath) {
+    public boolean copySelectedPhotos(Context context, String folderPath) {
 		/*boolean success = true;
 		for (Media media : selectedMedia)
 			if(!copyPhoto(context, media.getPath(), folderPath))
 				success = false;
 		return success;*/
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Album) {
-			return path.equals(((Album) obj).getPath());
-		}
-		return super.equals(obj);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Album) {
+            return path.equals(((Album) obj).getPath());
+        }
+        return super.equals(obj);
+    }
 
-	public boolean deleteSelectedMedia(Context context) {
+    public boolean deleteSelectedMedia(Context context) {
 		/*boolean success = true;
 		for (Media selectedMedia : this.selectedMedia) {
 			if (deleteMedia(context, selectedMedia))
@@ -315,12 +339,10 @@ public class Album implements CursorHandler, Parcelable {
 			setCount(media.size());
 		}
 		return success;*/
-		return false;
-	}
+        return false;
+    }
 
-	private boolean found_id_album = false;
-
-	public boolean renameAlbum(final Context context, String newName) {
+    public boolean renameAlbum(final Context context, String newName) {
 		/*found_id_album = false;
 		boolean success;
 		File dir = new File(StringUtils.getAlbumPathRenamed(getPath(), newName));
@@ -356,50 +378,26 @@ public class Album implements CursorHandler, Parcelable {
 		}
 		return success;*/
 
-		return false;
-	}
+        return false;
+    }
 
-	@Deprecated
+    @Deprecated
 
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(this.name);
-		dest.writeString(this.path);
-		dest.writeLong(this.id);
-		dest.writeLong(this.dateModified);
-		dest.writeInt(this.count);
-		dest.writeByte(this.selected ? (byte) 1 : (byte) 0);
-		dest.writeSerializable(this.settings);
-		dest.writeParcelable(this.lastMedia, flags);
-	}
-
-	protected Album(Parcel in) {
-		this.name = in.readString();
-		this.path = in.readString();
-		this.id = in.readLong();
-		this.dateModified = in.readLong();
-		this.count = in.readInt();
-		this.selected = in.readByte() != 0;
-		this.settings = (AlbumSettings) in.readSerializable();
-		this.lastMedia = in.readParcelable(Media.class.getClassLoader());
-	}
-
-	public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
-
-		@Override
-		public Album createFromParcel(Parcel source) {
-			return new Album(source);
-		}
-
-		@Override
-		public Album[] newArray(int size) {
-			return new Album[size];
-		}
-	};
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.path);
+        dest.writeLong(this.id);
+        dest.writeLong(this.dateModified);
+        dest.writeInt(this.count);
+        dest.writeByte(this.selected ? (byte) 1 : (byte) 0);
+        dest.writeSerializable(this.settings);
+        dest.writeParcelable(this.lastMedia, flags);
+    }
 }

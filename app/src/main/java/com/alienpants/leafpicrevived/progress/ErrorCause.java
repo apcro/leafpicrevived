@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.progress;
 
 
-
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -19,6 +18,12 @@ public class ErrorCause {
     public ErrorCause(String title) {
         this.title = title;
         this.causes = new ArrayList<>(1);
+    }
+
+    public static ErrorCause fromThrowable(Throwable throwable) {
+        if (throwable instanceof ProgressException)
+            return ((ProgressException) throwable).getError();
+        else return new ErrorCause(throwable.getMessage());
     }
 
     public void addCause(String cause) {
@@ -53,11 +58,5 @@ public class ErrorCause {
         }
 
         return b.toString();
-    }
-
-    public static ErrorCause fromThrowable(Throwable throwable) {
-        if (throwable instanceof ProgressException)
-            return ((ProgressException) throwable).getError();
-        else return new ErrorCause(throwable.getMessage());
     }
 }

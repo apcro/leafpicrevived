@@ -5,9 +5,9 @@ package com.alienpants.leafpicrevived.data.filter;
  */
 
 public enum FilterMode {
-  ALL,
-  IMAGES,
-  GIF,
-  VIDEO,
-  NO_VIDEO
+    ALL,
+    IMAGES,
+    GIF,
+    VIDEO,
+    NO_VIDEO
 }

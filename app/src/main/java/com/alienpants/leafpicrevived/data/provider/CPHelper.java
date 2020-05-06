@@ -4,8 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.MediaStore;
 
-import com.orhanobut.hawk.Hawk;
-
 import com.alienpants.leafpicrevived.data.Album;
 import com.alienpants.leafpicrevived.data.Media;
 import com.alienpants.leafpicrevived.data.StorageHelper;
@@ -14,6 +12,7 @@ import com.alienpants.leafpicrevived.data.filter.ImageFileFilter;
 import com.alienpants.leafpicrevived.data.sort.SortingMode;
 import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.orhanobut.hawk.Hawk;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,11 +27,11 @@ import io.reactivex.ObservableEmitter;
 
 public class CPHelper {
 
-    public static Observable<Album> getAlbums(Context context, boolean hidden, ArrayList<String> excluded ,SortingMode sortingMode, SortingOrder sortingOrder) {
+    public static Observable<Album> getAlbums(Context context, boolean hidden, ArrayList<String> excluded, SortingMode sortingMode, SortingOrder sortingOrder) {
         return hidden ? getHiddenAlbums(context, excluded) : getAlbums(context, excluded, sortingMode, sortingOrder);
     }
 
-    private static String getHavingClause(int excludedCount){
+    private static String getHavingClause(int excludedCount) {
 
         if (excludedCount == 0)
             return "(";
@@ -84,7 +83,7 @@ public class CPHelper {
 
         //NOTE: LIKE params for query
         for (String s : excludedAlbums)
-            args.add(s+"%");
+            args.add(s + "%");
 
 
         query.args(args.toArray());
@@ -122,7 +121,7 @@ public class CPHelper {
                     if (!isExcluded(temp.getPath(), excludedAlbums) && (nomedia.exists() || temp.isHidden()))
                         checkAndAddFolder(temp, emitter, includeVideo);
 
-                    fetchRecursivelyHiddenFolder( temp, emitter, excludedAlbums, includeVideo);
+                    fetchRecursivelyHiddenFolder(temp, emitter, excludedAlbums, includeVideo);
                 }
             }
         }
@@ -152,7 +151,7 @@ public class CPHelper {
     }
 
     private static boolean isExcluded(String path, ArrayList<String> excludedAlbums) {
-        for(String s : excludedAlbums) if (path.startsWith(s)) return true;
+        for (String s : excludedAlbums) if (path.startsWith(s)) return true;
         return false;
     }
 
@@ -216,8 +215,9 @@ public class CPHelper {
                         subscriber.onNext(new Media(file));
                 subscriber.onComplete();
 
+            } catch (Exception err) {
+                subscriber.onError(err);
             }
-            catch (Exception err) { subscriber.onError(err); }
         });
 
     }

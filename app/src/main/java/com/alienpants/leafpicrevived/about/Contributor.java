@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.about;
 
 
-
 import androidx.annotation.DrawableRes;
 
 import java.util.ArrayList;
@@ -26,10 +25,6 @@ public class Contributor {
         this.contacts = new ArrayList<>();
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void addSocial(String label, String url) {
         Contact c = new Contact(url, label);
         contacts.add(c);
@@ -37,6 +32,10 @@ public class Contributor {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

@@ -108,7 +108,9 @@
             android:title="@string/rename"
             app:showAsAction="never" />
     </group>
-    <group android:id="@+id/album_options_menu" android:visible="false">
+    <group
+        android:id="@+id/album_options_menu"
+        android:visible="false">
         <item
             android:id="@+id/hide"
             android:title="@string/hide"

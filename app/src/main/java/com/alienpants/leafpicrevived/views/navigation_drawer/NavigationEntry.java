@@ -4,9 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-
-
-
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,9 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.alienpants.leafpicrevived.R;
 import com.mikepenz.iconics.IconicsDrawable;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ui.ThemedIcon;
 
 import butterknife.BindView;
@@ -31,8 +28,10 @@ import butterknife.ButterKnife;
  */
 public class NavigationEntry extends LinearLayout {
 
-    @BindView(R.id.navigation_item_icon) ThemedIcon navIcon;
-    @BindView(R.id.navigation_item_text) TextView navText;
+    @BindView(R.id.navigation_item_icon)
+    ThemedIcon navIcon;
+    @BindView(R.id.navigation_item_text)
+    TextView navText;
 
     public NavigationEntry(@NonNull Context context) {
         this(context, null);

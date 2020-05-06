@@ -34,6 +34,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -52,6 +53,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.APP_GALLERY" />
             </intent-filter>
@@ -150,15 +152,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".activities.DonateActivity"-->
-<!--            android:theme="@style/Theme.AppCompat.NoActionBar">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.DONATE" />-->
+        <!--        <activity-->
+        <!--            android:name=".activities.DonateActivity"-->
+        <!--            android:theme="@style/Theme.AppCompat.NoActionBar">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.DONATE" />-->
 
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
         <activity
             android:name="com.alienpants.leafpicrevived.activities.BlackWhiteListActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -170,8 +172,7 @@
         </activity>
         <activity
             android:name="com.alienpants.leafpicrevived.activities.PaletteActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

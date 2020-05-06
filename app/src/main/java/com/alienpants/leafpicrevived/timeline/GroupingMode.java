@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.timeline;
 
 
-
 import androidx.annotation.NonNull;
 
 import java.text.SimpleDateFormat;

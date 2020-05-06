@@ -3,18 +3,16 @@ package com.alienpants.leafpicrevived.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-
-
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -30,11 +28,14 @@ public class SettingBasic extends FrameLayout implements Themed {
     private final String iconString;
     @StringRes
     private final int titleRes;
-    @StringRes private final int captionRes;
+    @StringRes
+    private final int captionRes;
     @BindView(R.id.icon)
     ThemedIcon icon;
-    @BindView(R.id.title) TextView title;
-    @BindView(R.id.caption) TextView caption;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.caption)
+    TextView caption;
 
     public SettingBasic(Context context) {
         this(context, null);

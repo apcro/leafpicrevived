@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +41,18 @@ public class PaletteActivity extends BaseActivity {
     private Palette palette;
     private RecyclerView rvPalette;
     private PaletteAdapter paletteAdapter;
+    /*** - PALETTE ITEM ON CLICK - ***/
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        /** Copies the selected color to the clipboard. */
+        @Override
+        public void onClick(View view) {
+            String text = ((TextView) view.findViewById(R.id.palette_item_text)).getText().toString();
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Palette Color", text);
+            clipboard.setPrimaryClip(clip);
+            StringUtils.showToast(getApplicationContext(), getString(R.string.color) + ": " + text + " " + getString(R.string.copy_clipboard));
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,10 +94,10 @@ public class PaletteActivity extends BaseActivity {
         ((TextView) findViewById(R.id.palette_image_caption)).setTextColor(getSubTextColor());
     }
 
-    public void setPalette(){
+    public void setPalette() {
         Bitmap myBitmap = ((BitmapDrawable) paletteImg.getDrawable()).getBitmap();
-        ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/")+1));
-        ((TextView)findViewById(R.id.palette_image_caption)).setText(uri.getPath());
+        ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/") + 1));
+        ((TextView) findViewById(R.id.palette_image_caption)).setText(uri.getPath());
         palette = Palette.from(myBitmap).generate();
         rvPalette = (RecyclerView) findViewById(R.id.paletteRecycler);
         rvPalette.setLayoutManager(new LinearLayoutManager(this));
@@ -99,7 +110,10 @@ public class PaletteActivity extends BaseActivity {
     private class PaletteAdapter extends RecyclerView.Adapter<PaletteActivity.PaletteAdapter.ViewHolder> {
 
         private List<Palette.Swatch> swatches;
-        private PaletteAdapter(List<Palette.Swatch> sws){this.swatches = sws;}
+
+        private PaletteAdapter(List<Palette.Swatch> sws) {
+            this.swatches = sws;
+        }
 
         public PaletteActivity.PaletteAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.palette_item, parent, false);
@@ -115,11 +129,14 @@ public class PaletteActivity extends BaseActivity {
             holder.itemBackground.setBackgroundColor(sw.getRgb());
         }
 
-        public int getItemCount() {return null != swatches ? swatches.size() : 0;}
+        public int getItemCount() {
+            return null != swatches ? swatches.size() : 0;
+        }
 
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView txtColor;
             LinearLayout itemBackground;
+
             ViewHolder(View itemView) {
                 super(itemView);
                 txtColor = (TextView) itemView.findViewById(R.id.palette_item_text);
@@ -127,17 +144,4 @@ public class PaletteActivity extends BaseActivity {
             }
         }
     }
-
-    /*** - PALETTE ITEM ON CLICK - ***/
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        /** Copies the selected color to the clipboard. */
-        @Override
-        public void onClick(View view) {
-            String text = ((TextView) view.findViewById(R.id.palette_item_text)).getText().toString();
-            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("Palette Color", text);
-            clipboard.setPrimaryClip(clip);
-            StringUtils.showToast(getApplicationContext(), getString(R.string.color) + ": " + text + " " + getString(R.string.copy_clipboard));
-        }
-    };
 }

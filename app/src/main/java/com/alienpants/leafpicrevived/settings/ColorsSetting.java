@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.settings;
 
 import android.content.DialogInterface;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -70,14 +70,6 @@ public class ColorsSetting extends ThemedSetting {
         dialogLayout.findViewById(R.id.ll_white_basic_theme).setOnClickListener(listener);
         dialogLayout.findViewById(R.id.ll_dark_basic_theme).setOnClickListener(listener);
         dialogLayout.findViewById(R.id.ll_dark_amoled_basic_theme).setOnClickListener(listener);
-    }
-
-    public interface ColorChooser {
-        void onColorSelected(int color);
-
-        void onDialogDismiss();
-
-        void onColorChanged(int color);
     }
 
     public void chooseColor(@StringRes int title, final ColorChooser chooser, int defaultColor) {
@@ -145,6 +137,14 @@ public class ColorsSetting extends ThemedSetting {
             }
         });
         dialogBuilder.show();
+    }
+
+    public interface ColorChooser {
+        void onColorSelected(int color);
+
+        void onDialogDismiss();
+
+        void onColorChanged(int color);
     }
 
 }

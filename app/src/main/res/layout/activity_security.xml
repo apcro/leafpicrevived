@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:id="@+id/root"
-              android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--TOOLBAR-->
     <include
@@ -24,23 +24,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/ll_active_security"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/ripple"
-                android:clickable="true">
+                android:clickable="true"
+                android:orientation="horizontal">
 
                 <org.horaapps.liz.ui.ThemedIcon
                     android:id="@+id/active_security_icon"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:layout_gravity="center_vertical"
-                    app:iiv_icon="gmd-lock"
                     android:layout_marginLeft="@dimen/big_spacing"
-                    android:layout_marginRight="@dimen/big_spacing" />
+                    android:layout_marginRight="@dimen/big_spacing"
+                    app:iiv_icon="gmd-lock" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -55,9 +54,9 @@
                         android:id="@+id/active_security_item_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/active_security"
-                        android:layout_gravity="center_vertical"
                         android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/active_security"
                         android:textColor="@color/md_dark_background"
                         android:textSize="@dimen/medium_text" />
 
@@ -65,18 +64,17 @@
                         android:id="@+id/active_security_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:button="@null"
-                        android:hapticFeedbackEnabled="true"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true" />
+                        android:hapticFeedbackEnabled="true" />
 
                 </RelativeLayout>
             </LinearLayout>
 
             <!--USE FINGERPRINT-->
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/ll_active_security_fingerprint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,8 +85,8 @@
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:layout_gravity="center_vertical"
-                    app:iiv_icon="gmd-fingerprint"
-                    android:layout_margin="@dimen/big_spacing" />
+                    android:layout_margin="@dimen/big_spacing"
+                    app:iiv_icon="gmd-fingerprint" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -103,8 +101,8 @@
                         android:id="@+id/active_security_fingerprint_item_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
                         android:text="@string/fingerprint"
                         android:textColor="@color/md_dark_background"
                         android:textSize="@dimen/medium_text" />
@@ -113,11 +111,11 @@
                         android:id="@+id/active_security_fingerprint_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:button="@null"
-                        android:hapticFeedbackEnabled="true"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true" />
+                        android:hapticFeedbackEnabled="true" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -127,36 +125,35 @@
                 android:id="@+id/ll_security_dialog_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="@dimen/big_spacing">
+                android:layout_marginStart="@dimen/big_spacing"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/security_body_apply_on"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/security_body_apply_on"
                     android:text="@string/apply_password_on"
                     android:textColor="@color/md_dark_primary_text"
                     android:textSize="@dimen/medium_text"
                     android:textStyle="bold" />
 
                 <!--HIDDEN FOLDER-->
-                <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/ll_security_body_apply_hidden"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:background="@drawable/ripple"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:orientation="horizontal">
 
                     <org.horaapps.liz.ui.ThemedIcon
                         android:id="@+id/security_body_apply_hidden_icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:layout_gravity="center_vertical"
-                        app:iiv_icon="faw-low-vision"
                         android:layout_marginLeft="@dimen/big_spacing"
-                        android:layout_marginRight="@dimen/big_spacing" />
+                        android:layout_marginRight="@dimen/big_spacing"
+                        app:iiv_icon="faw-low-vision" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -171,8 +168,8 @@
                             android:id="@+id/security_body_apply_hidden_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
                             android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
                             android:text="@string/hidden_folder"
                             android:textColor="@color/md_dark_background"
                             android:textSize="@dimen/medium_text" />
@@ -181,34 +178,33 @@
                             android:id="@+id/security_body_apply_hidden_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical"
                             android:button="@null"
-                            android:hapticFeedbackEnabled="true"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true" />
+                            android:hapticFeedbackEnabled="true" />
 
                     </RelativeLayout>
                 </LinearLayout>
 
                 <!--DELETE ACTION-->
-                <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/ll_security_body_apply_delete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:background="@drawable/ripple"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:orientation="horizontal">
 
                     <org.horaapps.liz.ui.ThemedIcon
                         android:id="@+id/security_body_apply_delete_icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        app:iiv_icon="gmd-delete"
                         android:layout_marginLeft="@dimen/big_spacing"
-                        android:layout_marginRight="@dimen/big_spacing" />
+                        android:layout_marginRight="@dimen/big_spacing"
+                        android:gravity="center_vertical"
+                        app:iiv_icon="gmd-delete" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -231,11 +227,11 @@
                             android:id="@+id/security_body_apply_delete_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical"
                             android:button="@null"
-                            android:hapticFeedbackEnabled="true"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true" />
+                            android:hapticFeedbackEnabled="true" />
 
                     </RelativeLayout>
                 </LinearLayout>

@@ -9,8 +9,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,10 +55,11 @@ import com.alienpants.leafpicrevived.util.Security;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
 import com.alienpants.leafpicrevived.views.GridSpacingItemDecoration;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -250,8 +249,8 @@ public class RvMediaFragment extends BaseMediaGridFragment {
 
         menu.findItem(R.id.select_all).setIcon(ThemeHelper.getToolbarIcon(getContext(), GoogleMaterial.Icon.gmd_select_all));
         menu.findItem(R.id.delete).setIcon(ThemeHelper.getToolbarIcon(getContext(), (GoogleMaterial.Icon.gmd_delete)));
-        menu.findItem(R.id.sharePhotos).setIcon(ThemeHelper.getToolbarIcon(getContext(),(GoogleMaterial.Icon.gmd_share)));
-        menu.findItem(R.id.sort_action).setIcon(ThemeHelper.getToolbarIcon(getContext(),(GoogleMaterial.Icon.gmd_sort)));
+        menu.findItem(R.id.sharePhotos).setIcon(ThemeHelper.getToolbarIcon(getContext(), (GoogleMaterial.Icon.gmd_share)));
+        menu.findItem(R.id.sort_action).setIcon(ThemeHelper.getToolbarIcon(getContext(), (GoogleMaterial.Icon.gmd_sort)));
         menu.findItem(R.id.filter_menu).setIcon(ThemeHelper.getToolbarIcon(getContext(), (GoogleMaterial.Icon.gmd_filter_list)));
 
         super.onCreateOptionsMenu(menu, inflater);
@@ -280,11 +279,19 @@ public class RvMediaFragment extends BaseMediaGridFragment {
 
             menu.findItem(R.id.ascending_sort_order).setChecked(sortingOrder() == SortingOrder.ASCENDING);
             switch (sortingMode()) {
-                case NAME:  menu.findItem(R.id.name_sort_mode).setChecked(true); break;
-                case SIZE:  menu.findItem(R.id.size_sort_mode).setChecked(true); break;
-                case DATE: default:
-                    menu.findItem(R.id.date_taken_sort_mode).setChecked(true); break;
-                case NUMERIC:  menu.findItem(R.id.numeric_sort_mode).setChecked(true); break;
+                case NAME:
+                    menu.findItem(R.id.name_sort_mode).setChecked(true);
+                    break;
+                case SIZE:
+                    menu.findItem(R.id.size_sort_mode).setChecked(true);
+                    break;
+                case DATE:
+                default:
+                    menu.findItem(R.id.date_taken_sort_mode).setChecked(true);
+                    break;
+                case NUMERIC:
+                    menu.findItem(R.id.numeric_sort_mode).setChecked(true);
+                    break;
             }
         }
 
@@ -439,7 +446,7 @@ public class RvMediaFragment extends BaseMediaGridFragment {
                     protected Void doInBackground(Affix.Options... arg0) {
                         ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
                         for (int i = 0; i < adapter.getSelectedCount(); i++) {
-                            if(!adapter.getSelected().get(i).isVideo())
+                            if (!adapter.getSelected().get(i).isVideo())
                                 bitmapArray.add(adapter.getSelected().get(i).getBitmap());
                         }
 
@@ -535,8 +542,8 @@ public class RvMediaFragment extends BaseMediaGridFragment {
                 getThemeHelper().themeRadioButton(dialogLayout.findViewById(R.id.radio_jpeg));
                 getThemeHelper().themeRadioButton(dialogLayout.findViewById(R.id.radio_png));
                 getThemeHelper().themeRadioButton(dialogLayout.findViewById(R.id.radio_webp));
-                getThemeHelper().setSwitchCompactColor( swSaveHere, getAccentColor());
-                getThemeHelper().setSwitchCompactColor( swVertical, getAccentColor());
+                getThemeHelper().setSwitchCompactColor(swSaveHere, getAccentColor());
+                getThemeHelper().setSwitchCompactColor(swVertical, getAccentColor());
                 //#endregion
 
                 seekQuality.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -641,7 +648,8 @@ public class RvMediaFragment extends BaseMediaGridFragment {
 
     @Override
     public void onItemSelected(int position) {
-        if (listener != null) listener.onMediaClick(RvMediaFragment.this.album, adapter.getMedia(), position);
+        if (listener != null)
+            listener.onMediaClick(RvMediaFragment.this.album, adapter.getMedia(), position);
     }
 
     @Override

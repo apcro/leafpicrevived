@@ -46,7 +46,7 @@ public class LookForMediaJob extends JobService {
                         scanFolder(s);
                         Log.wtf(TAG, "Scanned: " + s);
                     }
-                    if(DEBUG)
+                    if (DEBUG)
                         notification(whiteList);
                 } finally {
                     jobFinished(jobParameters, false);

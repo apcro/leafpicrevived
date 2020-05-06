@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2016 The Android Open Source Project
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,9 +16,10 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-  <LinearLayout android:id="@+id/root"
-      android:orientation="vertical"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
 </ScrollView>

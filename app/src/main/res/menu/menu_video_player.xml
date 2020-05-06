@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_share"
@@ -14,22 +13,22 @@
         android:id="@+id/video_stuff"
         android:title="@string/video"
         android:visible="false"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/audio_stuff"
         android:title="@string/audio"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/text_stuff"
         android:title="@string/text"
         android:visible="false"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/loop_video"
-        android:title="@string/loop_video"
         android:checkable="true"
-        app:showAsAction="never"/>
+        android:title="@string/loop_video"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:title="@string/settings"

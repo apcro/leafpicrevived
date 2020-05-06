@@ -1,9 +1,6 @@
 package com.alienpants.leafpicrevived.progress;
 
 import android.os.Bundle;
-
-
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +14,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alienpants.leafpicrevived.R;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ThemeHelper;
 
 import java.util.ArrayList;
@@ -43,68 +40,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
 
-    /**
-     * Interface for listeners to get callbacks when items are processed.
-     */
-    public interface Listener<T> {
-        void onCompleted();
-
-        void onProgress(T item);
-    }
-
-    public static class Builder<T> {
-        @StringRes
-        int title;
-        boolean showCancel = true;
-        boolean autoDismiss = false;
-        List<? extends ObservableSource<? extends T>> sources;
-        Listener<T> listener;
-
-        public Builder(int title) {
-            this.title = title;
-        }
-
-        public Builder<T> showCancel(boolean showCancel) {
-            this.showCancel = showCancel;
-            return this;
-        }
-
-        public Builder<T> autoDismiss(boolean autoDismiss) {
-            this.autoDismiss = autoDismiss;
-            return this;
-        }
-
-        public Builder<T> sources(List<? extends ObservableSource<? extends T>> sources) {
-            this.sources = sources;
-            return this;
-        }
-
-        public Builder<T> listener(Listener<T> listener) {
-            this.listener = listener;
-            return this;
-        }
-
-        public ProgressBottomSheet<T> build() {
-            if (sources == null)
-                throw new RuntimeException("You must pass a list of observables");
-
-            if (listener == null)
-                Log.w(TAG, "You have not set a listener");
-
-            ProgressBottomSheet<T> bottomSheet = new ProgressBottomSheet<>();
-
-            bottomSheet.setTitle(title);
-            bottomSheet.setAutoDismiss(autoDismiss);
-            bottomSheet.setShowCancel(showCancel);
-            bottomSheet.setSources(sources);
-            bottomSheet.setListener(listener);
-            return bottomSheet;
-
-        }
-    }
-
     private static final String TAG = "ProgressBottomSheet";
-
     @BindView(R.id.progress_header)
     ViewGroup headerLayout;
     @BindView(R.id.progress_progress_bar)
@@ -115,16 +51,14 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
     TextView txtTitle;
     @BindView(R.id.progress_done_cancel_sheet)
     AppCompatButton btnDoneCancel;
-
-    private Disposable disposable;
-    private boolean done = false;
     @StringRes
     int title;
     boolean showCancel = true;
     boolean autoDismiss = false;
     List<? extends ObservableSource<? extends T>> sources;
     Listener<T> listener;
-
+    private Disposable disposable;
+    private boolean done = false;
 
     public void setTitle(int title) {
         this.title = title;
@@ -240,5 +174,65 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
         progressBar.setTextColor(th.getTextColor());
         txtTitle.setText(title);
         if (!showCancel) btnDoneCancel.setVisibility(View.GONE);
+    }
+
+    /**
+     * Interface for listeners to get callbacks when items are processed.
+     */
+    public interface Listener<T> {
+        void onCompleted();
+
+        void onProgress(T item);
+    }
+
+    public static class Builder<T> {
+        @StringRes
+        int title;
+        boolean showCancel = true;
+        boolean autoDismiss = false;
+        List<? extends ObservableSource<? extends T>> sources;
+        Listener<T> listener;
+
+        public Builder(int title) {
+            this.title = title;
+        }
+
+        public Builder<T> showCancel(boolean showCancel) {
+            this.showCancel = showCancel;
+            return this;
+        }
+
+        public Builder<T> autoDismiss(boolean autoDismiss) {
+            this.autoDismiss = autoDismiss;
+            return this;
+        }
+
+        public Builder<T> sources(List<? extends ObservableSource<? extends T>> sources) {
+            this.sources = sources;
+            return this;
+        }
+
+        public Builder<T> listener(Listener<T> listener) {
+            this.listener = listener;
+            return this;
+        }
+
+        public ProgressBottomSheet<T> build() {
+            if (sources == null)
+                throw new RuntimeException("You must pass a list of observables");
+
+            if (listener == null)
+                Log.w(TAG, "You have not set a listener");
+
+            ProgressBottomSheet<T> bottomSheet = new ProgressBottomSheet<>();
+
+            bottomSheet.setTitle(title);
+            bottomSheet.setAutoDismiss(autoDismiss);
+            bottomSheet.setShowCancel(showCancel);
+            bottomSheet.setSources(sources);
+            bottomSheet.setListener(listener);
+            return bottomSheet;
+
+        }
     }
 }
