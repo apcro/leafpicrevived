@@ -67,25 +67,23 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // AndroidX
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.browser:browser:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'androidx.palette:palette:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha05'
-    implementation 'com.android.support:multidex:1.0.3'
 
     // Exoplayer
     implementation 'com.google.android.exoplayer:exoplayer-core:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.10.4'
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.10.4'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
 
     // Utils
     implementation 'com.github.bumptech.glide:glide:4.10.0'
@@ -121,8 +119,8 @@ dependencies {
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
     implementation 'com.github.apcro:Liz:0.6.1'
 
-    // debug Only
-    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+    // Debug only
+    //implementation 'cat.ereza:customactivityoncrash:x.y.z'
 }
 
 Properties props = new Properties()

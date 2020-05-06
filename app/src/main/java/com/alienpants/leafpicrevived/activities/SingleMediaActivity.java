@@ -640,7 +640,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 final EditText editTextNewName = new EditText(this);
                 editTextNewName.setText(StringUtils.getPhotoNameByPath(getCurrentMedia().getPath()));
 
-                androidx.appcompat.app.AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
+                AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
 
                 renameDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override

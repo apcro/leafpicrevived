@@ -6,10 +6,13 @@ android {
 
     defaultConfig {
         minSdkVersion 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 22
     }
-}
 
-dependencies {
-    implementation 'com.android.support:support-v4:22.1.1'
+    compileOptions {
+        encoding = 'UTF-8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
