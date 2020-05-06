@@ -763,7 +763,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.PNG);
         options.setCompressionQuality(90);
-        options.setActiveWidgetColor(getAccentColor());
+        options.setActiveControlsWidgetColor(getAccentColor());
         options.setToolbarColor(getPrimaryColor());
         options.setStatusBarColor(isTranslucentStatusBar() ? ColorPalette.getObscuredColor(getPrimaryColor()) : getPrimaryColor());
         options.setCropFrameColor(getAccentColor());

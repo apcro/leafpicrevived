@@ -73,25 +73,28 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.browser:browser:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.exifinterface:exifinterface:1.1.0'
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.exifinterface:exifinterface:1.2.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.palette:palette:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha05'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
 
     // Exoplayer
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.4'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
-    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.10.4'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
+    def exoplayerVersion = "2.10.4"
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayerVersion"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayerVersion"
+    implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayerVersion"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayerVersion"
 
     // Utils
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
-    implementation 'io.noties.markwon:core:4.2.0'
-    implementation 'com.jakewharton:butterknife:10.2.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.20'
+    implementation 'io.noties.markwon:core:4.3.1'
+    //noinspection AnnotationProcessorOnCompilePath
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'com.drewnoakes:metadata-extractor:2.13.0'
     //implementation 'com.github.apcro:metadata-extractor:master'
     implementation 'com.orhanobut:hawk:2.0.1'
@@ -100,20 +103,20 @@ dependencies {
     // RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     //it is recommended to keep the same version of rxAndroid
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
 
     // Icons
-    implementation 'com.mikepenz:iconics-core:4.0.1-b01'
-    implementation 'com.mikepenz:iconics-views:4.0.1-b01'
+    implementation 'com.mikepenz:iconics-core:4.0.2'
+    implementation 'com.mikepenz:iconics-views:4.0.2'
     implementation 'com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar'
-    implementation 'com.mikepenz:community-material-typeface:3.5.95.1-kotlin@aar'
+    implementation 'com.mikepenz:community-material-typeface:5.0.45.1-kotlin@aar'
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
 
     // UI
     implementation project(':shiftcolorpicker')
-    implementation 'com.github.jetradarmobile:desertplaceholder:1.1.1'
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
-    implementation 'com.github.yalantis:ucrop:2.2.2'
+    implementation 'com.github.jetradarmobile.desertplaceholder:desertplaceholder:1.2.4'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.yalantis:ucrop:2.2.5'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
