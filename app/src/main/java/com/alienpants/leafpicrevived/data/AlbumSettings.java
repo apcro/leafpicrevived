@@ -44,7 +44,7 @@ public class AlbumSettings implements Serializable, Parcelable {
     /**
      * This is the constructor used by CREATOR.
      */
-    protected AlbumSettings(Parcel in) {
+    private AlbumSettings(Parcel in) {
         this.coverPath = in.readString();
         this.sortingMode = in.readInt();
         this.sortingOrder = in.readInt();

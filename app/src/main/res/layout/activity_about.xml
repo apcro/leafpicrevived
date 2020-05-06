@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 android:paddingBottom="@dimen/card_spacing"
                 app:cardCornerRadius="@dimen/card_corner_radius"
@@ -104,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
@@ -118,7 +120,7 @@
                         android:id="@+id/about_support_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingStart="@dimen/medium_spacing"
                         android:paddingTop="@dimen/medium_spacing"
                         android:text="@string/about_support"
                         android:textSize="@dimen/medium_text"
@@ -279,7 +281,7 @@
                         android:id="@+id/about_special_thanks_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_spacing"
+                        android:paddingStart="@dimen/medium_spacing"
                         android:paddingTop="@dimen/medium_spacing"
                         android:text="@string/about_special_thanks"
                         android:textColor="@color/md_dark_background"
@@ -287,7 +289,7 @@
                         android:textStyle="bold"
                         app:liz_color_style="accent" />
 
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_patryk_goworowski"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -80,12 +80,13 @@ import static com.google.android.exoplayer2.offline.DownloadHelper.DEFAULT_TRACK
         this.themeHelper = themeHelper;
     }
 
-  /*public TrackSelectionHelper(MappingTrackSelector selector,
-                              TrackSelection.Factory adaptiveTrackSelectionFactory) {
-    this.selector = selector;
-    this.adaptiveVideoTrackSelectionFactory = adaptiveTrackSelectionFactory;
-  }*/
-
+    /*
+        public TrackSelectionHelper(MappingTrackSelector selector,
+                                    TrackSelection.Factory adaptiveTrackSelectionFactory) {
+            this.selector = selector;
+            this.adaptiveVideoTrackSelectionFactory = adaptiveTrackSelectionFactory;
+        }
+    */
     private static int[] getTracksAdding(SelectionOverride override, int addedTrack) {
         int[] tracks = override.tracks;
         tracks = Arrays.copyOf(tracks, tracks.length + 1);
@@ -180,14 +181,15 @@ import static com.google.android.exoplayer2.offline.DownloadHelper.DEFAULT_TRACK
         }
 
         TrackGroupArray rendererTrackGroups = this.trackInfo.getTrackGroups(rendererIndex);
-//    MappingTrackSelector.Parameters selectionParameters = trackSelector.getParameters();
-//    isDisabled = selectionParameters.getRendererDisabled(rendererIndex);
-//    override = selectionParameters.getSelectionOverride(rendererIndex, rendererTrackGroups);
-//    overrides = override == null ? Collections.emptyList() : Collections.singletonList(override);
+/*
+        MappingTrackSelector.Parameters selectionParameters = trackSelector.getParameters();
+        isDisabled = selectionParameters.getRendererDisabled(rendererIndex);
+        override = selectionParameters.getSelectionOverride(rendererIndex, rendererTrackGroups);
+        overrides = override == null ? Collections.emptyList() : Collections.singletonList(override);
 
-//    isDisabled = selector.getRendererDisabled(rendererIndex);
-//    override = selector.getSelectionOverride(rendererIndex, trackGroups);
-
+        isDisabled = selector.getRendererDisabled(rendererIndex);
+        override = selector.getSelectionOverride(rendererIndex, trackGroups);
+*/
         AlertDialog.Builder builder = new AlertDialog.Builder(activity, themeHelper.getDialogStyle());
         builder.setTitle(title)
                 .setView(buildView(LayoutInflater.from(builder.getContext())))
@@ -263,8 +265,7 @@ import static com.google.android.exoplayer2.offline.DownloadHelper.DEFAULT_TRACK
             }
         }
         // @TODO fix this
-//    mappedTrackInfo.setParameters(parametersBuilder.build());
-
+        //mappedTrackInfo.setParameters(parametersBuilder.build());
     }
 
     @Override

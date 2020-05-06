@@ -33,7 +33,7 @@ public class Affix {
         saveFile(ctx, unionBitmap, options);
     }
 
-    private static Canvas combineBitmap(Canvas cs, ArrayList<Bitmap> bpmList, boolean vertical) {
+    private static void combineBitmap(Canvas cs, ArrayList<Bitmap> bpmList, boolean vertical) {
         if (vertical) {
             int height = bpmList.get(0).getHeight();
             cs.drawBitmap(bpmList.get(0), 0f, 0f, null);
@@ -42,7 +42,6 @@ public class Affix {
                 cs.drawBitmap(bpmList.get(i), 0f, height, null);
                 height += bpmList.get(i).getHeight();
             }
-            return cs;
         } else {
             int width = bpmList.get(0).getWidth();
             cs.drawBitmap(bpmList.get(0), 0f, 0f, null);
@@ -51,7 +50,6 @@ public class Affix {
                 cs.drawBitmap(bpmList.get(i), width, 0f, null);
                 width += bpmList.get(i).getWidth();
             }
-            return cs;
         }
     }
 
@@ -116,10 +114,10 @@ public class Affix {
          * Specifies the known formats a bitmap can be compressed into
          */
 
-        private String folderPath = null;
-        private Bitmap.CompressFormat format = Bitmap.CompressFormat.JPEG;
-        private int quality = 50;
-        private boolean vertical = false;
+        private String folderPath;
+        private Bitmap.CompressFormat format;
+        private int quality;
+        private boolean vertical;
 
         public Options(String folderPath, Bitmap.CompressFormat format, int quality, boolean vertical) {
             this.folderPath = folderPath;

@@ -2,6 +2,7 @@ package com.alienpants.leafpicrevived.util;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.CancellationSignal;
 import android.os.IBinder;
 import android.view.View;
@@ -43,7 +44,7 @@ public class Security {
         Hawk.put("password_on_hidden", passwordOnHidden);
     }
 
-    public static boolean isFingerprintUsed() {
+    private static boolean isFingerprintUsed() {
         return Hawk.get("fingerprint_security", false);
     }
 
@@ -63,8 +64,8 @@ public class Security {
         return Hawk.put("password_hash", sha256(newValue));
     }
 
-    public static boolean clearPassword() {
-        return Hawk.delete("password_hash");
+    public static void clearPassword() {
+        Hawk.delete("password_hash");
     }
 
     public static void authenticateUser(final ThemedActivity activity, final AuthCallBack passwordInterface) {
@@ -98,7 +99,7 @@ public class Security {
         showKeyboard(activity);
         editTextPassword.requestFocus();
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && Security.isFingerprintUsed()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Security.isFingerprintUsed()) {
             FingerprintHandler fingerprintHandler = new FingerprintHandler(activity, mCancellationSignal);
             if (fingerprintHandler.isFingerprintSupported()) {
                 fingerprintHandler.setOnFingerprintResult(new FingerprintHandler.CallBack() {

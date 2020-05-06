@@ -7,7 +7,7 @@ import java.util.TreeMap;
  * Created by dnld on 16/08/16.
  */
 
-public class MediaDetailsMap<K, V> extends HashMap<String, String> {
+public class MediaDetailsMap extends HashMap<String, String> {
 
     private TreeMap<Integer, String> keys;
 

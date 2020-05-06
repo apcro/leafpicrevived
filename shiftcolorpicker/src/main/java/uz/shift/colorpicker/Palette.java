@@ -2,9 +2,9 @@ package uz.shift.colorpicker;
 
 import android.graphics.Color;
 
-public class Palette {
+class Palette {
 
-    public static int[] DEFAULT;
+    static int[] DEFAULT;
 
     static {
 

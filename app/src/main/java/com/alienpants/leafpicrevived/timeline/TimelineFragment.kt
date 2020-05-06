@@ -113,7 +113,6 @@ class TimelineFragment : BaseMediaGridFragment(), ActionsListener {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
-        if (menu == null) return
 
         val isEditing = editMode()
         with(menu) {
@@ -259,7 +258,7 @@ class TimelineFragment : BaseMediaGridFragment(), ActionsListener {
                 .filter { media -> MediaFilter.getFilter(filterMode).accept(media) }
                 .subscribe(
                         { mediaList.add(it) },
-                        { _ -> timeline_swipe_refresh_layout!!.isRefreshing = false },
+                        { timeline_swipe_refresh_layout!!.isRefreshing = false },
                         {
                             contentAlbum.count = mediaList.size
                             timeline_swipe_refresh_layout!!.isRefreshing = false

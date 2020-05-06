@@ -22,8 +22,8 @@ import java.util.Date;
 
 public class MetadataHelper {
 
-    public MediaDetailsMap<String, String> getMainDetails(Context context, Media m) {
-        MediaDetailsMap<String, String> details = new MediaDetailsMap<>();
+    public MediaDetailsMap getMainDetails(Context context, Media m) {
+        MediaDetailsMap details = new MediaDetailsMap();
         details.put(context.getString(R.string.path), m.getDisplayPath());
         details.put(context.getString(R.string.type), m.getMimeType());
         if (m.getSize() != -1)
@@ -50,8 +50,8 @@ public class MetadataHelper {
         return details;
     }
 
-    public MediaDetailsMap<String, String> getAllDetails(Context context, Media media) {
-        MediaDetailsMap<String, String> data = new MediaDetailsMap<String, String>();
+    public MediaDetailsMap getAllDetails(Context context, Media media) {
+        MediaDetailsMap data = new MediaDetailsMap();
         try {
             Metadata metadata = ImageMetadataReader.readMetadata(context.getContentResolver().openInputStream(media.getUri()));
             for (Directory directory : metadata.getDirectories()) {
@@ -66,8 +66,8 @@ public class MetadataHelper {
         return data;
     }
 
-    public MediaDetailsMap<String, String> getFirstSelectedAlbumDetails(Context context, Album album) {
-        MediaDetailsMap<String, String> albumdetials = new MediaDetailsMap<>();
+    public MediaDetailsMap getFirstSelectedAlbumDetails(Context context, Album album) {
+        MediaDetailsMap albumdetials = new MediaDetailsMap();
         albumdetials.put(context.getString(R.string.name), album.getName());
         albumdetials.put(context.getString(R.string.type), context.getString(R.string.folder));
         albumdetials.put(context.getString(R.string.storage), album.getStorage(context));
@@ -80,8 +80,8 @@ public class MetadataHelper {
         return albumdetials;
     }
 
-    public MediaDetailsMap<String, String> getSelectedAlbumsDetails(Context context, AlbumsAdapter adapter) {
-        MediaDetailsMap<String, String> albumdetials = new MediaDetailsMap<>();
+    public MediaDetailsMap getSelectedAlbumsDetails(Context context, AlbumsAdapter adapter) {
+        MediaDetailsMap albumdetials = new MediaDetailsMap();
         albumdetials.put(context.getString(R.string.type), context.getString(R.string.folder));
         albumdetials.put(context.getString(R.string.size), StringUtils.humanReadableByteCount(adapter.getSelectedAlbumsSize(), true));
         albumdetials.put(context.getString(R.string.folders), adapter.getSelectedCount() + "");

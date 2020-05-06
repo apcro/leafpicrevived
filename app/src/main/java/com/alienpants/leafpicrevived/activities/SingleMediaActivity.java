@@ -208,9 +208,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                             if (i < 0) i = ~i;
                             list.add(i, ma);
                         },
-                        throwable -> {
-                            Log.wtf("asd", throwable);
-                        },
+                        throwable -> Log.wtf("asd", throwable),
                         () -> {
                             int i = Collections.binarySearch(
                                     list, m, MediaComparators.getComparator(album.settings));
@@ -236,19 +234,18 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         album = new Album(uri.toString(), uri.getPath());
         album.settings = AlbumSettings.getDefaults();
 
-        /*
+/*
         String path = StorageHelper.getMediaPath(getApplicationContext(), getIntent().getData());
-                Album album = null;
+        Album album = null;
 
-                if (path != null) {
-                    album = ContentProviderHelper.getAlbumFromMedia(getApplicationContext(), path);
-                    if (album != null) {
-                        //album.updatePhotos(getApplicationContext());
-                        album.setCurrentMedia(path);
-                    }
-                }
-        */
-
+        if (path != null) {
+            album = ContentProviderHelper.getAlbumFromMedia(getApplicationContext(), path);
+            if (album != null) {
+                //album.updatePhotos(getApplicationContext());
+                album.setCurrentMedia(path);
+            }
+        }
+*/
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
             if (inputStream != null) inputStream.close();
@@ -286,7 +283,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
         useImageMenu = isCurrentMediaImage();
 
-//        mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new DepthPageTransformer()));
+        //mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new DepthPageTransformer()));
         mViewPager.setPageTransformer(true, AnimationUtils.getPageTransformer(new SlidePageTransformer()));
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -357,8 +354,8 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
             updateBrightness(1.0F);
         else try {
             // TODO: 12/4/16 redo
-            float brightness = android.provider.Settings.System.getInt(
-                    getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS);
+            float brightness = Settings.System.getInt(
+                    getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
             brightness = brightness == 1.0F ? 255.0F : brightness;
             updateBrightness(brightness);
         } catch (Settings.SettingNotFoundException e) {
@@ -435,27 +432,24 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null && resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case UCrop.REQUEST_CROP:
-                    final Uri imageUri = UCrop.getOutput(data);
-                    if (imageUri != null && imageUri.getScheme().equals("file")) {
-                        try {
-                            //copyFileToDownloads(imageUri);
-                            // TODO: 21/08/16 handle this better
-                            if (StorageHelper.copyFile(getApplicationContext(), new File(imageUri.getPath()), new File(this.album.getPath()))) {
-                                //((ImageFragment) adapter.getRegisteredFragment(this.album.getCurrentMediaIndex())).displayMedia(true);
-                                Toast.makeText(this, R.string.new_file_created, Toast.LENGTH_SHORT).show();
-                            }
-                            //adapter.notifyDataSetChanged();
-                        } catch (Exception e) {
-                            Log.e("ERROS - uCrop", imageUri.toString(), e);
+            if (requestCode == UCrop.REQUEST_CROP) {
+                final Uri imageUri = UCrop.getOutput(data);
+                if (imageUri != null && imageUri.getScheme().equals("file")) {
+                    try {
+                        //copyFileToDownloads(imageUri);
+                        // TODO: 21/08/16 handle this better
+                        if (StorageHelper.copyFile(getApplicationContext(), new File(imageUri.getPath()), new File(this.album.getPath()))) {
+                            //((ImageFragment) adapter.getRegisteredFragment(this.album.getCurrentMediaIndex())).displayMedia(true);
+                            Toast.makeText(this, R.string.new_file_created, Toast.LENGTH_SHORT).show();
                         }
-                    } else
-                        StringUtils.showToast(getApplicationContext(), "errori random");
-                    break;
-                default:
-                    super.onActivityResult(requestCode, resultCode, data);
-                    break;
+                        //adapter.notifyDataSetChanged();
+                    } catch (Exception e) {
+                        Log.e("ERROS - uCrop", imageUri.toString(), e);
+                    }
+                } else
+                    StringUtils.showToast(getApplicationContext(), "errori random");
+            } else {
+                super.onActivityResult(requestCode, resultCode, data);
             }
         }
     }
@@ -577,30 +571,23 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
             case R.id.action_delete:
                 final AlertDialog textDialog = AlertDialogsHelper.getTextDialog(SingleMediaActivity.this, R.string.delete, R.string.delete_photo_message);
-                textDialog.setButton(DialogInterface.BUTTON_NEGATIVE, this.getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        textDialog.dismiss();
-                    }
-                });
-                textDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (Security.isPasswordOnDelete()) {
+                textDialog.setButton(DialogInterface.BUTTON_NEGATIVE, this.getString(R.string.cancel).toUpperCase(), (dialogInterface, i) -> textDialog.dismiss());
+                textDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), (dialog, id) -> {
+                    if (Security.isPasswordOnDelete()) {
 
-                            Security.authenticateUser(SingleMediaActivity.this, new Security.AuthCallBack() {
-                                @Override
-                                public void onAuthenticated() {
-                                    deleteCurrentMedia();
-                                }
+                        Security.authenticateUser(SingleMediaActivity.this, new Security.AuthCallBack() {
+                            @Override
+                            public void onAuthenticated() {
+                                deleteCurrentMedia();
+                            }
 
-                                @Override
-                                public void onError() {
-                                    Toast.makeText(getApplicationContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } else
-                            deleteCurrentMedia();
-                    }
+                            @Override
+                            public void onError() {
+                                Toast.makeText(getApplicationContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else
+                        deleteCurrentMedia();
                 });
                 textDialog.show();
                 return true;
@@ -637,19 +624,16 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
 
                 AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
 
-                renameDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (editTextNewName.length() != 0) {
-                            Media currentMedia = getCurrentMedia();
-                            boolean b = MediaHelper.renameMedia(getApplicationContext(), currentMedia, editTextNewName.getText().toString());
-                            if (!b) {
-                                StringUtils.showToast(getApplicationContext(), getString(R.string.rename_error));
-                                //adapter.notifyDataSetChanged();
-                            }
-                        } else
-                            StringUtils.showToast(getApplicationContext(), getString(R.string.nothing_changed));
-                    }
+                renameDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), (dialog, which) -> {
+                    if (editTextNewName.length() != 0) {
+                        Media currentMedia = getCurrentMedia();
+                        boolean b = MediaHelper.renameMedia(getApplicationContext(), currentMedia, editTextNewName.getText().toString());
+                        if (!b) {
+                            StringUtils.showToast(getApplicationContext(), getString(R.string.rename_error));
+                            //adapter.notifyDataSetChanged();
+                        }
+                    } else
+                        StringUtils.showToast(getApplicationContext(), getString(R.string.nothing_changed));
                 });
                 renameDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), (dialog, which) -> dialog.dismiss());
                 renameDialog.show();
@@ -719,15 +703,10 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 advancedShare.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                 advancedSharingDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), (dialog, which) -> dialog.dismiss());
-                advancedSharingDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(Intent.createChooser(advancedShare, getString(R.string.send_to)));
-                    }
-                });
+                advancedSharingDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), (dialog, which) ->
+                        startActivity(Intent.createChooser(advancedShare, getString(R.string.send_to))));
                 advancedSharingDialog.show();
                 break;
-
 
             case R.id.slide_show:
                 isSlideShowOn = !isSlideShowOn;
@@ -808,35 +787,32 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     }
 
     private void hideSystemUI() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator())
-                        .setDuration(200).start();
+        runOnUiThread(() -> {
+            toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator())
+                    .setDuration(200).start();
 
-                getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-                    @Override
-                    public void onSystemUiVisibilityChange(int visibility) {
-                        Log.wtf(TAG, "ui changed: " + visibility);
-                    }
-                });
-                getWindow().getDecorView().setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                                | View.SYSTEM_UI_FLAG_IMMERSIVE);
+            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(visibility ->
+                    Log.wtf(TAG, "ui changed: " + visibility));
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
-                fullScreenMode = true;
-                changeBackGroundColor();
-            }
+            fullScreenMode = true;
+            changeBackGroundColor();
         });
     }
 
     private void setupSystemUI() {
-        toolbar.animate().translationY(Measure.getStatusBarHeight(getResources())).setInterpolator(new DecelerateInterpolator())
-                .setDuration(0).start();
+        toolbar.animate()
+                .translationY(Measure.getStatusBarHeight(getResources()))
+                .setInterpolator(new DecelerateInterpolator())
+                .setDuration(0)
+                .start();
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -844,18 +820,18 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     }
 
     private void showSystemUI() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                toolbar.animate().translationY(Measure.getStatusBarHeight(getResources())).setInterpolator(new DecelerateInterpolator())
-                        .setDuration(240).start();
-
-                getWindow().getDecorView().setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                fullScreenMode = false;
-                changeBackGroundColor();
-            }
+        runOnUiThread(() -> {
+            toolbar.animate()
+                    .translationY(Measure.getStatusBarHeight(getResources()))
+                    .setInterpolator(new DecelerateInterpolator())
+                    .setDuration(240)
+                    .start();
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            fullScreenMode = false;
+            changeBackGroundColor();
         });
     }
 
@@ -871,12 +847,8 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         }
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
         colorAnimation.setDuration(240);
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                activityBackground.setBackgroundColor((Integer) animator.getAnimatedValue());
-            }
-        });
+        colorAnimation.addUpdateListener(animator ->
+                activityBackground.setBackgroundColor((Integer) animator.getAnimatedValue()));
         colorAnimation.start();
     }
 
@@ -887,4 +859,3 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         handler = null;
     }
 }
-

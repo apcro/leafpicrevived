@@ -1,6 +1,5 @@
 package com.alienpants.leafpicrevived.settings;
 
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
@@ -69,27 +68,24 @@ public class MapProviderSetting extends ThemedSetting {
         }
 
         dialogBuilder.setNegativeButton(getActivity().getString(R.string.cancel).toUpperCase(), null);
-        dialogBuilder.setPositiveButton(getActivity().getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (mapProvider.getCheckedRadioButtonId()) {
-                    case R.id.radio_google_maps:
-                    default:
-                        Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.GOOGLE_MAPS.getValue());
-                        break;
-                    case R.id.radio_mapb_streets:
-                        Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX.getValue());
-                        break;
-                    case R.id.radio_osm_tyler:
-                        Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.TYLER.getValue());
-                        break;
-                    case R.id.radio_mapb_dark:
-                        Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX_DARK.getValue());
-                        break;
-                    case R.id.radio_mapb_light:
-                        Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX_LIGHT.getValue());
-                        break;
-                }
+        dialogBuilder.setPositiveButton(getActivity().getString(R.string.ok_action).toUpperCase(), (dialog, which) -> {
+            switch (mapProvider.getCheckedRadioButtonId()) {
+                case R.id.radio_google_maps:
+                default:
+                    Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.GOOGLE_MAPS.getValue());
+                    break;
+                case R.id.radio_mapb_streets:
+                    Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX.getValue());
+                    break;
+                case R.id.radio_osm_tyler:
+                    Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.TYLER.getValue());
+                    break;
+                case R.id.radio_mapb_dark:
+                    Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX_DARK.getValue());
+                    break;
+                case R.id.radio_mapb_light:
+                    Hawk.put(getActivity().getString(R.string.preference_map_provider), StaticMapProvider.MAP_BOX_LIGHT.getValue());
+                    break;
             }
         });
         dialogBuilder.setView(dialogLayout);

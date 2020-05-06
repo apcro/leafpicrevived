@@ -120,12 +120,13 @@
                     </LinearLayout>
 
                     <!--VERTICAL-->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_affix_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple"
                         android:clickable="true"
+                        android:focusable="true"
                         android:orientation="horizontal">
 
                         <org.horaapps.liz.ui.ThemedIcon
@@ -143,7 +144,7 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/medium_spacing"
-                            android:paddingRight="@dimen/medium_spacing"
+                            android:paddingEnd="@dimen/medium_spacing"
                             android:paddingBottom="@dimen/small_spacing">
 
                             <LinearLayout
@@ -184,12 +185,13 @@
                     </LinearLayout>
 
                     <!-- SAVE HERE -->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_affix_save_here"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple"
                         android:clickable="true"
+                        android:focusable="true"
                         android:orientation="horizontal">
 
                         <org.horaapps.liz.ui.ThemedIcon
@@ -207,7 +209,7 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/medium_spacing"
-                            android:paddingRight="@dimen/medium_spacing"
+                            android:paddingEnd="@dimen/medium_spacing"
                             android:paddingBottom="@dimen/small_spacing">
 
                             <LinearLayout
@@ -249,15 +251,16 @@
                     </LinearLayout>
 
                     <!--FORMAT-->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_affix_format"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple"
                         android:clickable="true"
+                        android:focusable="true"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/small_spacing"
-                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingEnd="@dimen/medium_spacing"
                         android:paddingBottom="@dimen/small_spacing">
 
                         <org.horaapps.liz.ui.ThemedIcon
@@ -272,7 +275,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:orientation="vertical">
 
                             <TextView
@@ -323,15 +325,16 @@
                     </LinearLayout>
 
                     <!--QUALITY-->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_affix_quality"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple"
                         android:clickable="true"
+                        android:focusable="true"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/small_spacing"
-                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingEnd="@dimen/medium_spacing"
                         android:paddingBottom="@dimen/small_spacing">
 
                         <org.horaapps.liz.ui.ThemedIcon
@@ -346,7 +349,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:orientation="vertical">
 
                             <TextView

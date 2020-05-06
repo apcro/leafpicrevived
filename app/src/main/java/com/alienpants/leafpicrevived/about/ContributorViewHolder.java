@@ -33,7 +33,7 @@ public class ContributorViewHolder extends ThemedViewHolder {
     @BindView(R.id.contributor_contacts)
     LinearLayout contribContacts;
 
-    public ContributorViewHolder(View view) {
+    ContributorViewHolder(View view) {
         super(view);
         ButterKnife.bind(this, itemView);
     }

@@ -44,11 +44,9 @@ import static android.content.Context.KEYGUARD_SERVICE;
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
 
     private static final String KEY_NAME = "fingerprint_key";
-    CancellationSignal signal;
+    private CancellationSignal signal;
     private Cipher cipher;
     private KeyStore keyStore;
-    private KeyGenerator keyGenerator;
-    private FingerprintManager.CryptoObject cryptoObject;
     private FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
     private Context context;
@@ -64,7 +62,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 (FingerprintManager) context.getSystemService(FINGERPRINT_SERVICE);
     }
 
-    public void setOnFingerprintResult(CallBack fingerprintResult) {
+    void setOnFingerprintResult(CallBack fingerprintResult) {
         this.onFingerprintResult = fingerprintResult;
     }
 
@@ -93,7 +91,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         return fingerprintSupported;
     }
 
-    public void startAuth() {
+    void startAuth() {
         if (fingerprintSupported) {
             try {
 
@@ -102,7 +100,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
                 e.printStackTrace();
             }
             if (initCipher()) {
-                cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                 doAuth(fingerprintManager, cryptoObject);
             }
         }
@@ -114,7 +112,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             keyStore = KeyStore.getInstance("AndroidKeyStore");
 
 
-            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
             keyStore.load(null);
             keyGenerator.init(new
@@ -138,11 +136,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             exc.printStackTrace();
             throw new FingerprintException(exc);
         }
-
-
     }
 
-    public boolean initCipher() {
+    private boolean initCipher() {
         try {
             cipher = Cipher.getInstance(
                     KeyProperties.KEY_ALGORITHM_AES + "/"
@@ -193,10 +189,10 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         super.onAuthenticationFailed();
     }
 
-    public void doAuth(FingerprintManager manager, FingerprintManager.CryptoObject obj) {
+    private void doAuth(FingerprintManager manager, FingerprintManager.CryptoObject obj) {
         try {
             manager.authenticate(obj, signal, 0, this, null);
-        } catch (SecurityException sce) {
+        } catch (SecurityException ignored) {
         }
     }
 
@@ -206,7 +202,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         void onError(String s);
     }
 
-    private class FingerprintException extends Exception {
+    private static class FingerprintException extends Exception {
         FingerprintException(Exception e) {
             super(e);
         }

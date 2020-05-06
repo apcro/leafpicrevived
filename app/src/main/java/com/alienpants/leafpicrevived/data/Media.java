@@ -211,31 +211,29 @@ public class Media implements TimelineItem, CursorHandler, Parcelable {
         this.orientation = orientation;
         // TODO: 28/08/16  find a better way
         // TODO update also content provider
-        new Thread(new Runnable() {
-            public void run() {
-                int exifOrientation = -1;
-                try {
-                    ExifInterface exif = new ExifInterface(path);
-                    switch (orientation) {
-                        case 90:
-                            exifOrientation = ExifInterface.ORIENTATION_ROTATE_90;
-                            break;
-                        case 180:
-                            exifOrientation = ExifInterface.ORIENTATION_ROTATE_180;
-                            break;
-                        case 270:
-                            exifOrientation = ExifInterface.ORIENTATION_ROTATE_270;
-                            break;
-                        case 0:
-                            exifOrientation = ExifInterface.ORIENTATION_NORMAL;
-                            break;
-                    }
-                    if (exifOrientation != -1) {
-                        exif.setAttribute(ExifInterface.TAG_ORIENTATION, String.valueOf(exifOrientation));
-                        exif.saveAttributes();
-                    }
-                } catch (IOException ignored) {
+        new Thread(() -> {
+            int exifOrientation = -1;
+            try {
+                ExifInterface exif = new ExifInterface(path);
+                switch (orientation) {
+                    case 90:
+                        exifOrientation = ExifInterface.ORIENTATION_ROTATE_90;
+                        break;
+                    case 180:
+                        exifOrientation = ExifInterface.ORIENTATION_ROTATE_180;
+                        break;
+                    case 270:
+                        exifOrientation = ExifInterface.ORIENTATION_ROTATE_270;
+                        break;
+                    case 0:
+                        exifOrientation = ExifInterface.ORIENTATION_NORMAL;
+                        break;
                 }
+                if (exifOrientation != -1) {
+                    exif.setAttribute(ExifInterface.TAG_ORIENTATION, String.valueOf(exifOrientation));
+                    exif.saveAttributes();
+                }
+            } catch (IOException ignored) {
             }
         }).start();
         return true;

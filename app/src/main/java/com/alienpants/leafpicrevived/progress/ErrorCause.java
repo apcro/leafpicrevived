@@ -10,17 +10,12 @@ public class ErrorCause {
     private String title;
     private ArrayList<String> causes;
 
-    public ErrorCause(String title, ArrayList<String> causes) {
-        this.title = title;
-        this.causes = causes;
-    }
-
     public ErrorCause(String title) {
         this.title = title;
         this.causes = new ArrayList<>(1);
     }
 
-    public static ErrorCause fromThrowable(Throwable throwable) {
+    static ErrorCause fromThrowable(Throwable throwable) {
         if (throwable instanceof ProgressException)
             return ((ProgressException) throwable).getError();
         else return new ErrorCause(throwable.getMessage());
@@ -34,7 +29,7 @@ public class ErrorCause {
         return title;
     }
 
-    public boolean hasErrors() {
+    private boolean hasErrors() {
         return causes.size() > 0;
     }
 
@@ -44,7 +39,7 @@ public class ErrorCause {
         else return null;
     }
 
-    public ArrayList<String> getCauses() {
+    ArrayList<String> getCauses() {
         return causes;
     }
 

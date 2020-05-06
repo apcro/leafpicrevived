@@ -37,7 +37,7 @@ public class ChromeCustomTabs {
      * @param context The context - used for launching an Activity.
      * @param url     The URL to load.
      */
-    public static void launchUrl(@NonNull Context context, @NonNull String url) {
+    static void launchUrl(@NonNull Context context, @NonNull String url) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
         customTabsIntent.launchUrl(context, Uri.parse(url));
     }

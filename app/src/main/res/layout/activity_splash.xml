@@ -25,16 +25,15 @@
             android:paddingTop="40dp" />
 
     </LinearLayout>
-    <!--
-    <TextView
+
+    <!--TextView
         android:id="@+id/txtLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="25dp"
         android:text="LeafPic Revived"
         android:textColor="@color/md_white_1000"
-        android:textSize="60sp"
-        android:layout_marginBottom="25dp"
-        />
-     -->
+        android:textSize="60sp" /-->
+
 </RelativeLayout>

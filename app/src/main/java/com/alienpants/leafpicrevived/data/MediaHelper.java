@@ -62,11 +62,10 @@ public class MediaHelper {
         });
     }
 
-    public static boolean internalDeleteMedia(Context context, Media media) throws ProgressException {
+    private static void internalDeleteMedia(Context context, Media media) throws ProgressException {
         File file = new File(media.getPath());
         StorageHelper.deleteFile(context, file);
         context.getContentResolver().delete(external, MediaStore.MediaColumns.DATA + "=?", new String[]{file.getPath()});
-        return true;
     }
 
     public static boolean renameMedia(Context context, Media media, String newName) {

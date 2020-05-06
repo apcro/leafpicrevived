@@ -1,6 +1,5 @@
 package com.alienpants.leafpicrevived.settings;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,12 +42,9 @@ public class SinglePhotoSetting extends ThemedSetting {
 
         swApplyTheme.setChecked(getActivity().themeOnSingleImgAct());
         swApplyTheme.setClickable(false);
-        dialogLayout.findViewById(R.id.ll_apply_theme).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                swApplyTheme.setChecked(!swApplyTheme.isChecked());
-                getActivity().setSwitchColor(getActivity().getAccentColor(), swApplyTheme);
-            }
+        dialogLayout.findViewById(R.id.ll_apply_theme).setOnClickListener(v -> {
+            swApplyTheme.setChecked(!swApplyTheme.isChecked());
+            getActivity().setSwitchColor(getActivity().getAccentColor(), swApplyTheme);
         });
         getActivity().setSwitchColor(getActivity().getAccentColor(), swApplyTheme);
 
@@ -62,16 +58,14 @@ public class SinglePhotoSetting extends ThemedSetting {
 
         dialogBuilder.setView(dialogLayout);
         dialogBuilder.setNeutralButton(getActivity().getString(R.string.cancel).toUpperCase(), null);
-        dialogBuilder.setPositiveButton(getActivity().getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                boolean applyTheme = swApplyTheme.isChecked();
-                Hawk.put(getActivity().getString(R.string.preference_apply_theme_pager), applyTheme);
-                if (applyTheme) {
-                    int c = Color.alpha(transparencyColorPicker.getColor());
-                    Hawk.put(getActivity().getString(R.string.preference_transparency), 255 - c);
-                }
-                getActivity().updateTheme();
+        dialogBuilder.setPositiveButton(getActivity().getString(R.string.ok_action).toUpperCase(), (dialog, which) -> {
+            boolean applyTheme = swApplyTheme.isChecked();
+            Hawk.put(getActivity().getString(R.string.preference_apply_theme_pager), applyTheme);
+            if (applyTheme) {
+                int c = Color.alpha(transparencyColorPicker.getColor());
+                Hawk.put(getActivity().getString(R.string.preference_transparency), 255 - c);
             }
+            getActivity().updateTheme();
         });
         dialogBuilder.show();
     }

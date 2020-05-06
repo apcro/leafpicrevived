@@ -38,9 +38,6 @@ public class PaletteActivity extends BaseActivity {
     private ImageView paletteImg;
     private Uri uri;
 
-    private Palette palette;
-    private RecyclerView rvPalette;
-    private PaletteAdapter paletteAdapter;
     /*** - PALETTE ITEM ON CLICK - ***/
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         /** Copies the selected color to the clipboard. */
@@ -76,12 +73,7 @@ public class PaletteActivity extends BaseActivity {
 
         toolbar.setBackgroundColor(getPrimaryColor());
         toolbar.setNavigationIcon(getToolbarIcon(GoogleMaterial.Icon.gmd_arrow_back));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         setStatusBarColor();
         setNavBarColor();
@@ -98,11 +90,11 @@ public class PaletteActivity extends BaseActivity {
         Bitmap myBitmap = ((BitmapDrawable) paletteImg.getDrawable()).getBitmap();
         ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/") + 1));
         ((TextView) findViewById(R.id.palette_image_caption)).setText(uri.getPath());
-        palette = Palette.from(myBitmap).generate();
-        rvPalette = findViewById(R.id.paletteRecycler);
+        Palette palette = Palette.from(myBitmap).generate();
+        RecyclerView rvPalette = findViewById(R.id.paletteRecycler);
         rvPalette.setLayoutManager(new LinearLayoutManager(this));
         rvPalette.setNestedScrollingEnabled(false);
-        paletteAdapter = new PaletteAdapter(palette.getSwatches());
+        PaletteAdapter paletteAdapter = new PaletteAdapter(palette.getSwatches());
         rvPalette.setAdapter(paletteAdapter);
     }
 

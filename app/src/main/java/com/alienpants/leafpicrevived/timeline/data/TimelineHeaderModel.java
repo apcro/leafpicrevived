@@ -5,8 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Model for showing the Timeline headers.
@@ -15,15 +13,6 @@ public class TimelineHeaderModel implements TimelineItem {
 
     private Calendar calendar;
     private String headerText;
-
-    public TimelineHeaderModel(@NonNull Date date) {
-        this(date.getTime());
-    }
-
-    public TimelineHeaderModel(long timeInMillis) {
-        calendar = new GregorianCalendar();
-        calendar.setTimeInMillis(timeInMillis);
-    }
 
     public TimelineHeaderModel(@NonNull Calendar calendar) {
         this.calendar = calendar;

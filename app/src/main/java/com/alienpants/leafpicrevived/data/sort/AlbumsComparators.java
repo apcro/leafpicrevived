@@ -10,7 +10,6 @@ import java.util.Comparator;
  */
 public class AlbumsComparators {
 
-
     private static Comparator<Album> getComparator(SortingMode sortingMode, Comparator<Album> base) {
         switch (sortingMode) {
             case NAME:

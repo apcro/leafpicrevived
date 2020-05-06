@@ -8,12 +8,12 @@ public class Contact {
     private String value;
     private String label;
 
-    public Contact(String value, String label) {
+    Contact(String value, String label) {
         this.value = value;
         this.label = label;
     }
 
-    public String getLabel() {
+    String getLabel() {
         return label;
     }
 

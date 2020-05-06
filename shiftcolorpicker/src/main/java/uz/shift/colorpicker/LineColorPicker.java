@@ -95,14 +95,14 @@ public class LineColorPicker extends View {
         // 8%
         int margin = Math.round(canvas.getWidth() * 0.08f);
 
-        for (int i = 0; i < colors.length; i++) {
+        for (int color : colors) {
 
-            paint.setColor(colors[i]);
+            paint.setColor(color);
 
             rect.top = rect.bottom;
             rect.bottom += cellSize;
 
-            if (isColorSelected && colors[i] == selectedColor) {
+            if (isColorSelected && color == selectedColor) {
                 rect.left = 0;
                 rect.right = canvas.getWidth();
             } else {
@@ -124,14 +124,14 @@ public class LineColorPicker extends View {
         // 8%
         int margin = Math.round(canvas.getHeight() * 0.08f);
 
-        for (int i = 0; i < colors.length; i++) {
+        for (int color : colors) {
 
-            paint.setColor(colors[i]);
+            paint.setColor(color);
 
             rect.left = rect.right;
             rect.right += cellSize;
 
-            if (isColorSelected && colors[i] == selectedColor) {
+            if (isColorSelected && color == selectedColor) {
                 rect.top = 0;
                 rect.bottom = canvas.getHeight();
             } else {
@@ -178,8 +178,6 @@ public class LineColorPicker extends View {
 
                 break;
             case MotionEvent.ACTION_CANCEL:
-                isClick = false;
-                break;
 
             case MotionEvent.ACTION_OUTSIDE:
                 isClick = false;
@@ -203,12 +201,12 @@ public class LineColorPicker extends View {
             int left = 0;
             int right = 0;
 
-            for (int i = 0; i < colors.length; i++) {
+            for (int color : colors) {
                 left = right;
                 right += cellSize;
 
                 if (left <= x && right >= x) {
-                    return colors[i];
+                    return color;
                 }
             }
 
@@ -216,12 +214,12 @@ public class LineColorPicker extends View {
             int top = 0;
             int bottom = 0;
 
-            for (int i = 0; i < colors.length; i++) {
+            for (int color : colors) {
                 top = bottom;
                 bottom += cellSize;
 
                 if (y >= top && y <= bottom) {
-                    return colors[i];
+                    return color;
                 }
             }
         }
@@ -319,7 +317,7 @@ public class LineColorPicker extends View {
         setSelectedColor(colors[position]);
     }
 
-    private int recalcCellSize() {
+    private void recalcCellSize() {
 
         if (mOrientation == HORIZONTAL) {
             cellSize = Math.round(screenW / (colors.length * 1f));
@@ -327,7 +325,6 @@ public class LineColorPicker extends View {
             cellSize = Math.round(screenH / (colors.length * 1f));
         }
 
-        return cellSize;
     }
 
     /**
@@ -358,10 +355,9 @@ public class LineColorPicker extends View {
      * Return true if palette contains this color
      */
     private boolean containsColor(int[] colors, int c) {
-        for (int i = 0; i < colors.length; i++) {
-            if (colors[i] == c)
+        for (int color : colors) {
+            if (color == c)
                 return true;
-
         }
 
         return false;

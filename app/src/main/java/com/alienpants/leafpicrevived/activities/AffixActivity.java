@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
@@ -43,9 +41,6 @@ public class AffixActivity extends Activity implements OnClickListener {
 
     Bitmap bmp1, bmp2;
     Canvas canvas;
-    Paint paint;
-
-    private ArrayList<String> images;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,12 +90,7 @@ public class AffixActivity extends Activity implements OnClickListener {
 
             if (onePicked && twoPicked) {
                 int w = bmp1.getWidth() + bmp2.getWidth();
-                int h;
-                if (bmp1.getHeight() >= bmp2.getHeight()) {
-                    h = bmp1.getHeight();
-                } else {
-                    h = bmp2.getHeight();
-                }
+                int h = Math.max(bmp1.getHeight(), bmp2.getHeight());
                 Bitmap.Config config = bmp1.getConfig();
                 if (config == null) {
                     config = Bitmap.Config.ARGB_8888;
@@ -117,7 +107,7 @@ public class AffixActivity extends Activity implements OnClickListener {
                     BitmapDrawable draw = (BitmapDrawable) compositeImageView.getDrawable();
                     Bitmap bitmap1 = draw.getBitmap();
 
-                    FileOutputStream outStream = null;
+                    FileOutputStream outStream;
                     File sdCard = Environment.getExternalStorageDirectory();
                     File dir = new File(sdCard.getAbsolutePath() + "/YourFolderName");
                     dir.mkdirs();
@@ -159,13 +149,8 @@ public class AffixActivity extends Activity implements OnClickListener {
             /** If both of the ratios are greater than 1, one of the sides of the
              *  image is greater than the screen */
             if (heightRatio > 1 && widthRatio > 1) {
-                if (heightRatio > widthRatio) {
-                    // Height ratio is larger, scale according to it
-                    bmpFactoryOptions.inSampleSize = heightRatio;
-                } else {
-                    // Width ratio is larger, scale according to it
-                    bmpFactoryOptions.inSampleSize = widthRatio;
-                }
+                // Scale according to which ratio is larger
+                bmpFactoryOptions.inSampleSize = Math.max(heightRatio, widthRatio);
             }
 
 

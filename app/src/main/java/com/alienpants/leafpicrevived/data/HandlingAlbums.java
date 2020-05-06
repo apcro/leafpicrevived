@@ -46,7 +46,7 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         return mInstance;
     }
 
-    public static ContentValues getDefaults(String path) {
+    private static ContentValues getDefaults(String path) {
         ContentValues values = new ContentValues();
         values.put(ALBUM_PATH, path);
         values.put(ALBUM_PINNED, 0);

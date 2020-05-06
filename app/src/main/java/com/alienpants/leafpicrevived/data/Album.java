@@ -71,7 +71,7 @@ public class Album implements CursorHandler, Parcelable {
     }
 
     @Deprecated
-    public Album(Context context, String path, long id, String name, int count) {
+    public Album(String path, long id, String name, int count) {
         this(path, name, id, count, 0);
         settings = AlbumSettings.getDefaults();
     }
@@ -88,7 +88,7 @@ public class Album implements CursorHandler, Parcelable {
     }
 
     public static String[] getProjection() {
-        String[] projectionString = new String[]{
+        return new String[]{
                 MediaStore.Files.FileColumns.PARENT,
                 MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
 //				"count(*)",
@@ -96,10 +96,9 @@ public class Album implements CursorHandler, Parcelable {
                 MediaStore.Images.Media.DATA,
                 "max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"
         };
-        return projectionString;
     }
 
-    public static Album getEmptyAlbum() {
+    private static Album getEmptyAlbum() {
         Album album = new Album(null, null);
         album.settings = AlbumSettings.getDefaults();
         return album;
@@ -307,7 +306,7 @@ public class Album implements CursorHandler, Parcelable {
     }
 
     public void sortPhotos() {
-        /*Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));*/
+        //Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));
     }
 
     public boolean copySelectedPhotos(Context context, String folderPath) {
@@ -328,62 +327,61 @@ public class Album implements CursorHandler, Parcelable {
     }
 
     public boolean deleteSelectedMedia(Context context) {
-		/*boolean success = true;
-		for (Media selectedMedia : this.selectedMedia) {
-			if (deleteMedia(context, selectedMedia))
-				media.remove(selectedMedia);
-			else success = false;
-		}
-		if (success) {
-			clearSelectedMedia();
-			setCount(media.size());
-		}
-		return success;*/
+        /*boolean success = true;
+        for (Media selectedMedia : this.selectedMedia) {
+            if (deleteMedia(context, selectedMedia))
+                media.remove(selectedMedia);
+            else success = false;
+        }
+        if (success) {
+            clearSelectedMedia();
+            setCount(media.size());
+        }
+        return success;*/
         return false;
     }
 
     public boolean renameAlbum(final Context context, String newName) {
-		/*found_id_album = false;
-		boolean success;
-		File dir = new File(StringUtils.getAlbumPathRenamed(getPath(), newName));
-		if (success = StorageHelper.mkdir(context, dir)) {
-			for (final Media m : media) {
-				File from = new File(m.getPath());
-				File to = new File(StringUtils.getPhotoPathRenamedAlbumChange(m.getPath(), newName));
-				if (StorageHelper.moveFile(context, from, to)) {
-					scanFile(context, new String[]{from.getAbsolutePath() });
-					scanFile(context, new String[]{ to.getAbsolutePath() }, new MediaScannerConnection.OnScanCompletedListener() {
-						@Override
-						public void onScanCompleted(String s, Uri uri) {
-							// TODO: 05/08/16 it sucks! look for a better solution!
+        /*found_id_album = false;
+        boolean success;
+        File dir = new File(StringUtils.getAlbumPathRenamed(getPath(), newName));
+        if (success = StorageHelper.mkdir(context, dir)) {
+            for (final Media m : media) {
+                File from = new File(m.getPath());
+                File to = new File(StringUtils.getPhotoPathRenamedAlbumChange(m.getPath(), newName));
+                if (StorageHelper.moveFile(context, from, to)) {
+                    scanFile(context, new String[]{from.getAbsolutePath()});
+                    scanFile(context, new String[]{to.getAbsolutePath()}, new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String s, Uri uri) {
+                            // TODO: 05/08/16 it sucks! look for a better solution!
 
-							if (!found_id_album) {
-								id = ContentProviderHelper.getAlbumId(context, s);
-								found_id_album = true;
-							}
-							Log.d(s, "onScanCompleted: "+s);
-							m.setPath(s); m.setUri(uri.toString());
-						}
-					});
+                            if (!found_id_album) {
+                                id = ContentProviderHelper.getAlbumId(context, s);
+                                found_id_album = true;
+                            }
+                            Log.d(s, "onScanCompleted: " + s);
+                            m.setPath(s);
+                            m.setUri(uri.toString());
+                        }
+                    });
 
-				} else success = false;
-			}
-		}
-		if(success) {
-			path = dir.getAbsolutePath();
-			name = newName;
-			// NOTE: the following line doesn't work
-			//id = ContentProviderHelper.getAlbumId(context, media.getValue(0).getPath());
+                } else success = false;
+            }
+        }
+        if (success) {
+            path = dir.getAbsolutePath();
+            name = newName;
+            // NOTE: the following line doesn't work
+            //id = ContentProviderHelper.getAlbumId(context, media.getValue(0).getPath());
 
-		}
-		return success;*/
+        }
+        return success;*/
 
         return false;
     }
 
     @Deprecated
-
-
     @Override
     public int describeContents() {
         return 0;

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="@dimen/sub_medium_spacing"
-        android:paddingRight="@dimen/medium_spacing"
+        android:paddingEnd="@dimen/medium_spacing"
         android:paddingBottom="@dimen/sub_medium_spacing">
 
         <com.alienpants.leafpicrevived.views.themeable.ThemedSettingsIcon

@@ -19,7 +19,7 @@ public abstract class BaseFragment extends ThemedFragment {
             nothingToShowListener = (NothingToShowListener) context;
     }
 
-    public NothingToShowListener getNothingToShowListener() {
+    NothingToShowListener getNothingToShowListener() {
         return nothingToShowListener;
     }
 

@@ -3,7 +3,6 @@ package com.alienpants.leafpicrevived.util;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
@@ -70,10 +69,10 @@ public class AlertDialogsHelper {
     public static AlertDialog getInsertTextDialog(ThemedActivity activity, EditText editText, @StringRes int title) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
-        View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_insert_text, null);
+        View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_insert_text, null);
         TextView textViewTitle = dialogLayout.findViewById(R.id.rename_title);
 
-        ((CardView) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.dialog_chose_provider_title)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        ((CardView) dialogLayout.findViewById(R.id.dialog_chose_provider_title)).setCardBackgroundColor(activity.getCardBackgroundColor());
         textViewTitle.setBackgroundColor(activity.getPrimaryColor());
         textViewTitle.setText(title);
         ThemeHelper.setCursorColor(editText, activity.getTextColor());
@@ -91,7 +90,7 @@ public class AlertDialogsHelper {
         } catch (Exception ignored) {
         }
 
-        ((RelativeLayout) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.container_edit_text)).addView(editText);
+        ((RelativeLayout) dialogLayout.findViewById(R.id.container_edit_text)).addView(editText);
 
         dialogBuilder.setView(dialogLayout);
         return dialogBuilder.create();
@@ -100,7 +99,7 @@ public class AlertDialogsHelper {
     public static AlertDialog getAdvancedSharingDialog(ThemedActivity activity, Uri uri, Intent advancedShare, int imgWidth, int imgHeight) {
 
         AlertDialog.Builder advancedSharingBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
-        View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_advanced_sharing, null);
+        View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_advanced_sharing, null);
         TextView textViewTitle = dialogLayout.findViewById(R.id.advanced_sharing_title);
         textViewTitle.setBackgroundColor(activity.getPrimaryColor());
         ((CardView) dialogLayout.findViewById(R.id.advanced_sharing_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
@@ -123,30 +122,27 @@ public class AlertDialogsHelper {
         activity.themeRadioButton(r50lighter);
         activity.themeRadioButton(r70lighter);
 
-        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i) {
-                    case R.id.radio_original:
-                        advancedShare.putExtra(Intent.EXTRA_STREAM, uri);
-                        break;
-                    case R.id.radio_25lighter:
-                        resizeImage(activity, uri, getDim(imgWidth, 75), getDim(imgHeight, 75), advancedShare);
-                        break;
-                    case R.id.radio_50lighter:
-                        resizeImage(activity, uri, getDim(imgWidth, 50), getDim(imgHeight, 50), advancedShare);
-                        break;
-                    case R.id.radio_70lighter:
-                        resizeImage(activity, uri, getDim(imgWidth, 30), getDim(imgHeight, 30), advancedShare);
-                        break;
-                }
+        rGroup.setOnCheckedChangeListener((radioGroup, i) -> {
+            switch (i) {
+                case R.id.radio_original:
+                    advancedShare.putExtra(Intent.EXTRA_STREAM, uri);
+                    break;
+                case R.id.radio_25lighter:
+                    resizeImage(activity, uri, getDim(imgWidth, 75), getDim(imgHeight, 75), advancedShare);
+                    break;
+                case R.id.radio_50lighter:
+                    resizeImage(activity, uri, getDim(imgWidth, 50), getDim(imgHeight, 50), advancedShare);
+                    break;
+                case R.id.radio_70lighter:
+                    resizeImage(activity, uri, getDim(imgWidth, 30), getDim(imgHeight, 30), advancedShare);
+                    break;
             }
         });
         rOriginal.setChecked(true);
         return advancedSharingBuilder.create();
     }
 
-    public static void resizeImage(Activity activity, Uri uri, int width_px, int height_px, Intent adv) {
+    private static void resizeImage(Activity activity, Uri uri, int width_px, int height_px, Intent adv) {
         Glide.with(activity)
                 .asBitmap()
                 .load(uri)
@@ -158,7 +154,7 @@ public class AlertDialogsHelper {
                 });
     }
 
-    public static void saveResizedImage(Bitmap bitmap, Activity activity, Uri uri, Intent advancedShare) {
+    private static void saveResizedImage(Bitmap bitmap, Activity activity, Uri uri, Intent advancedShare) {
         try {
             String fileName = uri.getLastPathSegment();
             File tempImage;
@@ -182,7 +178,7 @@ public class AlertDialogsHelper {
         }
     }
 
-    public static int getDim(int number, int percent) {
+    private static int getDim(int number, int percent) {
         return Math.round(number * percent / 100);
     }
 
@@ -193,7 +189,7 @@ public class AlertDialogsHelper {
         TextView dialogTitle = dialogLayout.findViewById(R.id.text_dialog_title);
         TextView dialogMessage = dialogLayout.findViewById(R.id.text_dialog_message);
 
-        ((CardView) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.message_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        ((CardView) dialogLayout.findViewById(R.id.message_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
         dialogTitle.setBackgroundColor(activity.getPrimaryColor());
         dialogTitle.setText(title);
         dialogMessage.setText(Message);
@@ -204,13 +200,13 @@ public class AlertDialogsHelper {
 
     public static AlertDialog getProgressDialog(final ThemedActivity activity, String title, String message) {
         AlertDialog.Builder progressDialog = new AlertDialog.Builder(activity, activity.getDialogStyle());
-        View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_progress, null);
+        View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_progress, null);
         TextView dialogTitle = dialogLayout.findViewById(R.id.progress_dialog_title);
         TextView dialogMessage = dialogLayout.findViewById(R.id.progress_dialog_text);
 
         dialogTitle.setBackgroundColor(activity.getPrimaryColor());
-        ((CardView) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.progress_dialog_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
-        ((ProgressBar) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.progress_dialog_loading)).getIndeterminateDrawable().setColorFilter(activity.getPrimaryColor(), android.graphics
+        ((CardView) dialogLayout.findViewById(R.id.progress_dialog_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        ((ProgressBar) dialogLayout.findViewById(R.id.progress_dialog_loading)).getIndeterminateDrawable().setColorFilter(activity.getPrimaryColor(), android.graphics
                 .PorterDuff.Mode.SRC_ATOP);
 
         dialogTitle.setText(title);
@@ -225,11 +221,11 @@ public class AlertDialogsHelper {
     public static AlertDialog getDetailsDialog(final ThemedActivity activity, final Media f) {
         AlertDialog.Builder detailsDialogBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
         MetadataHelper mdhelper = new MetadataHelper();
-        MediaDetailsMap<String, String> mainDetails = mdhelper.getMainDetails(activity, f);
-        final View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_media_detail, null);
+        MediaDetailsMap mainDetails = mdhelper.getMainDetails(activity, f);
+        final View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_media_detail, null);
         ImageView imgMap = dialogLayout.findViewById(R.id.photo_map);
-        dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.details_title).setBackgroundColor(activity.getPrimaryColor());
-        ((CardView) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.photo_details_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        dialogLayout.findViewById(R.id.details_title).setBackgroundColor(activity.getPrimaryColor());
+        ((CardView) dialogLayout.findViewById(R.id.photo_details_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
 
         final GeoLocation location;
         if ((location = f.getGeoLocation()) != null) {
@@ -241,30 +237,25 @@ public class AlertDialogsHelper {
                     .load(staticMapProvider.getUrl(location))
                     .into(imgMap);
 
-            imgMap.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    try {
-                        activity.startActivity(new Intent(Intent.ACTION_VIEW,
-                                Uri.parse(String.format(Locale.ENGLISH, "geo:%f,%f?z=%d", location.getLatitude(), location.getLongitude(), 17))));
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(activity, R.string.no_app_to_perform, Toast.LENGTH_SHORT).show();
-                    }
-
+            imgMap.setOnClickListener(v -> {
+                try {
+                    activity.startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(String.format(Locale.ENGLISH, "geo:%f,%f?z=%d", location.getLatitude(), location.getLongitude(), 17))));
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(activity, R.string.no_app_to_perform, Toast.LENGTH_SHORT).show();
                 }
+
             });
 
             imgMap.setVisibility(View.VISIBLE);
-            dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.details_title).setVisibility(View.GONE);
+            dialogLayout.findViewById(R.id.details_title).setVisibility(View.GONE);
 
         } else imgMap.setVisibility(View.GONE);
 
         final TextView showMoreText = dialogLayout.findViewById(R.id.details_showmore);
-        showMoreText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMoreDetails(dialogLayout, activity, f);
-                showMoreText.setVisibility(View.GONE);
-            }
+        showMoreText.setOnClickListener(view -> {
+            showMoreDetails(dialogLayout, activity, f);
+            showMoreText.setVisibility(View.GONE);
         });
 
         detailsDialogBuilder.setView(dialogLayout);
@@ -275,22 +266,22 @@ public class AlertDialogsHelper {
     public static AlertDialog getAlbumDetailsDialog(final ThemedActivity activity, final Album album, final AlbumsAdapter adapter) {
         AlertDialog.Builder detailsDialogBuilder = new AlertDialog.Builder(activity, activity.getDialogStyle());
         MetadataHelper mdHelper = new MetadataHelper();
-        MediaDetailsMap<String, String> mainAlbumDetails;
+        MediaDetailsMap mainAlbumDetails;
         if (adapter.getSelectedCount() > 1) {
             mainAlbumDetails = mdHelper.getSelectedAlbumsDetails(activity, adapter);
         } else {
             mainAlbumDetails = mdHelper.getFirstSelectedAlbumDetails(activity, album);
         }
-        final View dialogLayout = activity.getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_media_detail, null);
-        dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.details_title).setBackgroundColor(activity.getPrimaryColor());
-        ((CardView) dialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.photo_details_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
+        final View dialogLayout = activity.getLayoutInflater().inflate(R.layout.dialog_media_detail, null);
+        dialogLayout.findViewById(R.id.details_title).setBackgroundColor(activity.getPrimaryColor());
+        ((CardView) dialogLayout.findViewById(R.id.photo_details_card)).setCardBackgroundColor(activity.getCardBackgroundColor());
 
         detailsDialogBuilder.setView(dialogLayout);
         loadDetails(dialogLayout, activity, mainAlbumDetails);
         return detailsDialogBuilder.create();
     }
 
-    private static void loadDetails(View dialogLayout, ThemedActivity activity, MediaDetailsMap<String, String> metadata) {
+    private static void loadDetails(View dialogLayout, ThemedActivity activity, MediaDetailsMap metadata) {
         LinearLayout detailsTable = dialogLayout.findViewById(R.id.ll_list_details);
 
         int tenPxInDp = Measure.pxToDp(10, activity);
@@ -320,7 +311,7 @@ public class AlertDialogsHelper {
     }
 
     private static void showMoreDetails(View dialogLayout, ThemedActivity activity, Media media) {
-        MediaDetailsMap<String, String> metadata = new MediaDetailsMap<>();//media.getAllDetails();
+        MediaDetailsMap metadata = new MediaDetailsMap();//media.getAllDetails();
         loadDetails(dialogLayout, activity, metadata);
     }
 
@@ -357,12 +348,8 @@ public class AlertDialogsHelper {
 
         changelogDialogBuilder.setView(dialogLayout);
         changelogDialogBuilder.setPositiveButton(activity.getString(R.string.ok_action).toUpperCase(), null);
-        changelogDialogBuilder.setNeutralButton(activity.getString(R.string.show_full).toUpperCase(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ChromeCustomTabs.launchUrl(activity, LEAFPIC_CHANGELOG);
-            }
-        });
+        changelogDialogBuilder.setNeutralButton(activity.getString(R.string.show_full).toUpperCase(), (dialog, which) ->
+                ChromeCustomTabs.launchUrl(activity, LEAFPIC_CHANGELOG));
         return changelogDialogBuilder.show();
     }
 

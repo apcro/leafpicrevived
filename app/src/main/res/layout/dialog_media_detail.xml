@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ripple"
                 android:clickable="true"
+                android:focusable="true"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -52,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ripple"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:text="@string/show_more"
                     android:textSize="@dimen/medium_text"

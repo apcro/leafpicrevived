@@ -9,14 +9,14 @@ import java.util.Arrays;
 public class Query {
 
     public Uri uri;
-    public String[] projection;
-    public String selection;
-    public String[] args;
     public String sort;
     public boolean ascending;
-    public int limit;
+    private String[] projection;
+    private String selection;
+    private String[] args;
+    private int limit;
 
-    Query(Builder builder) {
+    private Query(Builder builder) {
         uri = builder.uri;
         projection = builder.projection;
         selection = builder.selection;
@@ -26,7 +26,7 @@ public class Query {
         limit = builder.limit;
     }
 
-    public Cursor getCursor(ContentResolver cr) {
+    Cursor getCursor(ContentResolver cr) {
         return cr.query(uri, projection, selection, args, hack());
     }
 
@@ -84,19 +84,17 @@ public class Query {
             return this;
         }
 
-        public Builder projection(String[] val) {
+        Builder projection(String[] val) {
             projection = val;
             return this;
         }
 
-        public Builder selection(String val) {
+        void selection(String val) {
             selection = val;
-            return this;
         }
 
-        public Builder args(Object... val) {
+        void args(Object... val) {
             args = val;
-            return this;
         }
 
         public Builder sort(String val) {
@@ -118,7 +116,7 @@ public class Query {
             return new Query(this);
         }
 
-        public String[] getStringArgs() {
+        String[] getStringArgs() {
             return Arrays.stream(args).map(Object::toString).toArray(String[]::new);
         }
     }

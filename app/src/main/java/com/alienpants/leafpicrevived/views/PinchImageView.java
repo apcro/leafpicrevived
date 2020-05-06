@@ -9,7 +9,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,7 +22,7 @@ import java.util.Queue;
  *
  * @author clifford
  */
-public class PinchImageView extends ImageView {
+public class PinchImageView extends AppCompatImageView {
 
     ////////////////////////////////配置参数////////////////////////////////
 
@@ -1129,9 +1130,9 @@ public class PinchImageView extends ImageView {
          *
          * @param size 对象池最大容量
          */
-        public ObjectsPool(int size) {
+        ObjectsPool(int size) {
             mSize = size;
-            mQueue = new LinkedList<T>();
+            mQueue = new LinkedList<>();
         }
 
         /**
@@ -1145,7 +1146,7 @@ public class PinchImageView extends ImageView {
          * @return 可用的对象
          * @see #given(Object)
          */
-        public T take() {
+        T take() {
             //如果池内为空就创建一个
             if (mQueue.size() == 0) {
                 return newInstance();
@@ -1163,7 +1164,7 @@ public class PinchImageView extends ImageView {
          * @param obj 归还的对象
          * @see #take()
          */
-        public void given(T obj) {
+        void given(T obj) {
             //如果对象池还有空位子就归还对象
             if (obj != null && mQueue.size() < mSize) {
                 mQueue.offer(obj);
@@ -1193,7 +1194,7 @@ public class PinchImageView extends ImageView {
      */
     private static class MatrixPool extends ObjectsPool<Matrix> {
 
-        public MatrixPool(int size) {
+        MatrixPool(int size) {
             super(size);
         }
 
@@ -1214,7 +1215,7 @@ public class PinchImageView extends ImageView {
      */
     private static class RectFPool extends ObjectsPool<RectF> {
 
-        public RectFPool(int size) {
+        RectFPool(int size) {
             super(size);
         }
 
@@ -1250,14 +1251,14 @@ public class PinchImageView extends ImageView {
         /**
          * 获取矩阵对象
          */
-        public static Matrix matrixTake() {
+        static Matrix matrixTake() {
             return mMatrixPool.take();
         }
 
         /**
          * 获取某个矩阵的copy
          */
-        public static Matrix matrixTake(Matrix matrix) {
+        static Matrix matrixTake(Matrix matrix) {
             Matrix result = mMatrixPool.take();
             if (matrix != null) {
                 result.set(matrix);
@@ -1268,21 +1269,21 @@ public class PinchImageView extends ImageView {
         /**
          * 归还矩阵对象
          */
-        public static void matrixGiven(Matrix matrix) {
+        static void matrixGiven(Matrix matrix) {
             mMatrixPool.given(matrix);
         }
 
         /**
          * 获取矩形对象
          */
-        public static RectF rectFTake() {
+        static RectF rectFTake() {
             return mRectFPool.take();
         }
 
         /**
          * 按照指定值获取矩形对象
          */
-        public static RectF rectFTake(float left, float top, float right, float bottom) {
+        static RectF rectFTake(float left, float top, float right, float bottom) {
             RectF result = mRectFPool.take();
             result.set(left, top, right, bottom);
             return result;
@@ -1302,7 +1303,7 @@ public class PinchImageView extends ImageView {
         /**
          * 归还矩形对象
          */
-        public static void rectFGiven(RectF rectF) {
+        static void rectFGiven(RectF rectF) {
             mRectFPool.given(rectF);
         }
 
@@ -1315,7 +1316,7 @@ public class PinchImageView extends ImageView {
          * @param y2 点2
          * @return 距离
          */
-        public static float getDistance(float x1, float y1, float x2, float y2) {
+        static float getDistance(float x1, float y1, float x2, float y2) {
             float x = x1 - x2;
             float y = y1 - y2;
             return (float) Math.sqrt(x * x + y * y);
@@ -1330,7 +1331,7 @@ public class PinchImageView extends ImageView {
          * @param y2 点2
          * @return float[]{x, y}
          */
-        public static float[] getCenterPoint(float x1, float y1, float x2, float y2) {
+        static float[] getCenterPoint(float x1, float y1, float x2, float y2) {
             return new float[]{(x1 + x2) / 2f, (y1 + y2) / 2f};
         }
 
@@ -1340,7 +1341,7 @@ public class PinchImageView extends ImageView {
          * @param matrix 要计算的矩阵
          * @return float[]{scaleX, scaleY}
          */
-        public static float[] getMatrixScale(Matrix matrix) {
+        static float[] getMatrixScale(Matrix matrix) {
             if (matrix != null) {
                 float[] value = new float[9];
                 matrix.getValues(value);
@@ -1360,7 +1361,7 @@ public class PinchImageView extends ImageView {
          * @param matrix
          * @return unknownPoint
          */
-        public static float[] inverseMatrixPoint(float[] point, Matrix matrix) {
+        static float[] inverseMatrixPoint(float[] point, Matrix matrix) {
             if (point != null && matrix != null) {
                 float[] dst = new float[2];
                 //计算matrix的逆矩阵
@@ -1557,7 +1558,7 @@ public class PinchImageView extends ImageView {
          * @param end      动画终点状态
          * @param duration 动画持续时间
          */
-        public MaskAnimator(RectF start, RectF end, long duration) {
+        MaskAnimator(RectF start, RectF end, long duration) {
             super();
             setFloatValues(0, 1f);
             setDuration(duration);
@@ -1612,7 +1613,7 @@ public class PinchImageView extends ImageView {
          * @param vectorX 速度向量
          * @param vectorY 速度向量
          */
-        public FlingAnimator(float vectorX, float vectorY) {
+        FlingAnimator(float vectorX, float vectorY) {
             super();
             setFloatValues(0, 1f);
             setDuration(1000000);
@@ -1667,7 +1668,7 @@ public class PinchImageView extends ImageView {
          * @param start 开始矩阵
          * @param end   结束矩阵
          */
-        public ScaleAnimator(Matrix start, Matrix end) {
+        ScaleAnimator(Matrix start, Matrix end) {
             this(start, end, SCALE_ANIMATOR_DURATION);
         }
 
@@ -1680,7 +1681,7 @@ public class PinchImageView extends ImageView {
          * @param end      结束矩阵
          * @param duration 动画时间
          */
-        public ScaleAnimator(Matrix start, Matrix end, long duration) {
+        ScaleAnimator(Matrix start, Matrix end, long duration) {
             super();
             setFloatValues(0, 1f);
             setDuration(duration);

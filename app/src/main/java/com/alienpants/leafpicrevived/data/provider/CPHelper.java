@@ -159,7 +159,7 @@ public class CPHelper {
 
     public static Observable<Media> getMedia(Context context, Album album) {
 
-        if (album.getId() == -1) return getMediaFromStorage(context, album);
+        if (album.getId() == -1) return getMediaFromStorage(album);
         else if (album.getId() == Album.ALL_MEDIA_ALBUM_ID)
             return getAllMediaFromMediaStore(context, album.settings.getSortingMode(), album.settings.getSortingOrder());
         else
@@ -168,7 +168,7 @@ public class CPHelper {
 
     public static Observable<Media> getMedia(Context context, Album album, SortingMode sortingMode, SortingOrder sortingOrder) {
 
-        if (album.getId() == -1) return getMediaFromStorage(context, album);
+        if (album.getId() == -1) return getMediaFromStorage(album);
         else if (album.getId() == Album.ALL_MEDIA_ALBUM_ID)
             return getAllMediaFromMediaStore(context, sortingMode, sortingOrder);
         else return getMediaFromMediaStore(context, album, sortingMode, sortingOrder);
@@ -204,7 +204,7 @@ public class CPHelper {
         );
     }
 
-    private static Observable<Media> getMediaFromStorage(Context context, Album album) {
+    private static Observable<Media> getMediaFromStorage(Album album) {
 
         return Observable.create(subscriber -> {
             File dir = new File(album.getPath());

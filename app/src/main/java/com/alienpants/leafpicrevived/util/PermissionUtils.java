@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
  */
 public final class PermissionUtils {
 
-    public static boolean checkPermissions(Context context, String... permissions) {
+    private static boolean checkPermissions(Context context, String... permissions) {
         for (String permission : permissions) {
             if (!checkPermission(context, permission)) {
                 return false;

@@ -70,11 +70,11 @@ public class StringUtils {
     }
 
     public static String getPhotoPathRenamedAlbumChange(String olderPath, String albumNewName) {
-        String c = "";
+        StringBuilder c = new StringBuilder();
         String[] b = olderPath.split("/");
-        for (int x = 0; x < b.length - 2; x++) c += b[x] + "/";
-        c += albumNewName + "/" + b[b.length - 1];
-        return c;
+        for (int x = 0; x < b.length - 2; x++) c.append(b[x]).append("/");
+        c.append(albumNewName).append("/").append(b[b.length - 1]);
+        return c.toString();
     }
 
     public static String getAlbumPathRenamed(String olderPath, String newName) {
@@ -91,10 +91,10 @@ public class StringUtils {
 
     public static String getBucketPathByImagePath(String path) {
         String[] b = path.split("/");
-        String c = "";
-        for (int x = 0; x < b.length - 1; x++) c += b[x] + "/";
-        c = c.substring(0, c.length() - 1);
-        return c;
+        StringBuilder c = new StringBuilder();
+        for (int x = 0; x < b.length - 1; x++) c.append(b[x]).append("/");
+        c = new StringBuilder(c.substring(0, c.length() - 1));
+        return c.toString();
     }
 
     public static void showToast(Context x, String s) {

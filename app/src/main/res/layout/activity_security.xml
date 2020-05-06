@@ -24,12 +24,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:id="@+id/ll_active_security"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ripple"
                 android:clickable="true"
+                android:focusable="true"
                 android:orientation="horizontal">
 
                 <org.horaapps.liz.ui.ThemedIcon
@@ -47,7 +48,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/medium_spacing"
-                    android:paddingRight="@dimen/medium_spacing"
+                    android:paddingEnd="@dimen/medium_spacing"
                     android:paddingBottom="@dimen/medium_spacing">
 
                     <TextView
@@ -74,7 +75,7 @@
             </LinearLayout>
 
             <!--USE FINGERPRINT-->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:id="@+id/ll_active_security_fingerprint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +95,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/big_spacing"
-                    android:paddingRight="@dimen/medium_spacing"
+                    android:paddingEnd="@dimen/medium_spacing"
                     android:paddingBottom="@dimen/medium_spacing">
 
                     <TextView
@@ -138,12 +139,13 @@
                     android:textStyle="bold" />
 
                 <!--HIDDEN FOLDER-->
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout
                     android:id="@+id/ll_security_body_apply_hidden"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ripple"
                     android:clickable="true"
+                    android:focusable="true"
                     android:orientation="horizontal">
 
                     <org.horaapps.liz.ui.ThemedIcon
@@ -161,7 +163,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/medium_spacing"
-                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingEnd="@dimen/medium_spacing"
                         android:paddingBottom="@dimen/medium_spacing">
 
                         <TextView
@@ -188,12 +190,13 @@
                 </LinearLayout>
 
                 <!--DELETE ACTION-->
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout
                     android:id="@+id/ll_security_body_apply_delete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ripple"
                     android:clickable="true"
+                    android:focusable="true"
                     android:orientation="horizontal">
 
                     <org.horaapps.liz.ui.ThemedIcon
@@ -212,7 +215,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/medium_spacing"
-                        android:paddingRight="@dimen/medium_spacing"
+                        android:paddingEnd="@dimen/medium_spacing"
                         android:paddingBottom="@dimen/medium_spacing">
 
                         <TextView

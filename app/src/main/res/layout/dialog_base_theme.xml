@@ -34,12 +34,13 @@
                 android:padding="@dimen/medium_spacing">
 
                 <!--WHITE THEME-->
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout
                     android:id="@+id/ll_white_basic_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/md_light_background"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="@drawable/ripple"
                     android:orientation="horizontal"
                     android:padding="@dimen/sub_medium_spacing_2">
@@ -72,12 +73,13 @@
                 </LinearLayout>
 
                 <!--DARK THEME-->
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout
                     android:id="@+id/ll_dark_basic_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/md_dark_background"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="@drawable/ripple"
                     android:orientation="horizontal"
                     android:padding="@dimen/sub_medium_spacing_2">
@@ -110,12 +112,13 @@
                 </LinearLayout>
 
                 <!--DARK AMOLED THEME-->
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <LinearLayout
                     android:id="@+id/ll_dark_amoled_basic_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/md_black_1000"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="@drawable/ripple"
                     android:orientation="horizontal"
                     android:padding="@dimen/sub_medium_spacing_2">

@@ -17,8 +17,8 @@ import java.util.List;
 public abstract class BaseAdapter<T, VH extends ThemedViewHolder> extends ThemedAdapter<VH> implements Themed {
 
     private List<T> items;
-    /*    private OnItemClickListener<T> clickListener;
-        private OnItemLongClickListener<T> longClickListener;*/
+    //private OnItemClickListener<T> clickListener;
+    //private OnItemLongClickListener<T> longClickListener;
     private Context context;
 
     public BaseAdapter(Context context) {
@@ -35,8 +35,8 @@ public abstract class BaseAdapter<T, VH extends ThemedViewHolder> extends Themed
     public Context getContext() {
         return context;
     }
-
-   /* public void setClickListener(OnItemClickListener<T> clickListener) {
+/*
+    public void setClickListener(OnItemClickListener<T> clickListener) {
         this.clickListener = clickListener;
     }
 
@@ -53,8 +53,8 @@ public abstract class BaseAdapter<T, VH extends ThemedViewHolder> extends Themed
         if (longClickListener != null)
             return longClickListener.onItemLongClick(itm, parent, pos);
         return false;
-    }*/
-
+    }
+*/
     public List<T> getItems() {
         return items;
     }

@@ -310,7 +310,8 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
                 return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(), mainHandler, null);
             case C.TYPE_DASH:
                 return new DashMediaSource(uri, buildDataSourceFactory(false), new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
-//            case C.TYPE_HLS:return new HlsMediaSource(uri, mediaDataSourceFactory, mainHandler, null);
+//            case C.TYPE_HLS:
+//                return new HlsMediaSource(uri, mediaDataSourceFactory, mainHandler, null);
             case C.TYPE_HLS:
                 throw new IllegalStateException("Unsupported type: " + type);
             default:

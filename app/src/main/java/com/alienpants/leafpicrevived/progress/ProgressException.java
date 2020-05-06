@@ -8,10 +8,6 @@ public class ProgressException extends Exception {
         this.error = error;
     }
 
-    public ProgressException(String error) {
-        this.error = new ErrorCause(error);
-    }
-
     public ErrorCause getError() {
         return error;
     }

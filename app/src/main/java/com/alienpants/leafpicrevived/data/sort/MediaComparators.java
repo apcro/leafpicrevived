@@ -29,7 +29,7 @@ public class MediaComparators {
         return sortingOrder.isAscending() ? getTimelineComparator() : reverse(getTimelineComparator());
     }
 
-    public static Comparator<Media> getComparator(SortingMode sortingMode) {
+    private static Comparator<Media> getComparator(SortingMode sortingMode) {
         switch (sortingMode) {
             case NAME:
                 return getNameComparator();

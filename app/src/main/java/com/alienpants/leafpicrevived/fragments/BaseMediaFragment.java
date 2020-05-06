@@ -21,8 +21,8 @@ public abstract class BaseMediaFragment extends BaseFragment {
     private MediaTapListener mediaTapListener;
 
     @NonNull
-    protected static <T extends BaseMediaFragment> T newInstance(@NonNull T mediaFragment,
-                                                                 @NonNull Media media) {
+    static <T extends BaseMediaFragment> T newInstance(@NonNull T mediaFragment,
+                                                       @NonNull Media media) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARGS_MEDIA, media);
@@ -53,7 +53,7 @@ public abstract class BaseMediaFragment extends BaseFragment {
         // Default implementation
     }
 
-    protected void setTapListener(@NonNull View view) {
+    void setTapListener(@NonNull View view) {
         view.setOnClickListener(v -> onTapped());
     }
 

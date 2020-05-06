@@ -17,7 +17,7 @@ public class ErrorCauseAdapter extends ThemedAdapter<ErrorCauseViewHolder> {
 
     private List<ErrorCause> errors;
 
-    public ErrorCauseAdapter(Context context, List<ErrorCause> errors) {
+    ErrorCauseAdapter(Context context, List<ErrorCause> errors) {
         super(context);
         this.errors = errors;
     }

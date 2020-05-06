@@ -152,13 +152,6 @@ public class StorageHelper {
                     if (targetDocument != null) {
                         outStream = context.getContentResolver().openOutputStream(targetDocument.getUri());
                     }
-                } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-                    // TODO: 13/08/16 test this
-                    // Workaround for Kitkat ext SD card
-                    Uri uri = getUriFromFile(context, target.getAbsolutePath());
-                    if (uri != null) {
-                        outStream = context.getContentResolver().openOutputStream(uri);
-                    }
                 }
 
                 if (outStream != null) {
@@ -201,7 +194,7 @@ public class StorageHelper {
      * @param target The target Directory
      * @return true if the copying was successful.
      */
-    public static boolean moveFile(Context context, @NonNull final File source, @NonNull final File target) {
+    static boolean moveFile(Context context, @NonNull final File source, @NonNull final File target) {
         // the param "target" is a file.
         // File target = new File(target, source.getName());
 
@@ -262,7 +255,7 @@ public class StorageHelper {
      * @return true if successful.
      */
 
-    public static boolean deleteFilesInFolder(Context context, @NonNull final File folder) {
+    static boolean deleteFilesInFolder(Context context, @NonNull final File folder) {
 
         // TODO: 07/05/18 check
         boolean totalSuccess = true;
@@ -290,7 +283,7 @@ public class StorageHelper {
      * @param file the file to be deleted.
      * @return True if successfully deleted.
      */
-    public static void deleteFile(Context context, @NonNull final File file) throws ProgressException {
+    static void deleteFile(Context context, @NonNull final File file) throws ProgressException {
         ErrorCause error = new ErrorCause(file.getName());
 
         //W/DocumentFile: Failed getCursor: java.lang.IllegalArgumentException: Failed to determine if A613-F0E1:.android_secure is child of A613-F0E1:: java.io.FileNotFoundException: Missing file for A613-F0E1:.android_secure at /storage/sdcard1/.android_secure
@@ -311,29 +304,12 @@ public class StorageHelper {
             error.addCause("Failed SAF");
         }
 
-        // Try the Kitkat workaround.
-        if (!success && Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            ContentResolver resolver = context.getContentResolver();
-
-            try {
-                Uri uri = getUriForFile(context, file);
-                if (uri != null) {
-                    resolver.delete(uri, null, null);
-                }
-                success = !file.exists();
-            } catch (Exception e) {
-                error.addCause(String.format("Failed CP: %s", e.getLocalizedMessage()));
-                Log.e(TAG, "Error when deleting file " + file.getAbsolutePath(), e);
-                success = false;
-            }
-        }
-
         if (success) scanFile(context, new String[]{file.getPath()});
         else throw new ProgressException(error);
     }
 
     public static HashSet<File> getStorageRoots(Context context) {
-        HashSet<File> paths = new HashSet<File>();
+        HashSet<File> paths = new HashSet<>();
         for (File file : context.getExternalFilesDirs("external")) {
             if (file != null) {
                 int index = file.getAbsolutePath().lastIndexOf("/Android/data");
@@ -385,18 +361,6 @@ public class StorageHelper {
             return document != null && document.delete();
         }
 
-        // Try the Kitkat workaround.
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            ContentResolver resolver = context.getContentResolver();
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.MediaColumns.DATA, file.getAbsolutePath());
-            resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-            // Delete the created entry, such that content provider will delete the file.
-            resolver.delete(MediaStore.Files.getContentUri("external"), MediaStore.MediaColumns.DATA + "=?",
-                    new String[]{file.getAbsolutePath()});
-        }
-
         return !file.exists();
     }
 
@@ -420,13 +384,13 @@ public class StorageHelper {
         String suffixPathPart = null;
 
         if (sdcardPath != null) {
-            if ((file.getPath().indexOf(sdcardPath)) != -1)
+            if (file.getPath().contains(sdcardPath))
                 suffixPathPart = file.getAbsolutePath().substring(sdcardPath.length());
         } else {
             HashSet<File> storageRoots = StorageHelper.getStorageRoots(context);
             for (File root : storageRoots) {
                 if (root != null) {
-                    if ((file.getPath().indexOf(root.getPath())) != -1)
+                    if (file.getPath().contains(root.getPath()))
                         suffixPathPart = file.getAbsolutePath().substring(file.getPath().length());
                 }
             }
@@ -507,7 +471,7 @@ public class StorageHelper {
             else if (isDownloadsDocument(uri)) {
                 final String id = DocumentsContract.getDocumentId(uri);
                 final Uri contentUri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                        Uri.parse("content://downloads/public_downloads"), Long.parseLong(id));
 
                 return getDataColumn(context, contentUri, null, null);
             }
@@ -537,7 +501,7 @@ public class StorageHelper {
             String[] seg = uri.toString().split("/");
             final String id = seg[seg.length - 1];
             final Uri contentUri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                    Uri.parse("content://downloads/public_downloads"), Long.parseLong(id));
 
             return getDataColumn(context, contentUri, null, null);
         }

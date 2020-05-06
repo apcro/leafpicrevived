@@ -13,9 +13,7 @@
         android:id="@+id/filter_menu"
         android:title="@string/filter_menu_title"
         app:showAsAction="ifRoom">
-        <menu xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            tools:context="com.alienpants.leafpicrevived.activities.MainActivity">
+        <menu tools:context="com.alienpants.leafpicrevived.activities.MainActivity">
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/all_media_filter"
@@ -41,9 +39,7 @@
         android:id="@+id/sort_action"
         android:title="@string/sort_menu_title"
         app:showAsAction="ifRoom">
-        <menu xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            tools:context=".PhotosActivity">
+        <menu tools:context=".PhotosActivity">
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/name_sort_mode"

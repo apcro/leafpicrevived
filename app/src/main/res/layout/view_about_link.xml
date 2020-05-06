@@ -6,8 +6,8 @@
         android:layout_width="@dimen/about_link_icon_size"
         android:layout_height="@dimen/about_link_icon_size"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/about_link_icon_left_margin"
-        android:layout_marginRight="@dimen/about_link_icon_right_margin" />
+        android:layout_marginStart="@dimen/about_link_icon_left_margin"
+        android:layout_marginEnd="@dimen/about_link_icon_right_margin" />
 
     <TextView
         android:id="@+id/about_link_title"

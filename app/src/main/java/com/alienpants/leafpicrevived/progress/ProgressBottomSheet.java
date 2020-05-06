@@ -52,11 +52,12 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
     @BindView(R.id.progress_done_cancel_sheet)
     AppCompatButton btnDoneCancel;
     @StringRes
+    private
     int title;
-    boolean showCancel = true;
-    boolean autoDismiss = false;
-    List<? extends ObservableSource<? extends T>> sources;
-    Listener<T> listener;
+    private boolean showCancel = true;
+    private boolean autoDismiss = false;
+    private List<? extends ObservableSource<? extends T>> sources;
+    private Listener<T> listener;
     private Disposable disposable;
     private boolean done = false;
 
@@ -64,15 +65,15 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
         this.title = title;
     }
 
-    public void setShowCancel(boolean showCancel) {
+    private void setShowCancel(boolean showCancel) {
         this.showCancel = showCancel;
     }
 
-    public void setAutoDismiss(boolean autoDismiss) {
+    private void setAutoDismiss(boolean autoDismiss) {
         this.autoDismiss = autoDismiss;
     }
 
-    public void setSources(List<? extends ObservableSource<? extends T>> sources) {
+    private void setSources(List<? extends ObservableSource<? extends T>> sources) {
         this.sources = sources;
     }
 

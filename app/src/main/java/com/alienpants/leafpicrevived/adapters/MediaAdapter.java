@@ -89,7 +89,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
 
     public ArrayList<Media> getSelected() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return new ArrayList<>(media.stream().filter(Media::isSelected).collect(Collectors.toList()));
+            return media.stream().filter(Media::isSelected).collect(Collectors.toCollection(ArrayList::new));
         } else {
             ArrayList<Media> arrayList = new ArrayList<>(selectedCount);
             for (Media m : media)
@@ -290,7 +290,7 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
      *
      * @param
      */
-    public void selectAllUpTo(Media m) {
+    private void selectAllUpTo(Media m) {
         int targetIndex = media.indexOf(m);
 
         int indexRightBeforeOrAfter = -1;

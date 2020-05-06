@@ -37,6 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/card_spacing"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="@drawable/ripple"
                     android:paddingBottom="@dimen/card_spacing"
                     android:visibility="gone"

@@ -56,7 +56,7 @@ public class NumericComparator {
             return 0;
 
         /** special handle for "", "." and ".." */
-        if (s1 == null || s1.length() == 0)
+        if (s1.length() == 0)
             return -1;
         if (s2 == null || s2.length() == 0)
             return 1;
@@ -106,7 +106,7 @@ public class NumericComparator {
      * implements that from s5.6.12 of Debian Policy v3.8.0.1
      * http://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version
      */
-    public static int verrevcmp(String s1, String s2) {
+    private static int verrevcmp(String s1, String s2) {
         int s1_pos = 0;
         int s2_pos = 0;
         while (s1_pos < s1.length() || s2_pos < s2.length()) {

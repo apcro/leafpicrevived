@@ -427,61 +427,48 @@ public class MainActivity extends SharedMediaActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
         switch (item.getItemId()) {
 
             case R.id.settings:
                 SettingsActivity.startActivity(this);
                 return true;
-
-            /*
+/*
             case R.id.action_move:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.move_to))
-                        .onFolderSelected(new SelectAlbumBuilder.OnFolderSelected() {
-                            @Override
-                            public void folderSelected(String path) {
-                                //TODo
-                                //swipeRefreshLayout.setRefreshing(true);
-                                /*if (getAlbum().moveSelectedMedia(getApplicationContext(), path) > 0) {
-                                    if (getAlbum().getMedia().size() == 0) {
-                                        //getAlbums().removeCurrentAlbum();
-                                        //albumsAdapter.notifyDataSetChanged();
-                                        displayAlbums(false);
-                                    }
-                                    //oldMediaAdapter.swapDataSet(getAlbum().getMedia());
-                                    //finishEditMode();
-                                    supportInvalidateOptionsMenu();
-                                } else requestSdCardPermissions();
+                        .onFolderSelected(path -> {
+                            //TODO
+                            //swipeRefreshLayout.setRefreshing(true);
+                            if (getAlbum().moveSelectedMedia(getApplicationContext(), path) > 0) {
+                                if (getAlbum().getMedia().size() == 0) {
+                                    //getAlbums().removeCurrentAlbum();
+                                    //albumsAdapter.notifyDataSetChanged();
+                                    displayAlbums(false);
+                                }
+                                //oldMediaAdapter.swapDataSet(getAlbum().getMedia());
+                                //finishEditMode();
+                                supportInvalidateOptionsMenu();
+                            } else requestSdCardPermissions();
 
-                                //swipeRefreshLayout.setRefreshing(false);
-                            }
+                            //swipeRefreshLayout.setRefreshing(false);
                         }).show();
                 return true;
-                */
-
-            /*
+*/
+/*
             case R.id.action_copy:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.copy_to))
-                        .onFolderSelected(new SelectAlbumBuilder.OnFolderSelected() {
-                            @Override
-                            public void folderSelected(String path) {
-                                boolean success = getAlbum().copySelectedPhotos(getApplicationContext(), path);
-                                //finishEditMode();
+                        .onFolderSelected(path -> {
+                            boolean success = getAlbum().copySelectedPhotos(getApplicationContext(), path);
+                            //finishEditMode();
 
-                                if (!success) // TODO: 11/21/16 handle in other way
-                                    requestSdCardPermissions();
-                            }
+                            if (!success) // TODO: 11/21/16 handle in other way
+                                requestSdCardPermissions();
                         }).show();
-
                 return true;
-
-                */
-
-
-            /*case R.id.rename:
+*/
+/*
+            case R.id.rename:
                 final EditText editTextNewName = new EditText(getApplicationContext());
                 editTextNewName.setText(albumsMode ? firstSelectedAlbum.getName() : getAlbum().getName());
 
@@ -489,12 +476,20 @@ public class MainActivity extends SharedMediaActivity implements
 
                 insertTextDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+
+                    @Override
                     public void onMediaClick(DialogInterface dialogInterface, int i) {
                         insertTextDialog.dismiss();
                     }
                 });
 
                 insertTextDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+
                     @Override
                     public void onMediaClick(DialogInterface dialogInterface, int i) {
                         if (editTextNewName.length() != 0) {
@@ -523,9 +518,8 @@ public class MainActivity extends SharedMediaActivity implements
                 });
 
                 insertTextDialog.show();
-                return true;*/
-
-
+                return true;
+*/
             default:
                 /** If we got here, the user's action was not recognized.
                  *  Invoke the superclass to handle it. */
@@ -566,12 +560,12 @@ public class MainActivity extends SharedMediaActivity implements
             case NAVIGATION_ITEM_ALL_MEDIA:
                 displayMedia(Album.getAllMediaAlbum());
                 break;
-
-//            case NAVIGATION_ITEM_TIMELINE:
-//                displayTimeline(Album.getAllMediaAlbum());
-//                selectNavigationItem(navigationItemSelected);
-//                break;
-
+/*
+            case NAVIGATION_ITEM_TIMELINE:
+                displayTimeline(Album.getAllMediaAlbum());
+                selectNavigationItem(navigationItemSelected);
+                break;
+*/
             case NAVIGATION_ITEM_HIDDEN_FOLDERS:
                 if (Security.isPasswordOnHidden()) {
                     askPassword();
@@ -584,15 +578,15 @@ public class MainActivity extends SharedMediaActivity implements
             case NAVIGATION_ITEM_WALLPAPERS:
                 Toast.makeText(MainActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
                 break;
-
-//            case NAVIGATION_ITEM_DONATE:
-//                DonateActivity.startActivity(this);
-//                break;
-
+/*
+            case NAVIGATION_ITEM_DONATE:
+                DonateActivity.startActivity(this);
+                break;
+*/
             case NavigationDrawer.NAVIGATION_ITEM_AFFIX:
                 Intent i = new Intent(getBaseContext(), AffixActivity.class);
                 startActivity(i);
-                //   AffixActivity.startActivity(this);
+                //AffixActivity.startActivity(this);
                 break;
             case NAVIGATION_ITEM_SETTINGS:
                 SettingsActivity.startActivity(this);

@@ -18,14 +18,14 @@ public class Contributor {
 
     private ArrayList<Contact> contacts;
 
-    public Contributor(String name, String description, @DrawableRes int profileImage) {
+    Contributor(String name, String description, @DrawableRes int profileImage) {
         this.name = name;
         this.description = description;
         this.profileImage = profileImage;
         this.contacts = new ArrayList<>();
     }
 
-    public void addSocial(String label, String url) {
+    void addSocial(String label, String url) {
         Contact c = new Contact(url, label);
         contacts.add(c);
     }
@@ -42,15 +42,15 @@ public class Contributor {
         return name;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public int getProfileImage() {
+    int getProfileImage() {
         return profileImage;
     }
 
-    public ArrayList<Contact> getContacts() {
+    ArrayList<Contact> getContacts() {
         return contacts;
     }
 }

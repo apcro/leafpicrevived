@@ -59,7 +59,7 @@
                         android:id="@+id/ll_media_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/sub_small_spacing"
+                        android:layout_marginEnd="@dimen/sub_small_spacing"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -102,8 +102,8 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:marqueeRepeatLimit="marquee_forever"
-                    android:maxLines="1"
                     android:scrollHorizontally="true"
+                    android:singleLine="true"
                     android:textColor="@color/md_grey_400"
                     android:textSize="@dimen/medium_small_text"
                     android:visibility="gone" />

@@ -50,7 +50,7 @@ public class SplashScreen extends SharedMediaActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.alienpants.leafpicrevived.R.layout.activity_splash);
+        setContentView(R.layout.activity_splash);
 
 
         getWindow().getDecorView().setSystemUiVisibility(
@@ -125,15 +125,13 @@ public class SplashScreen extends SharedMediaActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case PICK_MEDIA_REQUEST:
-                if (resultCode == RESULT_OK) {
-                    setResult(RESULT_OK, data);
-                    finish();
-                }
-                break;
-            default:
-                super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_MEDIA_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                setResult(RESULT_OK, data);
+                finish();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -141,7 +139,7 @@ public class SplashScreen extends SharedMediaActivity {
     public void setNavBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ColorPalette.getTransparentColor(
-                    ContextCompat.getColor(getApplicationContext(), com.alienpants.leafpicrevived.R.color.md_black_1000), 70));
+                    ContextCompat.getColor(getApplicationContext(), R.color.md_black_1000), 70));
         }
     }
 
@@ -149,29 +147,27 @@ public class SplashScreen extends SharedMediaActivity {
     protected void setStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(ColorPalette.getTransparentColor(
-                    ContextCompat.getColor(getApplicationContext(), com.alienpants.leafpicrevived.R.color.md_black_1000), 70));
+                    ContextCompat.getColor(getApplicationContext(), R.color.md_black_1000), 70));
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case EXTERNAL_STORAGE_PERMISSIONS:
-                boolean gotPermission = grantResults.length > 0;
+        if (requestCode == EXTERNAL_STORAGE_PERMISSIONS) {
+            boolean gotPermission = grantResults.length > 0;
 
-                for (int result : grantResults) {
-                    gotPermission &= result == PackageManager.PERMISSION_GRANTED;
-                }
+            for (int result : grantResults) {
+                gotPermission &= result == PackageManager.PERMISSION_GRANTED;
+            }
 
-                if (gotPermission) {
-                    start();
-                } else {
-                    Toast.makeText(SplashScreen.this, getString(R.string.storage_permission_denied), Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (gotPermission) {
+                start();
+            } else {
+                Toast.makeText(SplashScreen.this, getString(R.string.storage_permission_denied), Toast.LENGTH_LONG).show();
+                finish();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
@@ -180,6 +176,6 @@ public class SplashScreen extends SharedMediaActivity {
     public void updateUiElements() {
         super.updateUiElements();
         ((ProgressBar) findViewById(R.id.progress_splash)).getIndeterminateDrawable().setColorFilter(getPrimaryColor(), PorterDuff.Mode.SRC_ATOP);
-        findViewById(com.alienpants.leafpicrevived.R.id.Splah_Bg).setBackgroundColor(getBackgroundColor());
+        findViewById(R.id.Splah_Bg).setBackgroundColor(getBackgroundColor());
     }
 }

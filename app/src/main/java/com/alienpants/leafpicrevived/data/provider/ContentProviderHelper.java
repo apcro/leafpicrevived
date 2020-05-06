@@ -36,7 +36,7 @@ public class ContentProviderHelper {
         if (parentFolder == null || !parentFolder.isDirectory())
             return null;
 
-        return new Album(context, parentFolder.getPath(), getAlbumId(context, mediaPath), parentFolder.getName(), 0);
+        return new Album(parentFolder.getPath(), getAlbumId(context, mediaPath), parentFolder.getName(), 0);
     }
 }
 

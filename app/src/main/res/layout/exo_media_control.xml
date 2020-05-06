@@ -54,7 +54,6 @@
             android:paddingEnd="@dimen/sub_small_spacing"
             android:textColor="@color/accent_white"
             android:textSize="@dimen/sub_medium_text"
-
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -75,7 +74,7 @@
             android:id="@+id/rew"
             android:layout_width="@dimen/icon_player_size"
             android:layout_height="@dimen/icon_player_size"
-            android:layout_marginRight="@dimen/big_spacing"
+            android:layout_marginEnd="@dimen/big_spacing"
             android:contentDescription="@string/exo_controls_rewind_description"
             app:iiv_color="@color/md_white_1000"
             app:iiv_icon="faw-backward" />
@@ -91,7 +90,7 @@
             android:id="@+id/ffwd"
             android:layout_width="@dimen/icon_player_size"
             android:layout_height="@dimen/icon_player_size"
-            android:layout_marginLeft="@dimen/big_spacing"
+            android:layout_marginStart="@dimen/big_spacing"
             android:contentDescription="@string/exo_controls_fastforward_description"
             app:iiv_color="@color/md_white_1000"
             app:iiv_icon="faw-forward" />

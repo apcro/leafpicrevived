@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
@@ -39,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_about_app_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -86,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -95,7 +97,7 @@
                     android:orientation="vertical">
 
                     <!--TITLE-->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_donate_googleplay_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -153,6 +155,7 @@
                         android:layout_marginBottom="@dimen/medium_spacing"
                         android:clickable="true"
                         android:elevation="@dimen/fab_elevation"
+                        android:focusable="true"
                         android:padding="@dimen/small_spacing"
                         android:text="@string/donate" />
 
@@ -166,6 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -174,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_donate_paypal_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -221,6 +225,7 @@
                         android:layout_marginBottom="@dimen/medium_spacing"
                         android:clickable="true"
                         android:elevation="@dimen/fab_elevation"
+                        android:focusable="true"
                         android:padding="@dimen/small_spacing"
                         android:text="@string/donate" />
 
@@ -234,6 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_spacing"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="@drawable/ripple"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -243,7 +249,7 @@
                     android:orientation="vertical">
 
                     <!--TITLE-->
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    <LinearLayout
                         android:id="@+id/ll_donate_bitcoin_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -275,6 +281,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple"
                         android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/medium_spacing"
                         android:text="13psCBkxAjvvssSDHHGGagG2R8b4SraVyu"

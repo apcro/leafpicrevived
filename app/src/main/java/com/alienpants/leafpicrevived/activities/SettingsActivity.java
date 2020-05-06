@@ -1,6 +1,5 @@
 package com.alienpants.leafpicrevived.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -60,7 +59,6 @@ public class SettingsActivity extends BaseActivity {
     SettingWithSwitchView optionSubScaling;
     @BindView(R.id.option_disable_animations)
     SettingWithSwitchView optionDisableAnimations;
-    private Toolbar toolbar;
     private Unbinder unbinder;
 
     public static void startActivity(@NonNull Context context) {
@@ -73,34 +71,22 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
 
         unbinder = ButterKnife.bind(this);
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(getToolbarIcon(GoogleMaterial.Icon.gmd_arrow_back));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
-        optionStatusbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateTheme();
-                setStatusBarColor();
-            }
+        optionStatusbar.setOnClickListener(view -> {
+            updateTheme();
+            setStatusBarColor();
         });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (ViewUtil.hasNavBar(this)) {
-                optionColoredNavbar.setOnClickListener(new View.OnClickListener() {
-                    @SuppressLint("NewApi")
-                    @Override
-                    public void onClick(View view) {
-                        updateTheme();
-                        getWindow().setNavigationBarColor(isNavigationBarColored() ? getPrimaryColor() : ContextCompat.getColor(getApplicationContext(), R.color.md_black_1000));
-                    }
+                optionColoredNavbar.setOnClickListener(view -> {
+                    updateTheme();
+                    getWindow().setNavigationBarColor(isNavigationBarColored() ? getPrimaryColor() : ContextCompat.getColor(getApplicationContext(), R.color.md_black_1000));
                 });
             } else optionColoredNavbar.setVisibility(View.GONE);
         }
@@ -119,10 +105,10 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public void updateUiElements() {
         super.updateUiElements();
-        findViewById(com.alienpants.leafpicrevived.R.id.setting_background).setBackgroundColor(getBackgroundColor());
+        findViewById(R.id.setting_background).setBackgroundColor(getBackgroundColor());
         setStatusBarColor();
         setNavBarColor();
-        setRecentApp(getString(com.alienpants.leafpicrevived.R.string.settings));
+        setRecentApp(getString(R.string.settings));
     }
 
     @Override

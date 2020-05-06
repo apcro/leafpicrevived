@@ -54,8 +54,8 @@ import java.util.Arrays;
 
 public class SelectAlbumBuilder extends BottomSheetDialogFragment {
 
-    final int INTERNAL_STORAGE = 0;
-    FragmentManager fragmentManager;
+    private final int INTERNAL_STORAGE = 0;
+    private FragmentManager fragmentManager;
     private String title;
     private ArrayList<File> folders;
     private BottomSheetAlbumsAdapter adapter;
@@ -184,44 +184,29 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         fabDone.setBackgroundTintList(ColorStateList.valueOf(theme.getAccentColor()));
         fabDone.setImageDrawable(new IconicsDrawable(getContext()).icon(GoogleMaterial.Icon.gmd_done).color(IconicsColor.colorInt(Color.WHITE)));
         fabDone.setVisibility(exploreMode ? View.VISIBLE : View.GONE);
-        fabDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                onFolderSelected.folderSelected(currentFolderPath.getText().toString());
-            }
+        fabDone.setOnClickListener(v -> {
+            dismiss();
+            onFolderSelected.folderSelected(currentFolderPath.getText().toString());
         });
 
         ((TextView) contentView.findViewById(R.id.bottom_sheet_title)).setText(title);
         ((ThemedIcon) contentView.findViewById(R.id.create_new_folder_icon)).setColor(theme.getIconColor());
 
-        contentView.findViewById(R.id.rl_create_new_folder).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final EditText editText = new EditText(getContext());
-                AlertDialog insertTextDialog = AlertDialogsHelper.getInsertTextDialog(((ThemedActivity) getActivity()), editText, R.string.new_folder);
-                insertTextDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        File folderPath = new File(currentFolderPath.getText().toString() + File.separator + editText.getText().toString());
-                        if (folderPath.mkdir()) displayContentFolder(folderPath);
-                    }
-                });
-                insertTextDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                insertTextDialog.show();
-            }
+        contentView.findViewById(R.id.rl_create_new_folder).setOnClickListener(view -> {
+            final EditText editText = new EditText(getContext());
+            AlertDialog insertTextDialog = AlertDialogsHelper.getInsertTextDialog(((ThemedActivity) getActivity()), editText, R.string.new_folder);
+            insertTextDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), (dialogInterface, i) -> {
+                File folderPath = new File(currentFolderPath.getText().toString() + File.separator + editText.getText().toString());
+                if (folderPath.mkdir()) displayContentFolder(folderPath);
+            });
+            insertTextDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), (dialogInterface, i) -> {
+            });
+            insertTextDialog.show();
         });
-        contentView.findViewById(R.id.rl_bottom_sheet_title).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!forzed) {
-                    toggleExplorerMode(!exploreMode);
-                    fabDone.setVisibility(exploreMode ? View.VISIBLE : View.GONE);
-                }
+        contentView.findViewById(R.id.rl_bottom_sheet_title).setOnClickListener(v -> {
+            if (!forzed) {
+                toggleExplorerMode(!exploreMode);
+                fabDone.setVisibility(exploreMode ? View.VISIBLE : View.GONE);
             }
         });
 
@@ -229,7 +214,7 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
         CoordinatorLayout.LayoutParams layoutParams =
                 (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = layoutParams.getBehavior();
-        if (behavior != null && behavior instanceof BottomSheetBehavior) {
+        if (behavior instanceof BottomSheetBehavior) {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
         adapter.notifyDataSetChanged();
@@ -296,13 +281,10 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             View view = super.getView(position, convertView, parent);
             GoogleMaterial.Icon icon;
 
-            switch (position) {
-                case INTERNAL_STORAGE:
-                    icon = GoogleMaterial.Icon.gmd_storage;
-                    break;
-                default:
-                    icon = GoogleMaterial.Icon.gmd_sd_card;
-                    break;
+            if (position == INTERNAL_STORAGE) {
+                icon = GoogleMaterial.Icon.gmd_storage;
+            } else {
+                icon = GoogleMaterial.Icon.gmd_sd_card;
             }
 
             ((ImageView) view.findViewById(R.id.volume_image)).setImageDrawable(new IconicsDrawable(getContext()).icon(icon).size(IconicsSize.dp(24)).color(IconicsColor.colorInt(Color.WHITE)));
@@ -314,13 +296,10 @@ public class SelectAlbumBuilder extends BottomSheetDialogFragment {
             View view = super.getDropDownView(position, convertView, parent);
             GoogleMaterial.Icon icon;
 
-            switch (position) {
-                case INTERNAL_STORAGE:
-                    icon = GoogleMaterial.Icon.gmd_storage;
-                    break;
-                default:
-                    icon = GoogleMaterial.Icon.gmd_sd_card;
-                    break;
+            if (position == INTERNAL_STORAGE) {
+                icon = GoogleMaterial.Icon.gmd_storage;
+            } else {
+                icon = GoogleMaterial.Icon.gmd_sd_card;
             }
             ((ThemedIcon) view.findViewById(R.id.volume_image)).setIcon(icon);
             view.setBackgroundColor(theme.getPrimaryColor());

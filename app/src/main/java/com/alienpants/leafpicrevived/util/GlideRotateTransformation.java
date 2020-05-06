@@ -14,11 +14,11 @@ import java.security.MessageDigest;
  * Created by dnld on 9/17/17.
  */
 
-public class GLideRotateTransformation extends BitmapTransformation {
+public class GlideRotateTransformation extends BitmapTransformation {
 
     private float rotateRotationAngle = 0f;
 
-    public GLideRotateTransformation(float rotateRotationAngle) {
+    public GlideRotateTransformation(float rotateRotationAngle) {
         this.rotateRotationAngle = rotateRotationAngle;
     }
 
