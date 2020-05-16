@@ -400,24 +400,36 @@ public class RvMediaFragment extends BaseMediaGridFragment {
                 album.setSortingOrder(sortingOrder);
                 return true;
 
+            // toolbar delete
             case R.id.delete:
-
-                if (Security.isPasswordOnDelete()) {
-
-                    Security.authenticateUser(((ThemedActivity) getActivity()), new Security.AuthCallBack() {
-                        @Override
-                        public void onAuthenticated() {
-                            showDeleteBottomSheet();
-                        }
-
-                        @Override
-                        public void onError() {
-                            Toast.makeText(getContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                int selectedCount = adapter.getSelectedCount();
+                final AlertDialog alertDialog;
+                if (selectedCount > 1) {
+                    alertDialog = AlertDialogsHelper.getTextDialog(((ThemedActivity) getActivity()), R.string.delete, R.string.delete_photos_message);
                 } else {
-                    showDeleteBottomSheet();
+                    alertDialog = AlertDialogsHelper.getTextDialog(((ThemedActivity) getActivity()), R.string.delete, R.string.delete_photo_message);
                 }
+
+                alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, this.getString(R.string.cancel).toUpperCase(), (dialogInterface, i) -> alertDialog.dismiss());
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), (dialog1, id) -> {
+                    if (Security.isPasswordOnDelete()) {
+
+                        Security.authenticateUser(((ThemedActivity) getActivity()), new Security.AuthCallBack() {
+                            @Override
+                            public void onAuthenticated() {
+                                showDeleteBottomSheet();
+                            }
+
+                            @Override
+                            public void onError() {
+                                Toast.makeText(getContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        showDeleteBottomSheet();
+                    }
+                });
+                alertDialog.show();
                 return true;
 
             //region Affix

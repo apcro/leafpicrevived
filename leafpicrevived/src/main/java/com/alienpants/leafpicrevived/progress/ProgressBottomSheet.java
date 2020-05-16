@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -98,6 +99,7 @@ public class ProgressBottomSheet<T> extends BottomSheetDialogFragment {
             bottomSheet.setShowCancel(showCancel);
             bottomSheet.setSources(sources);
             bottomSheet.setListener(listener);
+            bottomSheet.setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
             return bottomSheet;
 
         }

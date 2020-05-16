@@ -58,6 +58,7 @@ fun deleteMedia(context: Context, mediaList: List<Media>, fragmentManager: Fragm
     for (media in mediaList)
         sources.add(MediaHelper.deleteMedia(context.applicationContext, media))
 
+//    @TODO fix the bottom sheet. it builds, but does not appear.
     val bottomSheet = ProgressBottomSheet.Builder<Media>(R.string.delete_bottom_sheet_title)
             .autoDismiss(false)
             .sources(sources)
