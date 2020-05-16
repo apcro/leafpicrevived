@@ -1,0 +1,108 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.alienpants.leafpicrevived.activities.SingleMediaActivity">
+    <group android:id="@+id/only_photos_options">
+        <item
+            android:id="@+id/action_edit"
+            android:orderInCategory="5"
+            android:title="@string/edit"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_rotate"
+            android:orderInCategory="2"
+            android:title="@string/rotate"
+            app:showAsAction="always">
+            <menu>
+                <item
+                    android:id="@+id/rotate_right_90"
+                    android:title="@string/rotate_right_90" />
+                <item
+                    android:id="@+id/rotate_left_90"
+                    android:title="@string/rotate_left_90" />
+                <item
+                    android:id="@+id/rotate_180"
+                    android:title="@string/rotate_180" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/action_palette"
+            android:orderInCategory="3"
+            android:title="@string/palette"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_use_as"
+            android:orderInCategory="8"
+            android:title="@string/use_as"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_print"
+            android:orderInCategory="10"
+            android:title="@string/print"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_advanced_sharing"
+            android:orderInCategory="11"
+            android:title="@string/advanced_sharing"
+            app:showAsAction="never" />
+    </group>
+    <group android:id="@+id/on_internal_storage">
+        <item
+            android:id="@+id/action_share"
+            android:orderInCategory="0"
+            android:title="@string/share"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/action_delete"
+            android:orderInCategory="1"
+            android:title="@string/delete"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/action_copy"
+            android:orderInCategory="6"
+            android:title="@string/copy_to"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_move"
+            android:orderInCategory="7"
+            android:title="@string/move_to"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_rename"
+            android:orderInCategory="9"
+            android:title="@string/rename"
+            app:showAsAction="never" />
+    </group>
+    <item
+        android:id="@+id/action_details"
+        android:orderInCategory="4"
+        android:title="@string/details"
+        app:showAsAction="never" />
+    <item
+        android:orderInCategory="12"
+        android:title="@string/more"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/slide_show"
+                android:title="@string/start_slide_show"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_edit_with"
+                android:title="@string/edit_with"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_open_with"
+                android:title="@string/open_with"
+                app:showAsAction="never" />
+            <item
+                android:title="@string/upload"
+                android:visible="false"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_settings"
+                android:title="@string/settings"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>
