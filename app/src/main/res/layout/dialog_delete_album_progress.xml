@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/message_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/big_spacing"
+                android:text="Wait when we throw away your memories"
+                android:textColor="@color/md_dark_primary_text"
+                android:textSize="@dimen/sub_big_text"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/text_dialog_rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/medium_spacing"
+                android:paddingEnd="@dimen/medium_spacing">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_folders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/medium_spacing" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rv_folders"
+                    android:indeterminate="true"
+                    android:paddingTop="@dimen/medium_spacing" />
+
+                <TextView
+                    android:id="@+id/file_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/progress_bar"
+                    android:layout_alignParentEnd="true"
+                    android:paddingTop="@dimen/medium_spacing"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textSize="@dimen/medium_text"
+                    android:textStyle="italic" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>
