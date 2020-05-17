@@ -15,7 +15,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 
-
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 

@@ -92,10 +92,11 @@ class MetaDataItem {
         }
 
     }
+
     private void handleDirectoryBase(ExifDirectoryBase d) {
-        if(d != null) {
+        if (d != null) {
             if (d.containsTag(ExifDirectoryBase.TAG_MAKE))
-                make =d.getString(ExifDirectoryBase.TAG_MAKE);
+                make = d.getString(ExifDirectoryBase.TAG_MAKE);
             if (d.containsTag(ExifDirectoryBase.TAG_MODEL))
                 model = d.getString(ExifDirectoryBase.TAG_MODEL);
 
@@ -114,19 +115,24 @@ class MetaDataItem {
 
     public String getResolution() {
         if (width != -1 && -1 != height)
-            return String.format(Locale.getDefault(),"%dx%d", width, height);
+            return String.format(Locale.getDefault(), "%dx%d", width, height);
         else return "¿x?";
     }
+
     public int getOrientation() {
         return orientation;
     }
 
     public void setOrientation(int orientation) {
         switch (orientation) {
-            case ORIENTATION_NORMAL: this.orientation = 0;
-            case ORIENTATION_ROTATE_90: this.orientation = 90;
-            case ORIENTATION_ROTATE_180: this.orientation = 180;
-            case ORIENTATION_ROTATE_270: this.orientation = 270;
+            case ORIENTATION_NORMAL:
+                this.orientation = 0;
+            case ORIENTATION_ROTATE_90:
+                this.orientation = 90;
+            case ORIENTATION_ROTATE_180:
+                this.orientation = 180;
+            case ORIENTATION_ROTATE_270:
+                this.orientation = 270;
         }
     }
 
@@ -150,26 +156,26 @@ class MetaDataItem {
     String getExifInfo() {
         StringBuilder result = new StringBuilder();
         String asd;
-        if((asd = getfNumber()) != null) result.append(asd).append(" ");
-        if((asd = getExposureTime()) != null) result.append(asd).append(" ");
-        if((asd = getIso()) != null) result.append(asd).append(" ");
+        if ((asd = getfNumber()) != null) result.append(asd).append(" ");
+        if ((asd = getExposureTime()) != null) result.append(asd).append(" ");
+        if ((asd = getIso()) != null) result.append(asd).append(" ");
         return result.length() == 0 ? null : result.toString();
     }
 
     private String getfNumber() {
-        if(fNumber != null)
+        if (fNumber != null)
             return String.format("f/%s", fNumber);
         return null;
     }
 
     private String getIso() {
-        if(iso != null)
+        if (iso != null)
             return String.format("ISO-%s", iso);
         return null;
     }
 
     private String getExposureTime() {
-        if(exposureTime != null)
+        if (exposureTime != null)
             return String.format("%ss", exposureTime);
         return null;
     }

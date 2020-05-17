@@ -10,7 +10,8 @@ import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 public final class Defaults {
 
     // Prevent class instantiation
-    private Defaults() {}
+    private Defaults() {
+    }
 
     public static final int FOLDER_COLUMNS_PORTRAIT = 2;
     public static final int FOLDER_COLUMNS_LANDSCAPE = 3;

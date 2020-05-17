@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.progress;
 
 
-
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;

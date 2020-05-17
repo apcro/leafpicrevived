@@ -3,8 +3,6 @@ package com.alienpants.leafpicrevived.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +11,12 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.data.Media;
 import com.alienpants.leafpicrevived.data.StorageHelper;
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -33,7 +29,8 @@ import butterknife.ButterKnife;
  */
 public class VideoFragment extends BaseMediaFragment {
 
-    @BindView(R.id.media_view) ImageView previewView;
+    @BindView(R.id.media_view)
+    ImageView previewView;
 //    @BindView(R.id.video_play_icon) ThemedIcon playVideoIcon;
 
     private ThemedIcon mPlayVideoIcon;

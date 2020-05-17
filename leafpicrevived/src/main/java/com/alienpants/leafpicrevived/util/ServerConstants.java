@@ -9,7 +9,7 @@ public class ServerConstants {
     public static final String GITHUB_LEAFPIC = "https://github.com/apcro/leafpicrevived";
     public static final String GITHUB_DONALD = "https://github.com/DNLDsht";
     public static final String GITHUB_CALVIN = "https://github.com/CalvinNor";
-//    public static final String GITHUB_GILBERT = "https://github.com/Mow3l";
+    //    public static final String GITHUB_GILBERT = "https://github.com/Mow3l";
     public static final String GITHUB_TOM = "https://github.com/apcro";
 
     // LeafPic URLs

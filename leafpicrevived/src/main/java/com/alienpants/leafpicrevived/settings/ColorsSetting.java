@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.settings;
 
 import android.content.DialogInterface;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.ThemedActivity;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -37,8 +37,8 @@ public class ColorsSetting extends ThemedSetting {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity(), getActivity().getDialogStyle());
 
         final View dialogLayout = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_base_theme, null);
-        final TextView dialogTitle = (TextView) dialogLayout.findViewById(R.id.basic_theme_title);
-        final CardView dialogCardView = (CardView) dialogLayout.findViewById(R.id.basic_theme_card);
+        final TextView dialogTitle = dialogLayout.findViewById(R.id.basic_theme_title);
+        final CardView dialogCardView = dialogLayout.findViewById(R.id.basic_theme_card);
 
         /** SET OBJ THEME **/
         dialogTitle.setBackgroundColor(getActivity().getPrimaryColor());
@@ -84,9 +84,9 @@ public class ColorsSetting extends ThemedSetting {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity(), getActivity().getDialogStyle());
 
         View dialogLayout = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_color_picker, null);
-        final LineColorPicker colorPicker = (LineColorPicker) dialogLayout.findViewById(R.id.color_picker_primary);
-        final LineColorPicker colorPicker2 = (LineColorPicker) dialogLayout.findViewById(R.id.color_picker_primary_2);
-        final TextView dialogTitle = (TextView) dialogLayout.findViewById(R.id.dialog_title);
+        final LineColorPicker colorPicker = dialogLayout.findViewById(R.id.color_picker_primary);
+        final LineColorPicker colorPicker2 = dialogLayout.findViewById(R.id.color_picker_primary_2);
+        final TextView dialogTitle = dialogLayout.findViewById(R.id.dialog_title);
         dialogTitle.setText(title);
         ((CardView) dialogLayout.findViewById(R.id.dialog_card)).setCardBackgroundColor(getActivity().getCardBackgroundColor());
 

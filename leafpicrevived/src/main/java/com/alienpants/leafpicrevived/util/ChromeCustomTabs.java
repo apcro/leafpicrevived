@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.net.Uri;
 
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsClient;

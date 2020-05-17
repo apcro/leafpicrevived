@@ -15,12 +15,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
-import com.bumptech.glide.Glide;
-
 import com.alienpants.leafpicrevived.CardViewStyle;
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.bumptech.glide.Glide;
+
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.Theme;
 import org.horaapps.liz.ThemedActivity;
@@ -80,7 +80,8 @@ public class CardViewStyleSetting extends ThemedSetting {
                         v = LayoutInflater.from(getActivity()).inflate(FLAT.getLayout(), null);
                         v.findViewById(R.id.ll_album_info).setBackgroundColor(ColorPalette.getTransparentColor(getActivity().getBackgroundColor(), 150));
                         break;
-                    case R.id.radio_card_material: default:
+                    case R.id.radio_card_material:
+                    default:
                         v = LayoutInflater.from(getActivity()).inflate(MATERIAL.getLayout(), null);
                         v.findViewById(R.id.ll_album_info).setBackgroundColor(getActivity().getCardBackgroundColor());
                         break;
@@ -110,7 +111,7 @@ public class CardViewStyleSetting extends ThemedSetting {
                 ((TextView) v.findViewById(R.id.album_media_label)).setTextColor(getActivity().getTextColor());
                 ((TextView) v.findViewById(R.id.album_path)).setTextColor(getActivity().getSubTextColor());
 
-                v.findViewById(R.id.ll_media_count).setVisibility( chkShowMediaCount.isChecked() ? View.VISIBLE : View.GONE);
+                v.findViewById(R.id.ll_media_count).setVisibility(chkShowMediaCount.isChecked() ? View.VISIBLE : View.GONE);
                 chkShowMediaCount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -118,7 +119,7 @@ public class CardViewStyleSetting extends ThemedSetting {
                     }
                 });
 
-                v.findViewById(R.id.album_path).setVisibility( chkShowAlbumPath.isChecked() ? View.VISIBLE : View.GONE);
+                v.findViewById(R.id.album_path).setVisibility(chkShowAlbumPath.isChecked() ? View.VISIBLE : View.GONE);
                 chkShowAlbumPath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -138,10 +139,19 @@ public class CardViewStyleSetting extends ThemedSetting {
         });
 
         switch (Prefs.getCardStyle()) {
-            case COMPACT: rCompact.setChecked(true); break;
-            case FLAT: rFlat.setChecked(true); break;
-            case SMALL: rSmall.setChecked(true); break;
-            case MATERIAL: default: rMaterial.setChecked(true); break;
+            case COMPACT:
+                rCompact.setChecked(true);
+                break;
+            case FLAT:
+                rFlat.setChecked(true);
+                break;
+            case SMALL:
+                rSmall.setChecked(true);
+                break;
+            case MATERIAL:
+            default:
+                rMaterial.setChecked(true);
+                break;
         }
 
         builder.setNegativeButton(getActivity().getString(R.string.cancel).toUpperCase(), null);

@@ -5,12 +5,13 @@ import android.content.Context;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
+import com.bumptech.glide.module.GlideModule;
 
 /**
  * Created by dnld on 10/03/16.
  */
 
-public class CustomGlideModule implements com.bumptech.glide.module.GlideModule {
+public class CustomGlideModule implements GlideModule {
 
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {

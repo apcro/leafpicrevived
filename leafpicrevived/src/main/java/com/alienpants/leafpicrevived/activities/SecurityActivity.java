@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,13 +16,13 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
-import com.orhanobut.hawk.Hawk;
-
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.activities.base.BaseActivity;
 import com.alienpants.leafpicrevived.util.FingerprintHandler;
 import com.alienpants.leafpicrevived.util.Security;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+import com.orhanobut.hawk.Hawk;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ui.ThemedIcon;
 
@@ -47,24 +46,24 @@ public class SecurityActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
-        llroot = (LinearLayout) findViewById(R.id.root);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        swActiveSecurity = (SwitchCompat) findViewById(R.id.active_security_switch);
-        swApplySecurityDelete = (SwitchCompat) findViewById(R.id.security_body_apply_delete_switch);
-        swApplySecurityHidden = (SwitchCompat) findViewById(R.id.security_body_apply_hidden_switch);
-        swFingerPrint = (SwitchCompat) findViewById(R.id.active_security_fingerprint_switch);
-        llFingerprint = (LinearLayout) findViewById(R.id.ll_active_security_fingerprint);
+        llroot = findViewById(R.id.root);
+        toolbar = findViewById(R.id.toolbar);
+        swActiveSecurity = findViewById(R.id.active_security_switch);
+        swApplySecurityDelete = findViewById(R.id.security_body_apply_delete_switch);
+        swApplySecurityHidden = findViewById(R.id.security_body_apply_hidden_switch);
+        swFingerPrint = findViewById(R.id.active_security_fingerprint_switch);
+        llFingerprint = findViewById(R.id.ll_active_security_fingerprint);
 
         initUi();
         setTitle(R.string.security);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintHandler = new FingerprintHandler(this, null);
-            if(fingerprintHandler.isFingerprintSupported()){
+            if (fingerprintHandler.isFingerprintSupported()) {
                 llFingerprint.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 llFingerprint.setVisibility(View.GONE);
             }
-        }else{
+        } else {
             llFingerprint.setVisibility(View.GONE);
         }
 
@@ -78,7 +77,7 @@ public class SecurityActivity extends BaseActivity {
                 swActiveSecurity.setChecked(!swActiveSecurity.isChecked());
                 setSwitchColor(getAccentColor(), swActiveSecurity);
                 if (swActiveSecurity.isChecked()) setPasswordDialog();
-                else{
+                else {
                     Security.clearPassword();
                     swApplySecurityHidden.setChecked(false);
                     swApplySecurityDelete.setChecked(false);
@@ -147,10 +146,10 @@ public class SecurityActivity extends BaseActivity {
 
         final AlertDialog.Builder passwordDialog = new AlertDialog.Builder(SecurityActivity.this, getDialogStyle());
         final View PasswordDialogLayout = getLayoutInflater().inflate(com.alienpants.leafpicrevived.R.layout.dialog_set_password, null);
-        final TextView passwordDialogTitle = (TextView) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_dialog_title);
-        final CardView passwordDialogCard = (CardView) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_dialog_card);
-        final EditText editTextPassword = (EditText) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.password_edittxt);
-        final EditText editTextConfirmPassword = (EditText) PasswordDialogLayout.findViewById(com.alienpants.leafpicrevived.R.id.confirm_password_edittxt);
+        final TextView passwordDialogTitle = PasswordDialogLayout.findViewById(R.id.password_dialog_title);
+        final CardView passwordDialogCard = PasswordDialogLayout.findViewById(R.id.password_dialog_card);
+        final EditText editTextPassword = PasswordDialogLayout.findViewById(R.id.password_edittxt);
+        final EditText editTextConfirmPassword = PasswordDialogLayout.findViewById(R.id.confirm_password_edittxt);
 
         passwordDialogTitle.setBackgroundColor(getPrimaryColor());
         passwordDialogCard.setBackgroundColor(getCardBackgroundColor());
@@ -201,7 +200,7 @@ public class SecurityActivity extends BaseActivity {
         dialog.show();
     }
 
-    private void toggleResetSecurity (){
+    private void toggleResetSecurity() {
         swActiveSecurity.setChecked(false);
         setSwitchColor(getAccentColor(), swActiveSecurity);
         toggleEnabledChild(swActiveSecurity.isChecked());
@@ -213,7 +212,7 @@ public class SecurityActivity extends BaseActivity {
         findViewById(R.id.ll_security_body_apply_delete).setClickable(enable);
         findViewById(R.id.ll_active_security_fingerprint).setClickable(enable);
 
-        if(enable){
+        if (enable) {
             ((ThemedIcon) findViewById(com.alienpants.leafpicrevived.R.id.security_body_apply_hidden_icon)).setColor(getIconColor());
             ((TextView) findViewById(com.alienpants.leafpicrevived.R.id.security_body_apply_hidden_title)).setTextColor(getTextColor());
             ((ThemedIcon) findViewById(com.alienpants.leafpicrevived.R.id.security_body_apply_delete_icon)).setColor(getIconColor());

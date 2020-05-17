@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.about;
 
 
-
 import androidx.annotation.DrawableRes;
 
 import java.util.ArrayList;

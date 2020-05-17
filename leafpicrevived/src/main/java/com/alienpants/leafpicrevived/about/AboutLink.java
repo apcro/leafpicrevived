@@ -4,8 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-
-
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,10 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.alienpants.leafpicrevived.R;
 import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsDrawable;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 import org.horaapps.liz.ui.ThemedIcon;
@@ -33,9 +31,12 @@ import butterknife.ButterKnife;
  */
 public class AboutLink extends RelativeLayout implements Themed {
 
-    @BindView(R.id.about_link_icon) ThemedIcon linkIcon;
-    @BindView(R.id.about_link_title) TextView linkTitle;
-    @BindView(R.id.about_link_description) TextView linkDescription;
+    @BindView(R.id.about_link_icon)
+    ThemedIcon linkIcon;
+    @BindView(R.id.about_link_title)
+    TextView linkTitle;
+    @BindView(R.id.about_link_description)
+    TextView linkDescription;
 
     public AboutLink(@NonNull Context context) {
         this(context, null);
@@ -57,7 +58,7 @@ public class AboutLink extends RelativeLayout implements Themed {
     }
 
     private void init(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        Iconics.init(context);
+//        Iconics.init(context);
         setupView(context);
         LayoutInflater.from(context).inflate(R.layout.view_about_link, this, true);
         ButterKnife.bind(this);

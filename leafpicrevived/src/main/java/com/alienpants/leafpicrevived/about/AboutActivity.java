@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-
 import android.text.method.LinkMovementMethod;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -27,8 +25,9 @@ import com.alienpants.leafpicrevived.util.AlertDialogsHelper;
 import com.alienpants.leafpicrevived.util.ApplicationUtils;
 import com.alienpants.leafpicrevived.util.ChromeCustomTabs;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
-import org.horaapps.liz.ui.ThemedTextView;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+
+import org.horaapps.liz.ui.ThemedTextView;
 
 import java.util.ArrayList;
 
@@ -63,12 +62,18 @@ public class AboutActivity extends BaseActivity implements ContactListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.about_version_item_sub) ThemedTextView appVersion;
-    @BindView(R.id.aboutAct_scrollView) ScrollView aboutScrollView;
-    @BindView(R.id.about_developer_donald) AboutCreator aboutDonald;
-    @BindView(R.id.about_developer_gilbert) AboutCreator aboutGilbert;
-    @BindView(R.id.about_patryk_goworowski_item_sub) ThemedTextView specialThanksPatryk;
-    @BindView(R.id.about_link_changelog) AboutLink linkChangelog;
+    @BindView(R.id.about_version_item_sub)
+    ThemedTextView appVersion;
+    @BindView(R.id.aboutAct_scrollView)
+    ScrollView aboutScrollView;
+    @BindView(R.id.about_developer_donald)
+    AboutCreator aboutDonald;
+    @BindView(R.id.about_developer_gilbert)
+    AboutCreator aboutGilbert;
+    @BindView(R.id.about_patryk_goworowski_item_sub)
+    ThemedTextView specialThanksPatryk;
+    @BindView(R.id.about_link_changelog)
+    AboutLink linkChangelog;
     @BindView(R.id.list_contributors)
     RecyclerView rvContributors;
 
@@ -96,7 +101,9 @@ public class AboutActivity extends BaseActivity implements ContactListener {
         super.onDestroy();
     }
 
-    /** Select List */
+    /**
+     * Select List
+     */
     @OnClick(R.id.about_link_report_bug)
     public void onReportBug() {
         chromeTabs.launchUrl(LEAFPIC_ISSUES);

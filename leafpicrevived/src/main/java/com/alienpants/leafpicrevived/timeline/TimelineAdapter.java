@@ -2,8 +2,6 @@ package com.alienpants.leafpicrevived.timeline;
 
 import android.content.Context;
 import android.graphics.Rect;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,7 @@ import com.alienpants.leafpicrevived.data.sort.SortingOrder;
 import com.alienpants.leafpicrevived.items.ActionsListener;
 import com.alienpants.leafpicrevived.timeline.data.TimelineHeaderModel;
 import com.alienpants.leafpicrevived.timeline.data.TimelineItem;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ThemedAdapter;
 import org.jetbrains.annotations.Nullable;
@@ -163,7 +162,8 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
                 TimelineItem timelineItem = getItem(position);
 
                 // If we have a header item, occupy the entire width
-                if (timelineItem.getTimelineType() == TimelineItem.TYPE_HEADER) return timelineGridSize;
+                if (timelineItem.getTimelineType() == TimelineItem.TYPE_HEADER)
+                    return timelineGridSize;
 
                 // Else, a media item takes up a single space
                 return 1;
@@ -250,7 +250,7 @@ public class TimelineAdapter extends ThemedAdapter<TimelineViewHolder> {
             }
         }
 
-        if(indexRightBeforeOrAfter != -1) {
+        if (indexRightBeforeOrAfter != -1) {
             for (int index = Math.min(elemPos, indexRightBeforeOrAfter); index <= Math.max(elemPos, indexRightBeforeOrAfter); index++) {
                 if (timelineItems.get(index) != null && timelineItems.get(index) instanceof Media) {
                     selectedPositions.add(index);

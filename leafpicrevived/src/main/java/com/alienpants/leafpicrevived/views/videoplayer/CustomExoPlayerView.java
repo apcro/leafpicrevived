@@ -11,14 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.alienpants.leafpicrevived.R;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.text.Cue;
 import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.SubtitleView;
-
-import com.alienpants.leafpicrevived.R;
 
 import java.util.List;
 
@@ -149,15 +148,21 @@ public final class CustomExoPlayerView extends FrameLayout {
         return controllerShowTimeoutMs;
     }
 
-    public void setControllerShowTimeoutMs(int controllerShowTimeoutMs) {this.controllerShowTimeoutMs = controllerShowTimeoutMs;}
+    public void setControllerShowTimeoutMs(int controllerShowTimeoutMs) {
+        this.controllerShowTimeoutMs = controllerShowTimeoutMs;
+    }
 
-    public void setControllerVisibilityListener(CustomPlayBackController.VisibilityListener listener) {controller.setVisibilityListener(listener);}
+    public void setControllerVisibilityListener(CustomPlayBackController.VisibilityListener listener) {
+        controller.setVisibilityListener(listener);
+    }
 
     public void setRewindIncrementMs(int rewindMs) {
         controller.setRewindIncrementMs(rewindMs);
     }
 
-    public void setFastForwardIncrementMs(int fastForwardMs) {controller.setFastForwardIncrementMs(fastForwardMs);}
+    public void setFastForwardIncrementMs(int fastForwardMs) {
+        controller.setFastForwardIncrementMs(fastForwardMs);
+    }
 
     public View getVideoSurfaceView() {
         return surfaceView;

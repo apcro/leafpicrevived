@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
-
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -15,9 +13,6 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
-import com.orhanobut.hawk.Hawk;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.activities.base.BaseActivity;
@@ -28,6 +23,9 @@ import com.alienpants.leafpicrevived.settings.MapProviderSetting;
 import com.alienpants.leafpicrevived.settings.SinglePhotoSetting;
 import com.alienpants.leafpicrevived.util.Security;
 import com.alienpants.leafpicrevived.views.SettingWithSwitchView;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+import com.orhanobut.hawk.Hawk;
+
 import org.horaapps.liz.ColorPalette;
 import org.horaapps.liz.ViewUtil;
 
@@ -42,20 +40,31 @@ import butterknife.Unbinder;
 public class SettingsActivity extends BaseActivity {
     private Toolbar toolbar;
 
-    @BindView(R.id.option_max_brightness) SettingWithSwitchView optionMaxBrightness;
-    @BindView(R.id.option_picture_orientation) SettingWithSwitchView optionOrientation;
-    @BindView(R.id.option_full_resolution) SettingWithSwitchView optionDelayFullRes;
+    @BindView(R.id.option_max_brightness)
+    SettingWithSwitchView optionMaxBrightness;
+    @BindView(R.id.option_picture_orientation)
+    SettingWithSwitchView optionOrientation;
+    @BindView(R.id.option_full_resolution)
+    SettingWithSwitchView optionDelayFullRes;
 
-    @BindView(R.id.option_auto_update_media) SettingWithSwitchView optionAutoUpdateMedia;
-    @BindView(R.id.option_include_video) SettingWithSwitchView optionIncludeVideo;
-    @BindView(R.id.option_swipe_direction) SettingWithSwitchView optionSwipeDirection;
+    @BindView(R.id.option_auto_update_media)
+    SettingWithSwitchView optionAutoUpdateMedia;
+    @BindView(R.id.option_include_video)
+    SettingWithSwitchView optionIncludeVideo;
+    @BindView(R.id.option_swipe_direction)
+    SettingWithSwitchView optionSwipeDirection;
 
-    @BindView(R.id.option_fab) SettingWithSwitchView optionShowFab;
-    @BindView(R.id.option_statusbar) SettingWithSwitchView optionStatusbar;
-    @BindView(R.id.option_colored_navbar) SettingWithSwitchView optionColoredNavbar;
+    @BindView(R.id.option_fab)
+    SettingWithSwitchView optionShowFab;
+    @BindView(R.id.option_statusbar)
+    SettingWithSwitchView optionStatusbar;
+    @BindView(R.id.option_colored_navbar)
+    SettingWithSwitchView optionColoredNavbar;
 
-    @BindView(R.id.option_sub_scaling) SettingWithSwitchView optionSubScaling;
-    @BindView(R.id.option_disable_animations) SettingWithSwitchView optionDisableAnimations;
+    @BindView(R.id.option_sub_scaling)
+    SettingWithSwitchView optionSubScaling;
+    @BindView(R.id.option_disable_animations)
+    SettingWithSwitchView optionDisableAnimations;
 
     private Unbinder unbinder;
 
@@ -69,7 +78,7 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
 
         unbinder = ButterKnife.bind(this);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(getToolbarIcon(GoogleMaterial.Icon.gmd_arrow_back));

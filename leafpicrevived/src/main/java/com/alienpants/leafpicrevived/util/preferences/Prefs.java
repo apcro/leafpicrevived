@@ -2,7 +2,6 @@ package com.alienpants.leafpicrevived.util.preferences;
 
 import android.content.Context;
 
-
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpicrevived.CardViewStyle;

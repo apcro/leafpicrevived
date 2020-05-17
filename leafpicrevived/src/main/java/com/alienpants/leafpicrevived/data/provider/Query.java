@@ -3,7 +3,6 @@ package com.alienpants.leafpicrevived.data.provider;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 
 import java.util.Arrays;
 
@@ -64,7 +63,8 @@ public class Query {
         int limit = -1;
         boolean ascending = false;
 
-        public Builder() {}
+        public Builder() {
+        }
 
         public Builder uri(Uri val) {
             uri = val;
@@ -81,7 +81,7 @@ public class Query {
             return this;
         }
 
-        public Builder args(Object ... val) {
+        public Builder args(Object... val) {
             args = val;
             return this;
         }
@@ -117,8 +117,8 @@ public class Query {
                 "\nprojection=" + Arrays.toString(projection) +
                 "\nselection='" + selection + '\'' +
                 "\nargs=" + Arrays.toString(args) +
-                "\nsortMode='" + sort +'\'' +
-                "\nascending='" + ascending+ '\'' +
+                "\nsortMode='" + sort + '\'' +
+                "\nascending='" + ascending + '\'' +
                 "\nlimit='" + limit + '\'' +
                 '}';
     }

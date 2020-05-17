@@ -1,8 +1,6 @@
 package com.alienpants.leafpicrevived.timeline.data;
 
 
-
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

@@ -3,8 +3,6 @@ package com.alienpants.leafpicrevived.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-
-
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +15,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 import org.horaapps.liz.ThemedActivity;
@@ -34,12 +33,15 @@ public class SettingWithSwitchView extends FrameLayout implements View.OnClickLi
     private final String preferenceKey;
     @StringRes
     private final int titleRes;
-    @StringRes private final int captionRes;
+    @StringRes
+    private final int captionRes;
     private final boolean defaultValue;
     @BindView(R.id.icon)
     ThemedIcon icon;
-    @BindView(R.id.title) TextView title;
-    @BindView(R.id.caption) TextView caption;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.caption)
+    TextView caption;
     @BindView(R.id.toggle)
     SwitchCompat toggle;
     @Nullable

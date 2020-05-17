@@ -25,7 +25,9 @@ public enum CardViewStyle {
         return layout;
     }
 
-    public int getValue() { return value; }
+    public int getValue() {
+        return value;
+    }
 
     public static int getSize() {
         return size;
@@ -33,10 +35,15 @@ public enum CardViewStyle {
 
     public static CardViewStyle fromValue(int value) {
         switch (value) {
-            case 0: default: return MATERIAL;
-            case 1: return FLAT;
-            case 2: return COMPACT;
-            case 3: return SMALL;
+            case 0:
+            default:
+                return MATERIAL;
+            case 1:
+                return FLAT;
+            case 2:
+                return COMPACT;
+            case 3:
+                return SMALL;
         }
     }
 }

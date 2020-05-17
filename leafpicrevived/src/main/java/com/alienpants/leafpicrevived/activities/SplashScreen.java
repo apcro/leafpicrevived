@@ -10,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
-
-
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -26,6 +24,7 @@ import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.activities.base.SharedMediaActivity;
 import com.alienpants.leafpicrevived.util.PermissionUtils;
 import com.alienpants.leafpicrevived.util.StringUtils;
+
 import org.horaapps.liz.ColorPalette;
 
 import java.io.File;
@@ -136,7 +135,8 @@ public class SplashScreen extends SharedMediaActivity {
                     finish();
                 }
                 break;
-            default: super.onActivityResult(requestCode, resultCode, data);
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

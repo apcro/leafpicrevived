@@ -1,7 +1,6 @@
 package com.alienpants.leafpicrevived.views.themeable;
 
 import android.content.Context;
-
 import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;

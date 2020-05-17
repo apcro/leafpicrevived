@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-
-
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.Themed;
 import org.horaapps.liz.ViewUtil;
@@ -36,12 +35,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class AboutCreator extends RelativeLayout implements Themed {
 
-    @BindView(R.id.developer_header_image) ImageView headerImage;
-    @BindView(R.id.developer_profile_image) CircleImageView profileImage;
-    @BindView(R.id.developer_name) TextView devName;
-    @BindView(R.id.developer_role) TextView devRole;
-    @BindView(R.id.developer_description) TextView devDescription;
-    @BindView(R.id.developer_contacts) LinearLayout devContacts;
+    @BindView(R.id.developer_header_image)
+    ImageView headerImage;
+    @BindView(R.id.developer_profile_image)
+    CircleImageView profileImage;
+    @BindView(R.id.developer_name)
+    TextView devName;
+    @BindView(R.id.developer_role)
+    TextView devRole;
+    @BindView(R.id.developer_description)
+    TextView devDescription;
+    @BindView(R.id.developer_contacts)
+    LinearLayout devContacts;
 
     public AboutCreator(@NonNull Context context) {
         this(context, null);

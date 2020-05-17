@@ -1,8 +1,6 @@
 package com.alienpants.leafpicrevived.activities;
 
 import android.os.Bundle;
-
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +26,9 @@ import com.alienpants.leafpicrevived.data.filter.ImageFileFilter;
 import com.alienpants.leafpicrevived.util.AnimationUtils;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
-import org.horaapps.liz.ui.ThemedIcon;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
+
+import org.horaapps.liz.ui.ThemedIcon;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -165,7 +164,7 @@ public class BlackWhiteListActivity extends SharedMediaActivity {
 
     @CallSuper
     @Override
-    public void updateUiElements(){
+    public void updateUiElements() {
         super.updateUiElements();
         toolbar.setBackgroundColor(getPrimaryColor());
         mRecyclerView.setBackgroundColor(getBackgroundColor());

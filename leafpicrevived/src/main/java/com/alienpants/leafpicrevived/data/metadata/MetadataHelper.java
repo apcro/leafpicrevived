@@ -2,17 +2,16 @@ package com.alienpants.leafpicrevived.data.metadata;
 
 import android.content.Context;
 
+import com.alienpants.leafpicrevived.R;
 import com.alienpants.leafpicrevived.adapters.AlbumsAdapter;
 import com.alienpants.leafpicrevived.data.Album;
+import com.alienpants.leafpicrevived.data.Media;
+import com.alienpants.leafpicrevived.util.StringUtils;
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.lang.GeoLocation;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
-
-import com.alienpants.leafpicrevived.R;
-import com.alienpants.leafpicrevived.data.Media;
-import com.alienpants.leafpicrevived.util.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,11 +22,11 @@ import java.util.Date;
 
 public class MetadataHelper {
 
-    public MediaDetailsMap<String, String> getMainDetails(Context context, Media m){
+    public MediaDetailsMap<String, String> getMainDetails(Context context, Media m) {
         MediaDetailsMap<String, String> details = new MediaDetailsMap<>();
         details.put(context.getString(R.string.path), m.getDisplayPath());
         details.put(context.getString(R.string.type), m.getMimeType());
-        if(m.getSize() != -1)
+        if (m.getSize() != -1)
             details.put(context.getString(R.string.size), StringUtils.humanReadableByteCount(m.getSize(), true));
         // TODO should i add this always?
         details.put(context.getString(R.string.orientation), m.getOrientation() + "");
@@ -55,10 +54,10 @@ public class MetadataHelper {
         MediaDetailsMap<String, String> data = new MediaDetailsMap<String, String>();
         try {
             Metadata metadata = ImageMetadataReader.readMetadata(context.getContentResolver().openInputStream(media.getUri()));
-            for(Directory directory : metadata.getDirectories()) {
+            for (Directory directory : metadata.getDirectories()) {
 
-                for(Tag tag : directory.getTags()) {
-                    data.put(tag.getTagName(), directory.getObject(tag.getTagType())+"");
+                for (Tag tag : directory.getTags()) {
+                    data.put(tag.getTagName(), directory.getObject(tag.getTagType()) + "");
                 }
             }
         } catch (Exception e) {
@@ -75,7 +74,7 @@ public class MetadataHelper {
         albumdetials.put(context.getString(R.string.free_space), StringUtils.humanReadableByteCount(album.getFile().getFreeSpace(), true));
         albumdetials.put(context.getString(R.string.path), album.getPath());
         albumdetials.put(context.getString(R.string.size), StringUtils.humanReadableByteCount(album.getFolderSize(album.getFile()), true));
-        albumdetials.put(context.getString(R.string.files), album.getCount()+"");
+        albumdetials.put(context.getString(R.string.files), album.getCount() + "");
         albumdetials.put(context.getString(R.string.date), SimpleDateFormat.getDateTimeInstance().format(new Date(album.getDateModified())));
 
         return albumdetials;
@@ -85,8 +84,8 @@ public class MetadataHelper {
         MediaDetailsMap<String, String> albumdetials = new MediaDetailsMap<>();
         albumdetials.put(context.getString(R.string.type), context.getString(R.string.folder));
         albumdetials.put(context.getString(R.string.size), StringUtils.humanReadableByteCount(adapter.getSelectedAlbumsSize(), true));
-        albumdetials.put(context.getString(R.string.folders), adapter.getSelectedCount()+"");
-        albumdetials.put(context.getString(R.string.files), adapter.getSelectedAlbumsFilesCount()+"");
+        albumdetials.put(context.getString(R.string.folders), adapter.getSelectedCount() + "");
+        albumdetials.put(context.getString(R.string.files), adapter.getSelectedAlbumsFilesCount() + "");
         return albumdetials;
     }
 

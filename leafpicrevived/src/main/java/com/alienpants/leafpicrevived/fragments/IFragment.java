@@ -7,5 +7,6 @@ package com.alienpants.leafpicrevived.fragments;
 public interface IFragment {
 
     boolean editMode();
+
     boolean clearSelected();
 }

@@ -19,10 +19,10 @@ public class ContentProviderHelper {
     public static long getAlbumId(Context context, String mediaPath) {
         long id = -1;
         Cursor cur = context.getContentResolver().query(MediaStore.Files.getContentUri("external"),
-                new String[]{ MediaStore.Files.FileColumns.PARENT },
-                MediaStore.Files.FileColumns.DATA+"=?", new String[]{ mediaPath }, null);
+                new String[]{MediaStore.Files.FileColumns.PARENT},
+                MediaStore.Files.FileColumns.DATA + "=?", new String[]{mediaPath}, null);
 
-        if(cur != null && cur.moveToFirst()){
+        if (cur != null && cur.moveToFirst()) {
             id = cur.getLong(0);
             cur.close();
         }
@@ -36,7 +36,7 @@ public class ContentProviderHelper {
         if (parentFolder == null || !parentFolder.isDirectory())
             return null;
 
-       return new Album(context, parentFolder.getPath(), getAlbumId(context, mediaPath), parentFolder.getName(), 0);
+        return new Album(context, parentFolder.getPath(), getAlbumId(context, mediaPath), parentFolder.getName(), 0);
     }
 }
 

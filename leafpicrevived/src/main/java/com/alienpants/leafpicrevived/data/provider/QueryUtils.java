@@ -22,9 +22,11 @@ public class QueryUtils {
                 if (cursor != null && cursor.getCount() > 0)
                     while (cursor.moveToNext()) subscriber.onNext(ch.handle(cursor));
                 subscriber.onComplete();
+            } catch (Exception err) {
+                subscriber.onError(err);
+            } finally {
+                if (cursor != null) cursor.close();
             }
-            catch (Exception err) { subscriber.onError(err); }
-            finally { if (cursor != null) cursor.close(); }
         });
     }
 
@@ -45,9 +47,11 @@ public class QueryUtils {
                 if (cursor != null && cursor.moveToFirst())
                     subscriber.onNext(ch.handle(cursor));
                 subscriber.onComplete();
+            } catch (Exception err) {
+                subscriber.onError(err);
+            } finally {
+                if (cursor != null) cursor.close();
             }
-            catch (Exception err) { subscriber.onError(err); }
-            finally { if (cursor != null) cursor.close(); }
         });
     }
 

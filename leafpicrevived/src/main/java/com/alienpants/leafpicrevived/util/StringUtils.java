@@ -2,7 +2,6 @@ package com.alienpants.leafpicrevived.util;
 
 import android.content.Context;
 import android.os.Build;
-
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.Toast;
@@ -27,7 +26,7 @@ public class StringUtils {
     }
 
     public static String getPhotoNameByPath(String path) {
-        String b[] = path.split("/");
+        String[] b = path.split("/");
         String fi = b[b.length - 1];
         return fi.substring(0, fi.lastIndexOf('.'));
     }
@@ -40,13 +39,13 @@ public class StringUtils {
     }
 
     public static String getName(String path) {
-        String b[] = path.split("/");
+        String[] b = path.split("/");
         return b[b.length - 1];
     }
 
     public static String getPhotoPathRenamed(String olderPath, String newName) {
         StringBuilder c = new StringBuilder();
-        String b[] = olderPath.split("/");
+        String[] b = olderPath.split("/");
         for (int x = 0; x < b.length - 1; x++) c.append(b[x]).append("/");
         c.append(newName);
         String name = b[b.length - 1];
@@ -71,7 +70,8 @@ public class StringUtils {
     }
 
     public static String getPhotoPathRenamedAlbumChange(String olderPath, String albumNewName) {
-        String c = "", b[] = olderPath.split("/");
+        String c = "";
+        String[] b = olderPath.split("/");
         for (int x = 0; x < b.length - 2; x++) c += b[x] + "/";
         c += albumNewName + "/" + b[b.length - 1];
         return c;
@@ -82,7 +82,7 @@ public class StringUtils {
     }
 
     public static String getPhotoPathMoved(String olderPath, String folderPath) {
-        String b[] = olderPath.split("/");
+        String[] b = olderPath.split("/");
         String fi = b[b.length - 1];
         String path = folderPath + "/";
         path += fi;
@@ -90,7 +90,7 @@ public class StringUtils {
     }
 
     public static String getBucketPathByImagePath(String path) {
-        String b[] = path.split("/");
+        String[] b = path.split("/");
         String c = "";
         for (int x = 0; x < b.length - 1; x++) c += b[x] + "/";
         c = c.substring(0, c.length() - 1);

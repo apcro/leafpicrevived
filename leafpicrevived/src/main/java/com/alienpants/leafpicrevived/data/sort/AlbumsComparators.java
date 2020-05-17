@@ -17,7 +17,8 @@ public class AlbumsComparators {
                 return getNameComparator(base);
             case SIZE:
                 return getSizeComparator(base);
-            case DATE: default:
+            case DATE:
+            default:
                 return getDateComparator(base);
             case NUMERIC:
                 return getNumericComparator(base);
@@ -52,7 +53,7 @@ public class AlbumsComparators {
         return (o1, o2) -> getPinned().compare(o2, o1);
     }
 
-    private static Comparator<Album> getDateComparator(Comparator<Album> base){
+    private static Comparator<Album> getDateComparator(Comparator<Album> base) {
         return (a1, a2) -> {
             int res = base.compare(a1, a2);
             if (res == 0)

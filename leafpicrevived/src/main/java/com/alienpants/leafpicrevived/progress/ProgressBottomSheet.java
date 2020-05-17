@@ -1,9 +1,6 @@
 package com.alienpants.leafpicrevived.progress;
 
 import android.os.Bundle;
-
-
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +15,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alienpants.leafpicrevived.R;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import com.alienpants.leafpicrevived.R;
 import org.horaapps.liz.ThemeHelper;
 
 import java.util.ArrayList;

@@ -12,7 +12,8 @@ public interface TimelineItem {
     int TYPE_MEDIA = 102;
 
     @IntDef({TYPE_HEADER, TYPE_MEDIA})
-    @interface TimelineItemType {}
+    @interface TimelineItemType {
+    }
 
     @TimelineItemType
     int getTimelineType();

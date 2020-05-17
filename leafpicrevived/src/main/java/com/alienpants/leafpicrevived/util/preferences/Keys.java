@@ -6,7 +6,8 @@ package com.alienpants.leafpicrevived.util.preferences;
 public final class Keys {
 
     // Prevent class instantiation
-    private Keys() {}
+    private Keys() {
+    }
 
     public static final String FOLDER_COLUMNS_PORTRAIT = "folder_columns_portrait";
     public static final String FOLDER_COLUMNS_LANDSCAPE = "folder_columns_landscape";

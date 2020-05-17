@@ -3,13 +3,11 @@ package com.alienpants.leafpicrevived.activities;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -65,7 +63,6 @@ import com.alienpants.leafpicrevived.util.Security;
 import com.alienpants.leafpicrevived.util.StringUtils;
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
 import com.alienpants.leafpicrevived.views.HackyViewPager;
-import org.horaapps.liz.ColorPalette;
 import com.bumptech.glide.Glide;
 import com.mikepenz.iconics.Iconics;
 import com.mikepenz.iconics.IconicsColor;
@@ -74,10 +71,11 @@ import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 import com.yalantis.ucrop.UCrop;
 
+import org.horaapps.liz.ColorPalette;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -107,8 +105,10 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     public static final String EXTRA_ARGS_MEDIA = "args_media";
     public static final String EXTRA_ARGS_POSITION = "args_position";
 
-    @BindView(R.id.photos_pager) HackyViewPager mViewPager;
-    @BindView(R.id.PhotoPager_Layout) RelativeLayout activityBackground;
+    @BindView(R.id.photos_pager)
+    HackyViewPager mViewPager;
+    @BindView(R.id.PhotoPager_Layout)
+    RelativeLayout activityBackground;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -309,7 +309,10 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
     }
 
     // TODO: Figure out how we should classify Images and GIFs
-    /** This should work temporarily **/
+
+    /**
+     * This should work temporarily
+     **/
     private boolean isCurrentMediaImage() {
         return getCurrentMedia().isImage() && !getCurrentMedia().isGif();
     }
@@ -640,7 +643,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 final EditText editTextNewName = new EditText(this);
                 editTextNewName.setText(StringUtils.getPhotoNameByPath(getCurrentMedia().getPath()));
 
-                androidx.appcompat.app.AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
+                AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
 
                 renameDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override
@@ -701,7 +704,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
                 photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
                 try (InputStream in = getContentResolver().openInputStream(getCurrentMedia().getUri())) {
                     Bitmap bitmap = BitmapFactory.decodeStream(in);
-                    photoPrinter.printBitmap(String.format("print_%s", getCurrentMedia().getDisplayPath() ), bitmap);
+                    photoPrinter.printBitmap(String.format("print_%s", getCurrentMedia().getDisplayPath()), bitmap);
                 } catch (Exception e) {
                     Log.e("print", String.format("unable to print %s", getCurrentMedia().getUri()), e);
                     Toast.makeText(getApplicationContext(), R.string.print_error, Toast.LENGTH_SHORT).show();
@@ -763,7 +766,7 @@ public class SingleMediaActivity extends SharedMediaActivity implements BaseMedi
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.PNG);
         options.setCompressionQuality(90);
-        options.setActiveWidgetColor(getAccentColor());
+        options.setActiveControlsWidgetColor(getAccentColor());
         options.setToolbarColor(getPrimaryColor());
         options.setStatusBarColor(isTranslucentStatusBar() ? ColorPalette.getObscuredColor(getPrimaryColor()) : getPrimaryColor());
         options.setCropFrameColor(getAccentColor());

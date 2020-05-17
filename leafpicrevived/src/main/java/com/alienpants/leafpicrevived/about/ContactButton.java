@@ -2,13 +2,13 @@ package com.alienpants.leafpicrevived.about;
 
 import android.content.Context;
 import android.graphics.Typeface;
-
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
 import com.alienpants.leafpicrevived.R;
+
 import org.horaapps.liz.ThemeHelper;
 import org.horaapps.liz.ui.ThemedTextView;
 

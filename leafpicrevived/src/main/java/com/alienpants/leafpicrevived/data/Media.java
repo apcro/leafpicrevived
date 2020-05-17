@@ -11,25 +11,27 @@ import android.provider.MediaStore;
 
 import androidx.exifinterface.media.ExifInterface;
 
-import com.bumptech.glide.signature.ObjectKey;
-import com.drew.lang.GeoLocation;
-import com.drew.lang.annotations.NotNull;
-
 import com.alienpants.leafpicrevived.timeline.data.TimelineItem;
 import com.alienpants.leafpicrevived.util.ArrayUtils;
 import com.alienpants.leafpicrevived.util.MimeTypeUtils;
 import com.alienpants.leafpicrevived.util.StringUtils;
+import com.bumptech.glide.signature.ObjectKey;
+import com.drew.lang.GeoLocation;
+import com.drew.lang.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
 
 // TODO Calvin: Separate out the logic here
-/** Ideally, we should have separate data classes for images, videos & gifs
- *  Base class can be Media, and others should extend
- *  Try to separate out Database logic and projections from this class */
+
+/**
+ * Ideally, we should have separate data classes for images, videos & gifs
+ * Base class can be Media, and others should extend
+ * Try to separate out Database logic and projections from this class
+ */
 public class Media implements TimelineItem, CursorHandler, Parcelable {
 
-    private static final String[] sProjection = new String[] {
+    private static final String[] sProjection = new String[]{
             MediaStore.Images.Media.DATA,
             MediaStore.Images.Media.DATE_TAKEN,
             MediaStore.Images.Media.MIME_TYPE,

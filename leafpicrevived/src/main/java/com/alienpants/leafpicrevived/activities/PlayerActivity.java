@@ -26,7 +26,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -42,6 +41,14 @@ import androidx.annotation.CallSuper;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.alienpants.leafpicrevived.R;
+import com.alienpants.leafpicrevived.activities.base.BaseActivity;
+import com.alienpants.leafpicrevived.util.Measure;
+import com.alienpants.leafpicrevived.util.StringUtils;
+import com.alienpants.leafpicrevived.util.preferences.Prefs;
+import com.alienpants.leafpicrevived.views.videoplayer.CustomExoPlayerView;
+import com.alienpants.leafpicrevived.views.videoplayer.CustomPlayBackController;
+import com.alienpants.leafpicrevived.views.videoplayer.TrackSelectionHelper;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -75,15 +82,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.util.Util;
-
-import com.alienpants.leafpicrevived.R;
-import com.alienpants.leafpicrevived.activities.base.BaseActivity;
-import com.alienpants.leafpicrevived.util.Measure;
-import com.alienpants.leafpicrevived.util.StringUtils;
-import com.alienpants.leafpicrevived.util.preferences.Prefs;
-import com.alienpants.leafpicrevived.views.videoplayer.CustomExoPlayerView;
-import com.alienpants.leafpicrevived.views.videoplayer.CustomPlayBackController;
-import com.alienpants.leafpicrevived.views.videoplayer.TrackSelectionHelper;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 
 import java.net.CookieHandler;
@@ -100,6 +98,7 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
 
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
     private static final CookieManager DEFAULT_COOKIE_MANAGER;
+
     static {
         DEFAULT_COOKIE_MANAGER = new CookieManager();
         DEFAULT_COOKIE_MANAGER.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
@@ -216,7 +215,9 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         return simpleExoPlayerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
     }
 
-    /** Internal methods */
+    /**
+     * Internal methods
+     */
     private void initializePlayer() {
         Intent intent = getIntent();
         boolean needNewPlayer = player == null;
@@ -263,8 +264,8 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         }
 
         String action = intent.getAction();
-        Uri uris[];
-        String extensions[];
+        Uri[] uris;
+        String[] extensions;
         if (intent.getData() != null && intent.getType() != null) {
             uris = new Uri[]{intent.getData()};
             extensions = new String[]{intent.getType()};
@@ -310,12 +311,17 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
     private MediaSource buildMediaSource(Uri uri, String overrideExtension) {
         int type = Util.inferContentType(!TextUtils.isEmpty(overrideExtension) ? "." + overrideExtension : uri.getLastPathSegment());
         switch (type) {
-            case C.TYPE_SS:return new SsMediaSource(uri, buildDataSourceFactory(false), new DefaultSsChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
-            case C.TYPE_OTHER:return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(), mainHandler, null);
-            case C.TYPE_DASH:return new DashMediaSource(uri, buildDataSourceFactory(false), new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
+            case C.TYPE_SS:
+                return new SsMediaSource(uri, buildDataSourceFactory(false), new DefaultSsChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
+            case C.TYPE_OTHER:
+                return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(), mainHandler, null);
+            case C.TYPE_DASH:
+                return new DashMediaSource(uri, buildDataSourceFactory(false), new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, null);
 //            case C.TYPE_HLS:return new HlsMediaSource(uri, mediaDataSourceFactory, mainHandler, null);
-            case C.TYPE_HLS: throw new IllegalStateException("Unsupported type: " + type);
-            default: throw new IllegalStateException("Unsupported type: " + type);
+            case C.TYPE_HLS:
+                throw new IllegalStateException("Unsupported type: " + type);
+            default:
+                throw new IllegalStateException("Unsupported type: " + type);
         }
     }
 
@@ -510,7 +516,7 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
                 }
                 return true;
             case R.id.loop_video:
-                if(item.isChecked()) {
+                if (item.isChecked()) {
                     item.setChecked(false);
                     Prefs.setLoopVideo(false);
                     player.setRepeatMode(Player.REPEAT_MODE_OFF);
@@ -573,7 +579,7 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
         });
     }
 
-    private void showControls(){
+    private void showControls() {
         runOnUiThread(() -> {
             int rotation = (((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay()).getRotation();
             if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) { //Landscape
@@ -597,9 +603,9 @@ public class PlayerActivity extends BaseActivity implements CustomPlayBackContro
 
     @Override
     public void onVisibilityChange(int visibility) {
-        if(visibility == View.GONE)
+        if (visibility == View.GONE)
             hideControls();
-        else if(visibility == View.VISIBLE)
+        else if (visibility == View.VISIBLE)
             showControls();
     }
 

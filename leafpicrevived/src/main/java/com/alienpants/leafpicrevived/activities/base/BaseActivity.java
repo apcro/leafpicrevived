@@ -4,10 +4,10 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 
-
 import androidx.annotation.CallSuper;
 
 import com.alienpants.leafpicrevived.util.preferences.Prefs;
+
 import org.horaapps.liz.ThemedActivity;
 
 import java.util.Locale;
@@ -25,7 +25,7 @@ public abstract class BaseActivity extends ThemedActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if(Prefs.forceEnglish()) forceEnglish();
+        if (Prefs.forceEnglish()) forceEnglish();
         super.onCreate(savedInstanceState);
     }
 
@@ -40,7 +40,7 @@ public abstract class BaseActivity extends ThemedActivity {
             currentLocale = configuration.getLocales().get(0);
         else currentLocale = configuration.locale;
 
-        if(!currentLocale.getLanguage().equals(locale.getLanguage())) {
+        if (!currentLocale.getLanguage().equals(locale.getLanguage())) {
             Configuration config = new Configuration();
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config, null);

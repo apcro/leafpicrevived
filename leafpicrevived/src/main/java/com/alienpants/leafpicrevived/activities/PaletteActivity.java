@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +46,8 @@ public class PaletteActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        paletteImg = (ImageView) findViewById(R.id.palette_image);
+        toolbar = findViewById(R.id.toolbar);
+        paletteImg = findViewById(R.id.palette_image);
         setTitle(R.string.palette);
         setSupportActionBar(toolbar);
         uri = getIntent().getData();
@@ -83,12 +82,12 @@ public class PaletteActivity extends BaseActivity {
         ((TextView) findViewById(R.id.palette_image_caption)).setTextColor(getSubTextColor());
     }
 
-    public void setPalette(){
+    public void setPalette() {
         Bitmap myBitmap = ((BitmapDrawable) paletteImg.getDrawable()).getBitmap();
-        ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/")+1));
-        ((TextView)findViewById(R.id.palette_image_caption)).setText(uri.getPath());
+        ((TextView) findViewById(R.id.palette_image_title)).setText(uri.getPath().substring(uri.getPath().lastIndexOf("/") + 1));
+        ((TextView) findViewById(R.id.palette_image_caption)).setText(uri.getPath());
         palette = Palette.from(myBitmap).generate();
-        rvPalette = (RecyclerView) findViewById(R.id.paletteRecycler);
+        rvPalette = findViewById(R.id.paletteRecycler);
         rvPalette.setLayoutManager(new LinearLayoutManager(this));
         rvPalette.setNestedScrollingEnabled(false);
         paletteAdapter = new PaletteAdapter(palette.getSwatches());
@@ -99,7 +98,10 @@ public class PaletteActivity extends BaseActivity {
     private class PaletteAdapter extends RecyclerView.Adapter<PaletteActivity.PaletteAdapter.ViewHolder> {
 
         private List<Palette.Swatch> swatches;
-        private PaletteAdapter(List<Palette.Swatch> sws){this.swatches = sws;}
+
+        private PaletteAdapter(List<Palette.Swatch> sws) {
+            this.swatches = sws;
+        }
 
         public PaletteActivity.PaletteAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.palette_item, parent, false);
@@ -115,15 +117,18 @@ public class PaletteActivity extends BaseActivity {
             holder.itemBackground.setBackgroundColor(sw.getRgb());
         }
 
-        public int getItemCount() {return null != swatches ? swatches.size() : 0;}
+        public int getItemCount() {
+            return null != swatches ? swatches.size() : 0;
+        }
 
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView txtColor;
             LinearLayout itemBackground;
+
             ViewHolder(View itemView) {
                 super(itemView);
-                txtColor = (TextView) itemView.findViewById(R.id.palette_item_text);
-                itemBackground = (LinearLayout) itemView.findViewById(R.id.ll_palette_item);
+                txtColor = itemView.findViewById(R.id.palette_item_text);
+                itemBackground = itemView.findViewById(R.id.ll_palette_item);
             }
         }
     }
