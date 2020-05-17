@@ -18,7 +18,7 @@ android {
         applicationId "com.alienpants.leafpicrevived"
         minSdkVersion 21
         targetSdkVersion 28
-        versionName "v0.8.6"
+        versionName "v0.8.7"
         versionCode 24
 
         vectorDrawables.useSupportLibrary = true
