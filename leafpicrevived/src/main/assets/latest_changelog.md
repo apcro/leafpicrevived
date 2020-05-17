@@ -1,3 +1,8 @@
+v0.8.7
+==================
+* Implement some provided changes (thanks to https://github.com/TacoTheDank)
+* Implement a fix for issue https://github.com/apcro/leafpicrevived/issues/30
+
 v0.8.6
 ==================
 * Revert compileSdkVersion to 28, using 29 causes issues.

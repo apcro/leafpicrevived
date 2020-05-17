@@ -1,3 +1,8 @@
+v0.8.7
+==================
+* Implement some provided changes (thanks to https://github.com/TacoTheDank)
+* Implement a fix for issue https://github.com/apcro/leafpicrevived/issues/30
+
 v0.8.6
 ==================
 * Revert compileSdkVersion to 28, using 29 causes issues.
@@ -5,7 +10,7 @@ v0.8.6
 There are more issues related to the move from API 28 to API 29 which need to be addressed before this API level can be used for compilation. Work has begun.
 
 * Re-enable the core metadata extractor library as it's been updated to 2.13.0 now.
-* Use updated Liz libary.
+* Use updated Liz library.
 
 v0.8.5
 ==================
