@@ -63,7 +63,7 @@ public class LookForMediaJob extends JobService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle("Looked for media")
                         .setAutoCancel(true)
                         .setContentText(builder.toString()); //Required on Gingerbread and below
