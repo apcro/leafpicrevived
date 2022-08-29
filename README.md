@@ -1,3 +1,12 @@
+# Updated 20220829
+## This repository is currently archived
+
+No further work or updated are currently planned. Feel free to fork and make your own releases
+
+
+
+
+
 # LeafPic Revived
 <img src="https://raw.githubusercontent.com/apcro/leafpicrevived/master/leafpicrevived/src/main/res/drawable/leaf_pic.png" align="left" width="200" hspace="10" vspace="10">
 LeafPic Revived is a fluid, material-designed alternative gallery, it also is ad-free and open source under GPLv3 license. It doesn't miss any of the main features of a stock gallery.<br/>
